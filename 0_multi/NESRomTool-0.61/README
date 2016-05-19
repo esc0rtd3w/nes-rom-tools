@@ -1,0 +1,45 @@
+NESRomTool
+
+spike grobstein <spike@sadistech.com>
+http://nesromtool.sourceforge.net
+http://sourceforge.net/projects/nesromtool/
+http://www.sadistech.com
+
+6.11.03
+
+The NESRomTool is a utility for the extraction and injection of sprite and program data for NES (regular Nintendo) ROM files (.nes).
+
+In its current form, it is console only, but since the project contains some utility functions in a header, one could easily build a GUI wrapper for it. I'm currently in the planning stages for a full OSX-based GUI which will have some extra features not available in any other editors of its type on any platform. Anyone interested in creating a Windows, X, Classic MacOS, BeOS, or other GUI is welcome to join the project.
+
+Run the program with no arguments to print the usage. Man files are coming soon.
+
+Remember to set the file before trying to do anything!!! Like this:
+
+NESRomTool -f <sourceFile> [ options... ]
+
+ie:
+
+NESRomTool -f SuperMario3.nes -ds +m +r 1 1 10 -st "Super Mario Brothers 3"
+
+-
+
+You should have a basic understanding of how data is stored in an NES ROM before you start editing (so you understand what you are doing with this tool). I've got a brief quick rundown which is viewable here:
+
+http://www.sadistech.com/nesromtool/romdoc.html
+
+A tutorial on using the program (with screenshots) can be found:
+
+http://www.sadistech.com/nesromtool/tutorial/
+
+The format that NESRomTool extracts as (.raw) can be opened in Photoshop. When you select the file, photoshop will ask for dimensions and stuff, use these settings:
+
+width: 8
+height: 8
+channels: 1
+header length: 0
+
+When the file is opened, it will appear as a black box, this is normal. Set the mode of the image to indexed color (Image>Mode>Indexed Color), and change the first 4 colors in the color table (Image>Mode>Color Table...) to 4 contrasting colors to see the graphic. I'll post a tutorial on all of this stuff with screenshots on http://nesromtool.sourceforge.net just as soon as I get everything together.
+
+Any questions about the project should be directed to my email address above.
+
+Please do not contact me regarding NES ROM files. I do not have any for distribution. A simple search on Google may yield acceptable results. ;)

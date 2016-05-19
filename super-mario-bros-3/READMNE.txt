@@ -1,0 +1,26 @@
+Vegas 1.0
+Created by DahrkDaiz
+======================================
+
+Version History:
+1.0 First release
+
+------------------------------
+
+This program edits the N-Spade Card Base Deck, this is the deck the game uses to create the 8 other decks you
+see in the game. You can re-arrange the cards or replace them, make them all stars or leave out just 1-ups, whatever
+you desire.
+
+This editor also edits what item the power-up cards (mushroom, star, flower) give you.
+
+Main Editor:
+====================================
+
+Use the mouse and left click one of the bottom row cards at the bottom of the window. The card
+you clicked will show up on the right as the selected card. When you click one of the cards
+in the upper left hand corner, it will be replaced with the card in the selected card area.
+
+Power-Up Card Editor:
+===================================
+Explains itself, just use the list boxes to select which item you will receive with a match with each card. They will NOT
+replace the gfx, you must do this on your own.

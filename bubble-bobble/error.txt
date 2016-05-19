@@ -1,0 +1,1 @@
+Could not open BUBLBOB.NES; check for correct filename in bubbled.conf

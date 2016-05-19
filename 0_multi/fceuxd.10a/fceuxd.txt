@@ -1,0 +1,499 @@
+     ______________  ________   ____    __  ___
+    / ______/ _____\/ ____/ /  / /\ \  / / / _ \
+   / /_____/ /     / /___/ /  / /  \ \/ / / / \ \
+  / ______/ /     / ____/ /  / /    \  / / /  / /
+ / /     / /_____/ /___/ /__/ /     /  \/ /__/ /
+/_/      \______/_____/\_____/     / /\_\_____/
+                                  / /
+  FCE Ultra Extended Debugger    /_/  version 1.0a
+        by bbitmaster
+
+This document originally written by bbitmaster and DahrkDaiz, and rewritten and
+revised by Vystrix Nexoth.
+
+--------------------------------
+
+This document is divided into three sections:
+	* Frequently-Asked Questions
+	* General Usage Information
+	* Credits
+
+Please read the FAQ before asking me questions. That's why it's there.
+
+##############################
+# FREQUENTLY-ASKED QUESTIONS #
+##############################
+
+What is FCEUXD?
+	FCEUXD is a NES emulator with several powerful debugging, hacking, and
+	reverse-engineering tools.
+
+How did FCEUXD get started?
+	I don't really know much about the history of FCE Ultra (on which FCEUXD
+	is based), but it goes something like this:
+
+	A long time ago, there was an NES emulator named FCE (Family Computer
+	Emulator) developed by a japanese person named Bero. And it was good.
+
+	Then later, Xodnizel acquired the source and ported the program to
+	Windows, and called it "FCE Ultra" (you can find a more detailed account
+	of this in the FCE Ultra readme). And it was good.
+
+	Then in 2002, Parasyte modified the then-current version (0.81.3, I
+	believe) and added a Nesten-style debugger, along with several other
+	features, and named it "FCEUD" (FCE Ultra Debugger). And it was good.
+
+	And in January 2004, I (bbitmaster) began working on more features (as
+	detailed in this document), and called it "FCEUXD" (FCE Ultra Extended
+	Debugger).
+
+	And it is good.
+
+What new features are in FCEUXD?
+	In addition to the Debugger and PPU Viewer from FCEUD, FCEUXD has a
+	Trace Logger, a built-in Hex Editor, a Name Table Viewer and a Code/Data
+	Logger.
+
+What does the Trace Logger do?
+	It logs every executed instruction either to a file or to the window.
+	Logging to a file is useful if you just want to dump everything that was
+	executed and then search through it later.
+	Logging to the window is useful when you wish to see the instructions
+	that were executed prior to a breakpoint being hit.
+
+What does the built-in Hex Editor do?
+	Many things. It makes it easy to edit the game's RAM, PPU memory, and
+	even its currently-loaded ROM data. You can also "freeze" parts of RAM
+	(to prevent the game from modifying the data there), search for data,
+	and even copy and paste data to/from the clipboard.
+	Furthermore, table files are supported, so you can edit a game's text
+	in real-time and see the result immediately.
+
+What does the Code/Data Logger do?
+	This is a very special feature I have planned; when finished, it should
+	make it *much* easier to reverse-engineeer NES ROMs.
+	The idea behind it is that a normal NES disassembler cannot distinguish
+	between code (which is executed) and data (which is read). The Code/Data
+	logger keeps track of what is executed and what is read while the game
+	is played, and stores this information in a .cdl file, which is
+	essentially a mask that tells which bytes in the ROM are code and which
+	are data. The file can then be used in conjunction with a suitable
+	disassembler (which I plan to make) to disassemble only the actual game
+	code, resulting in a much cleaner source code, with code and data
+	properly separated.
+	As of this release, the disassembler is not finished, and it may not be
+	for a while. So, currently, the Code/Data Logger is useful only in that
+	it can work in conjunction with the Trace Logger, so that it will only
+	log code it has not already logged. In addition, it will let you save a
+	"stripped" ROM file (see below), and finally, to distinguish between
+	code and data bytes when working in the Hex Editor.
+
+What is a "stripped" NES ROM file?
+	This is a ROM formed only of the code and data that have been logged by
+	the Code/Data Logger. For the most part, it is useless except for hack-
+	ing and novelty purposes.
+
+What is the deal with the pandas?
+	Back in April 2004, FrenziedPanda stole a beta copy of FCEUXD from one
+	of my beta-testers, and threatened to release it if I didn't give in to
+	his demands. This has cost him his reputation among most of his friends.
+	He is still lurking around, now under the name "BlueHawk".
+	My advice to everyone is to avoid him.
+
+Can you teach me ASM?
+	Sorry, but no... I barely have enough time as it is, much of which is
+	spent working on my projects.
+	If you seriously would like to learn ASM, you should look around for
+	some documents and tutorials; they are everywhere if you know how to use
+	Google.
+
+Why can't I edit NES memory beyond $8000?
+	NES memory from $8000-$FFFF is where the game's PRG-ROM code is mapped.
+	Whenever you type in a value in the NES memory editor, it effectively
+	writes that value to that address. Many games use mappers, which are
+	usually accessed by writing to $8000-$FFFF (which is read-only)... and
+	if *you* were to do so, it may trigger a bankswitch, which could easily
+	make the game crash. In any event, doing so will not modify the ROM
+	itself.
+
+	What you *can* do, though, is edit the PRG-ROM itself by right-clicking
+	on the offset you wish to edit, and selecting "Go here in the ROM file",
+	which should take you to that spot in the ROM, from which you can then
+	edit it.
+
+How do I add Game Genie codes?
+	In the Game Genie Code decrypter/encrypter window, type the code into the
+	Game Genie Code box and click "Add to Cheat List", which will add it to
+	the Cheat Console cheat list. You can then enable/disable them by
+	double-clicking the code in the box (a * means the code is active).
+
+How do I make my own Game Genie codes?
+	First of all, you must:
+		* have a decent amount of ASM knowledge;
+		* know how to use the debugger;
+		* understand NES PRG-ROM bank switching.
+	Once you've found a part of PRG-ROM you want to change to create a code
+	effect, snap the debugger (if it's not so already) and find the code's
+	location in the PRG-ROM's address space ($8000-$FFFF) (you'll want the
+	debugger snapped so the game won't swap banks out from under you).
+	Then, using the built-in Hex Editor, view the NES memory and go to the
+	PRG-ROM address you wish to modify, then right-click the byte and choose
+	"Create Game Genie Code at this Address". The Game Genie Code Decrypter/
+	Encrypter will appear, with the Address and Compare boxes filled in (the
+	Compare box represents the address's original value). Enter the new
+	value into the "Value" box.
+	An alternative way to enter the code is to locate the desired address in
+	the debugger, and then middle-click on it, which will summon the GG Code
+	Decrypter/Encrypter. Then enter the code as described above.
+
+How do I make Game Genie codes permanent?
+	Using the Game Genie Code Decrypter/Encrypter, enter in your code in the
+	"Game Genie Code" box, and under "Possible Affected ROM File Addresses",
+	a list of possible matches (usually from 1 to 5) is displayed. Using the
+	built-in Hex Editor, go to the first listed address in the ROM, and
+	change its value to the value given in the "Value" box (of the GG code
+	decrypter/encrypter window). If the desired effect isn't achieved, undo
+	the change (Ctrl+Z) and try the next address. Repeat until the desired
+	effect is achieved, and then save the ROM.
+
+What does the Name Table Viewer do?
+	Besides showing the Name Tables, the Name Table Viewer will also display
+	the state of the PPU's scroll registers upon any given scanline, and
+	will let you view and change the game's mirroring mode.
+
+#############################
+# GENERAL USAGE INFORMATION #
+#############################
+
+Before I begin, I will be making two assumptions.
+
+First, I will assume you are are least somewhat familiar with FCEUD. Even if
+you're not at all familiar with it, most of its features-- such as setting read/
+write breakpoints and stepping through code-- are fairly intuitive. There are
+already tutorials available that explain these things, so I will not cover them
+again here.
+
+Second, I will assume you are competent enough to figure out most of FCEUXD
+without needing a manual -- in fact, I assume this to the point where I doubt
+you have even read this document before digging in and trying things out. :)
+I'm not going so far as to assume you're a genius, but I do assume you are at
+least competent enough to do things like figuring out how to open the hex
+editor, switching to ROM File Editing mode and editing it, and using Edit->Find,
+without needing to consult the manual to do these things.
+
+But even with these basic assumptions, there are many little things which I feel
+deserve some explanation and clarification; hence this document.
+
+THE DEBUGGER
+
+	The debugger is the same as FCEUD's debugger, but with a few improve-
+	ments:
+
+	The size of the debugger window has been increased so that it shows 25
+	lines instead of just 20.
+	When you hold the mouse over the left pane in the debugger, you can now
+	see the ROM file address of the data loaded there. If you right-click in
+	that pane, it will bring up the Hex Editor at that address so you can
+	immediately begin editing. Left-clicking in that pane brings up Para-
+	stye's inline assembler.
+	Another addition to the debugger is the "Break on bad opcode" feature;
+	this can help you figure out where your game is crashing.
+	Middle-clicking on a byte will bring up the Game Genie Encoder at that
+	address, so you can easily make Game Genie codes.
+
+	INLINE ASSEMBLER
+
+		The debugger now has an Inline Assembler which Parasyte designed
+		himself. To activate it, left-click in the left pane of the
+		debugger, beside the assembly display.
+		To use it, type in some code and press Enter to add it to the
+		patch list. If you make a mistake, press "Undo".
+		Once the patch is set up the way you want it, press "Apply". Be
+		aware that this cannot be undone unless you reload the ROM.
+		Parasyte implemented this feature before I had the Hex Editor
+		working, otherwise I would have implemented a way to undo it
+		from there.
+		Press "Save" to write to the ROM file on disk; note that this
+		will also save any changes you may have done in the Hex Editor.
+
+PPU VIEWER
+
+	The PPU viewer is exactly the same as FCEUD's, with two minor bugs that
+	have been fixed:
+
+	* FCEUD's PPU viewer, when activated, would corrupt color #0 in the NES
+	  palette.
+	* Parasyte left a very obvious mistake in the source, which caused it to
+	  run slower. We have reprogrammed him and he is now a happy, productive
+	  biological unit.
+
+CHEAT SEARCHER
+
+	The Cheat Searcher works essentially as in FCEUD, so I won't cover its
+	usage. The only new addition is that if you do not supply a name for a
+	cheat, a default one will be provided based on its Address and Value.
+
+THE TRACE LOGGER
+
+	The Trace Logger is a very nice feature which logs each instruction as
+	it is being executed; this log can be output either to a file or the
+	window.
+	If you choose to log to the window, you can set how many lines it will
+	retain before discarding old lines. The higher this setting, the more
+	RAM it will consume, but the more lines you'll have available to work
+	with.
+	Normally, when logging to a window, the only time it shows the log is if
+	you snap the debugger or pause execution (with F2). The option to auto-
+	matically update the log window will keep the window updating while the
+	game runs; this is normally useless unless it is working with the Code/
+	Data Logger to only show newly-executed instructions.
+
+	The Trace Logger has extra options which work with the Code/Data Logger
+	so that it only shows instructions executed for the first time, or those
+	which access data for the first time. This can be quite useful for find-
+	ing certain key routines or finding otherwise impossible-to-find data
+	in almost any game.
+	The best way to use this feature is in conjunction with the option to
+	automatically update the window while logging. Then, as you play the
+	game, you can watch new results appear at once. If you're searching for
+	something specific, try to get everything-- EXCEPT what you're looking
+	for-- to execute, then watch closely as what you're looking for executes
+	for the first time. (Sorry if that's too vague... I trust that you can
+	figure it out.)
+
+	There are two ways to filter what the Code/Data Logger shows. The first
+	filter lets you log only newly-executed code (so that an instruction is
+	not logged again if it has already been logged). The second logs only
+	instructions when they access data which hadn't been accessed before.
+	Note that both filters can be used at once (which shows bytes that pass
+	either filter).
+
+CODE/DATA LOGGER
+
+	This is probably the most interesting feature of FCEUXD. It keeps track
+	of every byte in the ROM and records whether it's code (is executed)
+	or data (is read). In the future, I hope to combine this with a suitable
+	disassembler that will disassemble only bytes marked as "code", in order
+	to generate near-perfect source code (provided you play through the game
+	several times, very thoroughly, to ensure everything gets logged). In
+	order to get that feature to work, I need to get the Address Label
+	Logger working, in order to create all the labels.
+
+	But right now, it is very useful for finding specific code and data by
+	using it with the Trace Logger (see above for instructions on doing
+	this). Furthermore, while it is running, the Hex Editor will color-code
+	bytes depending on whether they were logged as code or data. And it can
+	also be used to create a stripped NES ROM (see below).
+
+	Some notes: when you open another .cdl file, it does not clear the cur-
+	rent log; instead, it combines it with the information in the file.
+	This can be useful if you're trying to obtain a complete log, as multi-
+	ple people can play through the game and keep code/data logs, and then
+	the results can be combined.
+	But if you would like to actually clear the code/data log, press the
+	"Reset Log" button.
+
+	A "stripped" NES ROM is one in which everything that was not logged by
+	the code/data logger is removed. This may be just a novelty feature,
+	however it can be useful because you can view the ROM in a Hex Editor,
+	and you'll see only the parts that were used while playing. Furthermore,
+	you could use it to create a demo ROM by only playing through the parts
+	you would like others to see.
+
+	To do so, follow these steps:
+
+	1. Open the Code/Data Logger, and press Start to begin logging.
+	2. Perform a soft and a hard reset (F10 and F11) while logging, in order
+	   to capture the ROM's startup sequence. If you don't do so, you can
+	   distribute a save-state file so they will start from within the game.
+	3. If the game has Save-RAM (e.g. Zelda), you will need to capture the
+	   game's Save-RAM initialization routines; you can try to do so by
+	   deleting the game's *.sav file and then perform a soft and hard reset
+	   (F10, F11) again while logging.
+	4. Play through whatever levels you want present in the demo. Be sure to
+	   perform every move, get every item, etc., so that the code and data
+	   necessary for those things are logged. If, for example, you fail to
+	   perform some special move, then if someone plays the stripped ROM and
+	   attempts to perform that move, the game may very well crash or glitch
+	   up.
+	5. Save the stripped NES ROM.
+	6. Rejoice, for it is done.
+
+	CDL log files are just a mask of the PRG-ROM; that is, they are the
+	same size as the PRG-ROM, and each byte represents the corresponding
+	byte of the PRG-ROM.
+	The format of each byte is like so (in binary):
+
+		xPdcAADC
+
+		C  = Whether it was accessed as code.
+		D  = Whether it was accessed as data.
+		AA = Into which ROM bank it was mapped when last accessed:
+			00 = $8000-$9FFF	01 = $A000-$BFFF
+			10 = $C000-$DFFF	11 = $E000-$FFFF
+		c  = Whether indirectly accessed as code.
+			(e.g. as the destination of a JMP ($nnnn) instruction)
+		d  = Whether indirectly accessed as data.
+			(e.g. as the destination of an LDA ($nn),Y instruction)
+		P  = If logged as PCM audio data.
+		x  = unused.
+
+	CDL files make possible a number of things never before done.
+	First, a PCM data ripper could be created that scans for data that has
+	the 'P' bit set, in order to find/rip/play every PCM sample in a ROM.
+	Also, it is possible for someone to make a more intelligent ROM cor-
+	ruptor that only corrupts data (by checking the 'D' bit).
+	In any case, the Code/Data Logger opens many new possibilities for dis-
+	covering useful things in games.
+
+	Another interesting possibility (which isn't supported yet) would be to
+	use the Code/Data Logger on an NSF file to create a stripped NSF. Such
+	an NSF would contain nothing but the relevant subroutines and data
+	required by each tune played; this would be helpful to NSF rippers by
+	removing irrelevant information. Thus, an NSF ripper could create a
+	stripped NSF by listening to each track while the Code/Data Logger
+	operates on it, and then saving the stripped NSF.
+	I might add this sometime, if I get any requests to do so.
+
+HEX EDITOR
+
+	The built-in Hex Editor is such a huge, powerful feature that it's hard
+	to know here to begin describing it. Basically, it lets you tinker with
+	any part of a game's RAM or ROM while it is running.
+
+	The Hex Editor lets you edit three major areas:
+
+	1. NES MEMORY
+	This allows you to directly edit all of the NES's address space ($0000-
+	$FFFF). While you can easily modify RAM, or write directly to registers
+	by typing in data, you cannot modify ROM data ($8000-$FFFF) itself.
+	This is because most mappers have registers which are located in this
+	space; so writing there can trigger mapper operations that may cause the
+	game to crash or glitch if you don't know what you're doing.
+	If you want to edit the ROM itself, right-click on the offset and select
+	"Go here in ROM file"; that will take you directly to where you need to
+	be so you can start editing.
+	You can also freeze RAM by clicking on it with the middle mouse button,
+	or by using the right-click menu. This works by adding it directly to
+	the Cheat List, which you can see from the Cheat Console.
+	Finally, the right-click menu can be used to quickly add a read or write
+	breakpoint to the debugger.
+
+	2. PPU MEMORY
+	This allows you to directly view and write to PPU memory (VRAM).
+	'Nuff said.
+
+	3. THE ROM FILE
+	This is possibly the coolest part of FCEUXD: it allows you to edit the
+	ROM file in real-time, i.e. while the game is running. If you make a
+	mistake, press Ctrl+Z or Edit->Undo to undo your change (then load a
+	save-state if the game crashed).
+	If you have the Code/Data Logger running, then bytes that were logged as
+	code will be colored yellow, while bytes logged as data will be colored
+	blue. Bytes that have been logged as code *and* data will be colored
+	green.
+
+	The Hex Editor also has support for table files (*.tbl) to map bytes to
+	text. Each line consists of four characters of the form "xx=y", where
+	"xx" is the hex value, and "y" is the character that that value repre-
+	sents.
+	I have also added an extension to represent the Return key:
+		xx=ret
+	...whereby pressing the Return key will enter that value into the ROM.
+
+	You can copy/paste data or text by selecting it and using Ctrl+Z (to
+	copy) and Ctrl+V (to paste). Plus, there is an Edit->Find feature that
+	you can use to search for data. This feature should be fairly intuitive,
+	so I won't bother to explain it.
+
+	When you're done editing, remember to save the ROM file (File->Save) or
+	your changes will be lost when you close the ROM.
+
+GAME GENIE CODE ENCRYPTER/DECRYPTER
+
+	This will take an NES address space PRG address ($8000-$FFFF), a comp-
+	arison value (for 8-letter GG codes; refer to a Game Genie code FAQ for
+	an explanation of what this does), and a Value that replaces the
+	addressed byte.
+	Filling in the Address and Value fields will produce a 6-letter code; if
+	you also fill out the Compare field, it will produce an 8-letter code.
+	The code so produced will appear in the Game Genie Code box immediately;
+	you can then click "Add to Cheat List" to activate it.
+
+	To decrypt a Game Genie code, enter it into the Game Genie Code box, and
+	the Address and Value fields will be automatically filled in, as will
+	the Compare field if it was an 8-letter code.
+
+	For information on creating Game Genie codes or making them permanent,
+	refer to the FAQ, above.
+
+NAME TABLE VIEWER
+
+	This displays the name tables as they exist in PPU memory. Furthermore,
+	it shows you the game's current mirroring, and the current state of the
+	PPU's scroll registers (if the option for this is set).
+
+	Note that the Name Table Viewer will display the name tables using what-
+	ever CHR is present at the time the "Display on Scanline" scanline is
+	reached. So for example if it does not correctly display a game's status
+	bar, try setting it to update on a scanline in which the statusbar is
+	displayed.
+
+	Also note that the same applies to the Scroll Lines: they display the
+	state of the PPU scroll registers when the "Display on Scanline" scan-
+	line is reached. So for example if said scanline is within the game's
+	statusbar, it will not display level scrolling because the horizontal
+	scroll is always zero at the time that scanline is drawn. To display the
+	level scrolling, set it to update on a scanline in which the level is
+	displayed.
+
+###########
+# CREDITS #
+###########
+
+This is by no means an exhausive list; numerous people have contributed to
+FCEUXD. I really hope no one important was forgotten here.
+
+THE MAIN CREW:
+
+	BBitmaster -- He, along with the help of many others, brought you FCEUXD
+	Parasyte -- He created FCEUD, and added some nice features to FCEUXD
+	Xodnizel -- He created FCEU
+	Bero -- He created the original: FCE
+
+EXTREMELY HELPFUL PEOPLE:
+
+	DahrkDaiz
+		Besides being a great lead beta tester, he offered many ideas,
+		and was a great encouragement to keep bbit working on FCEUXD.
+	Disch
+		For being a strong supporter of the project, and for giving bbit
+		the exact equation necessary to get the scroll lines to work in
+		the Name Table Viewer.
+	Vystrix Nexoth
+		For using his excellent writing skills to create this nice read-
+		me from some ugly drafts written by bbitmaster, and for leaving
+		you wondering whether he (who typed this) said that himself or
+		whether he just re-typed what bbit himself said.
+
+THE BETA TESTERS:
+	DahrkDaiz
+	Disch
+	drag
+	Gavin
+	Lenophis
+	TFG
+	Dan
+	solid-tbone
+	matrixz
+	Vagla
+
+And finally, *no* thanks to FrenziedPanda (a.k.a. BlueHawk, a.k.a. zooka), for
+threatening the very existence of FCEUXD.
+Remember, kids! The only good panda is a dead one.
+
+###############
+# THE END...? #
+###############
+
+Nah.

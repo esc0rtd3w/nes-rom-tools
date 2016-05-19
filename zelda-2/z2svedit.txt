@@ -1,0 +1,241 @@
+Readme file for Zelda 2 Sideview Editor Version 4.10b
+Program Written by Dwedit
+Need the compile date? (look at the version number...)
+
+Note:  This is an incomplete beta version, but most features still work.
+Another note: Beta version updates should now be much more frequent.
+
+
+===============
+Note to lamers:
+===============
+GET ROMZ IN PARAPA PALACE.  GO WEST.
+
+
+===============
+Files Included:
+===============
+"You have water!  Come to my house!"
+    -Woman, Zelda 2
+
+Z2svedit.txt      This File
+Z2pledit.exe      The Program
+Overedit.exe      External Overworld Editor
+source.zip	  Zipped source code
+Z2pltile.bmp      newer map tile graphics
+Z2nme.bmp         85% Enemy Graphics
+tiny.fnt          The font file
+bmfpal22.pal      The best palette
+
+=============
+ What's new:
+=============
+"A WINNER IS YOU!"
+    -Announcer, Pro Wrestling
+
+v4.10b  Update to overworld editor!
+        Now you can move "Rock Locations!"
+        (this is the mass that becomes a rock when beating the palace, BTW)
+
+v4.09b  (Version numbers now based on date)
+        Full support for editing palaces!
+        Most support for editing towns!
+        Partial support for great palace.
+        Shows layout, use numpad to move around.
+        J Key to enter a map number (use &H to begin hex)
+        (beta version!  report bugs to dwedit@hotmail.com)
+
+v1.99b	Finally compiles!
+	Correct background graphics in towns and palaces
+	Edit townpeople partially.
+	(Enemies don't show in palaces)
+	font slightly changed, lowercase e's look better in editor.
+
+v0.9a:  Totally new "select and edit" interface
+        Edits enemies
+        Edits towns and palaces (wrong graphics still)
+        Reads pointers (no altering yet though)
+        Removed many archaic features
+        Alpha Version
+
+v0.3:   Now edits many more levels, and shows the area the level is in.
+
+v0.1a:  Finally included all files!
+
+v0.1:   EARLY ALPHA RELEASE!
+
+========================
+Command line parameters:
+========================
+"Hit Deborah cliff with your head to make a hole"
+    -Castlevania 2
+
+Z2PLEDIT [filename]
+
+If you do not specify a filename, the program will ask for one.
+The default filename is "Zelda2Ed.NES"
+
+All the included files need to be in the same folder as the program and rom.
+
+Remember to make backup copies of your original file, you WILL need them.
+
+============
+How to use:
+============
+"Press A to jump. Press B to crack the whip.  TIP:  Press A and
+ B at the same time to jump and whip at the same time."
+     -Manual, Castlevania
+
+The program starts in the map selection mode.
+
+=================================
+Keys while in Map Selection Mode:
+=================================
+
+* Use Page Up and Page Down to select the map.
+* Use 'E' to edit the level.
+* Use 'M' to edit the monsters.
+* Use 'W' to toggle between 'weak enemy' and 'strong enemy'.
+* Use 'P' to configure options
+* Use 'O' to edit the overworld (or just run overedit.exe)
+* Use 'ESC' to quit.
+* Use 'N' to run Nesticle.
+* Use arrow keys to scroll the level.
+
+=================================
+Keys while in Level editing mode:
+=================================
+
+* Arrow keys select an object and scroll.
+* The numeric keypad moves the object.
+  (press num lock a few times if it doesn't work.)
+* '+' and '-' change the object value.
+* '*' and '/' change the object type.
+* '[' and ']' move all objects after of the selected
+  object backwards and forwards.
+* 'T' enters the 'Tileset Editor'.
+  From there you can change the 'basic blocks' and
+  tileset of the map.
+* 'F' enters the 'Flags Editor'.
+  From there you can change the length of the level,
+  the object set, and wheather there are bushes or grasses.
+* 'P' enters the 'Palette Editor'.
+  Use this to change the colors of the level.
+* 'B' enters the 'Background editor'.
+  Change the background from clouds or trees, or
+  even edit the clouds or trees!
+* '<' and '>' (shift optional) scrolls the map without
+  changing the active object.
+* 'S' saves the level, so the changes actually happen.
+* 'I' checks the level for problems that would render the level unsavable.
+* 'ESC' gets out of the editor and returns to the map selection mode.
+
+=================================
+Keys while in Enemy editing mode:
+=================================
+
+* Arrow keys select an object and scroll.
+* The numeric keypad moves the object.
+  (press num lock a few times if it doesn't work.)
+* '+' and '-' change the kind of enemy.
+* '*' and '/' increase/decrease the enemy by 4.
+* '<' and '>' (shift optional) scrolls the map without
+  changing the active object.
+* 'S' saves the level.
+* 'ESC' gets out of the editor and returns to the map selection mode.
+
+==========
+   FAQ:
+==========
+"The CHEETAHMEN ran off...
+ ...And now... The CHEETAHMEN!"
+    -Story Text, Cheetahmen
+
+Q. How do I change text?
+A: Get Hexpose.  It's a special hex editor.
+   You'll also need the correct .TBL file.
+
+=============
+Level issues:
+=============
+"When I have no more lives
+ left, that's the end of me!"
+  -Link in manual, Zelda 2
+
+* The volcano background doesn't work in Western hyrule, due to the
+  presence of Princess Zelda's graphics.  Likewise, Princess Zelda
+  doesn't correctly appear in East Hyrule.
+* When breakable blocks are placed outside palaces, they appear invisible,
+  but act normally.  Use this for invisible bridges/walls and stuff.
+* The Crash objects 10-1F appear as fences in East Hyurle, but crash in
+  west hyrule.
+* The graphics for West Hyrule are displayed in East Hyrule, cactuses
+  and forests have slightly different graphics after travling on a raft.
+* The palettes for the palaces don't match the ones in the actual game,
+  (but match the FDS version...)
+
+============
+Game Issues:
+============
+"I AM ERROR"
+    -Error, Zelda 2
+
+* When you have a "once only" item (collectable bouns, locked door, boss...)
+  that only appears once, there can only be 1 per "page" (16 squares).  This
+  means you can have a candle and boss in the same room, but not the same
+  page.
+
+
+===============
+Program Issues:
+===============
+"As you guide Link through the levels of hyrule, close-ups and
+ overviews will enchance your video vision."
+    -Back of box, Zelda 2
+
+This program uses DIRECTQB, so it will sometimes randomly crash on startup.
+You need at least 512k EMS memory to run this program.
+
+You can't add objects...yet.
+You can't remove objects...yet.
+
+
+
+
+==========
+ Contact
+==========
+"You found a bomb bag!  Now you can set bombs
+ to C and blow stuff up!  What a lucky guy!"
+     -Game text, Zelda Ocarina of Time
+
+Webpage:
+http://sgc.emu2k.com/dwedit
+
+Email:dwedit[at]hotmail.com  (I think you know where to put the @)
+AIM:dwedit403
+ICQ#:61377706
+
+The DO NOT SEND list:
+hentai, prono, porn, norp, n0rp, pron, pr0n, pR0N, pornography, spam,
+ads for adult web services, ads for free university diplomas, ads for illegal
+cable boxes, mailbombs, obscenely large attachments, viruses, warez,
+viruses infected with warez, etc...
+
+==============
+Closing Words
+==============
+"LLAOYLLAKCUF"
+      -Credits, Samurai Shodown 4
+
+Special thanx to acmlm for helping with the map data setoff,
+and everyone in the romhacking scene.
+
+And to Future Software for having a non-dead QB45 message board!
+http://www.qb45.com/
+
+====================
+Another stupid quote
+====================
+"ONES WHO DOES NOT HAVE TRIFORCE CAN'T GO IN"
+     -Old Man, Legend of Zelda

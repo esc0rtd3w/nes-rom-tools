@@ -1,0 +1,144 @@
+     SSSSSSS          MMM     MMM          BBBBBBBBB        333333
+ SSSSSS              M   M   M   M         B        B             3
+   SSSSSS           M     M M     M        B        B             3
+      SSSSSS       M       M       M       BBBBBBBBB          3333
+     SSSSSS        M       M       M       B        B             3
+    SSSSSS         M       M       M       B        B             3
+SSSSSS             M       M       M       BBBBBBBBB        333333
+
+                       MAP EDITOR BETA RELEASE
+                         (Secondary Release)
+                             by Beneficii
+                             "of Benefit"
+
+Credits
+	Of course I made this.  Thanks to Disch for all the assistance he's given me (et al. too, but especially Disch)! ^_^
+
+History
+	ALPHA Release (early Sept., 2005): First!
+
+	BETA Release (Jan. 10, 2006->Secondary Release: Mar. 8, 2006): 
+		- Updated some of the message box messages to hopefully make them clearer
+		- When toolbox is opened for tile editing, focus sets back to main window now
+		- Can press Esc to switch between two font options on main window: Starting a large Lucida Handwriting and 
+			having the option of a smaller Times New Roman
+		- All dialogs are now set to Times New Roman font
+		- Added new "preview" mode for start spaces and pipes; more info below
+		- Added new "Enter key" function for start spaces to choose start screen scroll; more info below
+		Secondary Release Changes Follow:
+		- Allows opening of bigger SMB3 ROMs; they still must be at least as big as the original SMB3 ROM though
+		- Fixed bug that allows accessing starting spaces mode in World 9 by going into mode in another world and then going to World 9
+		- Default font is now Times New Roman instead of Lucida Handwriting
+
+Keyboard Controls
+	The keyboard plays an important role in the functioning of this editor, especially when editing the boxes.  Here is a list of functions:
+
+Esc Key: Can switch between larger Lucida Handwriting font and smaller Times New Roman font on main window
+Left/Right Keys: Scroll the map left/right
+Up/Down Keys: Increment/decrement through the list of boxes
+Enter Key: Open the dialog box for more options in this mode
+Backspace Key: Enters preview mode for start spaces and pipes
+Shift Key: Shifts between left entrance and right entrance for preview mode pipes
+Pgup/Down Key: In pipes mode, go to each pipe set
+Ins/Del Keys: Certain modes allow you to delete boxes, making them no longer visible, and to enter new ones
+
+Mouse Controls
+	The mouse makes it easy to do displacement editing.  Therefore, here is a list of those functions as well:
+
+Left Click: In tiles mode, paints the current selected tile in the toolbox onto the map; in all other modes selects a box if there is one there and does nothing if it is not there
+Right Click: In tiles mode, takes the clicked tile on the map and selects the same tile in the toolbox; in modes with boxes, moves the currently selected box to the location of the mouse
+
+THE WINDOW CONTROLS
+	On the main window, you have where the map goes, then the message bar (immediately below it), then a combobox to select what world you want, and a menu at the top.  You'll be doing most of your work here.
+
+Map
+	This is where the map is represented.
+
+Message Bar
+	This is where current status about editing the world map appears.
+
+World Box
+	To select the current world....
+
+THE MENU
+File->Open: Open a ROM.
+File->Save: Save ROM using present filename.  Automatically Implements Changes when used.
+File->Save As: Save ROM using new filename.   Automatically Implements Changes when used.
+File->Export 24-bit Bitmap: Exports the current map as though it's in viewer mode to a bmp file of your choice.
+File->Exit: Quits the program.
+
+Mode: See under "THE MODES."  Lets you choose current mode to edit under.
+
+Implement Changes: This saves current edited data to the copy of the file in memory.  After pressing Implement Changes, the changes will show up until you load a new ROM; if you Save the ROM they will be permanent.  Make sure to do this before mode/world change, or you'll lose work.  File->Save and File->Save As execute this for you.
+
+Boxes
+	Boxes are those little squares that appear on the map representing the displacements of each of the objects in question on the map.
+
+The Patch
+	If you never used the start space hack before on a ROM, do smb3strt.ips; otherwise do strtdiff.ips on it.  If you do the latter, make sure to go to each world and save for it again, because the location of the start screens will have changed.
+
+THE MODES
+Preview Mode
+	This is to view how Mario will start on a map with the screen position set or how positioned he is and the screen when he emerges from a pipe.  Of the current screen the first and last column will be blackened out to represent accurately how it is shown on the map in the actual game (as the first and last columns of the current scroll aren't visible).  In pipe mode, the user can press the Shift Key to switch between previewing the left entrance and the right entrance (or tower exit and tower entrance respectively) with the screen scrolled to the correct position for each.  When prompted when going to a pipe, the user has an option to set the scroll to 8 rather than 0/10.  (The available pipe scrolls in the game are: 0, 8, 10, 20, and 30.  There is no 18 or 28 available due to the limitations of how the game stores the pipe data.)
+
+Viewer Mode
+	No editing can be done in viewer mode, for it is only for you to view the current sprites and the whole map.
+
+Tiles Mode
+	A toolbox will appear allowing you to select the tile you want to replace the part of the map you want.  Click on the map to copy the tile over to the place you want.
+
+Pointers Mode
+	Boxes will represent the displacement of pointers.  You may move them around as you see fit.  Press enter to select the stage for the currently selected box.  I would recommend leaving alone the pointers on World 9 unless you know what you are doing.  The number of pointers varies with world.
+
+Sprites Mode
+	Boxes will represent the displacement of sprites along with images of what they are.  Pressing enter will allow you change the type and item of the sprite.  Press ins/del to enter/delete sprites.  You can have up to 9 in a world, though I think it may be safer to leave one sprite unused, than to use it, lest the game doesn't have any sprites to use for an N-Spade or White Mushroom House.  Place sprite #2 at the World Castle and mark it as Nothing, for the game always uses sprite #2 as the Airship.  Of course, on World 8 this isn't a bother.  You can't edit sprites on World 9.
+
+Start Space Mode
+	One box will represent the current start space.  You may patch the game with smb3strt.ips (using Lunar IPS), which will allow you to change the x position and screen position of it as well.  If you used my older version of smb3strt.ips, then use strtdiff.ips, which won't overwrite your x position list (though it will overwrite the screen position, so implement changes in each world to restore it).  If you're using the startasm.ips patch, you can press Enter to have the option of changing the start scroll.  The first option is always 8 less than the second, and if the second option is not available, then a different message box will appear telling you you have to use the first option.  Use Preview Mode to test your choices.
+
+Airship Retreat Points Mode
+	There is a 12(hex)-item list that has all the positions the world airship can retreat to.  The boxes represent this list.  You can use ins/del to change the number, but saving will reconflate the list to 12(hex) by recopying the places you've chosen.  I recommend deleting all the airship retreat points, choosing your own places (one or more boxes each), and then saving, which will fill the list.  Do try not putting airship retreat points where hammer bros. sprites would get stuck, or the game will go on forever because the hammer bros. will have nowhere to go. :(
+
+Pipes Mode
+	You can edit 1 pipe set at a time; there are 18(hex).  For each set, there is a left pipe and a right pipe (and for Set #0, the sky tower exit, which takes the place of the left pipe (sic), and the sky tower entrance, which takes the place of the right pipe (sic)).  The left pipe should be set to when you enter/exit the left pipe on the pipe level and the right pipe right pipe.  The message bar below the map will tell you the current set and whether your mouse presently hovers over which pipe.  When you press enter, you have the option of setting the pipe to a certain stage; it will edit its sprite (effective immediately, as though you have pressed implement changes).  It will do your current pipe number; it'll ask if you're using a sky tower, which is a special pipe function.  If you're doing normal pipes, say no, then pick one of the two stages you're using (they both have the same enemy data, so just one).  You can also set the screen scroll when implementing/saving or previewing if the x position of the pipe entrance/exit is from D0 to under 160 and the screen can be scrolled to at least 8.  Doing this on preview mode does not cause any changes, but lets you preview what it looks like when you implement/save.
+
+	I have figured out the sky tower.  To use the sky tower (in other words, make a series of stages like the sky tower where you can go through it to move between points on the world map), when you make the actual stage (in say SMB3 Workshop or what not), for having Mario emerge from the tower exit (or left entrance), put the pipe that Mario can enter on the bottom half of the screen, set the option in the level Header to Entering pipe exits stage (paraphrasing)=Checked, and put in a pipe sprite (sprite no. 25 hex) to the left of the pipe and (in a separate stage) to emerge from the tower entrance (or right entrance), do the same except make sure the pipe Mario can enter is on the top half of the screen.  Next, in SMB3Map, go to the pipe set you're using, and then press Enter answering yes to the sky tower question and then select one of the two stages you're using (it doesn't matter which order you do this in), then repeat the process for the other stage.  Now you got it fixed.  Also, if you need to make the map sprite visible again in the level editor, then select pipe 0 and answer no the sky tower question and then set the stage to that.  It should be visible.  Make sure you set the stage back to the previous setting before you finish.
+
+Locks Mode
+	Each world has 4 locks that it can use.  Each one it uses picks from the global lock table, of which there are 11(hex) total.  Simply each lock where you want it to be; the message bar will tell you which one your using for the world (world lock #) and what global lock number it's using.  It will also say whether the lock is used or unused; if a lock is set to unused, it will have _no_ effect on the currently selected lock in the global lock table when you save.  If it's set to used, then the selected lock in the global lock table will be modified (given the value representing its displacement on the map).  When you select a lock and press enter, you will get a window telling you what you can do with the current world lock.  You may set what tile will replace it (and make sure your drawn map tile it is put on matches the tile in parenthesis).  Then you can set the BoomBoom in a selected dungeon (choose stage) to your world lock #, so it breaks when you want it (effective immediately, as though you have pressed implement changes).  You can select what global lock you want to set it to.  Then press OK to set your options, or press Cancel to cancel.
+
+MAKE YOUR FIRST WORLD
+Tiles
+	Clear out all the tiles.  Then draw your own.
+
+Pointers
+	Those are the pointers you have to work with; put them to their correct spots and press enter to select each of their stages.  Don't worry about ordering them or anything; the program takes care of that for you and of setting up everything if you change the number of pointers per screen on a world. ^_^
+
+Sprites
+	You should have sprite #1 be Help! and put it to the top right of the castle and have sprite #2 be Nothing and placed at the castle.  After that put your sprites how you want them!
+
+Start Space
+	Select where you want Mario to start. ^_^
+
+Airship Retreat Points
+	Delete all the retreat points there and then start putting them where you want them to be.  Make sure not to put them so Hammer Bros. will have no where else to go, or you could have problems.
+
+Pipes
+	Take a pipe set, set the ends of the pipes (keeping track of which is the left and the right).  Exit 1 is left and Exit 2 is right.  Then press enter to set the pipe to the correct stage.
+
+Locks
+	Put your lock on the map, press enter for more options, make sure it's not Unused, set the tile from and to and make sure it matches on the map.  Next, choose which global lock number, and then set a dungeon with BoomBoom in it to it!
+
+REMEMBER, IMPLEMENT CHANGES OR SAVE BEFORE WORLD/MODE CHANGE!!!
+
+    _____
+   /     \
+  |   _   \__
+_/   /  \    \
+    | [] |    |
+\    \_ /   _/\
+ \_       _/ \ \
+   \_____/   | |
+             | |
+             | |
+             | |

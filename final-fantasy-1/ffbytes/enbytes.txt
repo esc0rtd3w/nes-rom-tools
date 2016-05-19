@@ -1,0 +1,324 @@
+_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯Final Fantasy_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_1.6
+/§§§§§§§ /§§§¿  /§§ /§§§§§§§ /§§§  /§§§ /§§§ /¿§§§   _¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯1.6
+/§§§//// /§§§§¿ /§§ /§§§//// /§§§¿/¿§§§ /§§§¸/§§§    _¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯1.6
+/§§§¿¿¿  /§§§¤§¿/§§ /§§§¿¿¿  /§§§§¿§§§§  /¤§§§§§´   _¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_1.6
+/§§§¤¤¤  /§§§/¤§¿§§ /§§§¤¤¤  /§§§'§'§§§   ¸§§§´    _¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸1.6
+/§§§///  /§§§ /¤§§§ /§§§///  /§§§ '/§§§  ¸§§§´   _¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿1.6
+/§§§§§§§ /§§§  /§§§ /§§§§§§§ /§§§  /§§§ ¸§§§´  _¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«1.6
+//////// ////  //// //////// ////  //// //// _¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»1.6
+¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯Document_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´1.6
+¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿¡«¦»!?º´¯_¸,¿1.6
+
+
+
+Address of Data ; 30530-30F2F
+
+Enemy Data consits of a Wonderful 20 bytes.
+
+I and II- Experience Points bytes;
+ Same system as HP (see byte V-VI)
+
+III and IV- Gold Peices bytes;
+ Same system as HP (see byte V-VI)
+
+V and VI- Hit Points bytes;
+ if the HP is from 01-255, then only enter the number in the first digit (01-FF).
+ anything higher than that requires the second digit, which is actually the hundreds 
+ and thouasands place for instance. Imp: 08-00 = &h0008 = 8 Hp but Agama: 28-01 = &h0128 = 296 Hp.
+
+VII- Rate of Fear;
+ this byte denotes the rate at which an enemy is to run away, 00 being most likely, and FF
+ being never.
+
+VIII- AI Attack byte;
+ this byte denotes several things.
+ The Magical/Attack Inventory of an Enemy, the cycle of Magics, and the cycle of Attacks
+ they are stored in Sets, corrosponding to the original creature.
+
+  ##   Strat.   (Magics and Magic Cycle : Attack and Attack Cycle)
+  00 = FrWOLF 	(: FROST)
+  01 = AGAMA 	(: HEAT)
+  02 = SAURIA 	(: GLANCE)
+  03 = OddEYE 	(: GAZE)
+  04 = BigEYE 	(: GAZE, FLASH)
+  05 = CERBERUS	(: SCORCH)
+  06 = WzOGRE	(RUSE, DARK, SLEP, HOLD, ICE2)
+  07 = Sand W	(: CRACK)
+  08 = EYE	(XXXX, BRAK, RUB, LIT2, HOLD, MUTE, SLOW, SLEP : GLANCE, SQUINT, GAZE, STARE)
+  09 = PHANTOM	(STOP, ZAP!, XFER, BRAK, RUB, HOLD, MUTE, SLOW : GLARE)
+  0A = MANCAT	(FIR2, SLOW, DARK, SLEP, FIRE, LIT, CURE, SLEP)
+  0B = VAMPIRE	(: DAZZLE)
+  0C = WzVAMP	(AFIR, MUTE, ICE2[*2], LIT2[*2], FIR2[*2] : DAZZLE)
+  0D = R`GOYLE	(FIR2, HOLD, FIRE[*2])
+  0E = Frost D	(: BLIZZARD)
+  0F = Red D	(: BLAZE)
+  10 = PERELISK	(: SQUINT)
+  11 = R`HYDRA	(: CREMATE)
+  12 = NAGA	(LIT2, LOCK, SLEP, LIT, LIT2, HOLD, SLOW, DARK)
+  13 = GrNAGA	(RUSE, MUTE, SLOW, DARK, SLEP, FIRE, LIT, HEAL)
+  14 = CHIMERA	(: CREMATE)
+  15 = JIMERA	(: CREMATE, POISON(pos))
+  16 = SORCERER	(: TRANCE)
+  17 = Gas D	(: POISON(dmg))
+  18 = Blue D	(: THUNDER)
+  19 = MudGOL	(FAST)
+  1A = RockGOL	(SLOW)
+  1B = IronGOL	(: TOXIC)
+  1C = BADMAN	(XFER, NUKE, XFER, XXXX, BLND)
+  1D = MAGE	(RUB, LIT3 ,FIR3 ,BANE, SLO2, FIR3, STUN, LIT3)
+  1E = FIGHTER	(WALL, XFER, HEL3, FOG2, INV2, CUR4 ,HEL2, CUR3)
+  1F = NITEMARE (: SNORTING)
+  20 = WarMECH	(: NUCLEAR)
+  21 = MANTICOR	(: STINGER) 
+  22 = LICH	(ICE2, SLP2, FAST, LIT2, HOLD, FIR2, SLOW, SLEP)
+  23 = LICH 2	(NUKE, STOP, ZAP!, XXXX)
+  24 = KARY	(FIR2, DARK, FIR2, DARK, FIR2, HOLD, FIR2, HOLD)
+  25 = KARY 2	(FIR3, RUB)
+  26 = KRAKEN	(: INK)
+  27 = KRAKEN 2 (LIT2 : INK)
+  28 = TIAMAT	(: THUNDER, POISON(dmg), BLIZZARD, BLAZE)
+  29 = TIAMAT 2 (BANE, ICE2, LIT2, FIR2 : THUNDER, POISON(dmg), BLIZZARD, BLAZE)
+  2A = CHAOS	(ICE3, LIT3, SLO2, CUR4, FIR3, ICE2, FAST, NUKE : CRACK, INFERNO, SWIRL, TORNADO)
+  2B = ASTOS	(RUB, SLO2, FAST, FIR2, LIT2, SLOW, DARK, SLEP)
+  FF = None
+
+IX- Agility byte;
+ byte which denotes rate of Evasion, scale of 00-FF (00-255)
+
+X- Defense Rating byte;
+ the rate at which an enemy can defend a hit, scale of 0-255 (00-FF)
+
+XI- Hit Rate byte;
+ enter here the number of hits an enemy can acheive at most (a real good way to make the game damn 
+ hard is to give an enemy FF hit rate)
+
+XII- Aim Rate byte;
+ the rate at which an enemy can hit its target, scale of 0-255 (00-FF)
+
+XIII- Strength byte;
+ scale of 00-FF (0-255) denoting the potency of the enemies attack.
+
+XIV- Critical hit Rate byte;
+ Scale of 00-64 (0%-100%) chance to get critical hit, you can set this higher than 64 but the effects 
+ are the same as if you set it to 64.
+
+XV- Special Attack Chance ;
+ So far this byte seems to effect the rate at which the special attack will work
+
+XVI- Special Attack modifier Byte;
+ this byte denotes special effects to normal Attacks
+  01 = Death
+  02 = Death
+  04 = Poison
+  08 = Darkness/Blind
+  10 = Sleep/Stun  
+
+XVII- Category Byte;
+ the byte for which the enemies Category is Denoted
+  01 = GrMEDUSA, GARGOYLE, R`GOYLE, EARTH, WIND, WATER, FIRE, and WarMECH... category weak to weapons?
+  02 = Dragons (IGUANA, HYDRA, Blue D, etc..)
+  04 = Giants (IMP, OGRE, GIANT, etc..)
+  08 = Undead (BONE, GEIST, VAMPIRE, etc...)
+  09 = Undead 2 (GHOST, WRAITH, IMAGE)
+  0A = Undead Dragon (ZombieD)
+  20 = KRAKEN, Water??
+  21 = Water Magic?
+  40 = Magic (MANCAT, GrNAGA, FIGHTER, MAGE, EYE)
+  41 = MudGOL, RokGOL, EVILMAN, BADMAN, KARY
+  42 = Magic Dragon?
+  49 = LICH, ??
+  60 = Water Magic?
+  80 = TROLL, ???
+  89 = PHANTOM, VAMPIRE, ???
+  91 = Were (WrWOLF, CATMAN... thats it...)
+  A0 = SeaTROLL, ???
+  C4 = Magic Giant (WzOGRE)
+  C9 = Magic Undead (WzVAMP)
+
+XVIII- Your Guess is as good as mine for the moment. 
+  What does a R`GIANT, Zombie D, And BADMAN Have in common?
+
+XIX- Weakness Byte;
+ the byte that denotes what an Enemy is Weak Against
+  01 = SLEP, STUN
+  02 = BRAK, BANE
+  08 = DARK, BLND
+  10 = Fire
+  20 = Ice
+  22 = Ice, BRAK, BANE
+  30 = Fire, Ice
+  40 = Lightning
+  50 = Fire, BRAK, BANE
+  80 = Earth
+
+ Presumably you can stick any magic Related byte here to be a Weakness.
+
+XX- Resistence Byte;
+ this byte denotes which attacks an Enemy honestly couldnt care less about.
+  0B = RUB, BANE, BRAK, STUN, SLEP
+  10 = Fire 
+  20 = Ice 
+  2B = Ice, RUB, BANE, BRAK, STUN, SLEP
+  30 = Ice, Fire 
+  40 = Lightning 
+  72 = Fire, Ice, Earth
+  80 = Earth (QAKE)
+  90 = Fire, Earth
+  9B = Fire, Earth, RUB, BANE, BRAK, STUN, SLEP
+  AB = Earth, RUB, BANE, BRAK, STUN, SLEP
+  BB = Fire, Ice, Earth, RUB, BANE, BRAK, STUN, SLEP
+  CB = Lightning, Earth, RUB, BANE, BRAK, STUN, SLEP
+  EB = Lightning, Ice, Earth, RUB, BANE, BRAK, STUN, SLEP
+  F0 = Lightning, Ice, Fire, Earth
+  FB = Lightning, Ice, Fire, Earth, RUB, BANE, BRAK, STUN, SLEP 
+
+ And here you can probably also put any magic byte to be Resistant Too
+   
+Experience
+|     Gold Pieces
+|     |     Hit Points
+|     |     |     Rate of Fear
+|     |     |     |  AI Attack
+|     |     |     |  |  Agility
+|     |     |     |  |  |  Defense
+|     |     |     |  |  |  |  Hit Rate
+|     |     |     |  |  |  |  |  Aim Rate
+|__¸  |__¸  |__¸  |  |  |  |  |  |  Strength
+|  |  |  |  |  |  |  |  |  |  |  |  |  Critical Hit Rate
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Special Attack Chance
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Attack Effect
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Category
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ??????
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Weakness
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Resistence  the space is scarce for 
+2  1  2  1  2  1  |  |  |  |  |  |  |  |  |  |  |  |  |  |           an Explanation, besides, 
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |   Name    if you decode it,
+|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|____|__    it helps to memorize them =}
+06-00-06-00-08-00-6A-FF-06-04-01-02-04-01-00-00-04-10-00-00  IMP	
+12-00-12-00-10-00-78-FF-09-06-01-04-08-01-00-00-04-17-00-00  GrIMP	
+18-00-06-00-14-00-69-FF-24-00-01-05-08-01-00-00-00-1C-00-00  WOLF	
+5D-00-16-00-48-00-6C-FF-36-00-01-12-0E-01-00-00-00-2E-00-00  GrWolf	
+87-00-43-00-44-00-78-FF-2A-06-01-11-0E-01-02-04-91-2D-00-00  WrWolf     
+92-01-C8-00-5C-00-C8-00-36-00-01-17-19-01-00-00-00-37-10-20  FrWOLF     
+99-00-32-00-5C-00-86-FF-18-0C-01-17-12-0A-00-00-02-37-00-00  IGUANA     
+A8-09-B0-04-28-01-C8-01-24-12-02-4A-1F-01-00-00-02-8F-20-10  AGAMA
+B9-07-92-02-C4-00-C8-02-18-14-01-36-1E-01-00-00-02-5B-00-00  SAURIA
+6F-03-6F-03-F0-00-88-FF-30-0C-01-3C-26-01-00-00-04-78-00-00  GIANT
+D8-06-D8-06-50-01-C8-FF-30-10-01-4E-3C-01-00-00-04-96-10-20  FrGIANT
+E2-05-E2-05-2C-01-C8-FF-30-14-01-53-49-01-00-00-04-87-20-10  R`GIANT
+1E-00-1E-00-1C-00-6E-FF-48-04-01-07-0A-01-00-00-20-1C-40-90  SAHAG
+69-00-69-00-40-00-8E-FF-4E-08-01-10-0F-01-00-00-20-2E-40-90  R`SAHAG
+72-03-72-03-CC-00-C8-FF-60-14-01-33-2F-01-00-00-20-65-40-90  WzSAHAG
+28-00-28-00-06-00-FF-FF-0C-00-01-02-08-01-00-00-00-0F-00-00  PIRATE
+3C-00-78-00-32-00-6A-FF-18-06-01-0D-0E-01-00-00-00-25-00-80  KYZOKU
+0B-01-42-00-78-00-79-FF-48-00-01-1E-16-01-00-00-20-46-40-90  SHARK
+39-09-58-02-58-01-C8-FF-48-08-01-56-32-01-00-00-20-AA-40-90  GrSHARK
+2A-00-0A-00-0A-00-6E-03-54-00-01-02-04-01-00-00-00-0E-40-90  OddEYE
+07-0E-07-0E-30-01-C8-04-18-10-02-4C-1E-01-00-00-20-9C-40-90  BigEYE
+09-00-03-00-0A-00-7C-FF-0C-00-01-02-0A-01-00-00-08-11-10-2B  BONE
+7A-01-7A-01-90-00-9C-FF-2A-0C-01-24-1A-01-00-00-08-4C-10-2B  R`BONE
+3F-00-0F-00-38-00-68-FF-18-08-01-0E-11-01-00-00-00-28-10-00  CREEP
+BA-00-C8-00-54-00-6A-FF-2A-08-08-15-01-01-01-10-00-33-00-00  CRAWL
+20-01-48-00-78-00-7A-FF-30-04-01-1E-16-01-00-00-00-4C-00-00  HYENA
+9E-04-58-02-C0-00-92-05-30-08-01-30-1E-01-00-00-00-67-20-10  CEREBUS
+C3-00-C3-00-64-00-74-FF-12-0A-01-19-12-01-00-00-04-41-00-00  OGRE
+1A-01-2C-01-84-00-7E-FF-1E-0E-01-21-17-01-00-00-04-47-00-00  GrOGRE
+D3-02-D3-02-90-00-86-06-36-0A-01-24-17-01-00-00-C4-50-00-80  WzOGRE
+7B-00-32-00-38-00-6B-FF-1E-06-01-0E-06-01-02-04-02-2E-00-00  ASP
+A5-00-32-00-50-00-6E-FF-24-0A-01-14-16-1F-00-00-02-38-00-00  COBRA
+BD-03-58-02-E0-00-C8-FF-30-0C-01-38-23-00-00-00-22-74-40-90  SeaSNAKE
+E1-00-46-00-54-00-70-FF-36-0A-02-15-16-01-02-04-00-37-00-00  SCORPION
+7F-02-2C-01-94-00-C8-FF-3C-12-03-25-23-01-02-04-20-55-40-90  LOBSTER
+E9-01-E9-01-A4-00-7C-FF-30-04-02-29-16-01-00-00-00-5F-00-00  BULL
+1A-04-1A-04-E0-00-88-FF-24-0E-01-38-28-01-00-00-08-74-10-2B  ZomBULL
+6D-02-6D-02-B8-00-88-FF-30-0C-03-2E-18-01-00-00-80-64-10-00  TROLL
+54-03-54-03-D8-00-C8-FF-30-14-01-36-28-01-00-00-A0-6E-40-80  SeaTROLL
+5A-00-2D-00-32-00-7C-FF-24-00-01-0D-0A-01-01-08-09-25-10-AB  SHADOW
+E7-00-E7-00-56-00-A0-FF-5A-04-01-16-16-01-01-10-09-34-10-AB  IMAGE
+B0-01-B0-01-72-00-A0-FF-6C-0C-01-1D-28-01-01-10-09-43-10-AB  WRAITH
+DE-03-DE-03-B4-00-B8-FF-24-1E-01-2D-5D-01-01-10-09-55-10-AB  GHOST
+18-00-0C-00-14-00-78-FF-06-00-01-05-0A-01-00-00-08-19-10-AB  ZOMBIE
+5D-00-32-00-30-00-7C-FF-0C-06-03-0C-08-01-01-10-08-24-10-2B  GHOUL 
+75-00-75-00-38-00-A0-FF-2E-0A-03-0E-08-01-01-10-08-28-10-2B  GEIST
+96-00-96-00-34-00-A0-FF-2A-0C-01-0D-14-01-01-10-08-2D-10-2B  SPECTER
+F8-10-E8-03-00-01-C8-FF-24-0A-01-70-41-0A-00-00-00-C8-00-80  WORM
+7B-0A-84-03-C8-00-7C-07-3E-0E-01-32-2E-01-00-00-00-67-00-80  Sand W
+87-06-90-01-18-01-C8-FF-04-1F-01-46-32-01-00-00-00-8F-20-90  Grey W
+99-0C-99-0C-A2-00-C8-08-0C-1E-01-2A-1E-01-00-00-40-5C-00-80  EYE
+01-00-01-00-68-01-C8-09-18-3C-01-96-78-28-01-10-89-A0-10-AB  PHANTOM
+BB-02-BB-02-44-00-96-02-24-0A-01-11-14-01-02-04-00-37-00-00  MEDUSA
+C2-04-C2-04-60-00-C8-02-48-0C-0A-18-0B-01-01-10-01-46-10-A0  GrMEDUSA
+0C-03-0C-03-A0-00-94-FF-30-10-02-28-1E-01-02-04-91-5D-00-00  CATMAN
+5B-02-20-03-6E-00-96-0A-3C-1E-03-1C-14-01-00-00-40-3E-00-FB  MANCAT
+AA-04-2C-01-DE-00-6F-FF-30-14-01-38-27-01-02-04-00-74-00-00  PEDE
+C4-08-E8-03-40-01-B0-FF-30-18-01-50-49-01-00-00-00-B9-00-30  GrPEDE
+B6-01-6C-00-84-00-74-FF-30-08-02-21-16-19-00-00-00-55-00-00  TIGER
+4B-03-F4-01-C8-00-B4-FF-2A-08-02-32-18-46-00-00-00-6A-00-00  Saber T
+B0-04-D0-07-9C-00-C8-0B-48-18-01-27-4C-01-01-10-89-4B-10-AB  VAMPIRE
+51-09-B8-0B-2C-01-C8-0C-48-1C-01-2A-5A-01-01-10-C9-54-10-AB  WzVAMP
+84-00-50-00-50-00-84-FF-2D-08-04-14-0C-01-00-00-01-35-00-80  GARGOYLE
+83-01-83-01-5E-00-86-0D-48-20-04-18-0A-01-02-00-01-7F-00-B0  R`GOYLE
+00-06-00-03-20-01-C8-FF-12-14-01-48-42-01-00-00-01-82-10-EB  EARTH
+54-06-20-03-14-01-C8-FF-2A-14-01-45-32-01-00-00-01-82-20-9B  FIRE
+A5-06-D0-07-C8-00-C8-0E-78-08-01-32-35-01-00-00-02-C4-50-A2  Frost D
+58-0B-A0-0F-F8-00-C8-0F-60-1E-01-3E-4B-01-00-00-02-C8-22-90  Red D
+1B-09-E7-03-0C-01-C8-FF-18-1E-01-43-38-01-01-10-0A-87-10-AB  ZombieD
+54-00-14-00-18-00-7C-FF-00-FF-01-01-01-01-02-04-00-24-30-CB  SCUM
+FF-00-46-00-4C-00-98-FF-04-07-01-13-1E-01-00-00-00-37-40-BB  MUCK
+FC-00-46-00-4C-00-90-FF-06-06-01-13-20-01-00-00-00-37-30-CB  OOZE
+4D-04-84-03-9C-00-C8-FF-18-FF-01-27-31-01-02-04-00-55-10-EB  SLIME
+1E-00-08-00-1C-00-6D-FF-1E-00-01-07-0A-01-00-00-00-1C-00-00  SPIDER
+8D-00-32-00-40-00-6F-FF-18-0C-01-10-05-01-02-04-00-2E-00-00  ARACHNID
+25-05-8A-02-A4-00-96-21-48-08-02-29-16-01-00-00-00-5F-00-80  MATICOR
+88-04-88-04-E4-00-84-FF-78-0C-03-39-17-01-00-00-00-73-00-80  SPHINX
+94-05-2C-01-00-01-92-FF-38-26-03-40-3C-01-00-00-00-82-00-00  R`ANKYLO
+32-0A-01-00-60-01-90-FF-30-30-01-58-62-01-00-00-00-9C-00-00  ANKYLO
+2C-01-2C-01-50-00-AC-FF-18-14-01-14-1E-01-01-20-08-3C-10-2B  MUMMY
+D8-03-E8-03-BC-00-94-FF-18-18-01-2F-2B-01-02-20-08-5F-10-2B  WzMUMMY
+BA-00-C8-00-32-00-7C-FF-48-04-01-0A-01-01-02-02-00-2F-00-80  COCTRICE
+A7-01-F4-01-2C-00-7C-10-48-04-01-0B-14-01-00-00-00-2D-20-90  PERILISK
+95-04-32-00-D4-00-96-FF-60-0C-01-35-1E-01-02-04-02-73-00-80  WYVERN
+C2-04-F6-01-04-01-96-FF-3C-16-01-41-28-01-00-00-02-83-00-80  WYRM
+3B-0D-F6-01-E0-01-90-FF-3C-0A-01-85-41-01-00-00-02-C8-00-00  TYRO
+20-1C-58-02-58-02-96-FF-3C-0A-01-90-73-1E-00-00-02-C8-00-00  T REX
+F0-00-14-00-5C-00-8A-FF-48-00-01-17-16-01-00-00-00-44-40-90  CARIBE
+22-02-2E-00-AC-00-8E-FF-48-14-01-2B-25-01-00-00-00-53-00-00  R`CARIBE
+30-03-84-03-B8-00-8A-FF-30-10-02-2E-2A-01-00-00-00-67-40-90  GATOR
+62-07-D0-07-20-01-8E-FF-30-14-02-48-38-01-00-00-02-8F-40-90  FrGATOR
+C8-04-66-00-D0-00-B0-FF-18-18-03-34-14-01-02-04-00-74-40-90  OCHO
+75-0C-F4-01-58-01-C8-FF-18-20-03-56-23-01-02-04-00-AA-00-00  NAOCHO
+93-03-96-00-D4-00-8A-FF-24-0E-03-35-1E-01-00-00-02-74-00-00  HYDRA
+BF-04-90-01-B6-00-98-11-24-0E-03-2E-14-01-00-00-02-67-20-10  R`HYDRA
+C8-04-90-01-C8-00-C8-FF-48-28-02-32-19-01-01-10-00-6E-40-0B  GAURD
+A0-0F-D0-07-90-01-96-FF-60-30-01-5A-66-01-00-00-00-A0-40-BB  SENTRY
+AA-07-20-03-2C-01-C8-FF-48-14-01-44-45-01-00-00-01-82-20-9B  WATER
+4E-06-27-03-66-01-C8-FF-90-04-01-3E-35-01-00-00-01-82-00-8B  AIR
+33-09-33-09-64-01-C8-12-48-08-01-47-09-01-02-04-60-74-40-90  NAGA
+A1-0D-A0-0F-A4-01-9A-13-30-10-01-58-07-01-02-04-40-8F-00-00  GrNAGA
+10-08-C4-09-2C-01-C8-14-48-14-04-3C-1E-01-00-00-02-82-20-90  CHIMERA
+E8-11-88-13-5E-01-C8-15-3C-12-04-46-28-01-00-00-02-8F-20-90  JIMERA
+14-01-2C-01-54-00-7E-FF-42-10-02-15-1E-01-00-00-21-62-00-33  WIZARD
+36-03-E7-03-70-00-82-16-30-0C-03-1C-01-01-00-01-00-BB-00-00  SORCERER
+82-00-FA-00-6A-00-FF-FF-0C-0A-01-1B-0F-01-00-00-00-40-00-00  GARLAND
+E4-0F-88-13-60-01-C8-17-60-10-01-44-48-01-00-00-02-C8-20-80  Gas D
+CA-0C-D0-07-C6-01-C8-18-60-14-01-56-5C-01-00-00-02-C8-10-00  Blue D
+E9-04-20-03-B0-00-C8-19-1C-07-01-2C-40-01-02-04-41-5D-00-7B  MudGOL
+51-09-E8-03-C8-00-C8-1A-18-10-01-32-46-01-00-00-41-6E-00-FB  RockGOL
+3D-1A-B8-0B-30-01-C8-1B-18-64-01-4C-5D-01-00-00-01-8F-00-BB  IronGOL
+EF-04-08-07-04-01-C8-FF-24-26-02-41-2C-01-00-00-00-87-00-00  BADMAN
+8C-0A-B8-0B-BE-00-C8-1C-2A-20-01-30-37-01-00-00-41-AD-00-0B  EVILMAN
+CA-08-D0-07-A8-00-FF-2B-4E-28-01-2A-1A-01-00-00-00-AA-00-00  ASTOS
+47-04-47-04-69-00-C8-1D-4E-28-01-1B-1A-01-00-00-40-AA-00-00  MAGE
+5C-0D-5C-0D-C8-00-9E-1E-5A-26-01-2D-28-01-00-00-40-BA-00-00  FIGHTER
+3F-00-0F-00-40-00-6A-FF-16-02-02-10-0A-01-00-00-00-28-00-00  MADPONY
+F8-04-BC-02-C8-00-C8-1F-84-18-03-32-1E-01-00-00-01-64-20-9B  NITEMARE
+00-7D-00-7D-E8-03-C8-20-60-50-02-C8-80-01-00-00-80-C8-00-FB  WarMECH
+98-08-B8-0B-90-01-FF-22-18-28-01-31-28-01-01-10-49-78-10-2B  LICH
+D0-07-01-00-F4-01-FF-23-30-32-01-40-32-01-01-10-49-8C-00-2B  LICH (reprise)
+AB-09-B8-0B-58-02-FF-24-30-32-06-3F-28-01-00-00-41-B7-01-72  KARY
+D0-07-01-00-BC-02-FF-25-3C-3C-06-3F-3C-01-00-00-41-B7-00-72  KARY (reprise)
+95-10-88-13-20-03-FF-26-54-3C-08-5A-32-01-00-00-20-A0-40-90  KRAKEN
+D0-07-01-00-84-03-FF-27-62-46-08-72-46-01-00-00-20-C8-00-90  KRAKEN (reprise)
+78-15-70-17-E8-03-FF-28-48-50-04-50-31-01-00-00-02-C8-02-F0  TIAMAT
+D0-07-01-00-4C-04-FF-29-5A-5A-04-55-4B-01-00-00-42-C8-00-F0  TIAMAT (reprise)
+00-00-00-00-D0-07-FF-2A-64-64-02-C8-64-01-01-10-00-C8-00-FF  CHAOS

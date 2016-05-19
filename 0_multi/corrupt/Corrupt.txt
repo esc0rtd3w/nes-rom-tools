@@ -1,0 +1,27 @@
+ROM Corruptor 5.999
+
+New:
+Total rewrite!!!  New corruption features!
+Option to Add to bytes instead of corrupting them!
+Option to shift bytes around instead of corrupting them!
+Option to corrupt only certain bytes!
+Save and load in 10 slots!
+Changing directories optional!
+
+Old:
+Faster in random ascii mode
+More bugs fixed
+Bugs Fixed.
+Buttons to quickly change data regions.
+Auto Feature (automaticly increments both start and end)
+
+This program is intended for corrupting ROMs, but can be used on other files too.
+
+It does not affect the original ROM, it creates a backup and corrupts the copy.  Use this for fun/funky effects or finding level data.
+
+To use it, just specify the ROM/EMU path, the rom filename, and the EMU filename (ie. 
+"Nesticle.exe") and the range of data to corrupt, and even the corruption method!  It will safely corrupt the copy of the original.
+
+Yeah, it's changed since the last release and I'm too lazy to revise that stuff above.
+
+It's not version 6 because the replace with a sequence isn't in yet.

@@ -1,0 +1,215 @@
+<body bgcolor="000000" text="DDDDDD">
+<center><font size="6" color="AA0000"><b><U>Final Fantasy Hackster</font></b></u><br>
+<font size="1" color="888888">version 1.0 readme</font><P></center>
+
+<font size="4"><b>Sections</b></font><ul type="square">
+<li><a href="#Intro">Introduction</a>
+<li><a href="#Compa">Compatibility</a>
+<li><a href="#Edito">The Editors' Features</a>
+<ul><li><a href="#E_Pointer">Pointer Manipulation</a>
+<li><a href="#E_Newshop">Creating New shops</a>
+<li><a href="#E_Levelup">Editing Level ups</a>
+<li><a href="#E_Map">Map Editor Features</a>
+<li><a href="#E_Magic">Magic Outside of Battle</a>
+</ul>
+<li><a href="#credi">Credits</a>
+<li><a href="#histo">History</a>
+<li><a href="#conta">Contact</a>
+</ul><p>
+
+<a name="#Intro"><font size="4" color="DD2222"><b>Introduction</b></font><br>
+&nbsp&nbsp&nbsp&nbspFinal Fantasy Hackster is a ROM editor for the American release of the FF1 ROM.  It started as a half-assed program to make using the data in YDD's FFBytes documents easier.  However, after it's initial release, many people contributed their own knowledge, and the result is quite a powerful program that edits nearly every aspect of the game (excluding the engine).<br>
+&nbsp&nbsp&nbsp&nbspThis readme is mainly for those who've never used the program before, but those who have used previous versions should still read through it... as many of the editors have changed since previous releases.
+&nbsp&nbsp&nbsp&nbspTo get started you will need the following:<ul><li>FFHackster.exe (the program itself)<li>FFHackster.pal (a palette file used for displaying images)<li>StandardTable.tbl (a table file used for editing text)<li>DTETable.tbl (another table file... used for editing text with DTE support).<li>A Final Fantasy 1 ROM (the thing your actually going to edit)<Li>A NES emulator (trying to hack a ROM is useless if you can't run the ROM)</ul>
+all but the last two are included in this archive.  The ROM is illegal to download, and I will not distribute them... so don't ask... but in all honesty, FF1 is a popular game, and millions of sites out there have the ROM for download.<p>
+
+
+<a name="#Compa"><font size="4" color="DD2222"><b>Compatibility</b></font><br>
+&nbsp&nbsp&nbsp&nbspFFHackster was built under Windows 2000, so it should work under Win95, 98, NT 4.0, 2000, ME, and possilby XP, however I make no guarantees.<br>
+&nbsp&nbsp&nbsp&nbspThe original Hackster (v0.8) worked under most systems, but in later versions people were experiencing "missing DLL" errors.  The DLL files in question have now been built into the program itself (thus the significatly larger file size), so those errors <i>shouldn't</i> occur anymore.<br>
+&nbsp&nbsp&nbsp&nbspFFHackster data files previous to version 0.995 are UNSUPPORTED.  Do not try to use them, because they won't work.  995 data files, WILL work.<p>
+
+
+<a name="#Edito"><font size="4" color="DD2222"><b>The Editors' Features</b></font><br>
+&nbsp&nbsp&nbsp&nbspFFHackster is broken into several different editors.  Most of them are very simple and self-explanitory... but a few have extra features that may take some explanation:<p>
+
+<a name="#E_Pointer"><font size="4" color="DD2222"><b>Pointer Manipulation</b></font><br>
+&nbsp&nbsp&nbsp&nbsp<font size="2">(It is highly recommended that you have a firm understanding of NES pointers before editing the pointers by hand.  And at least a slight understanding to use the Slot features)<br></font>
+&nbsp&nbsp&nbsp&nbspIn the Shop and Text editors, you'll see a Pointer Field, a "Change Pointer" button, a "New Slot" button, and a "Delete Slot" button.  These all deal with pointer manipulation.  Usually, they're only used to conserve space and free up KAB, so if you're planning on making a serious hack (or a semi-serious hack), chances are, you'll have to use them at least once.<p>
+
+<b><u>Changing pointers by hand</u></b><br>
+&nbsp&nbsp&nbsp&nbspThis is exactly the same as doing it in a Hex editor... only easier (because you don't have to worry about byte swapping and adding $10, etc).  Just put in the pointer you want, then CLICK CHANGE POINTER.  If you put in a pointer and don't click the button, your change will be ignored.  This is a safty precaution.<br>
+&nbsp&nbsp&nbsp&nbspIf you've never used a Hex editor and are scared to death of them and just want to know what the hell pointers are good for... here's a crash course:<br>
+
+Text in ROMs are (usually) stored in big chunks.  For example, in the FF1 ROM, there's a chunk of text that's used for the enemies:<br>
+<font face="Fixedsys">IMP\GrIMP\WOLF\...</font><br>
+In order to retrieve the right text out of that big fat chunk, each enemy has a pointer... which (simply enough) "points" to the desired text.<br>
+<font face="Fixedsys">
+*&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp*<br>
+IMP\GrIMP\WOLF\...</font><br>
+The asterisks above are the pointers.  See how they point to the start of each enemy name?  You can mess with them and changed them like so:<br>
+<font face="Fixedsys">
+*&nbsp&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp*<br>
+IMP\GrIMP\WOLF\...</font><br>
+Now, whenever you fight a GrIMP... the text will say "rIMP" instead.<br>
+That's all I'm explaining for now  :P<p>
+
+<b><u>Delete Slot</u></b><br>
+&nbsp&nbsp&nbsp&nbspDelete Slot is useful because it frees up KAB.  When you click it, it goes through the ROM (starting at the current pointer) until the next break, and erases every byte.  Then all the pointers are adjusted.  Example:<br>
+<font face="Fixedsys">
+&nbsp&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp*<br>
+...\KARY\KARY\KRAKEN\KRAKEN\TIAMAT\...<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp^<br></font>
+If you go to the first "KRAKEN" and delete the slot... the first "KRAKEN" will be erased, freeing up space, and everything else will move over to accomidate:<br>
+<font face="Fixedsys">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp*<br>
+&nbsp&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp*<br>
+...\KARY\KARY\KRAKEN\TIAMAT\...<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp^<br></font>
+As you can see... both "KRAKEN"s are now combined, thus freeing up 7 KAB.<p>
+
+
+<b><u>New Slot</u></b><br>
+&nbsp&nbsp&nbsp&nbspNew Slot doesn't really create anything "new".  All it does is change the pointer so that it points to the end of the current text (it takes at least 1 KAB to perform, however).  It's really only useful for undoing "delete slot"s and creating new shops.  Here's an example:<br>
+<font face="Fixedsys">
+&nbsp*<br>
+&nbsp*&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp*<br>
+\TIAMAT\CHAOS\\\\\\\\<br>
+&nbsp^&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(end of text, start of KAB)<br></font>
+Pushing "New Slot" at "TIAMAT" will change the pointer like so:<br>
+<font face="Fixedsys">
+&nbsp*&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp*&nbsp&nbsp&nbsp&nbsp&nbsp*<br>
+\TIAMAT\CHAOS\\\\\\\\<br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp^<br></font>
+The two "TIAMAT"s no longer share text.
+<p>
+
+
+
+<a name="#E_Newshop"><font size="4" color="DD2222"><b>Creating New Shops</b></font><br>
+&nbsp&nbsp&nbsp&nbspThere are 7 of each type of shop (Weapon, Armor, White Magic, Black Magic, Clinic, Inn, and Item), and you can have up to 10 of each type of shop... making 70 shops total.  Not all of these shops were used in the original FF, but they are still present in the ROM.  To take advantage and create a new shop, simply go to the shop you want to add, push "New Slot", then put the items you want.  If you don't push New Slot, ALL of the unused shops will be affected.<p>
+
+
+<a name="#E_Levelup"><font size="4" color="DD2222"><b>Editing Level Ups</b></font><br>
+&nbsp&nbsp&nbsp&nbspOn the bottom half of the class editor in FFHackster, you'll find the level up editor.  This takes a little special notice because how it gets the stats is not 100% obvious.  In the "Stat" column, there are checkboxes for Strength, Intelligence, Vitality, Agility, and Luck.  Having those boxes checked UNSURES that the stat will increase by 1 at level up.  If the box is unchecked... there is still a 50% chance of the stat going up.<br>
+&nbsp&nbsp&nbsp&nbspAt each level up... your character gains (Vitality / 4) + 1 HP.  If the level up is strong (note the "Strong" column), and extra bonus is added to their HP (the bonus is a random number inside the "HP Range").<br>
+&nbsp&nbsp&nbsp&nbspNote that ALL stats for leveling up are for UNPROMOTED classes.  Promoted classes share their level-up stats with their non-promoted counterparts.<p>
+
+
+<a name="#E_Map"><font size="4" color="DD2222"><b>Map Editor Features</b></font><br>
+&nbsp&nbsp&nbsp&nbspThe Map editors are without a doubt the most complex editors in Hackster.  The data is all self-explanitory, but there are a few added features you should know about:<ul>
+<li>Double-right click on the map (or tiles) to custom-tint a tile.  This is nice for separating tiles you fight on from tiles you don't as well as other stuff.
+<li>Double left click on the tiles (NOT on the map), to edit its graphics.
+<li>Right click on a sprite to view its stats (Sprite stats are in the lower-left corner)
+<li>Right click-drag to move a sprite around the screen.  This also works for the starting position, bridge, canal, etc.
+<Li>The minimap (Overworld editor ONLY), is used only as a reference.  You can use it to quickly scroll through the map.  However it's recommended that you close it while editing... as it does slow things down a bit</ul><br>
+The rest is self explanitory, so you should be able to figure it all out  ;)<P>
+
+<a name="#E_Magic"><font size="4" color="DD2222"><b>Magic Outside of Battle</b></font><br>
+&nbsp&nbsp&nbsp&nbspMagic outside of battles behaves VERY strangly.  It is somewhat editable... however, due to the data being hardcoded, it is still very limited.  Here's how it works:  There's 13 Spell <i>effects</i>, CURE, CUR2, CUR3, CUR4, HEAL, HEL2, HEL3, PURE, SOFT, EXIT, WARP, LIFE, and LIF2.  The effects are NOT EDITABLE.. so CURE will always recover HP, PURE will always remove poison, etc.  What you CAN do... is shift the effects around to other spells (so FOG (the spell) could have PURE's effect).  However... no two spells can have the same effect... so if you assign PURE (the effect) to FOG (the spell)... PURE (the spell) will no longer be able to be used outside of battle.<br>
+&nbsp&nbsp&nbsp&nbspAdditionally, you can change the strength of the Heal/Cure spells.  There are some rules, you should follow, otherwise you'll get strange results (for below examples, B is the Base, and R is the Range):<p>
+
+<b>For the "HEAL" family</b><br>
+&nbsp&nbsp&nbsp&nbspThe HEAL family is very simple.  A random number from 0 to R is added to B to get the total amount of HP gain.  However, the total should NEVER be above 255.<p>
+
+<b>For the "CURE" family</b><br>
+&nbsp&nbsp&nbsp&nbspThe CURE family is more complex.  Instead of simply finding a random number and adding... it finds random bits, then combines them using a bitwise-or operator.  Here's an example of the CURE spell (T is the maximum total):<br>
+<font face="fixedsys">
+B = 16&nbsp&nbsp00010000<br>
+R = 15&nbsp&nbsp00001111<br>
+T = 31&nbsp&nbsp00011111<p></font>
+&nbsp&nbsp&nbsp&nbspYou won't find any difference here... but if you changed it like so:<br>
+<font face="fixedsys">
+B = 16&nbsp&nbsp00010000<br>
+R = 28&nbsp&nbsp00011100<br>
+T = 28&nbsp&nbsp00011100<p></font>
+The Range is much higher... but the Total is the lower.  Also, this is much less random.. because there are only 4 possible outcomes:<br>
+<font face="fixedsys">
+16 - 00010000<br>
+20 - 00010100<br>
+24 - 00011000<br>
+28 - 00011100<p></font>
+If you don't know anything about binary numbers, and/or you just don't want to deal with this... you can select the values from the drop down lists, and keep the Base higher than the Range.  This will ensure accurate, randomized outcomes.<p>
+
+<a name="#credi"><font size="4" color="DD2222"><b>Credits!</b></font><br>
+&nbsp&nbsp&nbsp&nbspCredits go to the following (in no particular order).  I originally intended to get everyone's name on here... but due to a computer crash... most of the names were lost  &gt_&lt.  So besides this big fat list... MANY, MANY others also deserve acknoledgement.
+<p>
+
+<ul type="square">
+<li><b>Disch (me!) </b>- Making the damn thing.  A few offsets (palettes, graphics, and coords mostly)
+<li><b>Y Dienyddiwr Da </b>- Creating FFBytes... the base and inspiration for FFHackster.  Plus, he's a beta-tester.
+<li><b>Goongyae </b>- Many, MANY, <b>MANY</b> additional offsets.
+<li><b>Paulygon </b>- Lots and Lots and <b>LOTS</b> of additional offsets.  Plus Beta-testing.
+<li><b>Zero Soul </b>- A very LARGE amount of additional offsets, many ideas for improvment, much moral support, beta-testing, and constantly plugging Hackster on his webpage  =D
+<li><b>Tzar </b>- Getting a decent webpage started, moral support, beta-testing, and now hosting the Hackster webpage.
+<li><b>Tony Hedstrom </b>- Many more additional offsets  ;)
+<li><b>Grond </b>- Lots of tricky offsets.
+<li><B>_Demo_ </b>- Originally finding the map data and compression method.
+<li><b>Gilgamesh </b>- Relaying the map data and compression to me.
+<li><b>Lord Skylark </b>- Additional offsets.
+<li><b>The Wanderer </b>- Some more additional offsets.
+<li><b>Rubicant </b>- Hosting the Hackster webpage.  Ruling webforums with an iron fist  =D,  beta-testing
+<li><b>Kabucho </b>- Beta-testing, moral support
+<li><b>Codeman </b>- Author of FFEpica... the hack that introduced me to ROM hacking.
+<li><b>Jones </b>- Finding the FFBytes homepage, and getting me motivated in hacking FF1.
+<li><b>Ryan Riegal </b>- Beta-testing, plus being a big-fat programming machine.  He taught me a lot!  =D
+<li><b>Zophar's Domain </b>- distribution, acknowledgement, and publicity!
+<li><b>Lots of others </b>- Like I said... many more contributed... but lost their names &gt_&lt.
+</ul><p>
+
+
+<a name="#histo"><font size="4" color="DD2222"><b>Histroy</b></font><br>
+&nbsp&nbsp&nbsp&nbspI wrote up this section because I figured people might be interested in the background of Hackster.  Most of you couldn't give a rat's ass and probably didn't even look at the readme.. you just dove into the program.  Anyway, I thought it was interesting, so read it if you want.<p>
+
+&nbsp&nbsp&nbsp&nbspIt all started long ago.  I had been into emulation for a while... and FF1 was always one of my favorite games.  Me and Jones (a good buddy of mine) used to have contests; we'd bet $5 that we could beat FF1 quicker.  We'd try different parties each time... and it was pretty fun.  Needless to say... I became <i>very</i> familiar with the game.<br>
+
+&nbsp&nbsp&nbsp&nbspSo one day I was by myself browsing Zophar's Domain when I saw a section called "Rom Hacks".  Curiously, I checked it out, and saw a couple that caught my eye.  FFHardtype and FFEpica.  I tried Hardtype first (because the original seemed far too easy) and I thought it was great!  How did he make it harder?  What's going on here?  I was totally stoked.  However.. I was disappointed when the hack stopped very early in the game.  So then I tried Epica.  My jaw dropped and I played it nonstop for days.  Different maps, different colors, different text, different everything.  How was this possible?  Inspired, I set out to make my own FF1 hack... but didn't know where to start.  I was a stupid newbie that had no idea what he was doing.  Within an hour, I gave up and went back to just playing the ROM hacks.<br>
+
+&nbsp&nbsp&nbsp&nbspSo a few days later, Jones stops by and I show him Epica.  His draw drops.  He hops on the other computer (I had two computers in the office at the time), he plays it.  He gets inspired.  He tries to make his own hack.... but wait... he didn't give up!  He got FFImprovment and started tweaking the maps... got Thingy and tweaked the text... got TLP and tweaked the graphics.  Sweet!  He's still not very satisfied, though.  After having seen Hardtype... he knows that enemy stats MUST be editable, so he sets out on a search for information.  I don't remember how long it took him... but he found a magical site called "FF Bytes".<br>
+
+&nbsp&nbsp&nbsp&nbsp"Hey, [Disch], look at this".  I turn around, and see a dummy's guide to hacking FF1!  Not only did it tell us how to change enemy info, but it also told us how to change shops, armor, weapons, magic, items, and so much more.  I quickly get reinspired.. break out a hex editor and start making a hack.  My inspiration never lasts, though.  Within a half hour, I've grown EXTREMELY tired of flipping between hex editor, FFBytes, emulator, hex editor (chaning the offset), FFBytes, hex editor, emulator... just to change the price of a HEAL potion.  If <i>only</i> there was an easier way.<br>
+
+&nbsp&nbsp&nbsp&nbspWell... if your a programmer (even an amateur one), if you can't find an easier way... you make an easier way.  I whipped up a crappy little program that automated the process of FFBytes.  It was inefficient, buggy, awkward to use, and ugly... but (most of the time) it got the job done.  I needed a name... so combining the base (FFBytes) with a revolutionary program (Napster) with what your essetially doing (hacking), I came up with Final Fantasy Bytes-Hackster, or FFBHackster.  It was intened just for me and Jones' use.  And that's all it was used for.<br>
+
+&nbsp&nbsp&nbsp&nbspA couple of days later, I'm crusing on Zophar's once again... this time I'm looking closer at the Rom Hacking Utilities section.  There were a lot of map editors... but it seemed to be lacking in statistic editors.  "What the hell", I thought.  Zophar's has always been a helpful site... why not try to contribute something.  I take a look at FFBHackster... and DAMN was it sloppy.  There's no way I could release it.  So I rewrite the whole thing, and everything is peachy...except for the shop editor.. because it involved pointers... and I knew nothing about nothing.  Less bugs, better look, MUCH cleaner, and all around a decent program.  I chopped off the B if FFBHackster because it clashed immensly and labeled it version 0.8.  With shop support, it was to be 1.0.  Automation of everything FFBytes had to offer (except music).<br>
+
+&nbsp&nbsp&nbsp&nbspSo I slap up a crappy page at Geocities consiting of basically the following:<p><center><font size="2">
+Hi, this is my program I made to make hacking FF1 a little easier.  It's called "FFHackster".  It was based off of FFBytes.  Download it HERE.<p>If anyone out there would like to help out with it or make a webpage that doesn't totally suck... e-mail me at disch_@yahoo.com</font></center><br>
+&nbsp&nbsp&nbsp&nbspI submit some news to Zophar's about a new FF1 Hacking utility, and go to bed.<br>
+
+&nbsp&nbsp&nbsp&nbspThe next day (or a few days later... can't remember) I check the Zophar's to see if they posted it yet.  They did!  I was stoked.  My name was on Zophar's... SWEET!  I check my mail and saw like 6 new messages.  1 was "Thank you for signing up with Geocities", and the rest were all about Hackster!<br>
+
+&nbsp&nbsp&nbsp&nbsp"Cool program", "Very nice", "I could send you some offsets if you'd like", "I'm not the only one who found those FFBytes docs, huh.", "I could make a webpage for you".  JESUS!  This was the last thing I expected.  Maybe 1 or 2 e-mails during the life of the program... but MAN!  The three notable ones that e-mailed me were Goongyae, Zero Soul, and Tzar.  Goongyae generously offered to provide offsets and programming assistance.  I turned him down on the programming side... because I didn't want to open source the program until I was done with it.  Zero Soul gave praise... he might also have offered some offsets... but I can't remember.  Tzar was the man with the webpage!  I quickly took him up on his offer and he shot up a page for me.  By the time it was finished, FFHackster 0.9 was out... which added a little more than Shop editing... but that's it.<br>
+
+&nbsp&nbsp&nbsp&nbspI check my mail once again.  More praise!  Plus another e-mail from Goongyae.  I open it up and find PAGES and PAGES of info!  Odd stuff, too... like level up stats, shifting black belt abilities, assigning Magic to anyone, etc.  I was blown away!  I checked another e-mail from Gilgamesh that read something like "I have the Overworld Map compression data.  If your interested I could send you a copy."  I didn't know what to think.  Without trying to sound immensly stupid, I replyed "har, har, yeah!  That would be slick, har, har, would ya, he, he".<br>
+
+&nbsp&nbsp&nbsp&nbspThen came the updates:<ul>
+<Li>.95 - sweet! map editing!  this is great!
+<li>.96 - awesome!  More stuff!
+<li>.96a - what the hell was I thinking... 96 was LOADED with bugs!
+<li>.97 - another update
+<li>.98 - okay... okay..
+<li>.99 - oye!  I've about had it with this!</ul><br>
+
+&nbsp&nbsp&nbsp&nbspRight after v0.99, I declared that the next release would be the FINAL 1.0.  Offical FFHackster would come to an end, but the source would be realeased, so others could build off it.  I had had enough.. and it was time to get out.<br>
+
+&nbsp&nbsp&nbsp&nbspI worked and worked and worked on 1.0, but there was a lot I wanted to add before stopping.  The weeks passed (which was unusual... previous versions were coming out every couple of days).  E-mails were coming in.  "When's the new Hackster coming out?", "What's taking so long?", "Did you drop the project?".  By now I'd stopped answering all of them.  Just as I get close to 1.0... Zero Soul sends an E-mail LOADED with offsets.  It was all important things, too, so I had to put them in.  Ugh.. but if I delay the closing of the project any more I'm going to go crazy!<br>
+
+&nbsp&nbsp&nbsp&nbspSo I released a version (which turned out to be very good for being a half-finished 1.0).. and labeled it v0.995.  I backed up the source on a zip disk and dropped the project for about 2 months.<br>
+
+&nbsp&nbsp&nbsp&nbspAhh... that break was just what I needed.  I go up to the office to do some serious programming when... THE COMPUTER'S MISSING!  What the hell?!?  I talk to my dad... he tells me it crashed when he was installing new software or something.  Great.  We still had the other computer, but I never really used it, so the Hackster source wasn't on it.  Plus... there's no Zip Drive on it... so I couldn't get to the Hackster Source.  Frustrated... but still in a programming mood... I occupy myself with FF3Hackster... which was just a baby program that edits the overworld maps of FF3j.<br>
+
+&nbsp&nbsp&nbsp&nbspWhen the computer comes back from the shop... I try it out, but the Zip Drive keeps giving me errors.  Fearing it was the disk, I tried multiple disks... but none of them worked.  So my dad takes it out, but he doesn't get a new one for a couple weeks.<br>
+
+&nbsp&nbsp&nbsp&nbspRight around this time, Tzar e-mails me offering hosting on his server, OPgaming.  I decline him at first, but after realizing that free websites are shitty, I take the offer.  He sets me up an account and I design a new layout for the page.  Before I could get hosted, though... the OPGaming.com was in the middle of an update or upgrade or something... so I had to wait a while.<br>
+
+&nbsp&nbsp&nbsp&nbspWhile I was waiting for the new page... the new Zip Drive comes in!  Yay!  I check out my 995 source and start adding Zero Soul's info to make it 1.0.  It was really hard, though... there was really no room to put anything new.  I decided that the only way to make 1.0 efficient, was to do a full scale rewrite.  So I set the dismantled 995 aside and start a new 1.0 from scratch.<br>
+
+&nbsp&nbsp&nbsp&nbspThe rest of the story is boring.  Basically, I put the new site up... got my own forums... finished the 1.0 rewrite and released it.  What happened after that I don't know yet (because as I'm typing this... it hasn't been released yet  :P  )<p>
+
+&nbsp&nbsp&nbsp&nbspSee that was an intersting story wasn't it?<p>
+
+
+<a name="#conta"><font size="4" color="DD2222"><b>Contact</b></font><p>
+<b>E-mail Disch</b> - disch_@yahoo.com<br>
+<b>The official FFHackster page</b> - http://hackster.opgaming.com

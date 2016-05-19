@@ -1,0 +1,14 @@
+C:\EMULAT~1\FCEUWIN\FCEU
+C:\MEGAFLE\
+
+; - Note -
+;Put the emulator's full filename with path on the first line.
+;On the second line, put the path of the rom you want to test. MegaFLE hasn't the ability to find out,
+;it shouldn't be neccesary though, but do it if things doesn't work.
+;Note that the path and filenames has do be in dos 8 character lenght, like in the first line.
+;The emulator must also support rom loading using the commando line. You know, i thought you were to
+;stupid to understand that :P
+;Also, if you wan't to add more arguments to the
+;commando line, do it on the third line.
+;I'll add support for setting this in MegaFLE, later.
+;You'll have to update this file very rarely anyway.

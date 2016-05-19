@@ -1,0 +1,35 @@
+------------------------------------------------------------------------
+  Dragon Slayer IV / Legacy of the Wizerd  Map Viewer  ver 1.04  by Yy
+------------------------------------------------------------------------
+
+* What this is *
+  This is a map viewer of Dragon Slayer IV(Famicom / MSX2) / Legacy of the Wizerd(NES).
+  This program run on Windows9X.
+
+  * Don't ask me about ROM.
+
+
+* Usage *
+  Arrow ............ scroll map
+  Shift+Arrow ...... move map
+  1 ................ change display option(changing block)	(before > half  > after   )
+  2 ................ change display option(item box)		(box    > item  > nothing )
+  3 ................ change display option(enemies)		(egg    > enemy > nothing )
+  F9 ............... take snapshot
+  Shift+F9 ......... take snapshot of all maps (need 14MB disk space)
+
+
+* History *
+  ver. 1.04 fixed: NES bug changeing display option.
+  ver. 1.03 added: MSX1 support. (thanks to ONYX about MSX graphics and palette)
+  ver. 1.02 added: MSX1 partial support. (bad palette, partial graphic layer)
+            fixed: MSX2 sprite palette. (2x2 size enemy)
+  ver. 1.01 fixed: MSX2 sprite palette.
+  ver. 1.00 added: MSX2 support.
+  ver. 0.96 faster.
+  ver. 0.95 added: display option.
+  ver. 0.90 added: item view.
+
+
+	Yy ( geo-yy@geocities.co.jp )
+	http://www.briansemu.com/yymarioed/

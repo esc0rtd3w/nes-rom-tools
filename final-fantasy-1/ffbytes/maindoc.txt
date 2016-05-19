@@ -1,0 +1,57 @@
+,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿r4
+’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?r4
+/§§§§§§§§ /§§§§§§§§ /§§§§§§   Data Hacking Documents ?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿r4
+/§§§///// /§§§///// ///§§//    By Y Dienyddiwr Da    ¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?r4
+/§§§§§§§  /§§§§§§§    /§§    ¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿r4
+/§§§////  /§§§////    /§§    ?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?r4
+/§§§	  /§§§        /§§    ¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿r4
+/§§§	  /§§§      /§§§§§§  ?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?r4
+////	  ////      ///////  ¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿r4
+’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?r4
+,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿¡,,¡¿!¡?!’’!?¡!¿r4
+
+Current Documents, file names, Versions, and Descriptions.
+
+Armour Info 	(arbytes.txt) 	v1.1	4/4 Bytes decoded, no Extras
+Character Info 	(chbytes.txt) 	v1.2	10/11 bytes decoded, Class Adding, Starting MP Modification
+Enemy Info 	(enbytes.txt) 	v1.6	19/20 bytes decoded, no Extras
+Magic Info 	(mgbytes.txt)	v1.1 	6/7 bytes decoded, Some Magic Ideas
+Music Info	(mubytes.txt)	v.05	Some Songs Explained, Most bytes decoded, Some Bytes Theorized.
+Weapon Info	(wpbytes.txt)	v1.1	7/8 bytes decoded, no Extras
+Special Attacks	(sabytes.txt)	v1.0	4/5 bytes decoded, no Extras
+Shop Data	(shbytes.txt)	v1.0	5/5 bytes decoded, no Extras
+Price Data	(prbytes.txt)	v1.0	2/2 bytes decoded, no Extras
+FF1 Hexpose TBL	(table.tbl)	----	A TBL file for FF1
+Reference Table (lists.txt)	----	A file listing the Hex ID used for most things
+
+
+What minor nothingness as been added? :
+
+	Mubytes.txt :
+		Its not complete, but you people probably have been waiting
+			
+
+future plans :
+ Map Data Docs (most likely going to be some one elses work)
+ Changing the data for who can equip what.
+ Changing the data for who can cast what.
+ Editing Domain Mapping.
+
+
+Great deal of Thanks to (in no particular order) :
+ Acmlm - Music Help
+ Hal Kun - Sheet Music
+ Omniverse - Various help on the search for Class Qualifications (Magic/Equipment)
+ Tzepish - Wrote out a quick template of the shop data to "Ease my work" ^_^
+ Vagabond - All kinds of crap
+ sl1me - Enemy Address
+ Jettero - FFSpell edit Program based on my work
+ Jandar - Support
+ Roto - Music, adding advanced Classes to starting selection (which leads to Adding 255 classes)
+ SirElric - MADPONYs are stealthy li'l fellows
+ Xyllon - various Genie Codes that point me to interresting stuff
+
+and anyone who in advertantly inspired my desire to hack FF1
+
+Have fun, and chill out, t'is only romhacking
+

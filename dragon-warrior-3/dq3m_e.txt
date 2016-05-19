@@ -1,0 +1,30 @@
+-----------------------------------------------
+  Dragon Quest III MAP viewer  ver0.31  by Yy 
+-----------------------------------------------
+
+* What this is
+  This is the world map viewer of DragonQuest3/DragonWarrior3.
+  You need the DQ3 or DW3 ROM. But, don't ask me about ROM. 
+
+* Keys
+  - Arrow        scroll
+  - Arrow+Ctrl   quick scroll
+  - Enter        World/UndereWorld
+  - Space        seaside ON/OFF (default:OFF)
+
+* Future
+  Maps other than the world map
+
+* History
+  v0.31  faster, fix
+  v0.30  add "seaside ON/OFF"
+  v0.25  add "World/UndereWorld", fix startup position
+         add "commandline/default file(dq3m.nes)"
+  v0.20  faster
+  v0.10  make
+
+* Thanks
+  Kuwata ... document of the world map
+
+        Yy ( geo-yy@geocities.co.jp )
+        http://www.geocities.co.jp/SiliconValley/1145/yy/

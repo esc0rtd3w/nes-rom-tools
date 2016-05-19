@@ -1,0 +1,10 @@
+C:\EMULAT~1\FCEUWIN\FCEU
+
+; - Guide -
+;This is a file with setup for the quick-testing feature.
+;To quick-test your hack, press F9 in Schnapsidee.
+;Here's how you'll format the setup:
+;Put the emulator's filename with path on the first line.
+;Note that the path and filenames has do be in dos 8 character lenght.
+;If you wan't to add arguments to the command line,
+;for the emulator, do it on the second line.

@@ -1,0 +1,54 @@
+KingMike's Translation
+http://kingmike.emuxhaven.net
+
+kingmike2001 AT hotmail DOT com
+
+NFlate
+Program v1.01
+Release date: 5/2/2007
+
+************
+INTRODUCTION
+************
+Expansion of NES ROMs is typically simple.
+Although actually USING that space will undoubtably require ASM hacks.
+
+This is a simple program that will take care of the physical ROM expansion.
+Of course, it'll be up to you to do the ASM hacks to make it work.
+
+*****
+USAGE
+*****
+Couldn't be simpler.
+
+Just run the EXE.
+It'll ask you for the original ROM file (unlike my earlier utils, I finally made it
+support spaces in the filename).
+Then it'll ask you what to save the expanded file as. Again, spaces should work.
+Next, it'll ask if you want the PRG expanded. 1 for yes, 0 for no.
+Then it'll ask if you want the CHR expanded. Again, 1 for yes, 0 for no.
+
+*****
+NOTES
+*****
+Some mappers might require an unusual expansion.
+I've added support for the special cases I'm aware of:
+
+iNES mapper #1 (Nintendo MMC1), expanded to above 256KB
+-------------------------------------------------------
+When an MMC1 game has more than 256KB of PRG-ROM, there is an extra
+register that determines which 256KB portion of the ROM is active.
+So, the ROM must be expanded by adding extra space to the end of the PRG.
+
+NOTE: I believe I made a fix since the version 1.0. I didn't replicate the
+original PRG-ROM, but I should have (I just added blank space).
+
+iNES mapper #19 (Namcot 106)
+----------------------------
+It seems that this mapper need extra space at the beginning of the PRG-ROM.
+True of Kaiju Monogatari and Megami Tensei 2.
+
+iNES mapper #82 (Taito Mapper #4)
+---------------------------------
+I expanded one ROM similar to MMC1 >256.
+Not sure if it's the proper way, but it works.

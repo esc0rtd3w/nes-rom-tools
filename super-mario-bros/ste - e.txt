@@ -1,0 +1,30 @@
+How To Use: When you run the editor, it should automatically have the Open dialog open. Here are what the buttons and other stuff do:
+* "|N|||A|["- Clears the title screen.
+* "|o|C|i|||o|Ã?"- This is used for the saving process or saving the bytes in a text file. At the bottom of the window that pops up, press the top button to apply the results for the saving process, or the bottom button to save the data in a file.
+* "ROM|C|Ã?|||Ã?"- Click on this to choose a different ROM.
+* "ROM|Ã?|Ã?'Â¶"- Click on this to save the changes to the ROM after applying results for the saving process (see the second point to know how to apply the results for the process).
+* "|F|Ã?|Ã?'Ã¨|Ã?"- Click on this to switch from tile editing mode to palette editing mode (or vice verca).
+
+Exclusive Tile Editing Mode Functions:
+
+* 1st One at the Right (Right Click Function):
+1. Erase
+2. Similar to the "Spoit" function from Mana's editor
+* 2nd One " ,, " (Tile Selection Window Palette, but doesn't affect the colors of the tiles when placed on the title screen)
+1. Green
+2. Brown
+3. White
+4. Shine/Coin
+* 3rd One " ,, " (Palette Set)
+1. Overworld (Outside)
+2. Underworld (Underground)
+3. Water
+4. Castle
+Palette Editing Mode Stuff:
+
+* Box With Number- Palette Number to Place On a 16x16 Tile (-1=same palette as block behind the 16x16 tile of the title screen, 0=green, orange, or snow palette, 1=brown palette, 2=white palette, 3=shine/coin palette)
+* Thing at the Bottom (Palette Editing View):
+    1. Grid with the palette numbers labeled
+    2. Grid without the labels
+    3. Labeled but no grid
+    4. No labels or grird

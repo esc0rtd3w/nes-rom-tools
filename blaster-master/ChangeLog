@@ -1,0 +1,84 @@
+v1.0 Final -
+	* Added Palette editing
+	* Fixed the boundary on the Tank Enemy Stat Editing (one enemy was missing)
+	* Final Version of BCK standalone, if I do any more work on it I'm rewriting it and turning it into a plugin for another project I may or may not do
+
+v0.7.1 -
+	* Fixed the enemy stat editor, there was one enemy missing at the end
+	* Changed the Linux code so that it runs the emulator in the background instead of causing BCK to freeze when you hit "Test Rom"
+
+v0.7 -
+	* Added enemy stat editing for Tank section enemies
+	* Added a toggle switch to turn the debug mode/level select on and off within the rom
+	* Added support for 16 bit mode (new value in bck.cfg)
+
+v0.6.2 -
+	* Fixed a stupid array overflow glitch
+
+v0.6.1 -
+	* Rewrote the remainder of the graphics code, no more ugly PutPixel, any non-tile operations should be a lot faster now
+	* Fixed the rest of the RLE screens, they're all viewable now
+	* This will be my last update for a while unless I discover something incredible and amazing, so enjoy it!
+
+v0.6 -
+	* Rewrote the block editor so that it uses paged editing similar to the other two block editors
+	* USB info now breaks the bitmask into bits, which you can click to toggle
+	* Any mode that used the mouse before now has mouse wheel support, for changing values or switching objects
+	* Major new feature: RLE viewing! Most of the static screens and bosses are now viewable, but not editable. You could, however, edit the RLE by hand in a hex editor and use BCK to preview your changes.
+
+v0.5.1 -
+	* Rewrote BCK's graphics code, those of you with slower machines should see a noticable speed increase, but it chews a little more memory now
+	* Fixed up the mouse locking code a little, was leaving it locked when it shouldn't, or putting it in a 'half-locked' state
+	* Alt+Enter now swaps between windowed and full-screen
+
+v0.5 -
+	* Only two real changes, but one is big: Mouse Support! See readme.txt for instructions
+	* Other change is that US/SBlock editing is now easier, as it now displays the entire array at once, rather than just three.
+
+v0.4 - 
+	* Removed the dependency on msvcr70.dll for the Windows version by using a different compiler, still requires SDL.dll, however (see below)
+	* The pre-compiled Windows executable is now being cross-compiled on a Linux box and will, as a result, not receive quite as much testing as the Linux version (since I'm developing on Linux, and only have a couple people who can test Windows builds for me)
+	* The Windows version now uses dialog boxes instead of console output
+	* Both versions of the pre-compiled executables are now being compressed with UPX, which should save a little space
+	* Added data editing for various boss attributes and some other important misc data
+	* New command for Thing editing (see readme.txt)
+	* Added '-v' command to verify that you have a compatible ROM (must be used on a pristine, unedited rom, compares SHA1 values using a Public Domain SHA1 algorithm)
+	* If given no command line arguments, BCK now defaults to '-e' and 'all.cfg', help is now triggered with '-h'
+	* BCK now has a sourceforge site (http://bck.sourceforge.net/ and http://sourceforge.net/projects/bck/) so direct all bug reports, feature requests, etc to that site
+	* All .zip files now include the format document, which is essentially my extremely disorganized notepad on the structure of the rom, and also contains some info that's useful for editing some of the more obscure data
+
+v0.3.1 -
+	* 95% sure that I FINALLY fixed the Windows version, it should now work without corrupting the ROM, also removed the dependance on cygwin1.dll, but added dependence on msvcr70.dll
+	* Minor tweak to the test ROM command: Now does %s "%s" instead of "%s" "%s". Should still work in *nix and will now work in Windows, but it means that you can no longer have spaces in the emulator path
+	* Added the rest of the "UNKNOWN" overhead enemy types
+	* Some code changes dealing with console output, which makes the code a little more portable
+
+v0.3 -
+	* Added a LOT to the -e command:
+		- Gateway Viewing/Editing
+		- Thing (Enemy/Item/Sprite) Viewing/Editing
+		- Ability to switch levels without exiting the program (yay!) (use 'all.cfg' for this functionality)
+		- Launch your emulator to test the rom with a keystroke (see readme.txt)
+		- Accurate USB attribute editing for overhead sections
+	* Added more data to the .cfg files, they now all contain data pointers to Thing data as well as the correct number of (US/S)Blocks; Updated -l to include this data
+	* No longer considered an Alpha, but as always make backups of your ROM in case the program does something unexpected
+
+v0.2 Alpha -
+	* -e option is back, and it actually edits! See readme.txt for usage instructions.
+	* Default filename is now "Blaster Edit.nes"
+	* Still no gateway or enemy editing yet, but thanks to Jigglysaint of DES, I was able to decode the gateways, which allowed me to decode the enemy data, so expect them to be editable in v0.3, which I hope to release this weekend
+	* Cleaned up a couple of the overhead .cfg files to include the correct number of (US/S)Blocks, will have the rest done by v0.3
+
+v0.1.1 Alpha -
+	* Added program/copyright/warranty info to the usage help
+	* Removed the -e option from usage, as it doesn't actually do anything yet anyway
+	* Removed the scroll border option from -d, as it's not implemented yet either
+	* Added 'bck.cfg' to specify graphics window size as well as ROM name to read
+	* Renamed the .cfg files to include "t" or "o", for tank and overhead sections respectively
+	* Added overhead .cfg files for all levels 
+	* Cleaned up the tank .cfg files to include the correct number of USBlocks, SBlocks, and Blocks, instead of the default 'FF' values
+	* Added -l command to show some low-level info, for you tech heads out there
+	* Rearrangment of some of the code
+
+v0.1 Alpha -
+	* First public release

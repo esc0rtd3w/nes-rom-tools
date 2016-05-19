@@ -1,0 +1,25 @@
+Below are IDs of items you can receive from treasure
+chests and Princess Peach upon completing a level.
+
+Table of items Princess Peach gives starts at ROM
+location $360DE, and there is no entry for level 8.
+
+The vertical location of sprite 214 ("Puts item in
+treasure chest") in the editor determines which item
+to put in the treasure chest, corresponding to the
+values below.
+
+0 = Nothing
+1 = Mushroom
+2 = Fire Flower
+3 = Leaf
+4 = Frog Suit
+5 = Tanuki Suit
+6 = Hammer Bros. Suit
+7 = Jugem's Cloud
+8 = P-Wing
+9 = Starman
+10 ($A) = Anchor
+11 ($B) = Hammer
+12 ($C) = Whistle
+13 ($D) = Music Box

@@ -1,0 +1,20 @@
+Known bugs:
+
+none
+
+
+How to Edit Palettes of Tiles:
+
+Put the mouse in the grid position u want and RIGHT CLICK.  It will switch between the 4 Palettes.
+
+
+Check out http://www.DogSoft.net for future updates.
+
+To Do:
+
+- Build Tile Editor
+- Build TSA Editor
+- Map Editor (I know where the data is, caution there is a room position used in 2 stages)
+- Enemy/Item Editor
+
+Release 12/31/2007

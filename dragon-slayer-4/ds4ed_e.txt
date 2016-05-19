@@ -1,0 +1,41 @@
+------------------------------------------------------------------------
+  Dragon Slayer IV / Legacy of the Wizerd  Map Editor  ver 0.96@by Yy
+------------------------------------------------------------------------
+
+* What this is *
+  This is a map editor of Dragon Slayer IV (Famicom) / Legacy of the Wizerd(NES).
+  Now the utility can edit map, item and palette.
+  This program run on Windows9X.
+  * Don't ask me about ROM.
+
+
+* Usage *
+
+  * You can click the inner side of a blue line.
+  Right Click ...... Pickup mapchip
+  Left Click ....... Set mapchip
+                     Select map, mapchip, palette
+                     Display changing block, treasure box, enemies
+
+  Arrow ............ Scroll map
+  Shift+Arrow ...... Move map
+  1 ................ Display[changing block]	(before > half  > after   )
+  2 ................ Display[treasure box]	(box    > item  > nothing )
+  3 ................ Display[enemies]		(egg    > enemy > nothing )
+  F5................ Save (over write)
+  F7 ............... Reload
+  F9 ............... Take snapshot
+  Shift+F9 ......... Take snapshot of all maps (need 14MB disk space)
+
+  Z,X,C,V........... change mapchip color (+00,+40,+80,+C0)
+
+
+* History *
+  ver 0.96 faster.
+  ver 0.95 added display mode, fixed bug
+  ver 0.90 added item editor, fixed bug
+  ver 0.00 first version
+
+
+	Yy ( geo-yy@geocities.co.jp )
+	http://www.briansemu.com/yymarioed/

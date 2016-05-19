@@ -1,0 +1,374 @@
+MegaFLE BETA 0.41
+by Matrixz of Dragon Eye Studios, 2001-2003
+===========================================
+
++-------------+
+| What's New? |
++-------------+
+
+ BETA 0.41
+  - MegaMan 3 rom corrupting
+    bugfix in enemy editor
+  - status file write fix
+    in mode selecting menus
+  - Other minor-fixes
+
+ BETA 0.4
+  - Opened Misc. Level editing mode,
+    editing of Multi-Directions and
+    Mid-points (MM5) added
+  - Added Configuration Menu, including
+    color/palette options
+  - Divided Screen/Tile editors into game / non-game
+    modes, easy title screen etc. editing (MM3 / MM5)
+  - Support for "Tile Assembler Data" Bank pointers
+    used for making multilevels. (MM3 / MM5)
+    Editable in Screen/Tile Editors.
+  - Even faster QB render code
+  - Various bugfixes and
+    optimizations
+  - Added Qucik-testing feature
+  - Fast mode-swapping
+  - Enemies not on the current screen
+    movement disable fix
+  - Support for secondary palettes in MM5
+  - Movement of enemy sprites through
+    screens (with right mousebutton)
+  - Added editing guide
+  - New Interface Palette
+  - Faster memory system (Screen editor)
+  - Different NES Palette
+  - More editor stats saved at quit and
+    loaded at start
+  - CHR loading in MM4 by Level
+    start effect data.
+  - Most .dat files spliced together
+
+ BETA 0.31
+  - All sprite data text updated at sprite select
+    with Left MouseButton
+  - Easy edit mode swap system
+  - Added MegaMan 5 sprite database
+  - Faster level Load/Save
+  - Editing with keys in Enemy editor
+  - Other minor-bugfixes
+
+ BETA 0.3
+  - Added Sprite Editor! Sprite Palette Editor
+    support for MegaMan 3 and 5 only.
+  - Probably full level CHR/Palette-page support
+  - Even ffaster graphics!
+  - Added CHR Insert/Extract
+  - Added tile Horz/vert/90° turn
+  - Support for MM3 / MM5 CHR Pointers
+  - Support for MM4 "effect" Scroll Data
+  - Once again, mmlevfrm.txt's updated.
+  - MegaFLE is spread
+    into parts becouse of QB's low-capacity
+
+ BETA 0.2
+  - Added supporst for Megaman 3 and 4!
+  - Opened Screen/Palette Edit mode!
+    And most thigs there should works wonderful!
+  - Added TilePage Selection
+  - When a Block's palette is incerased,
+    the block's tiles is updated with
+    the new palette (Tile/Block Mode)
+  - Got a probably faster gfx engine
+  - Block-pages order comes correct
+    (it edited only half of each 16
+    block line)
+  - Changed palette usage,
+    mouse is white!
+  - Editing with keys added
+    in Tile/Block Edit mode
+  - Added my new Matrixz
+    Palette 2
+  - Level Select by clicking on
+    "Level:" number
+  - Most "Graphics Above Mouse"
+    gfx mess-ups fixed
+  - You can now Decerase Block Palette /
+    Type with Right mousebutton
+  - MegaMan 3-5 level formats doc updated a lot
+
++------------------+
+| What is MegaFLE? |
++------------------+
+
+MegaFLE is a level editor for Megaman 3, 4, and 5.
+It was easy to create a level editor with these three,
+becouse they have nearly the same level format.
+
+MegaFLE is coded in QuickBasic, so it's a byte Slow.
+(I'll give it a new name: SlowBasic)
+I might make a windows version sometime,
+whenever i learn some form of Win programming.
+
++------+
+| Why? |
++------+
+
+MegaFLE?
+Just like MegaEdit, Mega means MegaMan.
+FLE means Full-Level-Edit, this program let's you
+edit everything about an level, even CHR.
+
+I love the Megaman games, they are one of my most favourite NES Games.
+And since there were some MegaMan games yet to be made a level editor for,
+i wanted to create it, becouse i had the formats.
+And besides, i can't wait to use MegaFLE on my own hacks :)
+
++-------+
+| Other |
++-------+
+
+This is a Beta version. There are more things that
+i'd like to add in so its to be updated.
+
+Please, if you find any bug, i will be thanksfull of a report.
+There are things that are low-prioritied, like MM4 support,
+so if you really want a feature to come fast, just contact.
+Also, feedback boost my interest on creating this thing.
+All comments and bug reports are welcome at: Ingegjoestoel@hotmail.com
+
+A guide is now being written in html, in a zip included.
+Note that it's not complete yet.
+
+Dragon Eye Studios: http://www.cg-games.net/dragoneye/
+Check out my page o' nes-stuff and programs: http://matrixz.8m.net/
+
+ NOTE: Yaaawn.. Use this program at your own risk.
+ I take no responsibility for what negative it may cause you or your ROM,
+ computer, personality, or your chocolate biscuit.
+
++-----------+
+| Thanks to |
++-----------+
+
+ Bitmaster (Ben Goodrich) - For making the great Mega-Edit's for MM2,3 and 4, and
+                            documenting the MegaMan 3 level format
+ Fx3 - For making the cool MM1+2, 6 editors Visine and Sixtans
+ Snowbro (Kent Hansen) - For Megaedit for MM1, 2, and makin Tlayer
+                         and TlayerPro, wich helped me out with the CHR offsets
+ Vagla - Testing, some ideas etc.
+ Dark_X - Finding and sharing various data, testing.
+ Jigglysaint - Testing, some Information on Multipaths
+ Anders Andersson - For The Mouse Code
+ Ryan Williams - Notes on how to include assembly in QB 4.5.
+ Anyone else who gave feedback, ideas, or tested MegaFLE - Thanks
+ Capcom - For making some of the NES's greatest works
+ and YOU, for checking out my work
+
+ Whetever he/she/it/they/that been much of help or a bit less,
+ i think they all deserve attention for what they've contributed with.
+
+No thanks to:
+ School - Great waste of time!
+
++-------+
+| Files |
++-------+
+
+megafle.exe - This is the guy you run.
+tileedit.exe - Tile/TSA Editor
+scrnedit.exe - TSA/Structure/Screen/Scroll Editor
+enemedit.exe - Enemy Editor
+sets.dat - CHR/PAL-sets included rom raw byte computer file
+font.dat - Sprite type font; The classical Capcom font ;)
+lmits.dat - CHR/PAL-sets limits
+offsets.dat - Level data offsets
+strings.dat - Various text strings
+sprtypes.dat - Sprite database
+col.cfg - Sprite Editor BG Shade Color
+megafle.sta - Save file for current file, gamemode, level
+matrx2f.pal - My new nes palette that megafle uses
+megafle.txt - A text file you might wanna read
+tileedit.txt - Outdated guide
+scrnedit.txt - Outdated guide
+mmlevfrm.txt - The Mega Man 3-5 level formats
+
++-----------------------------------+
+| The Megaman 3 - 5 Level Structure |
++-----------------------------------+
+
+This section is outdated, but should still be just as useful.
+I will move it to the guide later.
+
+Palettes
+--------
+Each level has it's own bg Palette and Palette Effects.
+Palette Functions makes one of the four palettes to rotare
+to make a effect. Palettes can be switched during the level.
+
+Pattern Table (aka CHR aka Vrom)
+--------------------------------
+Each level has it's CHR. But this is not a part
+of the level itself. It's either in CHR-ROM or somewhere else in the
+PRG-ROM. CHR can be switched during the level.
+
+Screen
+------
+Okay. Let's start. The level is built of screens. On each Screen Position, 1 of 32
+Screen Presets can be used.  In the level data, there is data on wich screen to use for
+each screen position. This utilizes that a Screen Preset can be re-used, in a totally
+different part of the level and with totally different sprites. This is called Screen Order.
+
+Well, the data in a Screen Preset has wich Structures to use in the Screen preset.
+These are 4x4 tiles in size, wich means there are 8x8 of them in a Screen Preset.
+The structure can be 1 of 256. (Wich again means a Screen Preset is 64 bytes in size)
+Blah blah blah. I think you got it.
+
+Again, each structure has it's data. This is wich 4 TSA Blocks to use in the Structure.
+TSA Blocks are 2x2 tiles in size. The blocks can be 1 of 256.
+
+Then finnaly, we have come to the inner of this system. There are two different kinds of
+TSA Block data. The first, are wich type this block are (BG, Wall, FG, Spikes, .. and many more), and which palette
+the block uses (0-3). Those two data's are 4-bit, so they are
+kept in one byte. (Each block has 1 byte with both Palette and Type data).
+The other kind of TSA Block data is wich 4 tiles from the Pattern Table the block is made up of.
+
+Enemies (aka Sprites)
+---------------------
+Each sprite has 4 bytes of data. The first is wich Screen Position to make the
+sprite appear in, the two next is the X and Y positions of the sprite, and the last is
+the Sprite Type. Note that sprites must come in correct screen order (Sprite 1 can't be
+on Screen Position 0 if Sprite 0 is on Screen Position 1, etc.) The different games has
+different methods to decide wich CHR banks and Palettes to use when different sprites is
+showed. Megaman 3 for example, has this data in the Map Data. Megaman 4 has only wich
+Bg Palette to use in the map data, Megaman 5 has wich sprite palette to use in the Map
+Data, but the CHR's is loaded automatically depending on wich
+Sprite Types that is showed up. Cool!
+
+Scroll Data
+-----------
+This decides how the direction scrool goes. Each position has one byte, where the 4 first
+bits tells how many screens the direction type is used on, and the next 4 bits tells
+the direction type. There are also other bytes for each position; wich bg CHR, bg Palette,
+sprite CHR banks and sprite Palette to use, but how many of these
+that is used, is game-dependent.
+
++---------------+
+| Using MegaFLE |
++---------------+
+
+Currently Editing Feature List
+------------------------------
+ * TAD Bank Set
+ * BG CHR Sets (MM3/5)
+ * Music Track Set
+ * CHR
+ * TSA Block Pals/Types
+ * Structures
+ * Screens
+ * Screen Usage
+ * Palettes
+ * Palette Effects
+ * Scroll Map Data
+ * Multi-Scroll Data
+ * Mid-Point Data (MM5)
+ * Enemy Editing
+ * Sprite CHR Set (MM3)
+ * Sprite Palette (MM3/5)
+
+Keys
+----
+
+All Modes
+---------
+F1 - Re-Load Level
+F2 - Swap To MegaMan 3 Game Mode
+F3 - Swap To MegaMan 4 Game Mode
+F4 - Swap To MegaMan 5 Game Mode
+F5 - Save
+F6 - Decerase Level
+F7 - Incerase Level
+F8 - Swap between Game and Non-Game Modes
+F9 - Quick-testing Feature
+F10 - Goto Configurations 
+F11 - Goto Previous Editing Mode
+F12 - Goto Next Editing Mode
+ESC - Exit the editor
+
+Screen Edit
+-----------
+Arrow Keys - Select Screen Structure
+Ins/Del - Dec/Inc Structure
+
+Tile/Block Edit
+---------------
+Page Up/Down - Dec/Inc Block Page
+Arrow Keys - Select Block
+Ins - Rotare Block Type
+Del - Rotare Block Palette
+W/S/A/D - Select Tile
+
+Enemy Edit
+----------
+Q/W: Dec/Inc Current Enemy
+A/S: Dec/Inc Enemy Screen Position
+Z/X: Dec/Inc Enemy Type
+E/R: Dec/Inc X Position
+D/F: Dec/Inc Y Position
+
++-------------------------------------------+
+|Tile and Palette loading method's and pages|
++-------------------------------------------+
+
+This is also to be re-written in the guide.
+
+As you know, the level uses CHR and Palettes. Different games
+has different methods loading CHR and Palettes. It also switches them in the middle of
+the level. MegaFLE should be able to locate the correct CHR and Palettes using the
+level's settings, if not, use the alternative CHR or Palette setting by checking the boxes
+so an "x" will appear, then set the "CHR page" or "PAL page" number until the graphics
+seems nice. Alternative setting is usually only required at multi-levels,
+Title Screens, Boss Screens etc.
+
+MegaMan 3
+---------
+MM3 has 2 pointers for each level that points to which
+BackGround CHR to load for the whole level. This is the Point0 and Point1
+numbers. In MM3, BG-CHR is by default not switched, but some few sprites does effect
+on it. The BG Palette is switched by scroll data (BG Pal). The Sprite CHR and Palette is also swithced by scroll data
+(SPR Chr/Pal), wich does effect on both those. In Sprite Editing mode, you will be able to edit the SPR-CHR sets,
+which is wich two CHR banks to use for each "SPR Chr/Pal" value.
+
+MegaMan 4
+---------
+Megaman 4 has a very horrible way to load these things on, and i haven't figured it all
+yet. But each level has a start data, wich includes wich BG-CHR, SPR-CHR and SPR-PAL to load at the beginning of the level.
+MegaMan 4 has some scroll data i call "effect data". This may do alot of strange things that effect
+CHR and Palette and other things. The BG Palette is choosen by the scroll data "BG Pal".
+There are also some sprites around that also changes the BG palette. For now, you can edit
+these two scroll datas, and you can select the CHR set with CHR page.
+Support for editing the start level setup and "effects" should be added
+later on.
+
+MegaMan 5
+---------
+Here, sprites reign. Well, just like in MM3, it is two pointers telling which CHR to START
+loading for the level. (Point0 and Point1). But there are those mighty sprites that does
+those CHR animations and CHR switches in different sets of the levels. Sprites is also the elements that switches
+parts of the BG Palette, but i think some other data i haven't found yet switches the whole BG palette to a different
+PAL set. The Sprite CHR is loaded automatically depending on wich sprite types that is used where you see them.
+The Sprite palettes is selected by the scroll data "SPR Pal".
+
++----------------------+
+| What Will Be Aviable |
++----------------------+
+
+ * Full Support For All Levels In Every Game
+ * Level Insert/Extract to various Formats
+ * Sprite Editing? (Enemy Stats, Graphics etc.)
+ * Data Edit Mode (Sounds, Speeds etc.)
+ * Sprite CHR Editing?
+
+This is the plan for the features in the final version.
+MegaFLE was first meant as a level-only editor, but i've chosen
+to update it with editing of other data. There'll probably be
+some betas before version 1.0. The next version comes when i feel
+it's time for a new version, so that is totally unknown for now.
+
+The newest relase will be aviable at Dragon Eye Studios: http://www.cg-games.net/dragoneye/
+or/and my program section: http://matrixz.8m.net/programs/programs.htm

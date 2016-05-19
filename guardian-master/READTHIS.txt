@@ -1,0 +1,22 @@
+Hey, welcome to TGLedit-Labyrinth Master
+
+What this program does is ramdomly re-creates the labyrinth of Naju. 
+Never play the same TGL game twice!
+
+What do you need?
+
+Simply put your Guardian Legend game in the same directory of the Labyrinth
+Master Program. Also make sure the "tgltext" file is located in the same 
+directory as well. When entering the name of your Guardian Legend ROM,
+DO NOT add the ".nes" extension. 
+
+
+any questions? comments? or dollars?
+
+contact me!
+
+ M.L.Perry (mlperry@fccj.org)
+
+take care 
+
+I love God

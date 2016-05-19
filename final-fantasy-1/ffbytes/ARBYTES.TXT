@@ -1,0 +1,86 @@
+°º©øØÔÕõø,¸ Final Fantasy °º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸1.1
+ ¸§§§§§§  /§§§§§§¿  /§§§  /§§§  ¸¿§§§§¿  /§§§  /§§§ /§§§§§§¿ °º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø1.1
+/§§§´`§§§ /§§§´ `§¿ /§§§¿/¿§§§ /§§§´/`§§ /§§§  /§§§ /§§§´ `§¿  °º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕ1.1
+/§§§ /§§§ /§§§¸ ¸§¤ /§§§§¿§§§§ /§§§  /§§ /§§§  /§§§ /§§§¸ ¸§¤ °º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõ1.1
+/§§§¤¤§§§ /§§§§§§¤  /§§§'§'§§§ /§§§  /§§ /§§§  /§§§ /§§§§§§¤°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,1.1
+/§§§ /§§§ /§§§//§¿  /§§§ '/§§§ /§§§¸ ¸§§ /§§§¸ ¸§§§ /§§§//§¿   °º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕ1.1
+/§§§ /§§§ /§§§ /§§¿ /§§§  /§§§ /`¤§§§§§' /`¤§§§§§¤´ /§§§ /§§¿  õø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©1.1
+//// //// //// //// ////  ////  ///////   ///////   //// ////°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø1.1
+°º©øØÔÕõø,¸°º©øØÔÕõø,¸ Document °º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØ1.1
+ °º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©øØÔÕõø,¸°º©1.1
+
+Address for Armour data; 30150-301EF
+
+Armour data consists of only Four bytes
+
+I- Evasion Byte;
+ the Percentage of Evasion that is added when equiped, 00-64 = 00-100%
+
+II- Absorbtion byte;
+ Simply enter the ammount of damage you wish to absorb (00 will absorb none, and 255 will 
+ absorb 255dmg points)
+
+III- Special Effect byte;
+ This byte denotes special protection.
+  02 = Protection from GAZE, DAZZLE, STARE, and SQUINT
+  04 = Havent tested this yet, but im hoping it would be Protection from Poison
+  10 = Protection from Fire damage
+  18 = Not sure yet (Protection from white magic?)
+  20 = Protection from Ice damage
+  24 = Not sure yet (Protection from black magic?)
+  40 = Protection from Lightning damage
+  70 = Protection from Dragon Damage
+  FF = Protection from Many magics (Including all Instant Death magics)
+
+
+IV- Spell Cast byte;
+ this byte contains the info for which the Armour knows what magic to use when it is 
+ used as an item. Simply enter the corrosponding Byte for the magic you want (see Mgbytes.txt).
+
+
+Evasion
+|  Absortion
+|  |  Special Effect
+|  |  |  Spell Cast                            Sloppy Explanation of Data
+|  |  |  |   Name               ____________________________|__________________
+|__|__|__|____|________________|_______________________________________________|_
+02-01-00-00  Cloth		2% evasion, 1 absorb, no effect, no spell
+08-04-00-00  Wooden Armour	8% evasion, 4 absorb, no effect, no spell
+0F-0F-00-00  Chain Armour	15% evasion, 15 absorb, no effect, no spell
+17-18-00-00  Iron Armour	23% evasion, 24 absorb, no effect, no spell
+21-22-00-00  Steel Armour	33% evasion, 33 absorb, no effect, no spell
+08-12-00-00  Silver Armour	8% evasion, 18 absorb, no effect, no spell
+0A-22-20-00  Flame Armour	10% evasion, 33 absorb, Protection from Fire, no spell
+0A-22-10-00  Ice Armour		10% evasion, 33 absorb, Protection from Ice, no spell
+0A-2A-40-00  Opal Armour	10% evasion, 42 absorb, Protection from Lit, no spell
+0A-2A-70-00  Dragon Armour	10% evasion, 42 absorb, Protection Against Dragons,  no spell
+01-04-00-00  Copper Bracelet	1% evasion, 4 absorb, no effect, no spell
+01-0F-00-00  Silver Bracelet	1% evasion, 15 absorb, no effect, no spell
+01-18-00-00  Gold Bracelet	1% evasion, 24 absorb, no effect, no spell
+01-22-00-00  Opal Bracelet	1% evasion, 33 absorb, no effect, no spell
+02-18-18-2C  White Shirt	2% evasion, 24 absorb, unknown , INV2
+02-18-24-20  Black Shirt	2% evasion, 24 absorb, unknown , FIR2
+00-02-00-00  Wooden Shield	0% evasion, 2 absorb, no effect, no spell
+00-04-00-00  Iron Shield	0% evasion, 4 absorb, no effect, no spell
+00-08-00-00  Silver Shield	0% evasion, 8 absorb, no effect, no spell
+00-0C-20-00  Flame Shield	0% evasion, 12 absorb, Protection from Fire, no spell
+00-0C-10-00  Ice Shield		0% evasion, 12 absorb, Protection from Ice, no spell
+00-10-40-00  Opal Shield	0% evasion, 16 absorb, Protection from Lightning, no spell
+00-10-02-00  Aegis Shield	0% evasion, 16 absorb, Protection from Stunning magics, no spell
+00-02-00-00  Buckler 		0% evasion, 2 absorb, no effect, no spell
+02-08-00-00  ProCape		2% evasion, 8 absorb, no effect, no spell
+01-01-00-00  Cap		1% evasion, 1 absorb, no effect, no spell
+03-03-00-00  Wooden Helmet	3% evasion, 3 absorb, no effect, no spell
+05-05-00-00  Iron Helmet	5% evasion, 5 absorb, no effect, no spell
+03-06-00-00  Silver Helmet	3% evasion, 6 absorb, no effect, no spell
+03-08-00-00  Opal Helmet	3% evasion, 8 absorb, no effect, no spell
+03-06-00-14  Heal Helmet	3% evasion, 6 absorb, no effect, HEAL
+01-01-FF-00  Ribbon		1% evasion, 1 absorb, Protection from Instant Death, no spell
+01-01-00-00  Gloves		1% evasion, 1 absorb, no effect, no spell
+03-02-00-00  Copper Gauntlet	3% evasion, 2 absorb, no effect, no spell
+05-04-00-00  Iron Gauntlet	5% evasion, 4 absorb, no effect, no spell
+03-06-00-00  Silver Gauntlet	3% evasion, 6 absorb, no effect, no spell
+03-06-00-17  Zeus Gauntlet	3% evasion, 6 absorb, no effect, LIT2
+03-06-00-37  Power Gauntlet	3% evasion, 6 absorb, no effect, SABR
+03-08-00-00  Opal gauntlet 	3% evasion, 8 absorb, no effect, no spell
+01-08-08-00  ProRing		1% evasion, 8 absorb, Anti RUB, no spell

@@ -1,0 +1,104 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Getting Started</title>
+</head>
+
+<body>
+
+<p><b><font color="#008000" face="Trebuchet MS" size="5">G</font><font color="#008000" face="Trebuchet MS" size="4">etting
+</font><font color="#008000" face="Trebuchet MS" size="5">S</font><font color="#008000" face="Trebuchet MS" size="4">tarted</font></b></p>
+
+<p><font face="Trebuchet MS">The first thing you will need in order to use
+Editroid is an NES ROM image for the game Metroid. It is your responsibility to
+legally obtain a ROM image. You will also need to go to the file's properties and make sure the file
+is not set as read-only (most ROM files are distributed as read-only).</font></p>
+<p><font face="Trebuchet MS">Once you open Editroid, the first thing to do is open a ROM for editing (click the <img src="Open.gif" width="16" height="16">Open
+button on the toolbar), but remember: it is always a good idea to
+make a backup of the original. Once you've opened the ROM you can begin editing
+the game. The main window is depicted
+below.</font></p>
+
+<p><font face="Trebuchet MS">Each button on the toolbar has a tool tip that identifies its function. If
+that function has a keyboard shortcut it is shown in the tool tip in
+parentheses.</font></p>
+
+<p><b><font color="#008000" face="Trebuchet MS">Screen Editor</font></b><font face="Trebuchet MS"><img src="MainWindow.png" align="right" width="540" height="396"><br>
+The screen editor is the most important feature in the program. Screens are
+edited by selecting objects and modifying them. When a background
+object is selected it will appear in bright colors.
+When an enemy is selected a rectangle will appear around it.</font></p>
+
+<p><font face="Trebuchet MS">Objects can be moved by dragging them around or by using the arrow keys. They
+can be modified using the toolbar buttons or the keyboard: use the plus and
+minus keys to change the type of an object, use the home and end keys to
+re-order items, and the &quot;p&quot; key to change the color of an object. With
+enemies the difficulty of the enemy changes with its colors.</font></p>
+
+<p><font face="Trebuchet MS">The &quot;object info&quot; provides information about what you are currently
+editing: The object type icon
+(<img src="object.gif">) indicates the type of the currently selected object or enemy. The types
+available depend on the level you are editing. The palette icon (<img src="Pal.gif" width="16" height="16">)
+indicates the palette the object is being displayed with. The &quot;slot&quot;
+icon (<img src="Namespace.gif" width="16" height="16">) indicates which &quot;sprite
+slot&quot; an enemy belongs to; when a screen is loaded, if a sprite slot is
+already taken, an enemy belonging to that slot will not be loaded. An enemies
+sprite slot can be changed by clicking on the sprite slot icon.</font> </p>
+
+<p><font face="Trebuchet MS">To the right of the object info is the index of the
+screen being displayed (in the case of the illustration, layout #9 is showing). It is important to understand that you are
+limited to a certain number of pre-defined screens which must be re-used to fill
+out the map. Use the <img src="PrevScreen.gif">Previous Screen and <img src="NextScreen.gif">Next
+Screen
+buttons (or the page up and page down keys) to cycle through the
+available screens for the level you are currently editing.&nbsp;</font> </p>
+
+<p><font face="Trebuchet MS">To the right of the screen index is the free memory
+(in bytes). This is level-specific, i.e. memory can not be freed in one level to
+use in another. The original Metroid ROM does not have any free memory. Memory
+can be freed by deleting objects and enemies from screens.</font> </p>
+
+<p><font face="Trebuchet MS"><b><font color="#008000">Editor Ma</font></b><font color="#008000"><b>p<br>
+</b></font>The editor map is used to navigate the map while
+you edit. Click on the editor map to center the view in that spot. You
+can also navigate the map by holding shift and using the arrow keys.</font></p>
+<p><font face="Trebuchet MS">As you edit the game you might want to change the
+layout of the map. Understand that the map you see in Editroid is for <i> editing purposes
+only</i>.
+Changing this map does not generally change levels in the game. The game
+determines which level each screen represents as you walk from room to room.
+Data for different levels is only loaded when the player uses an elevator. The Editroid map simply aids you in editing and
+tells the editor which
+level's data to load for each screen. The map is referred to as the &quot;editor
+map&quot; because it is
+used by the editor only.</font></p>
+<p><font face="Trebuchet MS">If you want to change the layout of the map you
+generally need change the editor map. Right-clicking a screen on the map will
+delete it. During game play the screen will not scroll into areas where there is
+no screen.
+Holding shift and using the left mouse button, you can paint on the map with the
+color of the square you initially clicked on. Using shift and right-clicking
+will cycle an individual map square through all the levels. You can also use the
+number pad to modify the map.</font></p>
+<p><b><font face="Trebuchet MS" color="#FF0000">Metedit</font></b><font face="Trebuchet MS"><font color="#FF0000"><br>
+Metedit</font> is a Metroid
+level editor that may have some features that Editroid does not. If you wish to use
+the two editors in conjunction there are some considerations you need to keep in
+mind. Firstly, <font color="#008000">Editroid</font> saves some extra data in
+the ROM file. This extra data does not affect any tested emulators, however <font color="#FF0000">Metedit</font>
+is more finicky and requires that a ROM be exactly the correct size. In order to
+save a ROM file without this extra data, go to the options menu and, under
+&quot;Maps,&quot; select &quot;Save To External File.&quot; Also, Editroid's map
+files and <font color="#FF0000">Metedit</font>'s map files are not compatible.</font></p>
+<p><font face="Trebuchet MS">It is also suggested that a ROM only be open in one
+editor at once. If a ROM is opened in two editors simultaneously then every time
+you save with one editor, any changes made with the other will be overwritten
+and undone.</font></p>
+
+</body>
+
+</html>

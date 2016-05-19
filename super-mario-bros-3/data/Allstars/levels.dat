@@ -1,0 +1,281 @@
+0,1,$156468,0,$10,World 1 Map
+0,2,$1564F9,0,$10,World 2 Map
+0,3,$15661A,0,$10,World 3 Map
+0,4,$1567CB,0,$10,World 4 Map
+0,5,$1568EC,0,$10,World 5 Map
+0,6,$156A0D,0,$10,World 6 Map
+0,7,$156BBE,0,$10,World 7 Map
+0,8,$156CDF,0,$10,World 8 Map
+0,9,$156F20,0,$10,Warp Zone
+1,1,$12212E,$13ECD7,$1,World 1-1
+1,2,$123C90,$13EE5A,$3,World 1-2
+1,3,$121498,$13EA9E,$1,World 1-3
+1,4,$127886,$13F3E3,$4,World 1-4
+1,5,$124BD3,$13F0BD,$E,World 1-5
+1,6,$127777,$13F3BD,$4,World 1-6
+1,7,$130FD4,$13FAD8,$2,World 1-Dungeon
+1,8,$12769E,$13F395,$C,World 1-Secret
+1,9,$133C4F,$13FE97,$A,World 1-Ship
+1,10,$12222E,$13E7B6,$1,World 1-1 Bonus Area
+1,11,$121FBA,$13E7B6,$1,World 1-2 Bonus Area
+1,12,$12C0DB,$13F782,$D,World 1-3 Bonus Area
+1,13,$122400,$13ED34,$1,World 1-4 Ending
+1,14,$12C3F8,$13F7DC,$D,World 1-5 Bonus
+1,15,$122329,$13ED10,$1,World 1-5 Ending
+1,16,$131099,$13FB01,$2,World 1-Dungeon Spike Room
+1,17,$127752,$13F3B8,$C,World 1-Secret Ending
+1,18,$1348D2,$14017E,$A,World 1-Ship Boss Room
+1,19,$124136,$13EEDB,$3,World 1-Hammer Bros 1
+1,20,$124154,$13EEDB,$3,World 1-Hammer Bros 2
+1,21,$130EA3,$13FA5F,$2,World 1-End Castle
+1,22,$133A9C,$13FE4C,$A,World 1-Anchors Away
+1,23,$1349B3,$14019C,$A,World 1-Coin Ship
+1,24,$134A5D,$1401A7,$A,World 1-Coin Ship Boss Room
+2,1,$12E775,$13F939,$9,World 2-1
+2,2,$12462D,$13F045,$3,World 2-2
+2,3,$12EB20,$13F9A0,$9,World 2-3
+2,4,$12EE5C,$13FA0F,$9,World 2-4
+2,5,$12E970,$13F971,$9,World 2-5
+2,6,$12EC96,$13F9D2,$9,World 2-Dungeon
+2,7,$12436C,$13EFF3,$3,World 2-Quicksand
+2,8,$1231CA,$13ED6C,$3,World 2-Pyramid
+2,9,$133D47,$13FEC6,$A,World 2-Ship
+2,10,$12E8CA,$13E7B6,$9,World 2-1 Bonus Area
+2,11,$12F0AA,$13FA55,$9,World 2-2 Ending
+2,12,$12F0BE,$13FA5A,$9,World 2-3 Ending
+2,13,$12EA8A,$13E7B6,$9,World 2-5 Bonus Area
+2,14,$12EDDC,$13FA04,$9,World 2-Dungeon Spike Room
+2,15,$12E25A,$13F8A7,$9,World 2-Pyramid Outside Area
+2,16,$1348EF,$140183,$A,World 2-Ship Boss Room
+2,17,$1239A7,$13E7B2,$3,World 2-Hidden Hammer Bros
+2,18,$12E51C,$13F8FD,$9,World 2-Hammer Bros 1
+2,19,$12E51C,$13F8F2,$9,World 2-Hammer Bros 2
+2,20,$124F00,$13E8F3,$E,World 2-Pipe 1 End 1
+2,21,$124F5B,$13E8F3,$E,World 2-Pipe 1 End 2
+2,22,$130E3F,$13FA5F,$2,World 2-End Castle
+2,23,$133A9C,$13FE4C,$A,World 2-Anchors Away
+3,1,$129989,$13F5D5,$6,World 3-1
+3,2,$126CA8,$13F1D3,$4,World 3-2
+3,3,$122422,$13ED3E,$1,World 3-3
+3,4,$125BAE,$13F16E,$E,World 3-4
+3,5,$1296C8,$13F59B,$6,World 3-5
+3,6,$126DF8,$13F213,$4,World 3-6
+3,7,$121EB8,$13EC1E,$1,World 3-7
+3,8,$124DCA,$13F104,$E,World 3-8
+3,9,$121762,$13EB3F,$1,World 3-9
+3,10,$1311F3,$13FB43,$2,World 3-Dungeon #1
+3,11,$1310E9,$13FB12,$2,World 3-Dungeon #2
+3,12,$133EA9,$13FEFE,$A,World 3-Ship
+3,13,$121F9F,$13EC5F,$1,World 3-1 Ending
+3,14,$126D85,$13F208,$4,World 3-2 Ending
+3,15,$122527,$13ED67,$1,World 3-3 Ending
+3,16,$1254A6,$13F12D,$E,World 3-5 Bonus Area **** UHB POINTER 10F15C
+3,17,$12157B,$13EACD,$1,World 3-5 Ending
+3,18,$126EC1,$13F236,$4,World 3-6 Ending
+3,19,$12B99D,$13F639,$D,World 3-7 Bonus Area
+3,20,$1222F6,$13ED0B,$1,World 3-8 Ending
+3,21,$1B2A4,$C994,$E,World 3-9 Bonus Area ****UNKNOWN****
+3,22,$121934,$13EB83,$1,World 3-9 Ending
+3,23,$1312B5,$13FB75,$2,World 3-Dungeon #1 Water Room
+3,24,$13117C,$13FB2F,$2,World 3-Dungeon #2 Water Room
+3,25,$134915,$140188,$A,World 3-Ship Boss Room
+3,26,$1219EE,$13EDF0,$1,World 3-Hammer Bros Land
+3,27,$122399,$13EDF0,$1,World 3-Hammer Bros Water
+3,28,$1223BA,$13EDF0,$1,World 3-Hammer Bros 3 Water +
+3,29,$122399,$13EDF0,$1,World 3-Hammer Bros 4 Land +
+3,30,$124136,$13EEDB,$3,World 3-Hidden Hammer Bros
+3,32,$1AF9A,$C159,$E,World 3-Pipe 1 End 1 ****UNKNOWN**** 125090
+3,31,$1AFF8,$C159,$E,World 3-Pipe 1 End 2 ****UNKNOWN****
+3,33,$1AE50,$C15E,$E,World 3-Pipe 2 End 1 ****UNKNOWN****
+3,34,$1AEAD,$C15E,$E,World 3-Pipe 2 End 2 ****UNKNOWN****
+3,35,$1AF0A,$C163,$E,World 3-Pipe 3 End 1 ****UNKNOWN****
+3,36,$1AF52,$C163,$E,World 3-Pipe 3 End 2 ****UNKNOWN****
+3,36,$2A810,$D2C0,$2,World 3-End Castle ****UNKNOWN****
+3,36,$2EC29,$D6AD,$A,World 3-Anchors Away ****UNKNOWN****
+4,1,$12B9C7,$13F647,$B,World 4-1
+4,2,$12BD3A,$13F6C4,$B,World 4-2
+4,3,$124438,$13F013,$3,World 4-3
+4,4,$12BEFA,$13F769,$B,World 4-4
+4,5,$12C2B5,$13F79C,$B,World 4-5
+4,6,$1211E9,$13EA07,$1,World 4-6
+4,7,$131CD2,$13FCD8,$2,World 4-Dungeon #1
+4,8,$131BF8,$13FCB8,$2,World 4-Dungeon #2
+4,9,$133FDE,$13FF3C,$A,World 4-Ship
+4,10,$12C4A0,$13F7E1,$B,World 4-1 Bonus Area
+4,11,$12237B,$13ED10,$1,World 4-1 Ending
+4,12,$12237B,$13ED10,$1,World 4-2 Ending
+4,13,$12BCE7,$13F6BC,$B,World 4-3 Beginning
+4,14,$12237B,$13ED10,$1,World 4-3 Ending
+4,15,$12202B,$13E7B6,$1,World 4-4 Bonus Area
+4,16,$12237B,$13ED10,$1,World 4-4 Ending
+4,17,$1215AF,$13EAD5,$1,World 4-5 Bonus Area
+4,18,$12237B,$13ED10,$1,World 4-5 Ending
+4,19,$120FE4,$13E98A,$1,World 4-6 Small Side
+4,20,$125330,$13F118,$E,World 4-Dungeon #1 Underground Room
+4,21,$1298F4,$13F5C7,$8,World 4-Dungeon #2 Pipe Room
+4,22,$125330,$13F118,$E,World 4-Dungeon #2 Bonus Area
+4,23,$133AF3,$13FE51,$A,World 4-Ship Boss Room
+4,24,$12CA23,$13F89A,$B,World 4-Hammer Bros 1
+4,25,$1ADB2,$C168,$E,World 4-Pipe 1 End 1 ***********UNKNOWN**************
+4,26,$1AE01,$C168,$E,World 4-Pipe 1 End 2 ***********UNKNOWN**************
+4,27,$1AF9A,$C16D,$E,World 4-Pipe 2 End 1 ***********UNKNOWN**************
+4,28,$1AFF8,$C16D,$E,World 4-Pipe 2 End 2 ***********UNKNOWN**************
+4,30,$2A820,$D2C0,$2,World 4-End Castle   *******UNKNOWN**************
+4,31,$1342D1,$D6AD,$A,World 4-Anchors Away
+5,1,$121A49,$13EB92,$1,World 5-1
+5,2,$124771,$13F06E,$E,World 5-2
+5,3,$1212FC,$13EA4E,$1,World 5-3
+5,4,$12C564,$13F7E9,$D,World 5-4
+5,5,$12735F,$13F2BA,$4,World 5-5
+5,6,$12BE18,$13F6F0,$D,World 5-6
+5,7,$12BC0E,$13F68D,$D,World 5-7
+5,8,$12B932,$13F620,$D,World 5-8
+5,9,$12BEDD,$13F72B,$D,World 5-9
+5,10,$131397,$13FB80,$2,World 5-Dungeon #1
+5,11,$131AB4,$13FC9C,$2,World 5-Tower (Part 1)
+5,12,$131B58,$13FCB0,$2,World 5-Tower (Part 2)
+5,13,$130F21,$13FA69,$2,World 5-Dungeon #2
+5,14,$133B2B,$13FE56,$A,World 5-Ship
+5,15,$121BF2,$13EBC4,$1,World 5-1 Bonus Area
+5,16,$129B04,$13F5FB,$8,World 5-2 Pipe Room
+5,17,$1B3F1,$C9A1,$E,World 5-2 Bonus Area ****UNKNOWN****
+5,18,$122329,$13ED10,$1,World 5-2 Ending
+5,19,$1212D9,$13E7B6,$1,World 5-3 Beginning
+5,20,$122329,$13ED10,$1,World 5-3 Ending
+5,21,$12B982,$13F631,$D,World 5-4 Ending
+5,22,$1B3F1,$C9A4,$E,World 5-5 Bonus Area ****UNKNOWN****
+5,23,$12B982,$13F631,$D,World 5-6 Ending
+5,24,$120C76,$13E916,$1,World 5-7 Bonus Area
+5,25,$12B982,$13F631,$D,World 5-8 Ending
+5,26,$12B982,$13F631,$D,World 5-9 Ending
+5,27,$131518,$13FBAC,$2,World 5-Dungeon #1 Bonus Area
+5,28,$131AB4,$13FC9C,$D,World 5-Tower Outside Area (Part 1)
+5,29,$131B58,$13FCB0,$D,World 5-Tower Outside Area (Part 2)
+5,30,$12C183,$13F787,$D,World 5-Tower (Going Down)
+5,31,$130ECB,$13FA64,$2,World 5-Dungeon #2 Beginning/End
+5,32,$13493B,$14018D,$A,World 5-Ship Boss Room
+5,33,$20CCE,$C651,$3,World 5-Hammer Bros 1 ****UNKNOWN****
+5,34,$2143B,$C651,$3,World 5-Hammer Bros 2 ****UNKNOWN****
+5,35,$27FCC,$C651,$D,World 5-Hammer Bros 3 ****UNKNOWN****
+5,36,$279A4,$C651,$D,World 5-Hammer Bros 4 ****UNKNOWN****
+5,37,$2A830,$D2C0,$2,World 5-End Castle ****UNKNOWN****
+5,38,$2F457,$D6AD,$A,World 5-Anchors Away ****UNKNOWN****
+6,1,$127634,$13F372,$C,World 6-1
+6,2,$12754C,$13F302,$C,World 6-2
+6,3,$126EF3,$13F23E,$C,World 6-3
+6,4,$127951,$13F41B,$C,World 6-4
+6,5,$123466,$13ED9B,$3,World 6-5
+6,6,$1239DE,$13EDF8,$3,World 6-6
+6,7,$127D88,$13F4C7,$C,World 6-7
+6,8,$125D5E,$13F195,$E,World 6-8
+6,9,$12369A,$13EDBE,$3,World 6-9
+6,10,$127C60,$13F498,$C,World 6-10
+6,11,$2B16A,$13FC60,$2,World 6-Dungeon #1
+6,12,$126FE5,$13F25B,$C,World 6-Dungeon #2
+6,13,$1316B1,$13FC20,$2,World 6-Dungeon #3
+6,14,$13145B,$13FF86,$A,World 6-Ship
+6,15,$128112,$13E7B6,$C,World 6-1 Bonus Area
+6,16,$12769E,$13F395,$C,World 6-2 Ending
+6,17,$1B489,$C9AC,$E,World 6-3 Bonus Area ****UNKNOWN****
+6,18,$12C3CB,$13F7D7,$D,World 6-4 Bonus Area
+6,19,$12714B,$13F283,$C,World 6-5 Outside Area
+6,20,$127C09,$13F490,$C,World 6-6 Outside Area
+6,21,$127F25,$13F4D5,$C,World 6-7 Ending
+6,22,$127F61,$13F4DD,$C,World 6-9 Outside Area
+6,23,$1B489,$C9A9,$E,World 6-9 Bonus Area ****UNKNOWN****
+6,24,$1B489,$C9AF,$E,World 6-10 Bonus Area ****UNKNOWN****
+6,25,$131852,$13FC83,$2,World 6-Dungeon #1 Spike Room
+6,26,$1270F5,$13F27E,$C,World 6-Dungeon #2 Boss Room
+6,27,$131788,$13FC52,$2,World 6-Dungeon #3 Falling Room
+6,28,$13495B,$140192,$A,World 6-Ship Boss Room
+6,29,$23F29,$C651,$C,World 6-Hammer Bros 1 ****UNKNOWN****
+6,30,$23F97,$C651,$C,World 6-Hammer Bros 2 ****UNKNOWN****
+6,31,$1ADB2,$C14A,$E,World 6-Pipe 1 End 1 ****UNKNOWN****
+6,32,$1AE01,$C14A,$E,World 6-Pipe 1 End 2 ****UNKNOWN****
+6,33,$1B056,$C14F,$E,World 6-Pipe 2 End 1 ****UNKNOWN****
+6,34,$1B092,$C14F,$E,World 6-Pipe 2 End 2 ****UNKNOWN****
+6,35,$2A840,$D2C0,$2,World 6-End Castle ****UNKNOWN****
+6,36,$2F470,$D6AD,$A,World 6-Anchors Away ****UNKNOWN****
+7,1,$1291F0,$13F543,$8,World 7-1
+7,2,$12E327,$13F8B4,$9,World 7-2
+7,3,$123FD7,$13EEA3,$3,World 7-3
+7,4,$12942A,$13F572,$6,World 7-4
+7,5,$120D39,$13E921,$1,World 7-5
+7,6,$129C87,$13F606,$8,World 7-6
+7,7,$127FA6,$13F4E5,$4,World 7-7
+7,8,$121610,$13EADD,$1,World 7-8
+7,9,$12E569,$13F90A,$9,World 7-9
+7,10,$12C6CC,$13F82C,$5,World 7-Piranha Plat #1
+7,11,$1318DF,$13FC94,$2,World 7-Dungeon #1
+7,12,$13157A,$13FBCB,$2,World 7-Dungeon #2
+7,13,$12C5BF,$13F818,$5,World 7-Piranha Plant #2
+7,14,$134345,$13FFB2,$A,World 7-Ship
+7,15,$121175,$13E9FD,$1,World 7-1 Outside Area
+7,16,$121F9F,$13EC5F,$1,World 7-2 Ending
+7,17,$121997,$13EB8D,$1,World 7-4 Outside Area
+7,18,$1222BA,$13ED06,$1,World 7-5 Outside Area
+7,19,$121952,$13EB88,$1,World 7-6 Outside Area
+7,21,$1211B4,$13EA02,$1,World 7-7 Beginning/End
+7,21,$12CA3A,$13F8A2,$D,World 7-8 Bonus Area #1
+7,22,$1B5FE,$C9B4,$E,World 7-8 Bonus Area #2 ****UNKNOWN****
+7,23,$12E313,$13F8AF,$9,World 7-9 Ending
+7,24,$12C994,$13F892,$5,World 7-Piranha Plant #1 Ending
+7,25,$131A1D,$13E7B6,$2,World 7-Dungeon #1 Lonely Room
+7,26,$1B5FE,$C9B7,$E,World 7-Dungeon #1 Bonus Area ****UNKNOWN****
+7,27,$131656,$13FC0C,$2,World 7-Dungeon #2 Boss Room
+7,28,$12C905,$13F88A,$5,World 7-Piranha Plant #2 Ending
+7,29,$134984,$140188,$A,World 7-Ship Boss Room
+7,30,$121A28,$13EDF0,$1,World 7-Hammer Bros 1
+7,31,$1ADB2,$C127,$E,World 7-Pipe 1 End 1 ****UNKNOWN****
+7,32,$1AE01,$C127,$E,World 7-Pipe 1 End 2 ****UNKNOWN****
+7,33,$1B056,$C136,$E,World 7-Pipe 2 End 1 ****UNKNOWN****
+7,34,$1B092,$C136,$E,World 7-Pipe 2 End 2 ****UNKNOWN****
+7,35,$1AF0A,$C12C,$E,World 7-Pipe 3 End 1 ****UNKNOWN****
+7,36,$1AF52,$C12C,$E,World 7-Pipe 3 End 2 ****UNKNOWN****
+7,37,$1AE50,$C131,$E,World 7-Pipe 4 End 1 ****UNKNOWN****
+7,38,$1AEAD,$C131,$E,World 7-Pipe 4 End 2 ****UNKNOWN****
+7,39,$1AE50,$C122,$E,World 7-Pipe 5 End 1 ****UNKNOWN****
+7,40,$1AEAD,$C122,$E,World 7-Pipe 5 End 2 ****UNKNOWN****
+7,41,$1AE50,$C144,$E,World 7-Pipe 6 End 1 ****UNKNOWN****
+7,42,$1AEAD,$C144,$E,World 7-Pipe 6 End 2 ****UNKNOWN****
+7,43,$1AF9A,$C13B,$E,World 7-Pipe 7 End 1 ****UNKNOWN****
+7,44,$1AFF8,$C13B,$E,World 7-Pipe 7 End 2 ****UNKNOWN****
+7,45,$1ADB2,$C140,$E,World 7-Pipe 8 End 1 ****UNKNOWN****
+7,46,$1AE01,$C140,$E,World 7-Pipe 8 End 2 ****UNKNOWN****
+7,47,$2A860,$D2C0,$2,World 7-End Castle ****UNKNOWN****
+7,48,$2F489,$D6AD,$A,World 7-Anchors Away ****UNKNOWN****
+8,1,$121DA3,$13EBD4,$1,World 8-1
+8,2,$1249DD,$13F0AF,$E,World 8-2
+8,3,$13479F,$140107,$A,World 8-Tank #1
+8,4,$134575,$140064,$A,World 8-Battleship
+8,5,$12C7F1,$13F860,$B,World 8-Hand Trap #1
+8,6,$12C994,$13F892,$B,World 8-Hand Trap #2
+8,7,$12C844,$13F871,$B,World 8-Hand Trap #3
+8,8,$1344D7,$140002,$A,World 8-Crappy Ship
+8,9,$131EA8,$13FD01,$2,World 8-Dungeon
+8,10,$1346A6,$1400B4,$A,World 8-Tank #2
+8,11,$132251,$13FD7D,$2,World 8-Bowsers Castle
+8,12,$1B674,$C9BF,$E,World 8-1 Bonus Area ****UNKNOWN****
+8,13,$121C63,$13E7B6,$1,World 8-2 Bonus Area
+8,14,$134B2B,$1401C1,$A,World 8-Tank #1 Boss Room
+8,15,$13E7B6,$1401B7,$A,World 8-Battleship Boss Room
+8,16,$12C8D0,$13F87F,$B,World 8-Hand Trap #1 Ending
+8,17,$12C8D0,$13F87F,$B,World 8-Hand Trap #2 Ending
+8,18,$12C8D0,$13F87F,$B,World 8-Hand Trap #3 Ending
+8,19,$134AF6,$1401BC,$A,World 8-Crappy Ship Boss Room
+8,20,$1320D2,$13FD39,$2,World 8-Dungeon (White Side)
+8,21,$134A8C,$1401B2,$A,World 8-Tank #2 Boss Room
+8,21,$1211B4,$13EA02,$1,World 8-Hidden Level 
+8,21,$1B0CE,$C104,$E,World 8-Pipe 1 End 1 ****UNKNOWN****
+8,21,$1B110,$C104,$E,World 8-Pipe 1 End 2 ****UNKNOWN****
+8,21,$1B0CE,$C113,$E,World 8-Pipe 2 End 1 ****UNKNOWN****
+8,21,$1B110,$C113,$E,World 8-Pipe 2 End 2 ****UNKNOWN****
+8,21,$1B0CE,$C118,$E,World 8-Pipe 3 End 1 ****UNKNOWN****
+8,21,$1B110,$C118,$E,World 8-Pipe 3 End 2 ****UNKNOWN****
+8,21,$1B0CE,$C109,$E,World 8-Pipe 4 End 1 ****UNKNOWN****
+8,21,$1B110,$C109,$E,World 8-Pipe 4 End 2 ****UNKNOWN****
+8,21,$1ADB2,$C11C,$E,World 8-Pipe 5 End 1 ****UNKNOWN****
+8,21,$1AE01,$C11C,$E,World 8-Pipe 5 End 2 ****UNKNOWN****
+8,21,$1B0CE,$C10E,$E,World 8-Pipe 6 End 1 ****UNKNOWN****
+8,21,$1B110,$C10E,$E,World 8-Pipe 6 End 2 ****UNKNOWN****
+8,22,$132451,$13FDBB,$2,World 8-Bowser's Castle (Bowser's Lair)

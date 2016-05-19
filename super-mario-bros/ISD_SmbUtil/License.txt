@@ -1,0 +1,3 @@
+SMB Utilty 1999-2002 by M.K.S Version 1.00 English BETA 3 Public Build --- April 3 2002. This program is not endorsed or supported by Nintendo, and the author is not affiliated with any other corporate entity. The program is freeware and provided "AS IS"... The author cannot be held liable for damages of any kind arising from its use or presence.
+
+ISD SMB Util 2008 Insectduel Public Build --- April 21 2008. Based on SMB Utility Version 1.00 English BETA 3.

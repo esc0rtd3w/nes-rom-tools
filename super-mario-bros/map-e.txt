@@ -1,0 +1,145 @@
+
+ YY-ME [MAP] Manual
+--------------------
+
+
+@ What this is
+    It is SMB1 level editor.
+    It works on Windows9X.
+
+@ Installation
+    Install   : unzip the "YY MarioEditor" zip file.
+    Uninstall : delete files (map.exe, map.txt, map.ini, zzmap.txt)
+
+	This editor doesn't use registry. 
+
+@ How to operate
+    Start the program, then open a file. 
+    Or, Drop a file to the program icon.  
+    If it does so, a level is indicated. 
+
+    |<		Page Number :first
+    <<		Page Number -1
+     <		Page Number -1/10
+     >		Page Number +1/10
+    >>		Page Number +1
+    >|		Page Number :last
+
+    -F		Object Code -10
+    -1		Object Code -01
+    <>		Object Code +80 or -80
+    +1		Object Code +01
+    +F		Object Code +10
+
+    p-		Pipe Code -1
+    p+		Pipe Code +1
+
+    |0		Target Number :first 
+    <0		Target Number -1
+    0>		Target Number +1
+    0|		Target Number :last
+
+    L		Object Point -10 (left )
+    U		Object Point -01 (up   )
+    D		Object Point +01 (down )
+    R		Object Point +10 (right)
+
+    Open	Another file is opened.
+    SaveAs	It is saved as another file.
+    Save	The file is overwrote.
+
+    Reload	Chosen WORLD is opened.
+		* The data which aren't kept are erased!!
+		* with pushing [Esc], Editor becomes "SearchMode".
+    info	The attribute of LEVEL can be changed.
+    setup	you can setup the editor (map.ini)
+
+    > enemy  /  > map
+		It is changed edits a map or an enemies. 
+
+
+@ How to operate it with the keyboard 
+    You can change some key if you use setup.
+	F1		 : An editor is changed to the enemy or the map.
+	F2		 : The previous map is edited.
+	F3		 : The next map is edited.
+
+	F5		 : Save (over write)
+	F7		 : Reload
+
+	F9		 : snapshot
+			  (A Graphic Plugin and the check box are reflected. 
+			   The BMP image is preserved only to a maximum 32 pages. 
+			   [ 32 pages : 8192pix * 256pix / 2,229,302 byte ] )
+	F10		 : setup
+
+	arrow key         : Page Number is changed. 
+	Ctrl  + arrow key : Object Point is changed. 
+	Space + arrow key : Object Code is changed. 
+	Shift + arrow key : Target Number is changed. 
+	Enter		  : The page of the target is indicated. 
+
+
+@ Configuration
+    It can be set up with 16 check boxes of the bottom right. 
+    Establishment can't keep it automatically. 
+    But, when "map.ini" is edited, it can be set up easily. 
+
+    1. The indication of the map 
+    2. The indication of the enemies
+    3. The indication of back ground
+    4. The indication of XE object
+
+    5. Always on top 
+    6. Error skip (debug)
+    7. Palette reading 
+    8. Keyboard operation 
+
+    9. The indication of the target 1
+   10. The indication of the target 2
+   11. The indication of the tree (buggy) 
+   12. The indication of the target 3
+
+   13. The indication of the glid 
+   14. It isn't used. 
+   15. error window
+   16. small window
+
+
+   * To the person using the CPU which is too fast...
+    Increase the value of "wait" in "map.ini" if a CPU is too fast. 
+    You can use value 00-99 for "wait". 
+
+
+@ Pipe Code
+  You will be found the pipe object is 2byte. 
+  When the 2byte is written "XX YZ" ,
+  "XX" is the MAP code of the destination. 
+  "Y" is ("WORLD which the pipe code is effective in" -1)*2. 
+      ex. WORLD1:0 , WORLD2:2 , WORLD3:4 , WORLD8:E
+  "Z" is PAGE of the destination. 
+
+      * The pipe object is ignored if the value of "Y" isn't correct. 
+
+
+@ Limitation and Specification 
+  * you cannot have more than 3 objects/column. If it doesn't do so, 
+    The "object of the page after it" stops being indicated. 
+  * The interval of the object can't be left over one page. 
+    It is good when the object (0F) which can't be seen is put. 
+
+    *** It hasn't translated yet. ***
+
+
+
+Report it if there is a bug. It is modified if it is possible.
+
+
+
+
+	Yy
+
+	e-mail : geo-yy@geocities.co.jp
+
+	URL : http://www.geocities.co.jp/SiliconValley/1145/mi.html
+

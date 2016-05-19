@@ -1,0 +1,58 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>New Page 1</title>
+</head>
+
+<body>
+
+<font face="Trebuchet MS">
+
+<img src="Map.gif" align="left" width="256" height="256"><font color="#008000"><b>About
+The Metroid Map<br>
+</b></font>In the Metroid game's program the world map is
+stored in a 32 by 32 grid of screen indices. The map does not specify which
+level each screen belongs to, only the screen index. <i> This is important to
+understand</i>. As you play the game and scroll from screen to screen the game
+simply loads the screens from the level you are currently in. When you go up or
+down an elevator the game loads data for a different level, and from that point
+on the game will display screens from the level you have newly entered. In other
+words, the game infers which level each screen on the map belongs to.</font><p><font face="Trebuchet MS">Editroid's map, or the &quot;editor map,&quot; uses
+color coding to indicate which level each screen belongs to. But this
+information is not taken from the ROM, since this information is not contained
+in the ROM in the first place. Editroid can not infer which level each screen
+belongs to. The first time you load a ROM, Editroid guesses which level each
+screen belongs to. If it guesses wrong, you need to make the necessary
+corrections to the editor map. Every time you save the ROM, the editor map is
+saved along-side the ROM data.</font></p>
+<p><font face="Trebuchet MS">Simply changing the colors on the
+editor map will not necessarily have any change in the game, and it is
+very possible to make the map in the editor to show something different from what
+will be seen in the game. When a room is added to the
+map, the level it will belong to should be marked on the editor so that the
+editor will know which level's data to use when the screen is displayed and
+edited. It is also important to remove a screen from the editor map if it will
+no longer be used, in order to maintain organization.</font></p>
+<p><font face="Trebuchet MS">Screens that appear black in color on the map are
+marked in the game data as inactive. During game play, the screen will not
+scroll into these rooms. If an unobstructed path leads to an inactive screen
+then the player can walk off the edge of the screen and will not be able to see
+Samus (and, most likely, won't be able to get back into the visible part of the
+level).</font></p>
+<b>
+<font face="Trebuchet MS" color="#008000">How To Use The Map Editor</font></b><font face="Trebuchet MS"><br>
+Left-click a screen to bring it up for editing. If you want to delete a
+screen from the map, right-click it. To &quot;paint&quot; on the map, hold shift
+and then left-click on a square that is the color you want to paint with, and
+then, without lifting the button, drag the mouse to copy that color to adjacent
+map locations. To cycle an individual map location through different levels,
+hold shift and right-click that map location. You can also use the number pad to
+change the selected screen on the map.</font>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+
+</html>

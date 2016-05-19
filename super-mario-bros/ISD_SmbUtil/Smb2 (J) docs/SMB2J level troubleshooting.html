@@ -1,0 +1,235 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>SMB2J level troubleshooting</TITLE>
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000ff">
+
+<B><FONT SIZE=7><P ALIGN="CENTER">SMB2J level troubleshooting</P>
+</B></FONT><P ALIGN="CENTER">Here is a list of some of the errors that can occur with SMB2J levels and guides to fixing them.</P>
+<P ALIGN="CENTER">I've highlighted the errors that may only exist in Super Mario Bros 1 in <FONT COLOR="#ff0000">red</FONT>.</P>
+<B><P ALIGN="CENTER"></P>
+</B><P ALIGN="CENTER">This is done by the SMB2J hacker insectduel in 1-11-06.</P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="RIGHT"><TABLE BORDER CELLSPACING=1 CELLPADDING=7 WIDTH=528>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<B><FONT FACE="Courier New" SIZE=4><P>Symptoms</B></FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<B><FONT FACE="Courier New" SIZE=4><P>Cause</B></FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<B><FONT FACE="Courier New" SIZE=4><P>Solution</B></FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Game Crashes</P>
+</FONT><FONT SIZE=2>
+</FONT><FONT FACE="Courier New" SIZE=2><P>&nbsp;</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>There’s a crash object in your level</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Change the object or enemy with the valued hex number.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>The wind object is in the wrong world.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Can only be changed in Worlds 5 through D</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>The Upside down pipe object is in the wrong world.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Can only be changed in Worlds 5 through D</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>The Upside down piranha plant is in the wrong world.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Can only be changed in Worlds 5 through D</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You placed the castle above 10 or higher.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Reduce the castle’s length with 10 or less.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Too many ASM’s in your ROM.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Re-save the file to the ROM.Or you can just make the new SMB1 or SMB2J ROM without the ASM’s first and insert them later.</P>
+</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>The Princess Tile is changed in SMB2J.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Use the new ROM and copy your modified tiles and not the peach and paste it. I recommend YY-CHR for this.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You placed the incorrect hex.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Undo it if you’re a hex editor maniac.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>The level becomes a bug</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New" COLOR="#ff0000"><P>You placed the stairs above width 10 and 8 steps.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New" COLOR="#ff0000"><P>Reduce the stairs length to Width 9 or less.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Too many coins placed and collected.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Collect the coins more frequiently or reduce the coins that you placed. You should also reduce the coins length as well.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You place the &quot;nothing&quot; object in your level.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Send the object away or change the object’s hex number.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>The Title screen is screwed up.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You have to make the new ROM for it. Or just place the original Offset 35124=0x8934 in your original SMB2J ROM and copy 347 bytes and paste it on your modified ROM. I hope you make a </FONT><FONT FACE="Courier New" COLOR="#0000ff">Backup</FONT><FONT FACE="Courier New"> before you edit SMB2J.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You placed the Room area in your hex editor that does not lead to World 5 or 9</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Can only be changed in Worlds 5 through 9 If you set the World 1 through 4 level rooms, it will only work for them.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You placed the flagpole and the castle in </P>
+<P>World 4-4, 8-4, and D-4.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Remove it. The only way you can get to that level is the Axe.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You typed a 3-byte sprite in your editor.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New" COLOR="#ff0000"><P>Send the 3-byte sprite (Area Pointer or Object E) from your room onto another room. Only SMB Utility can only do this. </FONT><FONT FACE="Courier New">In your hex editor, you have to set FF at the end of the sprite offset before the next actual sprite offset.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Some enemies disappear when I played the level and the sprite is still on the level editor.</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You placed the castle other than page 0 and you bypassed it.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Change the castle object to a background object to wall or another hex object number.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Too many sprites</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Move the sprites somewhere else or send them to a room if you not using them.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New" COLOR="#ff0000"><P>Bowser looks kind of messy.</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New" COLOR="#ff0000"><P>You placed two Bowsers</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New" COLOR="#ff0000"><P>Remove the other Bowser away or of you’re fire Mario, shoot the first Bowser and the second one does not look messy</FONT><FONT FACE="Courier New">.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Bowser looks kind of glitchy but almost disappeared.</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Too many fire-bars</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Have at least one fire-bar and not the stray and the long ones.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You placed some generated objects (Object D)</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>If you bypassed Bowser, none of those objects like the Wind or Red Cheep-Cheeps is permitted or a clone Bowser may appear.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>When I touch the flagpole, the timer went fast and it screws up the flag.</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You placed the castle other than page 0 and you bypassed it.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Change the castle object to a background object to wall or another hex object number.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You place the &quot;nothing&quot; sprite in your level.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Send the sprite away or change the sprite’s hex number.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Too many castles in your level.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Change the castle object to a background object to wall or another hex object number.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>When I touched the Axe, the bridge would not break and theres no text when you beat Bowser. </FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You either set it in the wrong page or you set the bridge, Axe or Scroll Stop the wrong way.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Set the hex 0d 44 or C4 in the even number of the page. Then set the Axe in hex dd 42 in the same page. Finally you set the Scroll Stop as hex 5d 47 or C7 on the odd number of the room. More importantly the Bowser sprite must be placed as 78 2d or ad in order for the bridge to be collapsed.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>When I touch the flagpole in the beginning of the level and mario would not go in the castle.</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You placed the castle on Page 0.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Place it at least on Page 1 or higher.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>When I place the down pipe and enter it. It ended up going up instead. What is wrong with it?</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>It is set on the castle attribute.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Castle attributes are always coming up instead of setting levels like a level header does.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Why does the enemy glow on castles, sea or underground levels?</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>A &quot;nothing&quot; object is placed or the &quot;Axe&quot; is placed as well.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Change the nothing object. Axes always turn dark enemies into brightness.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Why do Lakitu come out of a level if the Lakitu was never placed on the level editor?</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You place a &quot;Spiny&quot;.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Spinies will always make a Lakitu appear. Put a Stop Continuation Object where the spiny is.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Why all the objects disappearing?</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You place too many objects.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>The limit of an object is 128. Remove some.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">&nbsp;</TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You place too many objects in the same horizontal hex.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Either remove the length of an object or move it onto an another location. Horizontal objects can be frustrating.</FONT></TD>
+</TR>
+<TR><TD WIDTH="29%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Where’s the Welcome to Warp zone text?</FONT></TD>
+<TD WIDTH="37%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>You set the procedure incorrectly.</FONT></TD>
+<TD WIDTH="34%" VALIGN="TOP">
+<FONT FACE="Courier New"><P>Set the Scroll stop Warp Zone as hex 6d 45 or c5 in one of the even number rooms. </FONT></TD>
+</TR>
+</TABLE>
+</P>
+
+<FONT SIZE=2>
+<P>&nbsp;</P>
+</FONT><P ALIGN="CENTER">&nbsp;</P>
+<P ALIGN="CENTER">More bug errors in SMB1 or SMB2j contact me at <A HREF="mailto:insectduel@yahoo.com">insectduel@yahoo.com</A></P>
+<P ALIGN="CENTER"></P>
+<P ALIGN="CENTER">&nbsp;</P></BODY>
+</HTML>

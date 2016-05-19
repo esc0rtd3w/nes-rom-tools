@@ -1,0 +1,346 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<title>nbasic Reference Manual</title>
+</head><body bgcolor="white" text="black">
+
+<h1 align="center">nbasic Language Reference Manual</h1>
+<h4 align="center"><i>Updated March 15, 2004</i></h4>
+
+<b>Contents:</b>
+<ul>
+	<li><a href="#about">About nbasic</a></li>
+	<li><a href="#comments">Code Comments</a></li>
+	<li><a href="#asm">Inline Assembly</a></li>
+	<li><a href="#numbers">Numbers</a></li>
+	<li><a href="#vars">Variables</a></li>
+	<li><a href="#set">Setting Variables</a></li>
+	<li><a href="#push">Push and Pop</a></li>
+	<li><a href="#arrays">Array Declaration</a></li>
+	<li><a href="#arrays2">Array Usage</a></li>
+	<li><a href="#data">Static Data</a></li>
+	<li><a href="#labels">Labels</a></li>
+	<li><a href="#jumps">Jumps</a></li>
+	<li><a href="#arithmetic">Arithmetic Expressions</a></li>
+	<li><a href="#conditionals">Conditional Expressions</a></li>
+	<li><a href="#loops">Loops</a></li>
+	<li><a href="#keywords">List of nbasic Keywords</a></li>
+</ul>
+
+<a name="about">
+</a><p><a name="about">&nbsp;
+</a></p><p><a name="about"><font size="+2"><b>About nbasic</b></font>
+</a></p><p><code><a name="about">nbasic</a></code><a name="about"> is a
+high-level programming language designed for the 6502 processor, the
+main CPU of the Nintendo Entertainment System. It has BASIC-like
+program flow, relying on <font color="blue"><code>goto</code></font>, <font color="blue"><code>gosub</code></font>, and <font color="blue"><code>return</code></font>
+for most execution flow. It also has no dynamic memory allocation and
+no actual function parameter passing; rather, globally scoped variables
+and arrays take the place of these. This kind of language design allows
+for a very efficient implementation on a low-powered 8-bit CPU such as
+the NES's 6502.
+</a></p><p><a name="about">The language was originally created by Bob Rost for development of the homebrew original NES game </a><a href="http://bobrost.com/sof">Sack of Flour, Heart of Gold</a>, and its development continues as the language is used in Bob's class at Carnegie Mellon, <a href="http://bobrost.com/nes">Game Development for the 8-bit NES</a>.
+While this document can be a useful guide when dealing with the
+language, the best way to learn is to play with some of the example
+nbasic programs on the course website.
+<a name="comments">
+</a></p><p><a name="comments">&nbsp;
+</a></p><p><a name="comments"><font size="+2"><b>Code Comments</b></font>
+</a></p><p><a name="comments">Comments are created by using any of
+several common comment conventions. Comments begin with a double
+forward slash, a hash mark, or a semicolon. A comment may begin at any
+location in a line, and the rest of the line is ignored by the
+compiler.
+</a></p><p><code>
+<a name="comments">&nbsp;&nbsp;&nbsp;// this is a C++-style comment<br>
+&nbsp;&nbsp;&nbsp;# this is a shell-style comment<br>
+&nbsp;&nbsp;&nbsp;; this is a nesasm-style comment (for inline assembly)<br>
+&nbsp;&nbsp;&nbsp;;// this nesasm-style comment shows up colored in my C++ editor<br>
+</a></code>
+
+<a name="asm">
+</a></p><p><a name="asm">&nbsp;
+</a></p><p><a name="asm"><font size="+2"><b>Inline Assembly</b></font>
+</a></p><p><a name="asm">You may sometimes wish to use inline assembly, such as when a particular advanced feature is not provided natively by the <code>nbasic</code> compiler, or when you must feed directives to the assembler. Assembly blocks begin with the <font color="blue"><code>asm</code></font> keyword, and they are ended by the <font color="blue"><code>endasm</code></font>
+keyword. The lines of text in between are fed as-is to the assembler.
+Note that, if you are using nesasm as your assembler, you will be
+required to start most lines with a space or tab.
+</a></p><p>
+<code><a name="asm">asm<br>
+&nbsp;&nbsp;lda #0 ;nesasm comments start with a semicolon<br>
+&nbsp;&nbsp;sta $2000<br>
+&nbsp;&nbsp;sta $2000<br>
+endasm
+</a></code>
+</p><p><a name="asm">In addition to a large block of assembly code, you
+can also create a single line of inline assembly. This is useful for
+using a single instruction without interrupting the flow of your code.
+The <font color="blue"><code>asmline</code></font> keyword takes the remainder of its line and puts it into your file as assembly.
+</a></p><p>
+<code><a name="asm">asmline lda [pointer],y
+</a></code>
+
+<a name="numbers">
+</a></p><p><a name="numbers">&nbsp;
+</a></p><p><a name="numbers"><font size="+2"><b>Numbers</b></font>
+</a></p><p><a name="numbers">For your convenience, <code>nbasic</code>
+supports binary (base 2), decimal (base 10), and hexadecimal (base 16)
+numbers. All numbers are treated as unsigned, usually in the range 0 to
+255, though sometimes in the 16-bit range for memory locations. Binary
+numbers begin with a <font color="blue"><code>%</code></font> character, decimal numbers are a string of digits, and hexadecimal numbers begin with a <font color="blue"><code>$</code></font>
+character. The hexadecimal letters may be either capital or lowercase.
+These are examples of the same number written in all three methods:
+</a></p><p><a name="numbers">&nbsp;&nbsp;<code>%11111111</code><br>
+&nbsp;&nbsp;<code>255</code><br>
+&nbsp;&nbsp;<code>$ff</code>
+
+
+</a><a name="vars">
+</a></p><p><a name="vars">&nbsp;
+</a></p><p><a name="vars"><font size="+2"><b>Variables</b></font>
+</a></p><p><a name="vars">The first important rule of <code>nbasic</code> variables is that you should not use the names <font color="blue"><code>A</code></font>, <font color="blue"><code>X</code></font>, or <font color="blue"><code>Y</code></font>
+as variable names. These are special registers of the 6502 processor.
+You are allowed to use them in many cases as you would a variable, but
+you should first be familiar with the 6502 and what you are doing in
+each particular use. As a general rule, array accesses will alter the <font color="blue"><code>X</code></font> register, and any sort of arithmetic expression will alter the <font color="blue"><code>A</code></font> register. <font color="blue"><code>Y</code></font> is not touched in many cases.
+</a></p><p><a name="vars">General variables in <code>nbasic</code> are
+single unsigned bytes of memory. They have global scope throughout your
+program, and you have the option of initializing them manually or
+automatically. Automatic initialization is done the first time a
+variable's value is set, and a single byte of convenient memory is
+allocated. Manual memory allocation is described below in the </a><a href="#arrays">Arrays</a> section.
+
+<a name="set">
+</a></p><p><a name="set">&nbsp;
+</a></p><p><a name="set"><font size="+2"><b>Setting Variables</b></font>
+</a></p><p><a name="set">The <font color="blue"><code>set</code></font> statement is used to assign a value to a variable, array element, or a specific location in memory. The general syntax is <code>set <i>location value</i></code>.
+The value is always an unsigned byte. These examples demonstrate
+setting a value to a variable, an array element, and a specific memory
+location.
+</a></p><p><a name="set">&nbsp;&nbsp;<code>set my_var 5</code><br>
+&nbsp;&nbsp;<code>set [my_array 3] 1</code><br>
+&nbsp;&nbsp;<code>set $4016 0</code>
+</a></p><p><a name="set">It is important to note that the compiler
+automatically allocates 1 byte of memory for any variable which is
+assigned a value and not otherwise declared elsewhere in the program.
+</a><a name="push">
+</a></p><p><a name="push">&nbsp;
+</a></p><p><a name="push"><font size="+2"><b>Push and Pop</b></font>
+</a></p><p><a name="push">There are times when you may wish to store
+data on the processor stack. For instance, saving and restoring the
+values of registers during an interrupt. For important cases like this,
+you can use the <font color="blue"><code>push</code></font> and <font color="blue"><code>pop</code></font>
+keywords to store or retrieve data on the stack. The nbasic
+implementation will only let you directly push or pop the values of
+registers. Note that, because <font color="blue"><code>gosub</code></font> and <font color="blue"><code>return</code></font> also manipulate the stack, you should always be certain to <font color="blue"><code>pop</code></font> within the same function as a corresponding <font color="blue"><code>push</code></font>.
+Due to the nature of stacks, if you push several registers, you should
+pop them in the reverse order. Here is an example of proper stack usage
+during an interrupt.
+</a></p><p><code><a name="push">IRQ:</a></code><a name="push"><br>
+&nbsp;&nbsp;<code>push a</code><br>
+&nbsp;&nbsp;<code>push x</code><br>
+&nbsp;&nbsp;<code>push y</code><br>
+&nbsp;&nbsp;<code>gosub irq_handler</code><br>
+&nbsp;&nbsp;<code>pop y</code><br>
+&nbsp;&nbsp;<code>pop x</code><br>
+&nbsp;&nbsp;<code>pop a</code><br>
+&nbsp;&nbsp;<code>resume</code><br>
+
+</a><a name="arrays">
+</a></p><p><a name="arrays">&nbsp;
+</a></p><p><a name="arrays"><font size="+2"><b>Array Declaration</b></font>
+</a></p><p><a name="arrays">Arrays and variables are essentially the same in <code>nbasic</code>, and they differ primarily in their usage.
+</a></p><p><a name="arrays">Arrays may be declared with several
+methods. Simple declaration assigns a specified number of bytes to a
+variable name, using the first conveniently available memory that the
+compiler finds. This example allocates 8 bytes for the variable <i>my_array</i>.
+</a></p><p><a name="arrays">&nbsp;&nbsp;<code>array my_array 8</code>
+</a></p><p><a name="arrays">Arrays may also be declared in the zero
+page of memory, which guarantees that they are entirely within the
+first 256 bytes of system memory, which allows faster access time for
+frequently used data.
+</a></p><p><a name="arrays">&nbsp;&nbsp;<code>array zeropage my_array 8</code>
+</a></p><p><a name="arrays">You may also wish for your array to exist
+at a particular location in memory. For this, you use an absolute array
+declaration, providing the location in memory, the variable name, and
+the array size. This is very helpful for allocating sprite memory to
+allow DMA.
+</a></p><p><a name="arrays">&nbsp;&nbsp;<code>array absolute $c000 my_array 8</code><br>
+&nbsp;&nbsp;<code>array absolute $200 sprite_mem 256</code>
+
+</a></p><p><a name="arrays">If you wish to allocate a particular
+general variable in the zero page or at an absolute memory location,
+you may declare an array of size 1 using the above syntax. It is also
+sometimes helpful to declare an absolute array of size 0. This will
+allow you to reference a particular memory region by a simple variable
+name. This can be useful for NES system ports, or for quickly accessing
+certain parts of an array.
+</a></p><p><a name="arrays">&nbsp;&nbsp;<code>array absolute $4016 joystick1port 0</code><br>
+&nbsp;&nbsp;<code>array absolute $c000 hero_data 8</code><br>
+&nbsp;&nbsp;<code>array absolute $c001 hero_lives 0</code>
+
+</a></p><p><a name="arrays">It is important to note that <code>nbasic</code> automatically allocates the memory region from $100 to $1FF for the variable <font color="blue"><code>nbasic_stack</code></font>.
+This is the memory region of the 6502's call stack, which is very bad
+for you to accidentally overwrite. If you absolutely must manipulate
+this region manually, then you may use the <font color="blue"><code>nbasic_stack</code></font> variable; otherwise, don't touch it.
+
+</a><a name="arrays2">
+</a></p><p><a name="arrays2">&nbsp;
+</a></p><p><a name="arrays2"><font size="+2"><b>Array Usage</b></font>
+</a></p><p><a name="arrays2">As mentioned above, arrays and variables in <code>nbasic</code>
+are essentially the same, and they differ primarily in usage. An array
+is a contiguous region of memory assigned to a variable name. Elements
+in the array may be referenced by the general syntax <code>[<i>array_name</i> <i>index</i>]</code>.
+Additionally, the first element of the array may be referenced simply
+by its name. Array elements, like other variables, are unsigned bytes,
+and they may be used in arithmetic expressions or set like other
+variables. The index of an array element may be a constant number, a
+variable, or an arithmetic expression.
+</a></p><p><a name="arrays2">&nbsp;&nbsp;<code>[my_array 0] <font color="red">//the first element</font></code>
+<br>&nbsp;&nbsp;<code>my_array <font color="red">//equivalent to the above line</font></code>
+<br>&nbsp;&nbsp;<code>set [my_array my_var] 5</code>
+<br>&nbsp;&nbsp;<code>[my_array [my_var 2]]</code>
+<br>&nbsp;&nbsp;<code>[my_array x]</code>
+</a></p><p><a name="arrays2">Notice in the last example that the index variable is the <font color="blue"><code>X</code></font> register. In general, array accesses destroy the current value of the <font color="blue"><code>X</code></font> register. However, you may manually set the value of either the <font color="blue"><code>X</code></font> or <font color="blue"><code>Y</code></font>
+registers and use one of them as your array index. This will preserve
+the value of the register, and the array access itself will be faster.
+This can be useful when using the same index multiple times, or in
+multiple arrays.
+<br>&nbsp;&nbsp;<code>set y 5</code>
+<br>&nbsp;&nbsp;<code>set [my_array y] 3</code>
+<br>&nbsp;&nbsp;<code>set [your_array y] 4</code>
+<br>&nbsp;&nbsp;<code>set [his_array y] [my_array 2]</code>
+
+
+</a><a name="data">
+</a></p><p><a name="data">&nbsp;
+</a></p><p><a name="data"><font size="+2"><b>Static Data</b></font>
+</a></p><p><a name="data">The <font color="blue"><code>data</code></font>
+keyword allows specifying a string of raw data to be included in the
+ROM. This is often used for text, palettes, and similar small and
+unchanging pieces of data. Data may consist of unsigned 8-bit numbers
+and ASCII strings, each separated by commas. ASCII strings must be
+enclosed in double quotes, and each character is individually converted
+to the corresponding ASCII value. Generally, a <font color="blue"><code>data</code></font> statement will appear after a label, so that it may be referenced easily.
+</a></p><p><a name="data">&nbsp;&nbsp;<code>my_data:</code>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>data 1,3,"A string",0,$10,%10101</code>
+
+</a><a name="labels">
+</a></p><p><a name="labels">&nbsp;
+</a></p><p><a name="labels"><font size="+2"><b>Labels</b></font>
+</a></p><p><a name="labels">A label in <code>nbasic</code> is similar
+to a line number or label in many other programming languages. Your
+program may jump to a label to continue execution from that point on.
+In <code>nbasic</code>, labels may also be used as a variable, to
+allow you to reference static data at that point in the ROM. Labels are
+written as a name, followed by a colon. These examples demonstrate
+jumping to a label, and using a label as an array reference.
+</a></p><p><a name="labels">&nbsp;&nbsp;<code>my_label:</code>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>set my_var [my_data 2]</code>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>goto my_label</code>
+<br>&nbsp;&nbsp;<code>my_data:</code>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>data 0,1,2,3,4</code>
+
+</a><a name="jumps">
+</a></p><p><a name="jumps">&nbsp;
+</a></p><p><a name="jumps"><font size="+2"><b>Jumps</b></font>
+</a></p><p><a name="jumps">Program flow is controlled by jumps, which
+allow your program to move the execution point to a label. The two
+types of jumps are <font color="blue"><code>goto</code></font>, and <font color="blue"><code>gosub</code></font>. A goto will simply move the current execution point, as it does in BASIC. A <font color="blue"><code>gosub</code></font>
+is also just like in BASIC; it moves the current execution point, but
+it also saves the previous execution point on the stack. The <font color="blue"><code>return</code></font> statement will return execution to just after the point from which the jump was made. Note that if you call <font color="blue"><code>gosub</code></font> rampantly and do not have a <font color="blue"><code>return</code></font> for each one, your program will overflow the 256 byte stack, which will crash the game.
+</a></p><p><a name="jumps">&nbsp;&nbsp;<code>my_label:</code>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>gosub my_function</code>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>goto my_label</code>
+<br>&nbsp;&nbsp;<code>my_function:</code>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>return</code>
+</a></p><p><a name="jumps">In BASIC, the <font color="blue"><code>goto</code></font>
+statement is notorious for creating "spaghetti" code, and it is frowned
+upon in other languages. For this reason, I have two primary guidelines
+for proper usage of jumps, in order to help avoid some of the common
+problems.
+</a></p><p></p><ul>
+<li><a name="jumps">Use <font color="blue"><code>goto</code></font> for loops, or for downward jumps within a single function.</a></li>
+<li><a name="jumps">Use <font color="blue"><code>gosub</code></font> and <font color="blue"><code>return</code></font> for all other jumps.</a></li>
+</ul>
+<p><a name="jumps">Notice that I reference the concept of a function, even though <code>nbasic</code>
+does not actually support functions as in other languages. In general,
+a function is a block of code under a label, which is written to do one
+particular thing. With proper code design, the boundaries between one
+conceptual function and another will be obvious in almost all cases.
+</a></p><p><a name="jumps">Another related keyword is <font color="blue"><code>resume</code></font>. It is similar to <font color="blue"><code>return</code></font>, but it is used to return execution after an interrupt is called, such as the NMI at the blanking interval.
+</a></p><p><a name="jumps">Yet another related keyword is <font color="blue"><code>branchto</code></font>. See the section on conditionals for information on that.
+
+</a><a name="arithmetic">
+</a></p><p><a name="arithmetic">&nbsp;
+</a></p><p><a name="arithmetic"><font size="+2"><b>Arithmetic Expressions</b></font>
+</a></p><p><a name="arithmetic">Arithmetic expressions in nbasic are
+written in prefix notation. This creates non-ambiguous expressions that
+are easy for the compiler to parse. Valid operators are addition (<font color="blue"><code>+</code></font>), subtraction (<font color="blue"><code>-</code></font>), shift left (<font color="blue"><code>&lt;&lt;</code></font>), shift right (<font color="blue"><code>&gt;&gt;</code></font>), bitwise and (<font color="blue"><code>&amp;</code></font>), bitwise or (<font color="blue"><code>|</code></font>), bitwise xor (<font color="blue"><code>^</code></font>).
+Each of these operators should be followed by two numbers, variables,
+array lookups, or arithmetic expressions in order to create a valid
+expression. Note that bit shifting may only be done by a constant
+amount.
+</a></p><p><a name="arithmetic">&nbsp;&nbsp;&nbsp;&nbsp;<code>set a + one two</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>set four &lt;&lt; one 1</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>set value - &amp; bitmask %10101011 + 3 two</code><br>
+
+
+</a><a name="conditionals">
+</a></p><p><a name="conditionals">&nbsp;
+</a></p><p><a name="conditionals"><font size="+2"><b>Conditional Expressions</b></font>
+</a></p><p><a name="conditionals">The nbasic language supports two types of conditional statements. The first is <font color="blue"><code>if</code></font><code> <i>condition result</i>. This will execute a single nbasic statement if the provided condition is true. The second type is an <font color="blue"><code>if</code></font><code> <i>condition</i> </code><font color="blue"><code>then</code></font><code>...</code><font color="blue"><code>endif</code></font> construct. In this type, when the provided condition is true, it will execute multiple nbasic statements listed between the <font color="blue"><code>then</code></font> and <font color="blue"><code>endif</code></font>
+keywords. Note that, due to limitations of the hardware, the assembler
+will fail if the statement block compiles to more than 127 bytes of
+code.
+</code></a></p><p><a name="conditionals"><br>&nbsp;&nbsp;<code>if one &lt;= 2 then</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>set result1 one</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>set result2 two</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>gosub do_more_stuff</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>return</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>endif</code><br>
+&nbsp;&nbsp;<code>if x &lt;&gt; 0 branchto my_label</code><br>
+
+</a></p><p><a name="conditionals">You may notice the use of the <font color="blue"><code>branchto</code></font> keyword. This is a special case goto, designed for fast loop execution. You may use a <font color="blue"><code>branchto</code></font>
+as the action of a simple comparison, and it will jump to the
+designated label. However, the jump may not cross more than 127
+compiled bytes of code.
+</a><a name="#keywords">
+</a></p><p><a name="#keywords">&nbsp;
+</a></p><p><a name="#keywords"><font size="+2"><b>List of <code>nbasic</code> Keywords</b></font>
+</a></p><p><code>
+<a name="#keywords"><font color="#000066">
+&nbsp;&nbsp;a<br>
+&nbsp;&nbsp;absolute<br>
+&nbsp;&nbsp;array<br>
+&nbsp;&nbsp;asm<br>
+&nbsp;&nbsp;asmline<br>
+&nbsp;&nbsp;branchto<br>
+&nbsp;&nbsp;data<br>
+&nbsp;&nbsp;endasm<br>
+&nbsp;&nbsp;endif<br>
+&nbsp;&nbsp;gosub<br>
+&nbsp;&nbsp;goto<br>
+&nbsp;&nbsp;if<br>
+&nbsp;&nbsp;pop<br>
+&nbsp;&nbsp;push<br>
+&nbsp;&nbsp;resume<br>
+&nbsp;&nbsp;return<br>
+&nbsp;&nbsp;set<br>
+&nbsp;&nbsp;then<br>
+&nbsp;&nbsp;x<br>
+&nbsp;&nbsp;y<br>
+&nbsp;&nbsp;zeropage<br>
+</font></a></code>
+
+
+
+<!--
+	replace:
+	<font color=blue><code> //for keword
+	<font color=blue><code>
+
+	</code></font>
+	</code></font>
+-->
+</p></body></html>

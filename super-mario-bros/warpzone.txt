@@ -1,0 +1,33 @@
+    [][][][][][][][][][][][][][]      [][][][][][][][][][][][][][][][][][][]
+  [][]                                []                                  []
+[][][]    Welcome to Warp Zone!       []         Super Mario Bros.        []
+[][][]                                []                                  []
+[][][]     8        7        6        []            Warp Zones            []
+[][][]   _____    _____    _____      []                                  []
+[][][]  |_____|  |_____|  |_____|     []           explained by           []
+[][][]   |  ||    |  ||    |  ||      []                                  []
+[][][]   |  ||    |  ||    |  ||      []       megabyte@mindless.com      []
+[][][]   |  ||    |  ||    |  ||      []                                  []
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+ 
+To create a Warp Zone, you must place a #69 block in special row 2.
+You should place the block in a cleared out area since the palettes will 
+shift to include blue & white.
+
+Also, for the Warp Zone to function, you will need pipes.
+You must use a pipedown2 pipe for the pipes to function.  
+Pipes go 12, 16, and 20 blocks before the #69 block.
+
+Placement of the warp in world 1 will give you warps 2-4.
+Placement of the warp in worlds 2-4 will give you warp 5.
+Placement of the warp in worlds 5-8 & non-pipe special levels will give you 
+warps 6-8.
+
+It is not recommended to place warps in worlds 6-8 because the warps are the
+same as the levels they are in.  They may not work correctly, and usually 
+the "Welcome to Warp Zone!" and numbers are in the wrong place.
+
+I am sorry if any of this information is incorrect.  Please e-mail me if you 
+find this to be so.  --=MEGAߥTE
+
+--=EoF=--

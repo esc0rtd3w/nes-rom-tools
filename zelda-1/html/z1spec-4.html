@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="LinuxDoc-Tools 0.9.8.1">
+ <TITLE>Zelda 1 Hack Information: Common to Overworld and Underworld</TITLE>
+ <LINK HREF="z1spec-3.html" REL=previous>
+ <LINK HREF="z1spec.html#toc4" REL=contents>
+</HEAD>
+<BODY>
+Next
+<A HREF="z1spec-3.html">Previous</A>
+<A HREF="z1spec.html#toc4">Contents</A>
+<HR>
+<H2><A NAME="s4">4.</A> <A HREF="z1spec.html#toc4">Common to Overworld and Underworld</A></H2>
+
+<H2><A NAME="ss4.1">4.1 Level Information</A>
+</H2>
+
+<H3>Level Information Table</H3>
+
+<P>
+<PRE>
+Description                     Offset          Num. Entries    Entry Size
+--------------------------------------------------------------------------
+Level Info Directory             98324          10              2 
+Overworld Info Block            103168          252             1
+Level 1 Info Block              103420          252             1
+Level 2 Info Block              103672          252             1
+Level 3 Info Block              103924          252             1
+Level 4 Info Block              104176          252             1
+Level 5 Info Block              104428          252             1
+Level 6 Info Block              104680          252             1
+Level 7 Info Block              104932          252             1
+Level 8 Info Block              105184          252             1
+Level 9 Info Block              105436          252             1
+</PRE>
+</P>
+<P>Level information is loaded for each level 0-9 (with 0 being the overworld).
+The Level Info Directory contains the addresses of level information blocks for
+each level; I have calculated their offsets here for your convenience.
+Much of the level information blocks is not decoded yet.</P>
+
+<H3>Starting Locations</H3>
+
+<P>The starting location for a level is a screen number, found at byte 47 
+from the start of the level information block for that level.</P>
+
+<HR>
+Next
+<A HREF="z1spec-3.html">Previous</A>
+<A HREF="z1spec.html#toc4">Contents</A>
+</BODY>
+</HTML>

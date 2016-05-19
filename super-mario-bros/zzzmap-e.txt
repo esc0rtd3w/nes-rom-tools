@@ -1,0 +1,55 @@
+YY-ME ver2.55e       By Yy ( geo-yy@geocities.co.jp )
+------------------------------------------------------
+    URL : http://www.geocities.co.jp/SiliconValley/1145/mi.html
+    ------------------------------------------------------------
+
+
+@ What this is
+    This is SMB1 level editor.
+    It works on Windows95/98.
+    * Use it by the own risk. 
+
+@ About the bug 
+    * Accurate indication isn't made in the tree, the hole, and so on. 	
+    * BackGround was not complete.
+
+
+@ History 
+
+1999/12/12
+ver2.55     > new compiler
+        fix > enemy
+
+1999/10/10
+ver2.52 fix > dialog , file write error
+
+1999/09/18
+ver2.50 add > reads some palette
+	fix > palette , BG , wall , glid
+
+1999/09/01
+v 2.34e I added "how to use a pipe code" to the manual. 
+	add > value of "MAP"
+	fix > object OD , color , key
+
+1999/07/30
+v 2.32e add > snapshot , 72KB ROM load
+        fix > info , setup , background , length change , level listbox
+
+1999/07/23
+v 2.27e fix > error13
+        if you using "skin.bmp" ,rename it "map.bmp".
+
+1999/07/20
+v 2.26e fix > length change
+
+1999/07/19
+v 2.25e add > setting , back ground , length change
+        fix > startup , keybord , map.ini , file load , graphic
+
+1999/05/31
+v 1.80e A translation to English of the program and the manual. 
+
+1999/02/05
+v 0.00j The start of the design. It doesn't work yet... 
+

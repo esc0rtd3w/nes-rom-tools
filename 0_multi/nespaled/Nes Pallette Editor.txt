@@ -1,0 +1,29 @@
+Nes Pallette Editor
+Programmed by: The_Fake_God (The_Fake_God@hotmail.com)
+
+* THIS PROGRAM IS OPEN SOURCE*
+
+The Nes Pallette reader will help you finding your palletes a little
+faster than raw hex search. It´s like using a normal hexeditor but you
+see colors instead of numbers.
+
+[File / Open]
+Loads a file into the editor
+
+[File / Save]
+Saves the active file
+
+[File / Quit]
+Guess...
+
+[Edit / Goto F5]
+Type an address and the editor will take you there, addresses must be
+in hex, strings with prefix are accepted too (&H or 0x)
+
+[Find / F3]
+Type the fours colors of the pallette your looking for (use Nesten or
+Nesticle to figure out the values)
+
+Double clikc an item and the "Pallette Editor" will pop up, click on
+a colored box to change the double clicked item. You can change "X"
+bytes too.

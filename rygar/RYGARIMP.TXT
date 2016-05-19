@@ -1,0 +1,228 @@
+
+                         -------------------------
+                          Rygar Improvement v1.01
+                         -------------------------
+
+                 Written by Chris Hickman (chris@bpwl.com)
+
+ Hi :-)
+
+
+ I've always been thrilled by the idea of level editors!  After seeing Mario
+ Improvement, Zelda Improvement, Final Fantasy Improvement, and a new Dragon
+ Warrior level editor, I wanted to make my own :-).
+
+ Jay McGavren has been giving me the information on where I need to edit
+ from, so this should all be pretty easy :)
+
+ Related URLs:
+
+ Rygar Improvement Distro - http://www.bpwl.com/ar/utils/nes/rygarimp.htm
+ Archaic Ruins (My page!) - http://www.bpwl.com/ar/
+ RAGE Games (Jay's page!) - http://www.classicgaming.com/ragegames/
+
+                               ------------
+                               Instructions
+                               ------------
+
+ Rygar Improvement is an editor for the side scrolling and overhead levels of
+ Rygar.  Upon loading Rygar Improvement, Rygar is opened into memory and a
+ display of the first level is on your left.
+
+ ----------------------------------------------------------------------------
+ Keyboard   |GUI            | Description
+ ----------------------------------------------------------------------------
+ Arrow Keys |Turtles        | Scroll through the levels
+ PGUP/PGDN  |PGUP/PGDN      | Jump 16 bytes at forward / backwards *
+ TAB        |PCXs Button    | Switch graphics set between the 4 graphics sets
+ 1 ... -    |Level Display  | Input a tile into the level
+            |Hex Codes      | Click on each code to manually enter (00 - FF)
+ F1...F3    |Box w/3 Tiles  | Select a tile to input into the level
+ F5...F6    |Little arrows  | Scroll through tile selection
+ F7 & F8    |LVL- & LVL+    | Jump to the previous/next presetted level
+ F10        |Exit Button    | Quit!!
+ ----------------------------------------------------------------------------
+ * Generally, Rygar stores information in blocks of 16.  In most cases,
+   PGUP/PGDN will switch between rows and columns.
+ ----------------------------------------------------------------------------
+
+ Advanced Tips:
+
+   - The NES has an onscreen palette of 32 colours.  Many of the different
+     sets of backgrounds use different palette's.  Using graphics from
+     different areas of Rygar to replace those of other levels might cause
+     garbled graphics to appear due to the palette being incorrect.  If you
+     want to do hacking like this, I'd suggest using an NES graphics editor
+     and editing the tiles so that they fit the palette that you wish to
+     use.
+
+   - For power users who have made their own custom graphics with other
+     programs, you can also make your own PCX sets to load into Rygar
+     Improvement.  To create compatible PCXs, make 16x120 PCXs and load them
+     into Photoshop.  Convert them to 'RGB Colour mode' then back to
+     'Indexed Colour Mode'.  Select the Windows default palette, and allow
+     the PCX to convert it's colours to the closest match.  Name the PCX
+     according to it's corresponding hex code and place it in the directory
+     that it belongs with (PCXS1/ for the first set, PCXS2/ for the second).
+
+                                -----------
+                                Got Levels?
+                                -----------
+
+ E-mail your level hacks to me @ chris@bpwl.com
+
+ I'll add them to the Rygar Improvement homepage, and if I get enough --
+ I might just make improvements to Rygar Improvement :)
+
+                            -------------------
+                            Inspirational Words
+                            -------------------
+
+ I'm coding this in Borland C++ v4.5.  I own the software, therefore I use
+ it.  I would much rather have written this in DJGPP or Watcom C++, but I
+ haven't felt that it was right yet to make the move over.
+
+ Programming in C is extremely fun and satisfying (when your code works).
+ Rygar Improvement's GUI was created from my own ingenuity and usage of
+ ASM routines to plot pixels and change palette colours.  The GUI is a
+ composite of a lot of little things, and I'm including the source
+ code so that anyone can take a look at the strange way in which I code.
+ Let's just say that I don't understand the Virtual Gameboy source, and that
+ my code probably looks foreign to most C coders too :)
+
+ Anyway -- why is this inspirational?  I'm not a very good coder!  I am self
+ taught, using a crappy compiler, and have created an NES ROM level editor!
+ All it takes is a Borland C++ instruction manual and some initiative :-).
+ I still have no clue about how to go about making an emulator, but I
+ encourage anyone who has any C++ skills at all (maybe skills learned in
+ high school? -- I haven't taken Computer Science yet, but I'm sure they
+ teach you enough) to try making something like this.
+
+ I also discourage people from making front ends.
+
+ - Chris Hickman
+
+                               ----------
+                               Kind Words
+                               ----------
+
+ Thanks go to:
+
+   Jay McGavren
+    - Without your help in finding the level offsets, creating all of the
+      PCXs, and trying to hack Rygar by hand with a hexeditor, this would
+      never have existed!
+
+   Luke Sneeringer, Micheal Lieu, and Ted Micheal
+    - Thanks for maintaining Archaic Ruins so well!  It's my page, but at the
+      same time, it's yours too!  It's nice to be able to take a break every
+      once in a while!
+
+   JL_Picard
+    - Thanks for the .PCX reading routine and all of the help with getting
+      PCX files to import.  I'm not a very adaptable coder; your help was
+      life saving :).
+
+   My mother
+    - For the first two days of coding this, I had been eating cookies and
+      pringles out of restlessness.  I make frequent trips downstairs to the
+      pantry, drink lots of Diet Pepsi, and go to the bathroom often as a
+      result of my restlessness.  Thanks go to my mother for buying me
+      pringles and making cookies.
+
+   Square Soft
+    - Final Fantasy VII is awesome!  I bought it for the PC, and the entire
+      time that I've been coding this, I've wanted to play it -- therefore,
+      I'm trying to get this damned editor done so I can pick up on FFVII :)
+
+                                 ----------
+                                 The Future
+                                 ----------
+
+ I'm not going to have too much time to work on Rygar Improvement, but I hope
+ that I might be able to get a floating GUI created and allow users to edit
+ Rygar in full screen mode!  Other things include consolodating the 967 PCX
+ images into 4 files.  Such might just save some harddrive space :-).  After
+ I get the GUI and editor to be more flexible, I'm interested in making a
+ Zelda level editor (Zelda Improvement Revisited), a Metroid level editor,
+ and who knows what else :)
+
+                                 ---------
+                                  History
+                                 ---------
+
+Releases:
+
+v1.01 - 07/25/98
+  - Crash bug fixed when input and output files are the same
+  - Misc. Areas offset added... (ugh... reused areas)
+  - Rygar Improvement Demo v0.9 included! (Thanks Jay!)
+
+v1.0 - 07/22/98
+  - Fourth (and final) PCX set added!
+  - Second PCX set completed (9F.PCX added...) :)
+  - Command line options for selecting input / output files added!
+  - Keyboard support added to the GUI by Jay's request.  (Bah!)
+  - Fixed the age old bug that caused the output file to gain excess bytes!
+
+Unreleased Betas:
+
+v0.99 - 07/21/98
+  - Third PCX set added. (00 - FF)
+  - The second PCX set is almost complete (9A - FF) - 9F missing!
+  - Lvl+ and Lvl- buttons now change PCX Set also
+  - Overhead level editing added! (Change to PCX Set 3)
+  - Fixed bug where 0F displayed as 'F'
+
+v0.91 - 07/18/98
+  - All 9 level offsets now available
+  - Most of the second PCX set added. (00 - 99)
+  - Source code optimized and commented
+
+v0.9 - 07/16/98
+  - New GUI added by Chris.
+  - Dual PCX sets supported (PCXS1\*.PCX and PCXS2\*.PCX)
+  - PGUP / PGDN buttons activated
+  - Several bug fixes to the GUI
+  - Jay discovers that there are >2< sets of PCXs
+  - Jay delivers the entire first set of PCXs!
+  - HEX Codes (00 - 0F) now display with both digits
+  - Tile selection window rewritten -- now you can scroll away from a selected
+    tile and still have it selected.
+  - Both mouse buttons can now be used with the tile selector!
+
+v0.1 - 07/15/98
+  - Rygar Improvement is fully mouse operational now :-)
+  - Jay made a set of PCXs for 00 - 9C, DC, and E9 - ED.  We now need
+    9D - DB, DD - E8, and EE - FF to have a complete set of PCXs :-)
+
+v0.099 - 07/15/98
+  - Palette fixed!  Now we need a new GUI needed and a global palette!
+
+v0.09 - 07/14/98
+  - PCX support!  Now what you see is what you get :-) (screwed colours)
+
+v0.05 - 07/13/98
+  - Hexidecimal codes are now editable and reoutputted into RYGARNEW.NES.
+  - Bug fixes here and there.
+
+v0.01 - 07/12/98
+  - Level Up, Level Down, and Exit buttons added!
+  - 3 Levels are browsable by hexidecimal in the GUI!
+
+v0.001 - 07/12/98
+  - GUI created
+  - RYGAR.NES reads and is reoutputted.  I realized that opening
+    ROMs as binaries as opposed to TEXT is smart :-).
+  - Bug exists that makes output 1 byte larger than input ... hrmmm...
+
+-----------------------------------------------------------------------------
+Rygar Improvement is Copyrighted by a personal copyright to Chris Hickman
+
+I am distributing the source code for the curiousity of the users of Rygar
+Improvement.  If you'd like to use pieces of the source code for anything,
+please contact me and say 'thank you' -- trust me, I'll let you use it :-).
+If you are planning on making your own Rygar level editor, please don't use
+my source code to do it, that's not why I'm including it in here.
+
+Tecmo is Tecmo.  I am Chris.  No relation.

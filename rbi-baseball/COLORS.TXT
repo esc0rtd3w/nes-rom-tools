@@ -1,0 +1,64 @@
+Dark Gray,7F,7F,7F
+Pure Blue,00,00,FF
+Dark Blue,00,00,BF
+Blue,47,2B,bf
+Purple,97,00,87
+Red,ab,00,23
+Redish Brown,ab,13,00
+Brown,8b,17,00
+Dark Brown,53,30,00
+Dark Green,00,78,00
+Green,00,6b,00
+Midnight Green,00,5b,00
+Dark Blue,00,43,58
+Black 1,00,00,00
+Black 2,00,00,00
+Black,00,00,00
+Gray,bf,bf,bf
+Blue,00,78,f8
+Light Blue,00,58,f8
+Light Purple,6b,47,ff
+Purple,db,00,cd
+Red,e7,00,5b
+Redish Orange,f8,38,00
+Orange,e7,5f,13
+Dull Brown,af,7f,00
+Light Green,00,b8,00
+Green,00,ab,00
+Green-Blue,00,ab,47
+Bluish Green,00,8b,8b
+Black 3,00,00,00
+Black 4,00,00,00
+Black,00,00,00
+White 1,F8,F8,F8
+Light Blue,3f,bf,ff
+Blue-Purple,98,78,f8
+Purple-Blue,6b,88,ff
+Bright Pink,f8,78,f8
+Pink,f8,58,98
+Orange,f8,78,58
+Orange-Yellow,ff,a3,47
+Golden Yellow,f8,b8,00
+Light Green,b8,f8,18
+Green,5b,db,57
+Pale Green,58,f8,98
+Cyan 2,00,eb,db
+Gray 2,78,78,78
+Black 5,00,00,00
+Black 6,00,00,00
+White,ff,ff,ff
+Bluish Gray,a7,e7,ff
+White-Purple,b8,b8,f8
+Purple-Pink,d8,b8,f8
+White-Pink,f8,b8,f8
+Pink-Red,fb,a7,c3
+Tan,f0,d0,b0
+Tan-White,ff,e3,ab
+Tannish Yellow,fb,db,7b
+Yellow-Green,d8,f8,78
+Cream Green,b8,f8,b8
+Green-White,b8,f8,d8
+Cyan,00,ff,ff
+Off White,f8,d8,f8
+Black 7,00,00,00
+Black 8,00,00,00

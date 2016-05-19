@@ -1,0 +1,413 @@
+I. Introduction
+
+   NINDRAW is a software tool designed to be used in the creation and
+manipulation of graphics for video games.  This current version runs on
+any IBM PC or compatible with a VGA video card and monitor.  It will run
+only in the 320 x 200 x 256 VGA mode, and it requires the use of a mouse.
+
+   Any similarity between the title of this program and a popular home
+game console manufactured by a big, mean Japanese company is purely
+coincidence.
+
+   NINDRAW was written by Ken Beckett for the use of Color Dreams, Inc.
+
+
+II. Command Line Options
+
+   The following options are available from the DOS command line when
+using NINDRAW:
+
+		load program with specified file active.
+	-b		use VGA BIOS calls to change palette.
+	-m	force "MAKE" of specified file.
+	-o	force "MAKE" of specified file with objects.
+	-v		display program version.
+	-?		display this list of options.
+
+   Examples:
+
+	C>nd game	-start program and load file "game.drw".
+
+	C>nd -mgame	-load file "game.drw", make the files
+			 YOURBACK.ASM and DRAWDATA.ASM, and exit
+			 back to DOS.
+			 NOTE: as of V1.07, if the data in YOURBACK.ASM
+			       exceeds 26K, the remainder is written to a
+			       file called ALTBACK.ASM.
+
+	C>nd -ogame	-same as above, but include objects in
+			 the DRAWDATA.ASM file.
+
+   Note that the '-m' and '-o' options do NOT require VGA.
+   For more information on the MAKE process, see section IV.
+
+   NOTE: to avoid the problem of many VGA board BIOSes un-necessarily
+	 waiting for vertical retrace EVERY time the call to change a
+	 palette register is made, this program writes directly to the
+	 VGA hardware to change the palette registers.  This works fine
+	 on IBM VGA ISA-bus boards, ATI VGA, and several others.  If
+	 you have any problems, you can try the '-b' option when load-
+	 ing the program, but this might cause the program to run very
+	 slowly when changing palettes (depending upon your specific
+	 board BIOS - the IBM board runs slow, while the ATI board will
+	 work fine in either mode, for example).
+
+
+III. Keyboard Commands
+
+   This program makes heavy use of the mouse, but also allows the use
+of many key sequences for convenience.  The commands marked with an
+asterisk cannot be operated with the mouse.
+
+   The following key commands are available in this version:
+
+	TAB/SHIFT-TAB	-select next/previous editing mode in editing window.
+
+       *ARROW KEYS	-scroll the item in the editing window (assuming
+			 it is larger than the viewing area).  The scroll
+			 increment is one character (one pixel if in
+			 magnify mode).
+
+       *SHIFT ARROWS	-scroll the item in the editing window by
+			 increments of one half the window size.
+
+	F1-F4		-select color 0-3 from current sub-palette.
+
+	SHIFT F1-F4	-select sub-palette 0-3 from current palette.
+
+	F5-F6		-select previous/next item in editing window.
+
+	SHIFT-F5/F6	-select first/last item in editing window.
+
+	F7-F8		-select add/delete item in editing window.
+
+	SHIFT-F8	-select delete ALL items of the current mode.
+
+	F9		-select enter search string for item name.
+
+	F10/SHIFT-F10	-select export/export-append current item.
+
+       *CTRL-P		-tag/untag current palette.  Palettes are not
+			 included in a MAKE if they are not tagged (palette
+			 name is displayed as dark grey).  Default is tagged.
+
+       *CTRL-T		-tag/untag current item.  Items are not included
+			 in a MAKE if they are not tagged (item name is
+			 displayed as dark grey).  Default is tagged.
+
+       *ALT-F1		-re-pick last data picked.
+
+       *ALT-F8		-toggle wait for vertical interrupt mode.
+			 When on, the program will sync to vertical
+		         retrace to run the flashing palettes as
+			 accurately as possible.  On slower machines
+			 this may cause the program to behave sluggishly.
+			 Also, moving the mouse may cause the palette to
+			 flash slower.  This mode is always turned on
+			 automatically when setting the frequency of a
+			 palette or when running an animation.  The machine
+			 will beep when the toggle is from off to on.
+
+       *ALT-F9		-display VGA palette.
+
+       *ALT-F10		-activate NES to VGA color matching window.
+
+	ALT-A		-append ".DRW" and ".VID" files to current data.
+			 (same as RIGHT button on LOAD)
+
+       *ALT-C		-display current time and date (does not update).
+
+	ALT-H		-display HELP information.  *NOT IMPLEMENTED YET*
+			 (same as LEFT button on HELP)
+
+       *ALT-I		-programmer information.
+
+	ALT-L		-load ".DRW" and ".VID" files.
+			 (same as LEFT button on LOAD)
+
+	ALT-M		-make YOURBACK.ASM and DRAWDATA.ASM files.
+			 (same as LEFT button on MAKE)
+			 NOTE: as of V1.07, if the data in YOURBACK.ASM
+			       exceeds 26K, the remainder is written to a
+			       file called ALTBACK.ASM.
+
+	ALT-O		-make YOURBACK.ASM and DRAWDATA.ASM with objects.
+			 (same as RIGHT button on MAKE)
+
+	ALT-P		-toggle character/palette number hex display.
+			 (same as LEFT on hex number)
+
+       *ALT-Q		-query available memory status.
+
+       *ALT-R		-re-draw the entire screen.
+
+	ALT-S		-save current data to ".DRW" and ".VID" files.
+			 (same as LEFT button on SAVE)
+
+       *ALT-T		-translate a character in the current item.
+
+	ALT-U		-undo last operation.       *NOT IMPLEMENTED YET*
+			 (same as LEFT button on UNDO)
+
+       *ALT-V		-display program version number.
+
+	ALT-X		-exit to DOS.
+			 (same as LEFT button on EXIT)
+
+	ALT-Z		-shell out to DOS (type "exit" to return later).
+			 (same as RIGHT button on EXIT)
+
+
+IV. Main Control Window
+
+   You may use the LEFT & RIGHT mouse buttons as follows in this window:
+
+   1) LOAD	  - LEFT to load ".DRW" and ".VID" files or
+		    RIGHT to append to the current data.
+
+   2) SAVE	  - LEFT to save current data.
+
+   3) MAKE	  - LEFT to create YOURBACK.ASM (contains all
+		    backgrounds) and DRAWDATA.ASM (contains animations,
+		    palettes, sprites, and optionally objects).
+		    RIGHT to include objects in DRAWDATA.ASM.
+		    You may create only one of the two data files by
+		    pressing the ESC key when the program prompts for
+		    the file that you don't want to have written.
+
+   4) HELP	  - *NOT IMPLEMENTED YET*
+
+   5) UNDO	  - *NOT IMPLEMENTED YET*
+
+   6) EXIT	  - LEFT to exit to DOS,
+		    RIGHT to spawn a DOS shell.
+
+   Note that in the full-screen EXPAND mode, this window is hidden, and
+the above functions can only be performed by use of the appropriate key
+sequence.
+
+
+V. Character Set Window
+
+   You may use the LEFT & RIGHT mouse buttons as follows in this window:
+
+   1) 0-F,X,LO,HI - use LEFT to select the character set and bank (LO/HI).
+		    The X set is a temporary or "scratch" set, and is not
+		    saved by the SAVE function.
+
+   2) ARROWS	  - LEFT to select previous or next character set.
+		    RIGHT to select first or last set currently in use.
+
+   3) IMPORT	  - LEFT to import a single set into the current set.
+		    RIGHT to import an entire ".VID" file.
+
+   4) EXPORT	  - LEFT to export a single set to a file.
+		    RIGHT to export the entire ".VID" file.
+
+   5) CLEAR	  - LEFT to clear the current set (both LO & HI banks!).
+		    RIGHT to clear ALL character sets.
+
+   6) VID/VRM     - LEFT to toggle between ".VID" and ".VRM" files for
+		    the IMPORT & EXPORT functions.  The ".VRM" files do
+		    not have 6 byte set headers.  To create a ROMable
+		    file that contains all of your character sets, set
+		    to ".VRM" mode and use RIGHT on EXPORT.
+
+   7) n-HI	  - LEFT to toggle between 1-HI and 2-HI modes.  2-HI
+		    mode allows for easier use of 1 x 2 mode sprites
+		    and 2 x 2 objects and backgrounds.  This mode simply
+		    changes the way the character set is displayed.
+
+   8) "anchor"    - LEFT to toggle anchor mode on/off.  When anchor mode
+		    is on and two character set windows are displayed,
+		    changing the set with the anchor on will force the
+		    other window to display the other bank of the same
+		    set.  (the "anchor" is the left one of the two arrow-
+		    like symbols).
+
+   9) "arrow"	  - when only one character set window is displayed, LEFT
+		    to open a second character set window.  When two are
+		    displayed, LEFT on the top window to close the bottom
+		    window, and LEFT on the bottom window to close the top
+		    window and bring the bottom window up to the top.
+
+   In the character set section of the window, press and hold the RIGHT
+button to "drag" the selection box.  Press and release the LEFT button to
+"pick" up the data in the drag box (you may also release the RIGHT button at
+this time).  You may now drop the picked data in the same window, the
+second character set window (if active), or the object editing window
+(if active).  To drop the data, press the LEFT button (this may be done
+repeatedly for multiple drops).  To discard the picked data, press the
+RIGHT button (hold it down to start a new drag).
+
+   If the character set section of the window displays "UNUSED", then the
+set is not currently allocated.  To allocate the set with the characters set
+to a built-in default character, press the LEFT button on the word "UNUSED".
+To allocate the set with the characters set to hex numbers representing their
+corresponding character numbers, press the LEFT button on "UNUSED".
+
+
+VI. Object Editing Window
+
+   You may use the LEFT & RIGHT mouse buttons as follows in this window:
+
+   1) item name   - LEFT to cycle between normal and EDIT modes (for
+		    animations only).
+		    RIGHT to rename the current item.
+
+   2) ARROWS	  - LEFT to display previous/next item.
+		    RIGHT to display first/last item.
+		    When an item is displayed, the palette and character
+		    set are always changed to the defaults for the item.
+
+   3) LIST	  - LEFT to enter a search string.
+
+   4) ADD         - normal mode: LEFT to add a new item.
+		    EDIT mode:   LEFT to add a frame after the current one.
+
+   5) DEL	  - normal mode: LEFT to delete the current item.
+		    		 RIGHT to delete ALL items.
+		    EDIT mode:   LEFT to delete the current frame.
+
+   6) EXP	  - LEFT to export the item to a text file.
+
+   7) edit mode   - LEFT & RIGHT to cycle through character, object,
+		    background, sprite, and animation modes.
+
+   sprites only:
+
+   8) base number - LEFT to enter a new base number.
+
+   animations only:
+
+   9) ani type	  - LEFT to change to sprite/object mode with the
+		    current frame of the animation as the current
+		    sprite/object.
+
+   10) frame name - RIGHT to rename the current animation frame.
+
+   11) frame LIST - LEFT to enter a search string.
+
+   12) frame #    - LEFT on arrows to go to previous/next frame.
+		    RIGHT on arrows to go to first/last frame.
+		    LEFT on frame number to go to specific frame.
+
+   13) ANI	  - LEFT to make animation run/stop.
+		    Note that while the animation is running, the program
+		    will sync to vertical retrace to run the animation as
+		    accurately as possible.  On slower machines this may
+		    cause the program to behave sluggishly.  Also, moving
+		    the mouse may cause the animation to run slower.
+
+   14) freq #	  - LEFT on arrows to decrease/increase frequency.
+		    RIGHT on arrows to select min/max frequency.
+		    LEFT on frequency number to set specific frequency.
+
+   editing tools:
+
+   15) MAGNIFY	  - LEFT to set magnify select mode, or cancel magnify if
+		    already active.  When magnify select mode is set, the
+		    mouse pointer will appear as a magnifying glass.  Set
+		    the glass over the spot that you wish to magnify and
+		    press the LEFT button.
+
+   16) EXPAND     - LEFT to activate expand mode, or cancel expand if
+		    already active.  RIGHT to activate full-screen expand
+		    mode, or toggle between normal & full-screen expand.
+
+   17) MEMO	  - LEFT to toggle memorize flag.  When memorize is on,
+		    changing the palette or character set will cause the
+		    new settings to be the new defaults for the current
+		    item.  When an item is displayed, the palette and
+		    character set are always changed to the defaults for
+		    the item.
+
+   18) DRAW	  - LEFT to toggle between draw and drag & pick modes.
+
+   19) GRID	  - LEFT to toggle grid mode on/off (displays character
+		    boundaries when in magnify mode).
+
+   20) FLIP	  - LEFT to toggle flip mode on/off.  When on, LEFT flips
+		    characters left-to-right and RIGHT flips top-to-bottom.
+		    Works only in sprite and character modes.
+
+   21) PUT OBJ	  - LEFT and hold to pick up the current object (works
+		    only in background mode.  Used to place objects onto
+		    backgrounds.
+
+   In the editing section of the window, press and hold the RIGHT
+button to "drag" the selection box.  Press and release the LEFT button to
+"pick" up the data in the drag box (you may also release the RIGHT button at
+this time).  You may now drop the picked data elsewhere in the same
+window.  To release or drop the data, press the LEFT button (you may press
+it repeatedly for multiple drops).  To discard the picked data, press the
+RIGHT button (hold it down to start a new drag).
+
+   You may not drop data in the character set window if it was picked up in
+the editing window.  Also, you may not drop data in the editing window if the
+window is in character mode and the data was picked from another mode.  These
+limitations may be removed in the future, but this has a low priority.
+
+   When in draw mode, press the LEFT button to draw in the current color
+selected in the palette window.  Press the RIGHT button to change the
+palette of the area under the mouse pointer to the current sub-palette
+selected in the palette window.
+
+
+VII. Palette Window
+
+   You may use the LEFT & RIGHT mouse buttons as follows in this window:
+
+   1) item name   - LEFT to cycle between normal, FREQ (frequency adjust),
+		    and EDIT (edit flashing palette) modes.
+		    RIGHT to rename the current palette.
+		    Note that while in FREQ mode, the program will sync
+		    to vertical retrace to run the flashing palette as
+		    accurately as possible.  On slower machines this may
+		    cause the program to behave sluggishly.  Also, moving
+		    the mouse may cause the palette to flash slower.
+
+   2) ARROWS	  - normal mode: LEFT to display previous/next palette.
+		                 RIGHT to display first/last palette.
+		    FREQ mode:   LEFT to increment/decrement frequency.
+				 RIGHT to set frequency to min/max.
+				 (frequency can only be adjusted for
+				  flashing palettes)
+		    EDIT mode:   LEFT to display previous/next frame.
+				 RIGHT to display first/last frame.
+
+   3) LIST	  - LEFT to enter a search string.
+
+   4) ADD         - normal mode: LEFT to add a new palette.
+		    EDIT mode:   LEFT to add a frame after the current one.
+			         RIGHT to add a blinker.
+
+   5) DEL	  - normal mode: LEFT to delete the current palette.
+		    		 RIGHT to delete ALL palettes.
+		    EDIT mode:   LEFT to delete the current frame.
+				 RIGHT to delete a blinker.
+
+   6) EXP	  - LEFT to export the palette to a text file.
+
+   In the palette section of the window, press the left button on a sub-
+palette number to select a sub-palette.  Press the left button on a color
+in a sub-palette to select the sub-palette AND select the current color
+in the sub-palette.
+
+   To set a color, press and hold the LEFT button on the color (either in
+the 64-color selection window OR the current 16-color palette), move the
+color to the desired position in the 16-color palette, and release the
+LEFT button to drop the color (or press the RIGHT button for multiple
+drops).
+
+
+VIII. Text Window
+
+   The text window is used to display input prompts, status messages, and
+error messages.  In its default state, it normally displays the program
+version number.
+
+   In the full-screen EXPAND mode this window is not shown, but will pop-up
+whenever it is needed.  If the ALT-Q, ALT-T, or ALT-V keys are used in
+this mode, the program will halt and wait for a key press before removing
+the window and allowing the program to resume operation.

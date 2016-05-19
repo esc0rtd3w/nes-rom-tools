@@ -1,0 +1,139 @@
+©¤*+­·· ·<>Ø¢©¤*+­·· ·Final Fantasy<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©1.1
+/§§§  /§§§ /§§§§§§§  ¸§§§§§§  /§§§§§§¿   ¸¿§§§§¿  /§§§¿  /§§· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø1.1
+/§§§  /§§§ /§§§//// /§§§´`§§§ /§§§//`§§ /§§§´/`§§ /§§§§¿ /§§·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>1.1
+/§§§ ./§§§ /§§§¿¿¿  /§§§ /§§§ /§§§  ¸§¤ /§§§  /§§ /§§§¤§¿/§§­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<1.1
+/§§§¿§¿§§§ /§§§¤¤¤  /§§§¤¤§§§ /§§§§§¤´  /§§§  /§§ /§§§/¤§¿§§­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<1.1
+/§§§§¤§§§§ /§§§///  /§§§ /§§§ /§§§//    /§§§¸ ¸§§ /§§§ /¤§§§···<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø1.1
+/§§§¤ ¤§§§ /§§§§§§§ /§§§ /§§§ /§§§      /`¤§§§§§' /§§§  /§§§ <>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©1.1
+///    /// //////// //// //// ////       ///////  ////  ////<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤1.1
+·<>Ø¢©¤*+­·· ·Document<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©1.1
+Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø¢©¤*+­·· ·<>Ø1.1
+
+Address Of Data ; 30010-30150  (196624)
+
+Weapons data consist of 8 Bytes  (8)
+
+I- Hit Percentage Byte ;
+ 00-64 respectivly 0%-100% (you can go higher)
+
+II- Damage ;
+ simply 00-FF Damage, or no Damage, to 255 damage
+
+III- The third byte is not yet known but the Following things are noticed.
+ Almost all Blade Weapons (Knives and Swords) are marked with 05
+ Every Axe but the Silver Axe is Marked 03
+ All Hammers and Staffs are Marked 01
+ The Vorpal and Katana are Marked 1E
+ The Masamune, Dragon Sword, Coral Sword, Bane Sword, Wooden Nunchucks, and Iron Nunchucks
+ are all marked with 0A, there is no noticable Connection yet.
+ And the Silver Axe, alone, is 04.
+
+IV- Spell Cast ;
+ Enter the Respective byte of a magic.
+ CURE is the first magic in the list so its 01
+ XXXX is the last at 40, the list and corrosponding
+ 
+ It is Possible to enter 43-5D so that the Spell Cast actually uses
+ Enemy Special Attacks, Actual results Varie and tend not to do exactly
+ do as the original Attack.
+
+ hex is supplied in the Magic Faq (Mgbytes.txt).
+  
+
+V- Elemental Byte ;
+ This is the same as magic elements except they aren't
+ as many. there is no Special Attack Element
+ but there is still FIRE(10) ICE(20) LIT(40) and ALL(FF)
+
+VI- Special Effect Byte ;
+ This byte simply denotes the Special Modifaction of Damage a weapon has
+  02 = increased Damage Against "Dragons" (IGUANA, ASP, B.DRAGON, Etc..)
+  04 = increased Damage Against "Gaints" (OGRE, GIANT, Etc..)
+  08 = increased Damage Against "Undead" (BONE, GEIST, Etc..)
+  10 = increased Damage Against "Were" (WereWOLF, MANCAT)
+  20 = increased Damage Against "Water" (SAHAG, SHARK, Etc..)
+  41 = increased Damage Against "Magic" (SORCERER, WzOGRE, NAGA, Etc..)
+
+VII- GFX Block Byte ;
+ 80 = Sword Sprite A (Giant Sword, Were Sword, Short Sword)
+ 84 = Sword Sprite B (Scimtar, Masmune)
+ 88 = Sword Sprite C (Falchon, Flame Sword, Vorpal, Rune Sword)
+ 8C = Sword Sprite D (Silver Sword, XCalbur, Ice Sword, Sun Sword, Long Sword)
+ 90 = Sword Sprite E (Rapier, Sabre, Defense Bane Sword, Dragon Sword, Coral Sword)
+ 94 = Hammer Sprite (Iron Hammer, Silver Hammer, Thors Hammer)
+ 98 = Knife Sprite (Small Knife, Large Knife, Silver Knife, CatClaw, Katana)
+ 9C = Axe Sprite (Hand Axe, Silver Axe, Great Axe, Light Axe)
+ A0 = Staff Sprite A (Wooden Staff, Power Staff, Wizard Staff)
+ A4 = Staff Sprite B (Iron Staff, Heal Staff, Mage Staff)
+ A8 = Nunchuck Sprite (Wooden Nunchucks, Iron Nunchucks)
+ 
+VIII- Palette Byte ;
+ 20 = Light Metal (Rapier, Small Knife, Short Sword, Hand Axe, Large Knife, Sabre, Long Sword, Falchon, Masamune)
+ 21 = Blues (Ice Sword, Heal Staff)
+ 22 = More Pink (Giant Sword, Bane Sword)
+ 23 = Purples (Rune Sword, Light Axe)
+ 24 = Pinkish (Were Sword, Thor's Hammer)
+ 25 = Magenta Scheme (Great Axe, Coral Sword, Mage Staff)
+ 26 = Reds (Flame Sword)
+ 27 = Wooden Colours (Wooden Staff, Wooden Nunchucks, Iron Hammer, Defense, Katana)
+ 28 = Yellows (Xcalbur)
+ 2A = Copper Green (Power Staff)
+ 2B = Smooth Green (Dragon Sword)
+ 2C = Blue Greens (Silver Weapons, Wizard Staff)
+
+
+¸,o¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤o,¸
+§¤< Weaponss, Weapon Data, and Sloppy Descriptions of them >¤§
+`'º¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤º'´
+
+ 
+Hit Percentage
+|  Damage
+|  |  ???
+|  |  |  Spell Cast
+|  |  |  |  Element
+|  |  |  |  |  Special Effect
+|  |  |  |  |  |  GFX Block
+|  |  |  |  |  |  |  Palette				Sloppy Explanation of data
+|  |  |  |  |  |  |  |      Name             ______________________|___________________
+|__|__|__|__|__|__|__|________|_____________|__________________________________________|____
+00:0C:0A:00:00:00:A8:27 Wooden Nunchucks  0 hit%, 12 Damage,, No Spell,No Element, No Effect.
+0A:05:05:00:00:00:98:20 Small Knife       10 hit%, 5 Damage,, No Spell,No Element, No Effect.
+00:06:01:00:00:00:A0:27 Wooden Staff      0 hit%, 6 Damage,, No Spell,No Element, No Effect.
+05:09:0A:00:00:00:90:20 Rapier            5 hit%, 9 Damage,, No Spell,No Element, No Effect.
+00:09:01:00:00:00:94:27 Iron Hammer       0 hit%, 9 Damage,, No Spell,No Element, No Effect.
+0A:0F:05:00:00:00:80:20 Short Sword       10 hit%, 15 Damage,, No Spell,No Element, No Effect.
+05:10:03:00:00:00:9C:20 Hand Axe          5 hit%, 16 Damage,, No Spell,No Element, No Effect.
+0A:0A:05:00:00:00:84:2B Scimtar           10 hit%, 10 Damage,, No Spell,No Element, No Effect.
+00:10:0A:00:00:00:A8:20 Iron Nunchucks    0 hit%, 16 Damage,, No Spell,No Element, No Effect.
+0A:07:05:00:00:00:98:20 Large Knife       10 hit%, 7 Damage,, No Spell,No Element, No Effect.
+00:0E:01:00:00:00:A4:20 Iron Staff        0 hit%, 14 Damage,, No Spell,No Element, No Effect.
+05:0D:0A:00:00:00:90:20 Sabre             5 hit%, 13 Damage,, No Spell,No Element, No Effect.
+0A:14:05:00:00:00:8C:20 Long Sword        10 hit%, 20 Damage,, No Spell,No Element, No Effect.
+05:16:03:00:00:00:9C:25 Great Axe         5 hit%, 22 Damage,, No Spell,No Element, No Effect.
+0A:0F:05:00:00:00:88:20 Falchon           10 hit%, 15 Damage,, No Spell,No Element, No Effect.
+0F:0A:05:00:00:00:98:2C Silver Knife      15 hit%, 10 Damage,, No Spell,No Element, No Effect.
+0F:17:05:00:00:00:8C:2C Silver Sword      15 hit%, 23 Damage,, No Spell,No Element, No Effect.
+05:0C:01:00:00:00:94:2C Silver Hammer     5 hit%, 12 Damage,, No Spell,No Element, No Effect.
+0A:19:04:00:00:00:9C:2C Silver Axe        10 hit%, 25 Damage,, No Spell,No Element, No Effect.
+14:1A:05:00:10:88:88:26 Flame Sword       20 hit%, 26 Damage,, No Spell, Fire Element,?.
+19:1D:05:00:20:00:8C:21 Ice Sword	  25 hit%, 29 Damage,, No Spell, Ice Element,No Effect.
+0F:13:0A:00:00:02:90:2B Dragon Sword      15 hit%, 19 Damage,, No Spell, No Element, Increased Damage on Dragons
+14:15:05:00:00:04:80:22 Giant Sword	  20 hit%, 21 Damage,, No Spell, No Element, Increased Damage on Giants
+1E:20:05:00:00:08:8C:27 Sun Sword	  30 hit%, 26 Damage,, No Spell, No Element, Increased Damage on Undead
+0F:13:0A:00:00:20:90:25 Coral Sword	  15 hit%, 19 Damage,, No Spell, No Element, Increased Damage on Water
+0F:12:05:00:00:10:80:24 Were Sword	  15 hit%, 18 Damage,, No Spell, No Element, Increased Damage on Were (HAH)
+0F:12:05:00:00:41:88:23 Rune Sword	  15 hit%, 18 Damage,, No Spell, No Element, Increased Damage on Magic
+00:0C:01:00:00:00:A0:2A Power Staff	  0 hit%, 13 Damage,, No Spell,No Element, No Effect. 
+0F:1C:03:12:00:08:9C:23 Light Axe	  15 hit%, 28 Damage,, HRM2, No Element, Increased Damage on Undead
+00:06:01:14:00:00:A4:21 Heal Staff     	  0 hit%, 6 Damage,, HEAL, No Element, No Effect.
+0A:0C:01:15:00:00:A4:25 Mage Staff 	  10 hit%, 12 Damage,, FIR2, No Element, No Effect.
+23:1E:05:04:00:00:80:27 Defense		  35 hit%, 30 Damage,, RUSE, No Element, No Effect.
+0F:0F:01:1F:00:00:A4:2C Wizard Staff	  15 hit%, 15 Damage,, CONF, No Element, No Effect.
+19:18:1E:00:00:00:88:21 Vorpal		  25 hit%, 24 Damage,, No Spell, No Element, No Effect.
+23:16:05:00:00:00:98:2C CatClaw		  35 hit%, 22 Damage,, No Spell, No Element, No Effect.
+0F:12:01:17:00:00:94:24 Thor's Hammer	  15 hit%, 18 Damage,, LIT2, No Element, No Effect.
+14:16:0A:26:00:00:90:22 Bane Sword	  20 hit%, 22 Damage,, BANE, No Element, No Effect.
+23:21:1E:00:00:00:98:27 Katana		  35 hit%, 33 Damage,, No Spell, No Element, No Effect.
+23:2D:05:00:FF:FF:8C:28 XCalbur		  35 hit%, 45 Damage,, No Spell, All Elements, All Effects.
+32:38:0A:00:00:00:84:20 Masmune		  50 hit%, 56 Damage,, No Spell, No Element, No Effect.

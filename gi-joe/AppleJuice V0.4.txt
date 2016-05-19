@@ -1,0 +1,13 @@
+Known bugs:
+
+- Stage 1-3 Has some uncomplete rooms.  I don't know if the lower portion is ignored in rooms 07+
+
+
+Check out http://www.DogSoft.net for future updates.
+
+To Do:
+
+- Map Editor/Room Editor (Will enable of use of unused rooms in the rom)
+- Enemy/Item Editor
+
+Release 02/23/2008

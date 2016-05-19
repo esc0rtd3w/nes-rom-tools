@@ -1,0 +1,11 @@
+	known bugs:
+	-----------
+
+      - comments don't seem to work. I don't know why.
+        Seems to be a FCEUXD SP bug (tested with FCEUXD SP 1.06)
+     
+
+    Please send me an e-mail if you find any bugs or have
+    suggestions for improvements!
+
+	(c) 2006, Dennis Elser (dennis@backtrace.de)

@@ -1,0 +1,264 @@
+¥£¢$·$¢£¥· Final Fantasy ¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢1.0
+/§§§§§§¿  /§§§§§§¿  /§§§§§§§  ¸¿§§§§¿  /§§§§§§§  ¸§§§§§§¸ ¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$1.0
+/§§§//`§§ /§§§´ `§¿ ///§§§// /§§§' ´¤§ /§§§//// /§§§´//`§ ·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£1.0
+/§§§  ¸§¤ /§§§¸ ¸§¤   /§§§   /§§§      /§§§¿¿¿  /¤§§¿¸    ¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$1.0
+/§§§§§¤´  /§§§§§§¤    /§§§   /§§§      /§§§¤¤¤    ` `¤§¿¸ ·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£1.0
+/§§§//    /§§§//§¿    /§§§   /§§§¸ ¸¿§ /§§§///  /¿¸   ¿§¿ ¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$1.0
+/§§§      /§§§ /§§¿ /§§§§§§§ /`¤§§§§§' /§§§§§§§  /¤§§§§¤' ·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£1.0
+////      //// //// ////////  ///////  ////////   //////  ¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$1.0
+¥£¢$·$¢£¥·¥£¢$·$¢£¥· Document ¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£1.0
+¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£¢$·$¢£¥·¥£1.0
+
+ Adress of Data : 37C11-37DEF
+
+ Two Bytes Representing Price in the Same System As Monster HP and Inn/Clinic Prices.
+ The Second Byte is the First Two Digits and the First Byte is the Second Two Digits,
+ there for 32-00 is Actually 0032 which is 50 Decimal.
+
+ In The Gold Peices Area, the bytes represent the ammount of gold gained when you open
+ the Corrosponding Chest.
+
+
+Second Price Digit
+|  First Price Digit
+|  |		        Price
+|__|______________________|____________
+00-00 LUTE		Priceless
+00-00 CROWN		Priceless
+00-00 CRYSTAL		Priceless
+00-00 HERB		Priceless
+00-00 KEY		Priceless
+00-00 TNT		Priceless
+00-00 ADAMANT		Priceless
+00-00 SLAB		Priceless
+00-00 RUBY		Priceless
+00-00 ROD		Priceless
+00-00 FLOATER		Priceless
+00-00 CHIME		Priceless
+00-00 TAIL		Priceless
+00-00 CUBE		Priceless
+50-C3 BOTTLE		50000
+00-00 OXYALE		Priceless
+00-00 CANOE		Priceless
+00-00 ?????		????
+00-00 ?????		????
+00-00 ?????		????
+00-00 ?????		????
+4B-00 TENT		75
+FA-00 CABIN		250
+B8-0B HOUSE		3000
+3C-00 HEAL		60
+4B-00 PURE		75
+20-03 SOFT		800
+0A-00 Wooden Nunchuck	10
+05-00 Small Knife	5
+05-00 Wooden Staff	5
+0A-00 Rapier		10
+0A-00 Iron Hammer	10
+26-02 Short Sword	550
+26-02 Hand Axe		550
+C8-00 Scimtar		200
+C8-00 Iron Nunchuk	200
+AF-00 Large Knife	175
+C8-00 Iron Staff	200
+C2-01 Sabre		450
+DC-05 Long Sword	1500
+D0-07 Great Axe		2000
+C2-01 Falchion		450
+20-03 Silver Knife	800
+A0-0F Silver Sword	4000
+C4-09 Silver Hammer	2500
+94-11 Silver Axe	4500 
+10-27 Flame Sword	10000 - Found
+98-3A Ice Sword		15000 - Found
+40-1F Dragon Sword	8000 - Found
+40-1F Giant Sword	8000 - Found
+20-4E Sun Sword		20000 - Found
+40-1F Coral Sword	8000 - Found
+70-17 Were Sword	6000 - Found
+88-13 Rune Sword	5000 - Found
+39-30 Power Staff	12345 - Found
+10-27 Light Axe		10000 - Found
+A8-61 Heal Staff	25000 - Found
+A8-61 Mage Staff	25000 - Found
+40-9C Defense		40000 - Found
+50-C3 Wizard Staff	50000 - Found
+30-75 Vorpal		30000 - Found
+E8-FD CatClaw		65000
+40-9C Thors Hammer	40000 - Found
+60-EA Bane Sword	60000 - Found
+60-EA Katana		60000 - Found
+60-EA Excalbur		60000 - Made
+60-EA Masmune		60000 - Found
+0A-00 Cloth		10
+32-00 Wooden Armour	50
+50-00 Chain Armour	80
+20-03 Iron Armour	800
+C8-AF Steel Armour	45000
+4C-1D Silver Armour	7500
+30-75 Flame Armour	30000 - Found
+30-75 Ice Armour	30000 - Found
+60-EA Opal Armour	60000 - Found
+60-EA Dragon Armour	60000 - Found
+E8-03 Copper Bracelet	1000 
+88-13 Silver Bracelet	5000
+50-C3 Gold Bracelet	50000
+E8-FD Opal Bracelet	65000 - Found
+02-00 White Shirt	2 - Found
+02-00 Black Shirt	2 - Found
+0F-00 Wooden Sheild	15
+64-00 Iron Sheild	100
+C4-09 Silver Sheild	2500
+10-27 Flame Sheild	10000
+10-27 Ice Sheild	10000
+98-3A Opal Sheild	15000 - Found
+40-9C Aegis Sheild	40000 - Found
+C4-09 Buckler		2500
+20-4E ProCape		20000
+50-00 Cap		80
+64-00 Wooden Helmet	100
+C2-01 Iron Helmet	450
+C4-09 Silver Helmet	2500
+10-27 Opal Helmet	10000 - Found
+20-4E Heal Helmet	20000 - Found
+02-00 Ribbon		2 - Found
+3C-00 Gloves		60
+C8-00 Copper Gauntlet	200
+EE-02 Iron Gauntlet	750
+C4-09 Silver Gauntlet	2500
+98-3A Zeus Gauntlet	15000 - Found
+10-27 Power Gauntlet	10000 - Found
+20-4E Opal Gauntlet	20000 - Found
+20-4E ProRing		20000
+0A-00  10 Gold Peices		Note: The Gold Peices Data Represents The ammount of Gold Recieved
+14-00  20 Gold Peices			in Treasure Chests Through out the Game.
+19-00  25 Gold Peices
+1E-00  30 Gold Peices
+37-00  55 Gold Peices
+46-00  70 Gold Peices
+55-00  85 Gold Peices
+6E-00  110 Gold Peices
+87-00  135 Gold Peices
+9B-00  155 Gold Peices
+A0-00  160 Gold Peices
+B4-00  180 Gold Peices
+F0-00  240 Gold Peices
+FF-00  255 Gold Peices
+04-01  260 Gold Peices
+27-01  295 Gold Peices
+2C-01  300 Gold Peices
+3B-01  315 Gold Peices
+4A-01  330 Gold Peices
+5E-01  350 Gold Peices
+81-01  385 Gold Peices
+90-01  400 Gold Peices
+C2-01  450 Gold Peices
+F4-01  500 Gold Peices
+12-02  530 Gold Peices
+3F-02  575 Gold Peices
+6C-02  620 Gold Peices
+A8-02  680 Gold Peices
+EE-02  750 Gold Peices
+1B-03  795 Gold Peices
+70-03  880 Gold Peices
+FC-03  1020 Gold Peices
+E2-04  1250 Gold Peices
+AF-05  1455 Gold Peices
+F0-05  1520 Gold Peices
+E0-06  1760 Gold Peices
+B7-07  1975 Gold Peices
+D0-07  2000 Gold Peices
+BE-0A  2750 Gold Peices
+48-0D  3400 Gold Peices
+36-10  4150 Gold Peices
+88-13  5000 Gold Peices
+4A-15  5450 Gold Peices
+00-19  6400 Gold Peices
+40-1A  6720 Gold Peices
+AC-1C  7340 Gold Peices
+0A-1E  7690 Gold Peices
+DC-1E  7900 Gold Peices
+C7-1F  8135 Gold Peices
+28-23  9000 Gold Peices
+54-24  9300 Gold Peices
+1C-25  9500 Gold Peices
+AC-26  9900 Gold Peices
+10-27  10000 Gold Peices
+3E-30  12350 Gold Peices
+C8-32  13000 Gold Peices
+8A-34  13450 Gold Peices
+E2-36  14050 Gold Peices
+80-39  14720 Gold Peices
+98-3A  15000 Gold Peices
+52-44  17490 Gold Peices
+5A-46  18010 Gold Peices
+16-4E  19990 Gold Peices
+20-4E  20000 Gold Peices
+2A-4E  20010 Gold Peices
+90-65  26000 Gold Peices
+C8-AF  45000 Gold Peices
+E8-FD  65000 Gold Peices
+64-00 CURE		100
+64-00 HARM		100
+64-00 FOG		100
+64-00 RUSE		100
+64-00 FIRE		100
+64-00 SLEP		100
+64-00 LOCK		100
+64-00 LIT		100
+90-01 LAMP		400
+90-01 MUTE		400
+90-01 ALIT		400
+90-01 INVS		400
+90-01 ICE		400
+90-01 DARK		400
+90-01 TMPR		400
+90-01 SLOW		400
+DC-05 CUR2		1500	
+DC-05 HRM2		1500
+DC-05 AFIR		1500
+DC-05 HEAL		1500
+DC-05 FIR2		1500	
+DC-05 HOLD		1500
+DC-05 LIT2		1500
+DC-05 LOK2 		1500
+A0-0F PURE		4000
+A0-0F FEAR		4000
+A0-0F AICE		4000
+A0-0F AMUT		4000
+A0-0F SLP2		4000
+A0-0F FAST		4000
+A0-0F CONF		4000
+A0-0F ICE2		4000
+40-1F CUR3		8000
+40-1F LIFE		8000
+40-1F HRM3		8000
+40-1F HEL2		8000
+40-1F FIR3		8000
+40-1F BANE		8000
+40-1F WARP		8000
+40-1F SLO2		8000
+20-4E SOFT		20000
+20-4E EXIT		20000
+20-4E FOG2		20000
+20-4E INV2		20000
+20-4E LIT3		20000
+20-4E RUB		20000
+20-4E QAKE		20000
+20-4E STUN		20000
+C8-AF CUR4		45000
+C8-AF HRM4		45000
+C8-AF ARUB		45000
+C8-AF HEL3		45000
+C8-AF ICE3		45000
+C8-AF BRAK		45000
+C8-AF SABR		45000
+C8-AF BLND		45000
+60-EA LIF2		60000
+60-EA FADE		60000
+60-EA WALL		60000
+60-EA XFER		60000
+60-EA NUKE		60000
+60-EA STOP		60000
+60-EA ZAP!		60000
+60-EA XXXX		60000

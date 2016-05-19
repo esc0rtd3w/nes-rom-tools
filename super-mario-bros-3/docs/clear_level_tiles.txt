@@ -1,0 +1,38 @@
+Data collected by DahrkDaiz
+
+
+0x1E41B = Tile used to clear Plains type levels.
+
+0x2041B = Tile used to clear out the very top row of tiles on Hilly type levels.
+0x20427 = Tile used to clear out Hilly type levels.
+
+0x22420 = Tile used to clear out the very top row of tiles of Sky/Ice type levels.
+0x22429 = Tile used to clear the rest of the level of a Sky/Ice type level.
+
+0x1A41B = Tile used to clear out the very top row of tiles on Underground type levels.
+0x1A427 = tile used to clear out the rest of the level of Underground type levels.
+
+0x2642C = Tile used to clear Cloudy type levels.
+
+0x2A420 = Tile used to clear out the top row of tiles in Dungeon type levels.
+0x2A429 = Tile used to clear out the mid-way row (vertically) of tiles in Dungeon type levels.
+0x2A42E = Tile used to clear out the 2nd row of tiles in Dungeon type levels.
+0x2A437 = Tile used to clear out the rest of the tiles except for the bottom 2 rows in 
+          Dungeon type levels.
+0x2A443 = Tile used to clear out the next to last row of tiles in Dungeon type levels,
+          except these tiles alternate, starting with the 1st tile.
+0x2A449 = Tile used to clear out the next to last row of tiles in Dungone type levels,
+          except these tiles alternate, starting with the 2nd tile.
+0x2A453 = Tiles used to clear out the very bottom row of tiles in Dungeon type levels,
+          except these tiles alternate, starting with the 1st tile.
+0x2A459 = Tiles used to clear out the very bottom row of tiles in Dungeon type levels,
+          except these tiles alternate, starting with the 2nd tile.
+
+0x2841B = Tile used to clear out the level of Desert type levels.
+0x28427 = Tile used to clear out the very bottom row of tiles in Desert type levels.
+
+0x2E41B = Tile used to clear out Ship/Airship level types.
+
+0x2441B = Tile used to clear out Water type levels.
+
+0x2641B = Tile used to clear out Giant type levels.

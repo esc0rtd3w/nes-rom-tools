@@ -1,0 +1,10 @@
+	history:
+	--------
+
+		    2006-Oct-04 version 0.1
+		    -----------------------
+		    - initial version
+		    
+  
+  
+  (c) 2006, Dennis Elser (dennis@backtrace.de)		    

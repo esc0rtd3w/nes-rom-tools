@@ -1,0 +1,116 @@
+UniTSA Data File Definitions
+
+UniTSA uses customisable files which allows you to create a TSA editor
+for virtually any NES game, which uses standard TSA. This document explains
+the various options that are in these files.
+
+The actual format is basically an INI file. If you are familiar with INI files
+you should know what you are doing here. Below is a sample UniTSA data file
+with comments for every line, explaining they do. Please note, this is not for an actual game, just an example.
+
+[General]
+// The Format line basically tells UniTSA what format of graphics
+// are being used. This is included for future compatibility reasons only.
+Format=NES2BPP
+// This simply tells UniTSA what the name of the game is. It’s entirely
+// optional.
+GameName=Castlevania
+// This section of variables tells UniTSA what to use as the palette
+PaletteByte1=0F
+PaletteByte2=27
+PaletteByte3=02
+PaletteByte4=16
+// This variable tells UniTSA what multiplication factor that you
+// want to display the TSA block. If this is not present, UniTSA assumes it
+// to be 2.
+TSABlockSizeMultiplier=2
+// If there is separate TSA and pattern table locations for each level in the
+// game that you are editing, specify it here. If you set this value to 0,
+// or don't include it at all, UniTSA simply presumes there is one set of 
+// TSA data for the entire game.
+NumberOfLevels=1
+// This specifies the width of the TSA in bytes.
+TSADataHeight=2
+// This specifies the height of the TSA in bytes.
+TSADataWidth=2
+// This simply specifies how many bytes to skip before you start loading each
+// TSA. This is useful in games such as Castlevania, which stores a byte
+// which tells the game which palette to use. As palettes are not handled
+// by UniTSA, UniTSA needs to skip this byte each time.
+SkipBytesBeforeTSA=0
+// This variable tells you how many bytes to skip between each TSA byte
+// Useful apparently in Sprite TSA. Or so I’m told.
+SkipBytesBetweenEachTSAByte=0
+// See above, but apply to after the TSA data. I've personally never came
+// across this in TSA, but it may exist in some games.
+SkipBytesAfterTSA=0
+// This variable states whether to load the columns in first, instead of the
+// rows. Castlevania TSA data is like this.
+LoadColumnsFirst=1
+// If the NumberOfLevels parameter is not present, or is 0, then
+// UniTSA presumes that there is only one set of TSA for the entire
+// game. This variable tells UniTSA where to find this TSA data. This value
+// should be in hexadecimal, not decimal.
+TSADataLocation=67FE
+// This tells UniTSA how many different locations to make the pattern table up
+// from. Usually, its only ever 1, but if it is not present, then UniTSA will
+// assume that it is 0. It will therefore look for PatternTableLocation. If it 
+// does not find it, it will look for PatternTableLocation1. If it does not
+// find either, you are screwed.
+NumberOfPatternTableLocations=1
+
+// This tells UniTSA what location the pattern table is located at 
+// for the level. This value should be in hexadecimal, not decimal.
+PatternTableLocation1=8010
+// This parameter tells UniTSA to load in xxx tiles from the above
+// tile location. If you don’t use the other pattern table location, then
+// this variable is set to 256.
+PatternTableNumberOfTiles1=128
+// As with above, if the NumberOfLevels parameter is not present,
+// or is 0, then UniTSA needs to know where to find the entire pattern
+// table for the game. This value should be in hexadecimal, not decimal.
+PatternTableLocation=9010
+// This essentially tells UniTSA how many blocks to load. Some games do
+// not use 256, in fact Boulder Dash uses only 44 different TSA blocks.
+NumberOfBlocksToLoad=44
+// If the TSA is all over the place, and the different blocks are not 
+// evenly spaced out in the ROM (Wrecking Crew is an example of this)
+// you can manually specify TSA block locations. 
+ManuallySpecifyBlockLocations=0
+// This is an example of manually specifying each TSA block. It should
+// start at 0. This value should be in hexadecimal, not decimal. 
+ManualBlock0=9012
+
+// For each level specific TSA, you need to specify this. The level number
+// should start from 0.
+[Level0]
+// This tells UniTSA what to display the name of the level as. Optional.
+// If it is not included, UniTSA presumes the level name as Level + 
+// LevelNumber+1.
+LevelName = Castle Starting
+// This tells UniTSA how many different locations to make the pattern table up
+// from. Usually, its only ever 1, but if it is not present, then UniTSA will
+// assume that it is 0. It will therefore look for PatternTableLocation. If it 
+// does not find it, it will look for PatternTableLocation1. If it does not
+// find either, you are screwed.
+NumberOfPatternTableLocations=1
+// This tells UniTSA what location the pattern table is located at 
+// for the level. This value should be in hexadecimal, not decimal.
+PatternTableLocation1=8010
+// This parameter tells UniTSA to load in xxx tiles from the above
+// tile location. If you don’t use the other pattern table location, then
+// this variable is set to 256.
+PatternTableNumberOfTiles1=128
+// This value tells UniTSA what location the TSA data is located 
+// at in the ROM.
+TSADataLocation=5689
+// This essentially tells UniTSA how many blocks to load. Some games do
+// not use 256, in fact Boulder Dash uses only 44 different TSA blocks.
+NumberOfBlocksToLoad=44
+// If the TSA is all over the place, and the different blocks are not 
+// evenly spaced out in the ROM (Wrecking Crew is an example of this)
+// you can manually specify TSA block locations. 
+ManuallySpecifyBlockLocations=0
+// This is an example of manually specifying each TSA block. It should
+// start at 0. This value should be in hexadecimal, not decimal. 
+ManualBlock0=9012

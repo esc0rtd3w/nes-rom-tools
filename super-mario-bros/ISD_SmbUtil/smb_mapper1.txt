@@ -1,0 +1,25 @@
+=============================================================================
+How to use SMB Mapper 1
+=============================================================================
+
+1] Get yourself a SMB1 ROM from any ROM Site. (Good or Bad Dump) If you have a Bad Dump SMB1 ROM, then use YY's SMB1 Fix to clean up your ROM.
+
+2] Patch the 40,976 byte Good SMB1 ROM with Primarytrainer.ips. This allows to add trainers in your SMB1 ROM to 41,488 bytes. If you lucky to find the 41,488 byte SMB1 ROM on your own, then you're OK.
+
+3] Rename the 41,488 byte SMB1 ROM to making_map.nes (Optional)
+
+4] Patch making_map.ips with making_map.nes this will allow to have SMB2 Japanese Items in your disposal.
+
+Keep in mind that hacked SMB1 ROMs DOES work. Maybe. To add trainers without using a patch. Run Translhextion on your SMB1 Hacked ROM. Go to offset x6 and change 01 to 05. Then Insert 512 Zeros and save. By copying 00 and pasting and has to be INSERT.
+
+Or just edit stuff in your trained ROM.
+
+Also note that SMB2Clouds_t.ips cannot be mixed with making_map.ips
+
+5] Run Mapper.bat when using the program on making_map.nes, the Mapper1.nes will be created. (Optional)
+
+6] Then Patch ELSA_Item_Mapper1v1.2a and/or S_jump_Red_pakkun to Mapper1.nes (Optional)
+
+7] Use FCE Ultra Emulator to try it out. Other Emu's do not work.
+
+If there any instruction errors, please notify me and I'll correct it myself.

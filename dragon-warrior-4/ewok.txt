@@ -1,0 +1,71 @@
+========================================
+  Ewok: Dragon Warrior 4 Casino Editor
+========================================
+By Dan Weiss (Dwedit)
+   ewok@dwedit.cjb.net
+   
+Version 2.0
+
+This program lets you edit which monsters are in the fighting
+ring at the casino in Endor.  You can edit the monsters,
+and the odds.
+
+TO USE:
+  
+  Run the program, then type in the filename of the ROM or click
+  the open button for the Open dialog box.  You should back up
+  your old rom if you want to use this program.
+  
+  When a valid file is in the text box, then the program activates.
+  Use the << and >> buttons to select a battle, and click "Chapter 2"
+  or "Chapter 5" to use a different set of battles.
+  
+  To change an enemy, click on the button with the enemy's name on
+  it.  You can also add enemies where blank ones are.  To set the
+  odds, type in the new odds in the text box next to the monster's
+  name.  You can specify values from 0 to 255, but the recommended
+  range is 1 to 230, as 0 and the biggest numbers often overflow.
+  
+  After making any changes click the Save button to write the
+  changes to the ROM, or click Undo to restore the settings to
+  normal.  If you move on to a new battle without saving first,
+  your changes are lost, so SAVE FIRST.
+  
+NOTES:
+  
+  The game will sometimes lose enemies if they can't fit on the
+  screen, or there is not enough VRAM available for the enemies'
+  graphics to load.  You can't have a battle consisting of 4 different
+  large enemies, the game will just not load some enemies.
+  
+  There are dummied (removed/rare) enemies available on the list,
+  but the Troubadour (Palette Swapped Roric) sucks as he only has 1 HP
+  and no MP.  He can't attack either.
+  
+  Esturk and Necrosaro fill the whole screen, so don't use them.
+  
+  If Necrosaro kills an enemy, he will lose a limb/evolve an extra one
+  and the killed enemy automatically revives.
+  
+  If Linguar is in the first slot, it causes a messed up battle
+  where the Linguar splits, and then only the real Linguar will fight.
+  The real Linguar can't attack itself, so it hits a mirage.  The match
+  will inevitably end in a draw due to overtime.
+  If Linguar is not the first enemy, it will just fight, and its
+  tongue is perminantly sticking out.
+  
+  The traveling merchant speaks in third person, says he's dazed, and
+  has 1 HP.
+  
+  The Slime (King Slime version) has around 35 HP, but has almost no
+  attack power.
+  
+OTHER STUFF:
+  
+  If you click on Show Offset, it will show the ROM offset where the
+  data is loaded from.
+  
+  If you click on the ... next to the Open button, it will show a table
+  containing all the enemies and their hex values.
+  
+  The frogurt is also cursed.

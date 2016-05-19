@@ -1,0 +1,228 @@
+¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷Final Fantasy¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·
+/§§§  /§§§  ¸§§§§§§   ¸¿§§§§¿  /§§§§§§  ¸¿§§§§¿¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»
+/§§§¿/¿§§§ /§§§´`§§§ /§§§' ´¤§ ///§§// /§§§' ´¤§¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬
+/§§§§¿§§§§ /§§§ /§§§ /§§§        /§§   /§§§      ¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'
+/§§§'§'§§§ /§§§¤¤§§§ /§§§ ¿§§§¤  /§§   /§§§     ¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬
+/§§§ '/§§§ /§§§ /§§§ /§§§¸/§§§   /§§   /§§§¸ ¸¿§"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬
+/§§§  /§§§ /§§§ /§§§ /`¤§§§§§' /§§§§§§ /`¤§§§§§'¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬
+////  //// //// ////  ///////  ///////  ///////¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»
+¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷Document¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷
+ ¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«_¸»÷¨"'¬»·«
+
+
+Adress of Data ; 301F0-303EF
+
+Magics Consisit of 7 bytes.
+
+I- The first byte; 
+is unknown but do notice the following
+ 00 shows up on most white magics (except HARM which is 18, see next line)
+ 18 shows up on Damaging magics
+ 20 shows up on ZAP!
+ 28 shows up on BANE and QUAK
+ 30 shows up on HEL3 and STOP
+ 40 shows up on most Effect Attack magics, such as LOCK and MUTE.
+ 6B shows up on Very high level magics, like NUKE(FIR4) and FADE(HRM5)
+ FF shows up on magics that are cast only outside of battle
+
+
+II- Effectivity Byte ;
+Simply a scale of 0-255.
+ 0 being Worst and FF being Best (Fire at FF does 510 DMG on average)
+
+III- Elemental Byte ;
+This byte Denotes the "Element" of the Magic, ussually something simple
+like Fire or Ice. a Few of them are rather odd if not unexplainable.
+ 01 = Special Attack Element, Such as FEAR or CONF.
+ 02 = Instant Death (BRAK, BANE, RUB)
+ 04 = STOP and ZAP!'s element, unknown
+ 08 = RUB and XXXX's element, Instant Death?
+ 10 = Fire, Increased effect on Undead and Ice creatures
+ 20 = Ice, Increased effect on Fire Creatures and Decreased on Undead, also Generally slightly stronger than fire
+ 40 = Lightning, Increased effect on Water Creatures
+ 80 = QAKE's element, Presumed to be an element which cannot effect air Enemies
+
+IV- Targetting Byte ;
+The Targetting byte simply denotes the Targetting system of the magic
+ 01 = All Enemies, 02 = One Enemy
+ 04 = Spell Caster
+ 08 = Whole Party, 10 = One Party Member
+
+V- Effect Byte ;
+The Effect byte tells the game What effect the magic will use, Quite often,
+one Effect byte will do Entirely Different things if the Effectivity byte is changed,
+there for Acting as a Second Effect byte.
+ 00 + 00 Only used out side of Battle (LIFE, LIF2, WARP, EXIT, SOFT)
+ 01 = Damage (FIRE/2/3,ICE/2/3,LIT/2/3,NUKE)
+ 02 = Damage to Undead only (HARM)
+ 03 = Negative Effect Magic
+  03 + 1 , 2 = Effectivity = Kill enemies (BRAK, BANE, RUB, QUAK)
+  03 + 4 Effectivity = Poisons enemies but does not actually work
+  03 + 8 Effectivity = Decreasing Enemy Hit Percentage (DARK)
+  03 + 10 Effectivity = Decreases Enemy Agility (HOLD, STOP)
+  03 + 20 Effectivity = Halt Enemy Attack (SLEP)
+  03 + 40 Effectivity = Prevents enemy from using Magic (MUTE)
+  03 + 80 Effectivity = Causes Enemy to attack other Enemies (CONF)
+ 04 = Decrease in Enemy Speed (SLOW)
+ 05 = Increases chances of Enemy Runnig Away (FEAR)
+ 07 = HP Up (HEAL/2/3, CURE/2/3/4)
+ 08 = Positive Effect magic
+  08 + 04 Effectivity = Neutralize Poison (PURE)
+  08 + 08 Effectivity = Neutralize Blindness (LAMP)
+  08 + 10 Effectivity = Neutralize Stun/Hold 
+  08 + 20 Effectivity = Wake Up Target
+  08 + 40 Effectivity = Neutralize Mute (AMUT)
+ 09 = Armour Up (FOG, FOG2)
+ 0A = "Anti" Effect
+  0A + 10 Effectivity = Resisit Fire (AFIR)
+  0A + 20 Effectivity = Resisit Ice (AICE)
+  0A + 40 Effectivity = Resisit Lit (ALIT)
+  0A + 89 Effectivity = Anti Rub (ARUB)
+  0A + FF Effectivity = Resist All (WALL)
+ 0C = Number of Hits Up (FAST)
+ 0D = Attack Up (SABR, TMPR)
+ 0E = Decrease Enemy Agility (LOCK)
+ 0F = HP Max (CUR4)
+ 10 = Agility Up (INVS, RUSE). NOTE: LOK2 also has this effect byte, reason is yet to be known
+ 11 = Nullifies any Resistence an enemy may have (XFER)
+ 12 = much like 03, since these magics are practicly identicle to their 03 counterparts 
+  12 + 01 Effectivity = Eliminate An Enemy like Rub (XXXX)
+  12 + 08 Effectivity = Enemy Hit percentage decreases (BLND)
+  12 + 10 Effectivity = Stuns the Enemy (STUN)
+
+VI- GFX Block Byte ;
+Simply the byte to tell the game which sprite to use
+ 00 = No Sprite
+ B0 = Bar of Light (FOG, FOG2, WALL, RUSE, Anti Magics, INVS, INV2
+ B8 = Four Sparkles (LOCK, TMPR, LOK2, FAST, XFER)
+ C8 = Beam of Energy (LIT, LIT2, LIT3, HARM, HRM2, HRM3, HRM4, FADE)
+ D0 = Flaring Energy (FIRE, FIR2, FIR3, NUKE, ICE, ICE2, ICE3)
+ D8 = Glowing Ball (RUB, ZAP!, XXXX)
+ E0 = Large Sparkle (PURE, LAMP)
+ E8 = Sparkling Hand (SLEP, SLP2, MUTE, DARK, SLOW, SLO2, HOLD, FEAR, CONF, BANE, STUN, BLND)
+
+VII- Palette byte ;
+The byte to denote which index of colour to use
+ 00 = No palette
+ 21 = Light Blues (HARM, ICE, SLP2, AICE, CUR4)
+ 22 = Aqua (RUSE, ICE2, LIT3)
+ 23 = Blue purple (HRM2, INVS, DARK)
+ 24 = White (FADE, INV2)
+ 25 = Deep Red (FIR3, HRM3, FEAR, ARUB, HEL3)
+ 26 = Reds (FIRE, CONF, AFIR)
+ 27 = More Reds (FIR2, LAMP, HOLD, LIT2, LOK2, HEL2)
+ 28 = Yellows (LIT, LOCK, ALIT, HEAL, XXXX)
+ 29 = Light Green (FOG, SLO2)
+ 2A = Dark Green (SLOW, PURE)
+ 2B = Blue Green (CUR2, ZAP!)
+ 2C = Whitish (MUTE, AMUT, CUR4, HRM4)
+
+¸,o¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤o,¸
+§¤< Magics, Magic Data, and Sloppy Descriptions of them >¤§
+`'º¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤º'´
+
+???
+|  EFFECTIVITY
+|  |  ELEMENTAL
+|  |  |  TARGETING
+|  |  |  |  EFFECT
+|  |  |  |  |  GFX BLOCK
+|  |  |  |  |  |  PALETTE  Spell             Sloppy Explanation of Data
+|  |  |  |  |  |  |   Name Cast/type  ____________________|________________________
+|__|__|__|__|__|__|____|____|________|_____________________________________________|__
+00-10-00-10-07-00-29- CURE  01w   16 Effectivity, No Element, One party member, Hp Up
+18-14-00-01-02-C8-21- HARM  02w   20 Effectivity, No Element, All enemies, Damage to Undead
+00-08-00-10-09-B0-29- FOG   03w   8  Effectivity, No Element, One party member, Armour Up
+00-50-00-04-10-B0-22- RUSE  04w   80 Effectivity, No Element, Spell Caster, Agility Up
+18-0A-10-02-01-D0-26- FIRE  05b   10 Effectivity, Fire, One Enemy, Damage Enemy
+18-20-01-01-03-E8-2B- SLEP  06b   32 Effectivity, Special Attack, All enemies, Halts enemy attack
+40-14-00-02-0E-B8-28- LOCK  07b   20 Effectivity, No Element, One enemy, Decreases enemy Agility (Maybe ^_^)
+18-0A-40-02-01-C8-28- LIT   08b   10 Effectivity, Lightning, One Enemy, Damage Enemy
+00-08-00-10-08-E0-27- LAMP  09w   No Element, 8 Effectivity + 8 Effect; Neutralise Darkness, One Party Member
+40-40-01-01-03-E8-2C- MUTE  0Aw   Special Attack, 40 Effectivity + 03 Effect; Prevent Enemy from casting Magic,
+					All Enemies
+00-40-00-08-0A-B0-28- ALIT  0Bw   No Element, Effectivity 40 + 0A; Defend Lightning, Whole Party
+00-28-00-10-10-B0-23- INVS  0Cw   40 Effectivity, No Element, One party member, Agility up
+18-14-20-02-01-D0-21- ICE   0Db   20 Effectivity, Ice, One enemy, Damage enemy
+18-08-01-01-03-E8-23- DARK  0Eb   Special Attack, 8 Effectivity + 40 Effect, Darkens Enemy and Decreases hit Percentage
+00-0E-00-10-0D-B8-2B- TMPR  0Fb   14 Effectivity, No Element, One party memeber, Attack Up
+40-00-01-01-04-E8-2A- SLOW  10b   0  Effectivity, Special Attack, All Enemies, Decreases Enemy speed
+00-21-00-10-07-00-2B- CUR2  11w   33 Effectivity, No Element, One party member, Hp Up
+18-28-00-01-02-C8-23- HRM2  12w   40 Effectivity, No Element, All enemies, Damage to Undead
+00-10-00-08-0A-B0-26- AFIR  13w   No Element, 10 Effectivity + 0A Effect; Defend Fire, Whole Party
+00-0C-00-08-07-00-28- HEAL  14w   12 Effectivity, No Element, Whole Party, Hp Up
+18-1E-10-01-01-D0-27- FIR2  15b   30 Effectivity, Fire, All enemies, Damage enemies   
+40-10-01-02-03-E8-27- HOLD  16b   Special Attack, 10 Effectivity + 03 Effect; Decrease Enemy Agility, One Enemy
+18-1E-40-01-01-C8-27- LIT2  17b   30 Effectivity, Lightning, All enemies, Damage enemies
+40-14-00-01-10-B8-27- LOK2  18b   20 Effectivity, No Element, One Enemy, Decreases Enemy Agility 
+00-04-00-10-08-E0-2A- PURE  19w   No Element, 04 Effectivity + 8 Effect; Clense Poison, One Party Member
+18-28-01-01-05-E8-25- FEAR  1Aw   40 Effectivity, Special attack, All Enemies, Increases chance of enemies Running Away
+00-20-00-08-0A-B0-21- AICE  1Bw   No Element, 20 Effectivity + 0A Effect; Resist Ice, Whole Party
+00-40-00-10-08-E0-2C- AMUT  1Cw   No Element, 40 Effectivity + 8 Effect; Neutralize Mute and Prevent Mute
+40-20-00-02-03-E8-21- SLP2  1Db   32 Effectivity, No Element, One Enemy, Halts Enemy Attack
+00-00-00-10-0C-B8-2A- FAST  1Eb   0 Effectivity, No Element, One Party Member, Doubles Hits
+40-80-01-01-03-E8-26- CONF  1Fb   Special Attack, 80 Effectivity + 3 Effect; Confuses Enemy into Attacking 
+					other Enemies, All Enemies
+18-28-20-01-01-D0-22- ICE2  20b   40 Effectivity, Ice, All enemies, Damage Enemies
+00-42-00-10-07-00-2C- CUR3  21w   66 Effectivity, No Element, One Party Member, Hp Up
+FF-00-00-10-00-00-00- LIFE  22w   This isnt quite Figured out, what is known that  the 00Effectivity 00Effect is for
+					Magics used outside of battle, but what differentiates LIFE from LIF2
+					is not known. this Magic Revives on Dead Party member.
+18-3C-00-01-02-C8-25- HRM3  23w   60 Effectivity, No element, All enemies, Damage undead enemies
+00-30-00-08-07-00-27- HEL2  24w   48 Effectivity, No Element, Whole Party, Hp Up
+18-32-10-01-01-D0-25- FIR3  25b   50 Effectivity, Fire, All enemies, Damage enemies
+28-01-02-01-03-E8-22- BANE  26b   BANE's Element, 1 Effectivity + 3 Effect; Kill all enemies with gas
+FF-00-00-08-00-00-00- WARP  27b   Much like the LIFE/LIF2 Dilema, Except the difference is targeting, this targets
+					whole party, which makes sense. But the Actual Effect must be coded
+					else where in the game. this magic Moves you back on level of the dungeon
+40-00-00-02-04-E8-29- SLO2  28b	 0  Effectivity, No element, One Enemy, Halts Enemy Attack, sometimes....
+FF-00-00-10-00-00-00- SOFT  29w   Yet another out of battle magic with no clue on how it works. It Returns 
+					Stoned Warriors (heh heh) to normal.
+FF-00-00-08-00-00-00- EXIT  2Aw   and Again here, this magic Exits the Dungeon Completly
+00-0C-00-08-09-B0-2A- FOG2  2Bw   12 Effectivity, No element, Whole Party, Armour Up
+00-28-00-08-10-B0-24- INV2  2Cw   40 Effectivity, No element, Whole Party, Agility Up
+18-3C-40-01-01-C8-22- LIT3  2Db   60 Effectivity, Lightning, All enemies, Damage enemies
+18-01-08-02-03-D8-20- RUB   2Eb   XXXX's Element, 1 Effectivity + 3 Effect; Kill Enemy, One Enemy
+28-01-80-01-03-B8-26- QAKE  2Fb   QUAK's element, 1 Effectivity + 3 Effect; Kill land enemies, All enemies
+00-10-01-02-12-E8-28- STUN  30b   Special Attack, 10 Effectivity + 12 Effect; Stun Enemy, One Enemy
+00-00-00-10-0F-00-21- CUR4  31w   0  Effectivity, No Element, One Party Memmber, HP Maxed
+30-50-00-01-02-C8-2C- HRM4  32w   80 Effectivity, No Element, All enemies, Damage undead enemies
+00-89-00-08-0A-B0-25- ARUB  33w   No Element, 89 Effectivity + 0A Effect; Anti RUB, Whole Party   
+30-30-00-08-07-00-25- HEL3  34w   48 Effectivity, No Element, Whole Party, Hp Up
+18-46-20-01-01-D0-2B- ICE3  35b   70 Effectivity, Ice, All enemies, Damage enemies
+40-02-02-02-03-C8-20- BRAK  36b   BANE's Element, 2 Effectivity + 3 Effect; Kill Enemies, All enemies
+00-10-00-04-0D-B0-20- SABR  37b   16 Effectivity, No element, Spell Caster, Attack Up
+00-08-01-02-12-E8-24- BLND  38b   Special Attack, 8 Effectivity + 12 Effect; Decreases Enemy hit Percentage, One Enemy
+FF-00-00-10-00-00-00- LIF2  39w   The final Magic of the mystery magics, Again no explantion, just that it
+					Revives one Dead warrior with full HP out side of battle.
+6B-50-00-01-01-C8-24- FADE  3Aw	  80 Effectivity, No Element, All enemies, Damage undead enemies
+00-FF-00-10-0A-B0-20- WALL  3Bw   No Element, FF Effectivity + 0A Effect; Resist All, Whole Party
+6B-00-00-02-11-B8-20- XFER  3Cw   0  Effectiviy, No element, One Enemy, Nullifies Resistences
+6B-64-00-01-01-D0-28- NUKE  3Db   100 Effectivity, No element, All enemies, Damages enemies
+30-10-04-01-03-E8-20- STOP  3Eb   STOP's Element, 10 Effectivity + 3 Effect; Decrease Enemies Agility, All enemies
+20-01-04-01-03-D8-2B- ZAP!  3Fb   STOP's Element, 1 Effectivity + 3 Effect; Kill Enemies, All enemies
+00-01-08-02-12-D8-28- XXXX  40b   XXXX's Element, 1 Effectivity + 12 Effect; Kill Enemies, One enemy
+
+¸,o¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤o,¸
+§¤< Some Formulas for Magics not found in original Game >¤§
+`'º¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤º'´
+
+Here are some nice magics I came up with during my fiddling time
+
+
+00-20-00-10-08-E8-28 = Wake Up. The GFX block I choose is the same of sleep, but then I used a different colour than that
+				   of sleep, fiddle around with what ever you like, just make sure that Effectivity 
+				   is 20 and Effect is 08, the rest can be changed as far as i know, even though
+				   I dont know what the first byte is for, 00 is a good guess, since LAMP, AMUT, PURE
+				   and other neutralizing magics start with 00.
+00-10-00-10-08-B8-26 = Unstun.  Self Explanitory, same principle as Wake up, 10 Effectivity, 08 effect. Used the GFX of fast
+				   and the colours of Fire.
+
+6B-FF-10-02-01-D0-2C = MegaFire	and
+6B-FF-20-02-01-00-23 = MegaIce 	and
+6B-FF-40-02-01-C8-21 = MegaLit.	First i'd like to point out that if you look at NUKE's Stats, it only has 100 Effectivity,
+				   and anyone who knows half a thing about hex knows that if you can put FF in the Effectivity
+				   byte, then the maximum is 255. Welp in these formulas, the magic will inflict 510 points of
+				   damage on neutral enemies, 812 on enemies weak to the element, and 255(?) on emeies resistant
+				   to the element. The GFX are simply fire, ice, and lit with nice colours ^_^
+ 

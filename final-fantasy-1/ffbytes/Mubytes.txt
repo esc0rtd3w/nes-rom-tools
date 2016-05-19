@@ -1,0 +1,387 @@
+°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~Final Fantasy°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\0.05
+/§§§  /§§§ /§§§  /§§§  ¸§§§§§§¸ /§§§  ¸¿§§§§¿  °º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸0.05
+/§§§¿/¿§§§ /§§§  /§§§ /§§§´//`§ /§§§ /§§§' ´¤§ ¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-0.05
+/§§§§¿§§§§ /§§§  /§§§ /¤§§¿¸    /§§§ /§§§      ´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°0.05
+/§§§'§'§§§ /§§§  /§§§   ` `¤§¿¸ /§§§ /§§§      \_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤0.05
+/§§§ '/§§§ /§§§¸ ¸§§§ /¿¸   ¿§¿ /§§§ /§§§¸ ¸¿§ ¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´0.05
+/§§§  /§§§ /`¤§§§§§¤´  /¤§§§§¤' /§§§ /`¤§§§§§' -~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\0.05
+////  ////  ///////     //////  ////  ///////  °º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸0.05
+º¤'´¯\_¸.-~ Document °º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-0.05
+\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º¤'´¯\_¸.-~°º0.05
+
+Music Bytes 0.05
+
+Much thanks to Acmlm and Hal-Kun for their assistance
+
+Address of Data ; 340D0
+Adress of pointers ; 34010
+
+As of so far, it seem every single value uses BWO (Bit Wise Operands), meaning
+that changing the first digit changes the action and changing the second
+bite works as a parameter for the first byte.
+
+ First Digit Values
+  0 = C
+  1 = C Sharp (C#)
+  2 = D
+  3 = D Sharp (D#)
+  4 = E
+  5 = F
+  6 = F Sharp (F#)
+  7 = G
+  8 = G Sharp (G#)
+  9 = A
+  A = A Sharp (A#)
+  B = B
+  C = Rest    (Rs)
+
+ The second digit value denotes the length of the note, from 0 (shortest) to 9 (longest)
+ As to the probability of these values directly relating to Whole, Half, Quarter (etc) notes
+ seems fairly low.
+
+  D0(Lp ~Address~) = Loop Pointer, the next two values denote the address to go to 
+  D1(Rp ~Address~) = Repeat Pointer, the next two values denote the address to play once
+  D2 to D7 are of Currently suspected of being Play Address twice to Play Address 7 times
+  D8(O1) to DB(O4) are Octave Shifts, D8 being lowest and DB being highest 
+  DC to DF are of currently Unkown Value
+
+
+ F denotes the begining of a Musical Control Doohicky(M.C.D. some one come up with a better name, pleeaase)
+ the next 7 digits will make large differences in the song.
+ These M.C.D.s always appear at the begining of a song, but that doesnt mean that is the only place
+ it can be used. 6 digit (3 byte) M.C.D.s appear often in the middle of songs
+ (The Battle music is a good example of how these can be used numerous times in one song)
+
+
+4 byte M.C.D. (F8 FB 05 E0) 
+
+   Tempo A-E, F causes all music to Silence
+   |
+   | This digit seems valuable only as F so far
+   | |
+   | |Seems to be note scale (Speed and Tempo)
+   | ||
+   | || This byte does nothing of any known value
+   | || |
+   | || |Note Length
+   | || ||
+   | || ||  Musical Sound
+   | || || ,|
+   | || || ||
+  F*-**-**-** is a control Header so to speak,
+
+A 3 byte M.C.D. appear often in mid song and are similar to 4 byte ones, except
+there is no tempo value.
+
+ FF always Silences all music and im not sure there is way to start it up again.
+
+"N.Instrm" means that the said values are Changing the sound of the music 
+ (E.G F8-08-EE in the middle of song)
+  
+
+Some Musical Terms Used in this doc
+Prestissimo	Incredibly Fast
+Presto	 	Very Fast
+Allegro	 	Fast
+Allegretto	Moderatly Fast
+Andante	 	Moderatly Slow
+Adagio	 	Slow
+Larghetto	Very Slow
+Largo		Incredibly Slow
+
+
+Where you see Elipsis ("...") just continue the data on the next hex line.
+Couldnt think of a better way of seperating everything.
+
+Prelude 340D0 Main Track
+FD-F8-05-E0... 
+Allegro, Moderately long note lenght
+D8-A7-D8-07-27-57-A7-D9-07-27-57-A7-DA-07-27-57-A7-DB-07-27-57-A7-57-27-07-DA-A7-57-27-07...
+O1 A# O1 C  D  F  A# O2 C  D  F  A# O3 C  D  F  A# O4 C  D  F  A# F  D  C  O3 A# F  D  C  
+D9-A7-57-27-07-D8-A7-57-27-07-D8-77-97-A7-D8-27-77-97-A7-D9-27-77-97-A7-DA-27-77-97-A7-DB...
+O2 A# F  D  C  O1 A# F  D  C  O1 G  A  A# O1 D  G  A  A# O2 D  G  A  A# O3 D  G  A  A# O4
+27-77-27-DA-A7-97-77-27-D9-A7-97-77-27-D8-A7-97-77-27-D8-A7-97-D1-C4-80-D8-77-A7-D8-37-57...
+D  G  D  O3 A# A  G  D  O2 A# A  G  D  O1 A# A  G  D  O1 A# A  Rp 340D4 O1 G  A# O1 D# F
+77-A7-D9-37-57-77-A7-DA-37-57-77-A7-DB-37-57-77-57-37-DA-A7-77-57-37-D9-A7-77-57-37-D8-A7...
+G  A# O2 D# F  G  A# O# D# F  G  A# O4 D# F  G  F  D# O3 A# G  F  D# O2 A# G  F  D# O1 A#
+77-57-37-D8-A7-D8-97-D8-07-57-77-97-D9-07-57-77-97-DA-07-57-77-97-DB-07-57-77-97-77-57-07...
+G  F  D# O1 A# O1 A  O1 C  F  G  A  O2 C  F  G  A  O3 C  F  G  A  O4 C  F  G  A  G  F  C
+DA-97-77-57-07-D9-97-77-57-07-D8-97-77-57-07-D8-67-A7-D8-17-57-67-A7-D9-17-57-67-A7-DA-17...
+O3 A  G  F  C  O2 A  G  F  C  O1 A  G  F  C  O1 F# A# O1 C# F  F# A# O2 C# F  F# A# O3 C#
+57-67-A7-DB-17-57-67-57-17-DA-A7-67-57-17-D9-A7-67-57-17-D8-A7-67-57-17-D8-A7-D8-87-D8-07...
+F  F# A# O4 C# F  F# F  C# O3 A# F# F  C# O2 A# F# F  C# O1 A# F# F  C# O1 A# O1 G# O1 C
+37-77-87-D9-07-37-77-87-DA-07-37-77-87-DB-07-37-77-87-77-37-07-DA-87-77-37-07-D9-87-77-37...
+D# G  G# O2 C  D# G  G# O3 C  D# G  G# O4 C  D# G  G# G  D# C  O3 G# G  D# C  O2 G# G  D#
+07-D8-87-77-37-07-D0-C4-80
+C  O1 G# G  D# C  Lp 340D4
+
+Prelude 341CD Acompaniment
+FD-F8-05-E2...
+Allegro, Moderatly-Long Note length
+C7-C7-D8-A7-D8-07-27-57-A7-D9-07-27-57-A7-DA-07-27-57-A7-DB-07-27-57-A7-57-27-07-DA-A7-57...
+Rs Rs O1 A# O1 C  D  F  A# O2 C  D  F  A# O3 C  D  F  A# O4 C  D  F  A# F  D  C  O3 A# F 
+27-07-D9-A7-57-27-07-D8-A7-57-27-07-D8-77-97-A7-D8-27-77-97-A7-D9-27-77-97-A7-DA-27-77-97...
+D  C  O2 A# F  D  C  O1 A# F  D  C  O1 G  A  A# O1 D  G  A  A# O2 D  G  A  A# O3 D  G  A 
+A7-DB-27-77-27-DA-A7-97-77-27-D9-A7-97-77-27-D8-A7-97-77-27-D8-A7-97-D1-C3-81-D8-77-A7-D8...
+A# O4 D  G  D  O3 A# A  G  D  O2 A# A  G  D  O1 A# A  G  D  O1 A# A  Rp 341D3 O1 G  A# O1
+37-57-77-A7-D9-37-57-77-A7-DA-37-57-77-A7-DB-37-57-77-57-37-DA-A7-77-57-37-D9-A7-77-57-37...
+D# F  G  A# O2 D# F  G  A# O# D# F  G  A# O4 D# F  G  F  D# O3 A# G  F  D# O2 A# G  F  D#
+D8-A7-77-57-37-D8-A7-D8-97-D8-07-57-77-97-D9-07-57-77-97-DA-07-57-77-97-DB-07-57-77-97-77...
+O1 A# G  F  D# O1 A# O1 A  O1 C  F  G  A  O2 C  F  G  A  O3 C  F  G  A  O4 C  F  G  A  G 
+57-07-DA-97-77-57-07-D9-97-77-57-07-D8-97-77-57-07-D8-67-A7-D8-17-57-67-A7-D9-17-57-67-A7...
+F  C  O3 A  G  F  C  O2 A  G  F  C  O1 A  G  F  C  O1 F# A# O1 C# F  F# A# O2 C# F  F# A#
+DA-17-57-67-A7-DB-17-57-67-57-17-DA-A7-67-57-17-D9-A7-67-57-17-D8-A7-67-57-17-D8-A7-D8-87...
+O3 C# F  F# A# O4 C# F  F# F  C# O3 A# F# F  C# O2 A# F# F  C# O1 A# F# F  C# O1 A# O1 G#
+D8-07-37-77-87-D9-07-37-77-87-DA-07-37-77-87-DB-07-37-77-87-77-37-07-DA-87-77-37-07-D9-87...
+O1 C  D# G  G# O2 C  D# G  G# O3 C  D# G  G# O4 C  D# G  G# G  D# C  O3 G# G  D# C  O2 G#
+77-37-07-D8-87-77-37-07-D0-C3-81
+G  D# C  O1 G# G  D# C  Lp 341D3
+
+FD-C7-D0-BD
+82
+
+Prologue 342D1 Main Track
+FB-F8-07-EE...
+Allegretto, Moderate note length
+DA-05-55-75-05-A3-95-75-55-47-57-75-55-53-43-25-75-95-25-DB-03-DA-A5-95-75-67-97-75-25-93...
+O3 C  F  G  C  A# A  G  F  E  F  G  F  F  E  D  G  A  D  O4 C  O3 A# A  G  F3 A  G  D  A
+73-D1-C2-82-DB-22-25-02-DA-95-A5-A7-97-75-65-75-95-A5-DB-05-32-35-22-DA-A5-DB-05-07-17-05...
+G  Rp 342D2 O4 D  D  C  O3 A  A# A# A  G  F# G  A  A# O4 C  D# D# D  O3 A# O4 C  C  C# C
+07-17-05-DA-A5-95-75-D0-C2-82
+C  C# C  O3 A# A  G  Rp 342D2
+
+Prologue 3431B Acompaniment
+FB-F8-07-EA...
+Allegretto Moderate note length
+D9-02-27-47-55-25-45-75-25-47-57-75-77-97-A3-73-73-65-77-97-A5-75-65-DA-05-D9-A3-B3-DA-03...
+O2 C  D  E  F  D  E  G  D  E  F  G  G  A  A# G  G  F# G  A  A# G  F# O3 C  O2 A# B  O3 C 
+D9-A3-D1-0C-83-A7-97-77-97-A7-C7-45-97-77-57-77-97-C7-55-75-35-25-05-23-75-95-DA-03-D9-83...
+O2 A# Rp 3431C A# A  G  A  A# Rs E  A  G  F  G  A  Rs F  G  D# D  C  D  G  A  O3 C  O2 G#
+A3-73-53-57-77-87-57-73-43-D0-0C-83
+A# G  F  F  G  G# F  G  E  Lp 3431C
+
+Prologue 34367 Bass
+FB-F8-08-EC...
+Allegretto, Semi-Short-Moderate note length
+D9-53-43-23-03-D8-A3-B3-D9-01-A3-93-73-63-73-53-43-03-D1-58-83-A2-A5-52-55-33-23-73-53-83...
+O2 F  E  D  C  O1 A# B  O2 C  A# A  G  F# G  F  E  C  Rp 34268 A# A# F  F  D# D  G  F  G#
+33-23-73-83-DA-13-03-D9-A3-D0-58-83
+D# D  G  G# O3 C# C  O2 A# Lp 34368
+
+Ending 34395 Main          
+FB-F8-08-EC...                             
+Allegretto, Semi-Short-Moderate note length
+D9-B7-DA-27-67-D9-B7-DA-75-67-47-25-47-27-F8-08-EE-13-F8-08-EC-27-67-97-27-B5-97-77-65-77...
+O2 B  O3 D  F# O2 B  O3 G  F# E  D  E  D  N.Instrm C  N.Instrm D  F# A  D  B  A  G  F# G
+67-45-67-77-F8-08-EE-93-15-45-2C-CC-1C-CC-2C-CC-D9-B3-DA-77-97-B3-25-75-6C-CC-7C-CC-6C-CC...
+F# E  F# G  N.Instrm A  C# E  D  Rs C# Rs D  Rs O2 B  O3 G  A  B  D  G  F# Rs G  Rs F# Rs
+43-97-B7-DB-13-C7-DA-97-B7-DB-17-49-29-19-29-DA-B4-97-77-67-43-C7-07-27-47-23-15-D9-95...
+E  A  B  O4 C# Rs O3 A  B  O4 C# E  D  C# D  O3 C  A  G  F# E  Rs C  D  E  D  C# O2 A 
+F8-08-EE-DA-20-C5-F8-04-E1-29-19-D9-B9-DA-19-F8-08-EE-20-C5-F8-04-E1-69-49-29-49-F8-08-EE...
+N.Instrm O3 D  Rs N.Instrm D  C# O2 B  O3 C# N.Instrm D  Rs N.Instrm F# E  D  E  N.Instrm
+60-C5-F8-04-E1-99-79-69-79-F8-08-EE-90-F8-04-E1-69-49-29-19-49-29-19-D9-A9-D0-86-83
+F# Rs N.Instrm A  G  F# G  N.Instrm A  N.Instrm F# E  D  C# E  D  C# O2 A# Lp 34396
+
+Ending 3441C Acompaniment
+FB-F8-07-E2...
+Allegretto, Moderate note length
+D8-B9-C9-D9-69-C9-D8-B9-C9-D9-69-C9-D8-B9-C9-D9-79-C9-D8-B9-C9-D9-79-C9-D8-B9-C9-D9-79-C9...
+O1 B  Rs O2 F# Rs O1 B  Rs O2 F# Rs O1 B  Rs O2 G  Rs O1 B  Rs O2 G  Rs O1 B  Rs O2 G  Rs
+D8-B9-C9-D9-79-C9-19-C9-99-C9-19-C9-99-C9-29-C9-99-C9-29-C9-99-C9-29-C9-B9-C9-29-C9-B9-C9...
+O1 B  Rs O2 G  Rs C# Rs A  Rs C# Rs A  Rs D  Rs A  Rs D  Rs A  Rs D  Rs B  Rs D  Rs B  Rs
+29-C9-B9-C9-29-C9-B9-C9-19-C9-99-C9-19-C9-99-C9-99-C9-99-C9-C5-99-C9-99-C9-C5-69-C9-69-C9...
+D  Rs B  Rs D  Rs B  Rs C# Rs A  Rs C# Rs A  Rs A  Rs A  Rs Rs A  Rs A  Rs Rs F# Rs F# Rs
+C5-69-C9-69-C9-C5-B9-C9-B9-C9-C5-B9-C9-B9-C9-C5-DA-19-C9-19-C9-C5-19-C9-19-C9-C5-D9-99-C9...
+Rs F# Rs F# Rs Rs B  Rs B  Rs Rs B  Rs B  Rs Rs O3 C# Rs C# Rs Rs C# Rs C# Rs Rs O2 A  Rs
+99-C9-C5-99-C9-99-C9-C5-69-C9-69-C9-C5-69-C9-69-C9-C5-49-C9-79-C9-49-C9-79-C9-49-C9-79-C9...
+A  Rs Rs A  Rs A  Rs Rs F# Rs F# Rs Rs F# Rs F# Rs Rs E  Rs G  Rs E  Rs G  Rs E  Rs G  Rs
+49-C9-79-C9-49-C9-79-C9-49-C9-79-C9-99-79-69-49-69-49-29-19-F8-08-EE-65-25-75-25-97-97-27...
+E  Rs G  Rs E  Rs G  Rs E  Rs G  Rs A  G  F# E  F# E  D  C# N.Instrm F# D  G  D  A  A  D
+97-75-45-D2-CA-84-65-25-75-25-97-97-27-97-65-45-D0-1D-84
+A  G  E  2Rp344DA F# D  G  D  A  A  D  A  F# E  Lp 3442D
+
+Ending Bass 
+FB-F8-08-EC...
+Allegretto Moderate note length
+D8-B3-D9-43-73-95-75-23-73-B3-97-49-C9-19-C9-D8-99-C9-C7-67-D9-19-C9-69-C9-C7-D8-69-C9-D9...
+O1 B  O2 E  G  A  G  D  G  B  A  E  Rs C# Rs O1 A  Rs Rs F  O2 O1 Rs F  Rs rS O1 F  Rs O2
+67-19-C9-C7-D8-B7-D9-69-C9-B9-C9-C7-D8-B9-C9-D9-B7-69-C9-C7-D8-77-D9-29-C9-79-C9-C7-D8-79...
+F  C# Rs Rs O1 B  O2 F  Rs B  Rs Rs O1 B  Rs O2 B  F  Rs Rs O1 G  O2 D  Rs G  Rs Rs O1 G
+C9-D9-77-29-C9-C7-D8-97-D9-49-C9-99-C9-C7-D8-99-C9-D9-97-49-C9-C7-D8-67-D9-19-C9-69-C9-C7...
+Rs O2 G  D  Rs Rs O1 A  O2 E  Rs A  Rs Rs O1 A  Rs O2 A  E  O2 Rs O1 F  O2 C# Rs F  O2 Rs
+D8-69-C9-D9-67-19-C9-C7-D8-B7-D9-69-C9-B9-C9-C7-D8-B9-C9-D9-B7-69-C9-07-DA-09-C9-D9-07-DA...
+O1 F  Rs O2 F  C# Rs Rs O1 B  O2 F  Rs B  Rs Rs O1 Rs Rs O2 B  F  Rs C  O3 A  Rs O2 C  O3
+09-C9-D9-07-DA-09-C9-D9-07-DA-09-C9-D8-97-D9-99-C9-D8-97-D9-99-C9-D8-97-D9-99-C9-D8-97-D9...
+C  Rs O2 C  O3 C  Rs O2 C  O3 C  Rs O1 A  O2 A  Rs O1 A  O2 A  Rs O1 A  O2 A  Rs O1 A  O2
+99-C9-27-99-C9-C7-99-C9-27-B9-C9-C7-B9-C9-27-DA-19-C9-C7-19-C9-D9-27-B9-C9-C7-B9-C9...
+A  Rs D  A  Rs Rs A  Rs D  B  Rs Rs B  Rs D  O3 C# Rs Rs C# Rs O2 D  B  Rs Rs B  Rs 
+D2-83-85-27-99-C9-C7-99-C9-27-B9-C9-C7-B9-C9-27-DA-19-C9-C7-19-C9-D9-67-DA-19-C9-D9-67-DA...
+2Rp34593 D  A  Rs Rs A  Rs D  B  Rs Rs B  Rs D  O3 C# Rs Rs C# Rs O2 F  O3 C# Rs O2 F  O3
+19-C9-D0-E8-84
+C3 Rs Lp 344F8
+
+FB-F8-08-E1..
+Allegretto Moderate note length
+D9-69-79-89-79-69-79-89-A9-89-79-39-09-69-79-89-79-69-79-89-A9-89-79-39-09-39-49-79-A9-B9...
+O2 F# G  G# G  F# G  G# A# G# G  D# C  F# G  G# G  F# G  G# A# G# G  D# C  D# E  G  A# B
+DA-09-19-09-D9-B9-DA-09-19-39-19-09-D9-89-59-B9-DA-09-19-09-D9-B9-DA-09-19-39-19-09-D9-89...
+O3 C  C# C  O2 B  O3 C  C# D# C# C  O2 G# F  B  O3 C  C# C  O2 B  O3 C  C# D# C# C  O2 G#
+59-DA-09-D9-A9-89-59-D1-C4-85-F8-07-EE-DA-79-89-72-C7-C5-A5-95-85-D1-0A-86-DB-09-19-02-C7...
+F  O3 C  O2 A# G# F  Rp 345D4 N.Instrm O3 G  G# G  Rs Rs A# A  G# Rp 3461A O4 C  C# C  Rs
+C5-35-25-15-D1-19-86-D0-C1-85
+Rs D# D  C# Rp 34629 Lp 345D1
+
+FB-F8-06-E1...
+Allegretto Semi-Moderate note Length
+D8-77-C5-77-C5-C5-77-C7-77-C7-77-C7-D9-07-C5-07-C5-07-C5-07-C5-07-C7-D1-2C-86-F8-08-EB-25...
+O1 G  Rs G  Rs Rs G  Rs G  Rs G  Rs O2 C  Rs C  Rs C  Rs C  Rs C  Rs Rp 3463C N.Instrm D
+07-55-27-73-57-57-47-47-37-37-D1-46-86-75-57-A5-77-DA-03-D9-A7-A7-97-97-87-87-D1-57-86...
+C  F  D  G  F  F  E  E  D# D# Rp 34656 G  F  A# G  O3 C  O2 A# A# A  A  G# G# Rp 34667
+D0-29-86
+Lp 34639
+
+FB-F8-08-EC...
+Allegretto Moderate note length
+D9-07-C5-07-C5-C5-07-C7-07-C7-07-C7-57-C5-57-C5-57-C5-57-C5-57-C7-D1-6E-86-77-6C-5C-4C-57...
+O2 C  Rs C  Rs Rs C  Rs C  Rs C  Rs F  Rs F  Rs F  Rs F  Rs F  Rs Rp 3467E G  F# F  E  F
+67-77-6C-5C-4C-57-67-77-6C-5C-4C-A7-DA-07-D9-97-B7-87-A7-D1-87-86-DA-07-D9-BC-AC-9C-A7-B7...
+F# G  F# F  E  F  F# G  F# F  E  A# O3 C  O2 A  B  G# A# Rp 34697 O3 C  O2 B  A# A  A# B
+DA-07-D9-BC-AC-9C-A7-B7-DA-07-D9-BC-AC-9C-DA-37-57-27-47-17-37-D1-A2-86-D0-6B-86
+O3 C  O2 B  A# A  A# B  O3 C  O2 B  A# A  O3 D# F  D  E  C# D# Rp 346B2 Lp 3467B
+
+FB-F8-08-EE...
+Allegretto Moderate note Length
+D9-B3-85-B5-A5-85-65-A5-80-C3-B3-DA-15-D9-B5-A5-85-65-DA-45-30-F8-08-E2-C5-D9-3C-5C-6C-7C...
+O2 B  G# B  A# G# F# A  G# Rs B  O3 C# O2 B  A# G# F# O3 E  D# N.Instrm Rs O2 D# F  F# G
+8C-9C-F8-08-EC-A3-B5-DA-15-D9-B5-A5-85-DA-35-13-35-45-33-D9-B3-C3-DA-35-15-D9-B5-A5-85-B5...
+G# A  N.Instrm A# B  O3 C# O2 B  A# G# O3 D# C# D# E  D# O2 B  Rs O3 D# C# O2 B  A# G# G
+F8-08-EE-A0-C3-D0-C6-86
+N.Instrm A# Rs Lp 346D6
+
+FB-F8-03-EB...
+Allegretto Moderate note Length
+D8-B7-D9-37-17-37-D8-B7-D9-37-17-37-D8-A7-D9-37-17-37-D8-A7-D9-37-17-37-D8-87-D9-37-17-37...
+O1 B  O2 D# C# D# O1 B  O2 D# C# D# O1 A# O2 D# C# D# O1 A# O2 D# C# D# O1 G# O2 D# C# D#
+D8-87-D9-37-17-37-D8-A7-D9-37-17-37-D8-A7-D9-37-17-37-D8-B7-D9-37-17-37-D8-B7-D9-37-17-37...
+O1 G# O2 D# C# D# O1 A# O2 D# C# D# O1 A# O2 D# C# D# O1 B  O2 D# C# D# O1 B  O2 D# C# D#
+D8-A7-D9-37-17-37-D8-A7-D9-37-17-37-D8-87-D9-37-17-37-D8-87-D9-37-17-37-D8-87-D9-17-D8-B7...
+O1 A# O2 D# C# D# O1 A# O2 D# C# D# O1 G# O2 D# C# D# O1 G# O2 D# C# D# O1 G# O2 C# O1 B
+D9-17-D8-87-D9-17-D8-B7-D9-17-F8-03-E2-37-37-C7-D8-A7-D9-37-37-C7-D8-A7-D9-37-37-C7-D8-B7...
+O2 C# O1 G# O2 C# O1 B  O2 C# N.Instrm D# D# Rs O1 A# O2 D# D# Rs O1 A# O2 D# D# Rs O1 B
+D9-37-37-C7-D8-B7-D9-47-47-C7-17-47-47-C7-17-67-67-C7-37-67-67-C7-37-F8-08-EE-83-C7...
+O2 D# D# Rs O1 B  O2 E  E  Rs C# E  E  Rs C# F  F  Rs D# F  F  Rs D# N.Instrm G# Rs 
+F8-03-EB-D8-B7-D9-47-87-F8-08-EE-43-C7-F8-03-EB-D8-87-D9-17-47-F8-08-EE-73-C7-F8-03-EB-D8...
+N.Instrm O1 B  O2 E  G# N.Instrm E  Rs N.Instrm O1 G# O2 C# E  N.Instrm G  Rs N.Instrm O1
+A7-D9-37-77-D8-77-A7-D9-17-47-77-47-17-D8-A7-D0-0E-87
+A# O2 D# G  O1 G  A# O2 C# E  G  E  C# O1 A# Lp 3471E
+
+FB-F8-08-EC
+D9-89-C9-89-C9-C5-C3-69-C9-69-C9-C5-C3-49-C9-49-C9-C5-C3-69-C9-69-C9-C5-C3-89-C9-89-C9-C5-C3-69
+C9-69-C9-C5-C3-49-C9-49-C9-C5-C3-59-C9-59-C9-C5-C3-79-C9-79-C9-C7-C5-DA-37-77-37-D9-89-C9
+89-C9-C7-C5-DA-37-87-37-D9-A9-C9-A9-C9-C7-C5-DA-67-A7-67-D9-B9-C9-B9-C9-C7-C5-DA-67-B7-67
+41-11-31-41-D0-D6-87
+
+FB-F8-08-EC
+C5-D9-B5-95-B5-DA-05-D9-B5-95-B5-F8-0A-DA-23-D9-90-F8-08
+C5-DA-05-D9-B5-DA-05-25-05-D9-B5-DA-05-F8-0A-43-D9-B0-F8-08-C5-DA-45-65-75-65-45-25-05-25
+D9-95-B5-DA-05-D9-B3-C7-87-97-B7-DA-02-25-05-D9-B5-95-75-F8-0A-DA-20-C3-D0-3D-88
+
+FB-F8-08-EE
+C5-D9-25-05-25-45-25-05-D8-B5-91-D9-65-45-25-05-D8-95-D9-45-25-45-65-45-25-05-D8-B1-D9
+85-65-45-25-F8-06-E1-C7-47-77-47-C7-47-77-47-C7-67-97-67-C7-67-97-67-C7-27-57-27-C7-27-57
+27-C7-D8-B7-D9-47-D8-B7-C7-B7-D9-47-D8-B7-C7-D9-07-47-07-C7-07-47-07-C7-D8-97-D9-07-D8-97
+C7-97-D9-07-D8-97-D9-27-57-27-57-27-57-27-57-27-67-27-67-27-67-27-67-D0-8D-88
+
+FB-F8-08-EC
+D9-79-C9-79-C6-29-C9-79-C9-79-C6-29-C9-79-C9-79-C6-29-C9-79-C9-79-C6-29-C9-69-C9-69-C6-29
+C9-69-C9-69-C6-29-C9-69-C9-69-C6-29-C9-69-C9-69-C6-29-C9-99-C9-99-C6-49-C9-99-C9-99-C6-49
+C9-99-C9-99-C6-49-C9-99-C9-99-C6-49-C9-89-C9-89-C6-49-C9-89-C9-89-C6-49-C9-89-C9-89-C6-49
+C9-89-C9-89-C6-49-C9-DA-09-C9-D9-79-C9-DA-09-C9-D9-79-C9-DA-09-C9-D9-79-C9-DA-09-C9-D9-79
+C9-DA-29-C9-D9-99-C9-DA-29-C9-D9-99-C9-DA-29-C9-D9-99-C9-DA-29-C9-D9-99-C9-B9-C9-59-C9-B9
+C9-59-C9-B9-C9-59-C9-B9-C9-59-C9-DA-49-C9-D9-B9-C9-DA-49-C9-D9-B9-C9-DA-49-C9-D9-B9-C9-DA
+49-C9-D9-B9-C9-99-C9-99-C6-DA-49-C9-D9-99-C9-99-C6-DA-49-C9-D9-59-C9-59-C6-DA-59-C9-D9-59
+C9-59-C6-DA-59-C9-D9-A9-C9-DA-A9-C9-D9-A9-C9-DA-A9-C9-D9-A9-C9-DA-A9-C9-D9-A9-C9-DA-A9-C9
+25-05-D9-B5-95-D0-04-89
+
+FB-F8-08-EE-D9-95-A5-DA-01-C3-77-57-47-57-22-D9-A5-73-DA-57-47-27
+47-02-D9-95-63-DA-27-07-D9-A7-97-A3-C7-77-97-A7-DA-03-D9-95-A5-DA-01-03-77-57-47-57-22-D9
+A5-73-DA-57-47-27-47-02-D9-95-63-DA-27-07-D9-A7-97-A3-A7-77-97-A7-DA-01-C5-05-25-45-75-55
+45-55-43-05-D9-95-DA-21-C5-25-45-55-75-55-45-55-73-25-95-73-D9-95-A5-D0-06-8A
+
+
+
+
+C0 80 340D0 Theme Main
+BD 81 341CD Theme Acompaniment
+BC 82 342CC Theme Bass?
+C1 82 342D1 Prologue Main
+0B 83 3431B Prologue Acompaniment
+57 83 34367 Prologue Bass
+4E 9B 34395 Ending Main
+1B 9C 3442C Ending Acompaniment
+B7 9C 35CB7 Ending Bass
+3C 88
+8C 88
+03 89
+FF 89
+6B 8A
+3D 8B
+0F 8C
+90 8C
+DE 8C
+3A 8F
+6D 8F
+B0 8F
+54 8D
+84 8D
+E4 8D
+F3 90
+F4 91
+7B 92
+85 83
+1C 84
+E7 84
+C0 85
+28 86
+6A 86
+04 93
+40 93
+10 94
+E4 8F
+45 90
+B8 90
+C5 86
+0D 87
+D5 87
+01 8E
+5D 8E
+A3 8E
+8C 94
+9F 95
+BE 96
+CC 97
+01 98
+36 98
+8D 98
+CB 98
+F3 98
+19 99
+7E 99
+DB 99
+63 9A
+7D 9A
+95 9A
+C0 80
+BD 81
+BC 82
+AA 9A
+C4 9A
+D1 9A
+E3 9A
+FA 9A
+12 9B
+2B 9B
+37 9B
+44
+
+1Prelude 2 Prologue 3 Ending 4 Overworld 5 Ship 6 Airship 7 Town 8 Cornilia 9 Dungeon 1 10 Dungeon 2 11 Dungeon 3 12 Dungeon 4 13 Dungeon 5 14 Dungeon 6 15 Shop 16 Battle 17 Menu 18 Dead 19 Fanfare 20 Item recived 21 Tresure box 22 Item Recived 2 23 Tresure Box 2 

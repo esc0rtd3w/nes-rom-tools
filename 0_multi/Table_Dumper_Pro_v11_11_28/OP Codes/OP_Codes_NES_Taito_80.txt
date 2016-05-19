@@ -1,0 +1,356 @@
+By DvD; for use with Table Dumper Pro by DvD - You are free to copy and modify this file all you want.
+A	Absolute Read	$wwuu	vbl Read	0			1	2	Relative	0
+A	Absolute Write	$wwuu	vbl Write	1			uu; UU or var	wwuu; WWUU or var	rrrr; RRRR or var
+A	Absolute	$wwuu	vbl	2	1	End		CR & ;--------------------
+A	Absolute (Address)	lbl_wwuu	lbl LCase	3	2	Space			CR
+A	Absolute (Address)_End	lbl_wwuu	lbl LCase End PoNd	4	4	Address				THIS:
+A	Absolute, X Read	$wwuu,x	tbl LCase Read	5	8	lbl		lbl_wwuu	lbl_rrrr
+A	Absolute, X Write	$wwuu,x	tbl LCase Write	6	16	tbl	tbl_uu	tbl_wwuu
+A	Absolute, X	$wwuu,x	tbl LCase	7	32	Constant	no var
+A	Absolute, Y Read	$wwuu,y	tbl LCase Read	8	64	vbl	vbl_UU	vbl_WWUU
+A	Absolute, Y Write	$wwuu,y	tbl LCase Write	9	128	LCase	; uu	; wwuu	; rrrr
+A	Accumulator	a		10	256	Read
+A	Immediate	#$uu	Constant	11	512	Write
+A	Implied			12	1024	PoNd
+A	Implied_End		End PoNd	13	2048
+A	Indexed Indirect Read	($uu,x)	vbl Read	14	4096
+A	Indexed Indirect Write	($uu,x)	vbl Write	15	8192
+A	Indirect	($wwuu)	vbl Read End	16	16384
+A	Indirect Indexed Read	($uu),y	vbl Read	17
+A	Indirect Indexed Write	($uu),y	vbl Write	18
+A	Page 0 Read	$uu	vbl Read	19
+A	Page 0 Write	$uu	vbl Write	20
+A	Page 0	$uu	vbl	21
+A	Page 0, X Read	$uu,x	tbl LCase Read	22
+A	Page 0, X Write	$uu,x	tbl LCase Write	23
+A	Page 0, X	$uu,x	tbl LCase	24
+A	Page 0, Y Read	$uu,y	tbl LCase Read	25
+A	Page 0, Y Write	$uu,y	tbl LCase Write	26
+A	Raw		Address Bad	27
+A	Relative	lbl_rrrr	lbl LCase Space	28
+
+O	Raw	dc.b $00	;?	0	0	Implied	brk	; JSRi IRQ
+O	Indexed Indirect Read	ora	; A OR= [[uu+1]+X]|[uu+X]	1	1
+O	Raw	.byte $02	;?	2	2
+O	Raw	.byte $03	;?	3	3
+O	Raw	.byte $04	;?	4	4
+O	Page 0 Read	ora	; A OR= uu	5	5
+O	Page 0	asl	; C << uu << 0	6	6
+O	Raw	.byte $07	;?	7	7
+O	Implied	php	; Push Flags	8	8
+O	Immediate	ora	; A OR= uu	9	9
+O	Accumulator	asl	; C << A << 0	10	0A
+O	Raw	.byte $0B	;?	11	0B
+O	Raw	.byte $0C	;?	12	0C
+O	Absolute Read	ora	; A OR= wwuu	13	0D
+O	Absolute	asl	; C << wwuu << 0	14	0E
+O	Raw	.byte $0F	;?	15	0F
+O	Relative	bpl	; If N / MSb of A/X/Y is 0 Then Goto lbl_rrrr	16	10
+O	Indirect Indexed Read	ora	; A OR= Table [uu+1]|uu[Y]	17	11
+O	Raw	.byte $12	;?	18	12
+O	Raw	.byte $13	;?	19	13
+O	Raw	.byte $14	;?	20	14
+O	Page 0, X Read	ora	; A OR= Table uu[X]	21	15
+O	Page 0, X	asl	; C << Table uu[X] << 0	22	16
+O	Raw	.byte $17	;?	23	17
+O	Implied	clc	; C = 0	24	18
+O	Absolute, Y Read	ora	; A OR= Table wwuu[Y]	25	19
+O	Raw	.byte $1A	;?	26	1A
+O	Raw	.byte $1B	;?	27	1B
+O	Raw	.byte $1C	;?	28	1C
+O	Absolute, X Read	ora	; A OR= Table wwuu[X]	29	1D
+O	Absolute, X	asl	; C << Table wwuu[X] << 0	30	1E
+O	Raw	.byte $1F	;?	31	1F
+O	Absolute (Address)	jsr	; ?	32	20
+O	Indexed Indirect Read	and	; A AND= [[uu+1]+X]|[uu+X]	33	21
+O	Raw	.byte $22	;?	34	22
+O	Raw	.byte $23	;?	35	23
+O	Page 0 Read	bit	; N = MSb of uu, V = Bit 6 of uu, Z = [A AND uu = 0]	36	24
+O	Page 0 Read	and	; A AND= uu	37	25
+O	Page 0	rol	; C << uu << C	38	26
+O	Raw	.byte $27	;?	39	27
+O	Implied	plp	; Pop Flags	40	28
+O	Immediate	and	; A AND= uu	41	29
+O	Accumulator	rol	; C << A << C	42	2A
+O	Raw	.byte $2B	;?	43	2B
+O	Absolute Read	bit	; N = MSb of wwuu, V = Bit 6 of wwuu, Z = [A AND wwuu = 0]	44	2C
+O	Absolute Read	and	; A AND= wwuu	45	2D
+O	Absolute	rol	; C << wwuu << C	46	2E
+O	Raw	.byte $2F	;?	47	2F
+O	Relative	bmi	; If N / MSb of A/X/Y is 1 Then Goto lbl_rrrr	48	30
+O	Indirect Indexed Read	and	; A AND= Table [uu+1]|uu[Y]	49	31
+O	Raw	.byte $32	;?	50	32
+O	Raw	.byte $33	;?	51	33
+O	Raw	.byte $34	;?	52	34
+O	Page 0, X Read	and	; A AND= Table uu[X]	53	35
+O	Page 0, X	rol	; C << Table uu[X] << C	54	36
+O	Raw	.byte $37	;?	55	37
+O	Implied	sec	; C = 1	56	38
+O	Absolute, Y Read	and	; A AND= Table wwuu[Y]	57	39
+O	Raw	.byte $3A	;?	58	3A
+O	Raw	.byte $3B	;?	59	3B
+O	Raw	.byte $3C	;?	60	3C
+O	Absolute, X Read	and	; A AND= Table wwuu[X]	61	3D
+O	Absolute, X	rol	; C << Table wwuu[X] << C	62	3E
+O	Raw	.byte $3F	;?	63	3F
+O	Implied_End	rti	; Return From Interrupt	64	40
+O	Indexed Indirect Read	eor	; A XOR= [[uu+1]+X]|[uu+X]	65	41
+O	Raw	.byte $42	;?	66	42
+O	Raw	.byte $43	;?	67	43
+O	Raw	.byte $44	;?	68	44
+O	Page 0 Read	eor	; A XOR= uu	69	45
+O	Page 0	lsr	; 0 >> uu >> C	70	46
+O	Raw	.byte $47	;?	71	47
+O	Implied	pha	; Push A	72	48
+O	Immediate	eor	; A XOR= uu	73	49
+O	Accumulator	lsr	; 0 >> A >> C	74	4A
+O	Raw	.byte $4B	;?	75	4B
+O	Absolute (Address)_End	jmp	; Continue at lbl_wwuu	76	4C
+O	Absolute Read	eor	; A XOR= wwuu	77	4D
+O	Absolute	lsr	; 0 >> wwuu >> C	78	4E
+O	Raw	.byte $4F	;?	79	4F
+O	Relative	bvc	; If V is 0 Then Goto lbl_rrrr	80	50
+O	Indirect Indexed Read	eor	; A XOR= Table [uu+1]|uu[Y]	81	51
+O	Raw	.byte $52	;?	82	52
+O	Raw	.byte $53	;?	83	53
+O	Raw	.byte $54	;?	84	54
+O	Page 0, X Read	eor	; A XOR= Table uu[X]	85	55
+O	Page 0, X	lsr	; 0 >> Table uu[X] >> C	86	56
+O	Raw	.byte $57	;?	87	57
+O	Implied	cli	; Enable IRQ	88	58
+O	Absolute, Y Read	eor	; A XOR= Table wwuu[Y]	89	59
+O	Raw	.byte $5A	;?	90	5A
+O	Raw	.byte $5B	;?	91	5B
+O	Raw	.byte $5C	;?	92	5C
+O	Absolute, X Read	eor	; A XOR= Table wwuu[X]	93	5D
+O	Absolute, X	lsr	; 0 >> Table wwuu[X] >> C	94	5E
+O	Raw	.byte $5F	;?	95	5F
+O	Implied_End	rts	; Return	96	60
+O	Indexed Indirect Read	adc	; A += [[uu+1]+X]|[uu+X]	97	61
+O	Raw	.byte $62	;?	98	62
+O	Raw	.byte $63	;?	99	63
+O	Raw	.byte $64	;?	100	64
+O	Page 0 Read	adc	; A += uu + C	101	65
+O	Page 0	ror	; C >> uu >> C	102	66
+O	Raw	.byte $67	;?	103	67
+O	Implied	pla	; Pop A	104	68
+O	Immediate	adc	; A += uu + C	105	69
+O	Accumulator	ror	; C >> A >> C	106	6A
+O	Raw	.byte $6B	;?	107	6B
+O	Indirect	jmp	; Continue at [wwuu+1]|wwuu	108	6C
+O	Absolute Read	adc	; A += wwuu + C	109	6D
+O	Absolute	ror	; C >> wwuu >> C	110	6E
+O	Raw	.byte $6F	;?	111	6F
+O	Relative	bvs	; If V is 1 Then Goto lbl_rrrr	112	70
+O	Indirect Indexed Read	adc	; A += Table [uu+1]|uu[Y]	113	77
+O	Raw	.byte $72	;?	114	72
+O	Raw	.byte $73	;?	115	73
+O	Raw	.byte $74	;?	116	74
+O	Page 0, X Read	adc	; A += Table uu[X] + C	117	75
+O	Page 0, X	ror	; C >> Table uu[X] >> C	118	76
+O	Raw	.byte $77	;?	119	77
+O	Implied	sei	; Disable IRQ	120	78
+O	Absolute, Y Read	adc	; A += Table wwuu[Y] + C	121	79
+O	Raw	.byte $7A	;?	122	7A
+O	Raw	.byte $7B	;?	123	7B
+O	Raw	.byte $7C	;?	124	7C
+O	Absolute, X Read	adc	; A += Table wwuu[X] + C	125	7D
+O	Absolute, X	ror	; C >> Table wwuu[X] >> C	126	7E
+O	Raw	.byte $7F	;?	127	7F
+O	Raw	.byte $80	;?	128	80
+O	Indexed Indirect Write	sta	; [[uu+1]+X]|[uu+X] = A	129	81
+O	Raw	.byte $82	;?	130	82
+O	Raw	.byte $83	;?	131	83
+O	Page 0 Write	sty	; uu = Y	132	84
+O	Page 0 Write	sta	; uu = A	133	85
+O	Page 0 Write	stx	; uu = X	134	86
+O	Raw	.byte $87	;?	135	87
+O	Implied	dey	; Y--	136	88
+O	Raw	.byte $89	;?	137	89
+O	Implied	txa	; A = X	138	8A
+O	Raw	.byte $8B	;?	139	8B
+O	Absolute Write	sty	; wwuu = Y	140	8C
+O	Absolute Write	sta	; wwuu = A	141	8D
+O	Absolute Write	stx	; wwuu = X	142	8E
+O	Raw	.byte $8F	;?	143	8F
+O	Relative	bcc	; If (C = 0) A/X/Y < B Then Goto lbl_rrrr	144	90
+O	Indirect Indexed Write	sta	; Table [uu+1]|uu[Y] = A	145	91
+O	Raw	.byte $92	;?	146	92
+O	Raw	.byte $93	;?	147	93
+O	Page 0, X Write	sty	; Table uu[X] = Y	148	94
+O	Page 0, X Write	sta	; Table uu[X] = A	149	95
+O	Page 0, Y Write	stx	; Table uu[Y] = X	150	96
+O	Raw	.byte $97	;?	151	97
+O	Implied	tya	; A = Y	152	98
+O	Absolute, Y Write	sta	; Table wwuu[Y] = A	153	99
+O	Implied	txs	; Stack Pointer = X	154	9A
+O	Raw	.byte $9B	;?	155	9B
+O	Raw	.byte $9C	;?	156	9C
+O	Absolute, X Write	sta	; Table wwuu[X] = A	157	9D
+O	Raw	.byte $9E	;?	158	9E
+O	Raw	.byte $9F	;?	159	9F
+O	Immediate	ldy	; Y = uu	160	A0
+O	Indexed Indirect Read	lda	; A = [[uu+1]+X]|[uu+X]	161	A1
+O	Immediate	ldx	; X = uu	162	A2
+O	Raw	.byte $A3	;?	163	A3
+O	Page 0 Read	ldy	; Y = uu	164	A4
+O	Page 0 Read	lda	; A = uu	165	A5
+O	Page 0 Read	ldx	; X = uu	166	A6
+O	Raw	.byte $A7	;?	167	A7
+O	Implied	tay	; Y = A	168	A8
+O	Immediate	lda	; A = uu	169	A9
+O	Implied	tax	; X = A	170	AA
+O	Raw	.byte $AB	;?	171	AB
+O	Absolute Read	ldy	; Y = wwuu	172	AC
+O	Absolute Read	lda	; A = wwuu	173	AD
+O	Absolute Read	ldx	; X = wwuu	174	AE
+O	Raw	.byte $AF	;?	175	AF
+O	Relative	bcs	; If (C = 1) A/X/Y >= B Then Goto lbl_rrrr	176	B0
+O	Indirect Indexed Read	lda	; A = Table [uu+1]|uu[Y]	177	B1
+O	Raw	.byte $B2	;?	178	B2
+O	Raw	.byte $B3	;?	179	B3
+O	Page 0, X Read	ldy	; Y = Table uu[X]	180	B4
+O	Page 0, X Read	lda	; A = Table uu[X]	181	B5
+O	Page 0, Y Read	ldx	; X = Table uu[Y]	182	B6
+O	Raw	.byte $B7	;?	183	B7
+O	Implied	clv	; V = 0	184	B8
+O	Absolute, Y Read	lda	; A = Table wwuu[Y]	185	B9
+O	Implied	tsx	; X = Stack Pointer	186	BA
+O	Raw	.byte $BB	;?	187	BB
+O	Absolute, X Read	ldy	; Y = Table wwuu[X]	188	BC
+O	Absolute, X Read	lda	; A = Table wwuu[X]	189	BD
+O	Absolute, Y Read	ldx	; X = Table wwuu[Y]	190	BE
+O	Raw	.byte $BF	;?	191	BF
+O	Immediate	cpy	; Z,N,C Flags = Y - B where B = uu	192	C0
+O	Indexed Indirect Read	cmp	; Z,N,C Flags = A - B where B = [[uu+1]+X]|[uu+X]	193	C1
+O	Raw	.byte $C2	;?	194	C2
+O	Raw	.byte $C3	;?	195	C3
+O	Page 0 Read	cpy	; Z,N,C Flags = Y - B where B = uu	196	C4
+O	Page 0 Read	cmp	; Z,N,C Flags = A - B where B = uu	197	C5
+O	Page 0	dec	; uu--	198	C6
+O	Raw	.byte $C7	;?	199	C7
+O	Implied	iny	; Y++	200	C8
+O	Immediate	cmp	; Z,N,C Flags = A - B where B = uu	201	C9
+O	Implied	dex	; X--	202	CA
+O	Raw	.byte $CB	;?	203	CB
+O	Absolute Read	cpy	; Z,N,C Flags = Y - B where B = wwuu	204	CC
+O	Absolute Read	cmp	; Z,N,C Flags = A - B where B = wwuu	205	CD
+O	Absolute	dec	; wwuu--	206	CE
+O	Raw	.byte $CF	;?	207	CF
+O	Relative	bne	; If (Z = 0) A/X/Y <> 0 or B Then Goto lbl_rrrr	208	D0
+O	Indirect Indexed Read	cmp	; Z,N,C Flags = A - B where B = Table [uu+1]|uu[Y]	209	DD
+O	Raw	.byte $D2	;?	210	D2
+O	Raw	.byte $D3	;?	211	D3
+O	Raw	.byte $D4	;?	212	D4
+O	Page 0, X Read	cmp	; Z,N,C Flags = A - B where B = Table uu[X]	213	D5
+O	Page 0, X	dec	; Table uu[X]--	214	D6
+O	Raw	.byte $D7	;?	215	D7
+O	Implied	cld	; Use Binary Math	216	D8
+O	Absolute, Y Read	cmp	; Z,N,C Flags = A - B where B = Table wwuu[Y]	217	D9
+O	Raw	.byte $DA	;?	218	DA
+O	Raw	.byte $DB	;?	219	DB
+O	Raw	.byte $DC	;?	220	DC
+O	Absolute, X Read	cmp	; Z,N,C Flags = A - B where B = Table wwuu[X]	221	DD
+O	Absolute, X	dec	; Table wwuu[X]--	222	DE
+O	Raw	.byte $DF	;?	223	DF
+O	Immediate	cpx	; Z,N,C Flags = X - B where B = uu	224	E0
+O	Indirect Indexed Read	sbc	; A -= Table [uu+1]|uu[Y]	225	E1
+O	Raw	.byte $E2	;?	226	E2
+O	Raw	.byte $E3	;?	227	E3
+O	Page 0 Read	cpx	; Z,N,C Flags = X - B where B = uu	228	E4
+O	Page 0 Read	sbc	; A -= uu + (1 - C)	229	E5
+O	Page 0	inc	; uu++	230	E6
+O	Raw	.byte $E7	;?	231	E7
+O	Implied	inx	; X++	232	E8
+O	Immediate	sbc	; A -= uu + (1 - C)	233	E9
+O	Implied	nop	;	234	EA
+O	Raw	.byte $EB	;?	235	EB
+O	Absolute Read	cpx	; Z,N,C Flags = X - B where B = wwuu	236	EC
+O	Absolute Read	sbc	; A -= wwuu + (1 - C)	237	ED
+O	Absolute	inc	; wwuu++	238	EE
+O	Raw	.byte $EF	;?	239	EF
+O	Relative	beq	; If (Z = 1) A/X/Y = 0 or B Then Goto lbl_rrrr	240	F0
+O	Indexed Indirect Read	sbc	; A -= [[uu+1]+X]|[uu+X]	241	F1
+O	Raw	.byte $F2	;?	242	F2			
+O	Raw	.byte $F3	;?	243	F3			
+O	Raw	.byte $F4	;?	244	F4			
+O	Page 0, X Read	sbc	; A -= Table uu[X] + (1 - C)	245	F5			
+O	Page 0, X	inc	; Table uu[X]++	246	F6			
+O	Raw	.byte $F7	;?	247	F7			
+O	Raw	dc.b $F8	;sed?	248	F8	Implied	sed	; Use Decimal Math
+O	Absolute, Y Read	sbc	; A -= Table wwuu[Y] + (1 - C)	249	F9			
+O	Raw	.byte $FA	;?	250	FA			
+O	Raw	.byte $FB	;?	251	FB			
+O	Raw	.byte $FC	;?	252	FC			
+O	Absolute, X Read	sbc	; A -= Table wwuu[X] + (1 - C)	253	FD			
+O	Absolute, X	inc	; Table wwuu[X]++	254	FE			
+O	Raw	.byte $FF	;?	255	FF		
+
+	First Address	Last Address	TagName	Description	Bits Used
+			
+			NES Registers
+V	800	1FFF	Mirror_of_000-7FF_
+
+V	2000		NES_PPU_CR1
+V	2001		NES_PPU_CR2
+VR	2002		NES_PPU_STR
+VW	2003		NES_SPRITE_ADDR
+V	2004		NES_SPRITE_DATA
+VW	2005		NES_SCROLL_X_Y
+VW	2006		NES_PPU_ADDR
+V	2007		NES_PPU_DATA
+V	2008	3FFF	Mirror_of_2000-2007_
+
+VW	4000		NES_SND_PULSE1_CR
+VW	4001		NES_SND_PULSE1_RAMP
+VW	4002		NES_SND_PULSE1_WAVL_LSB
+VW	4003		NES_SND_PULSE1_WAVL_MSB
+VW	4004		NES_SND_PULSE2_CR
+VW	4005		NES_SND_PULSE2_RAMP
+VW	4006		NES_SND_PULSE2_WAVL_LSB
+VW	4007		NES_SND_PULSE2_WAVL_MSB
+VW	4008		NES_SND_TRIANGLE_CR
+VW	400A		NES_SND_TRIANGLE_WAVL_LSB
+VW	400B		NES_SND_TRIANGLE_WAVL_MSB
+VW	400C		NES_SND_NOISE_CR
+VW	400E		NES_SND_NOISE_WAVL
+VW	400F		NES_SND_NOISE_LEN
+VW	4010		NES_SND_DELTA_MOD_CR
+VW	4011		NES_SND_DELTA_MOD_DAC
+VW	4012		NES_SND_DELTA_MOD_ADDR
+VW	4013		NES_SND_DELTA_MOD_LEN
+VW	4014		NES_SPRITE_DMA_PAGE
+VW	4015		NES_SND_ENABLE
+VR	4015		NES_IRQ
+VW	4016		NES_JOYPAD_STROBE
+VR	4016		NES_JOYPAD1
+VW	4017		NES_EXPANSION_STROBE
+VR	4017		NES_JOYPAD2
+V	4020	4033	FDS_Registers_
+V	4034	5FFF	Expansion_ROM_
+
+V	6000	7FFF	BATTERY_SRAM_
+
+VR	FFFA		NES_NMI_ADDR
+VR	FFFC		NES_RESET_ADDR
+VR	FFFE		NES_IRQ_ADDR
+		
+
+			MMC1 Registers			
+VW	7EF0		T80_CHR_0000
+VW	7EF1		T80_CHR_0800
+VW	7EF2		T80_CHR_1000
+VW	7EF3		T80_CHR_1400
+VW	7EF4		T80_CHR_1800
+VW	7EF5		T80_CHR_1C00
+
+VW	7EF6		T80_Mirroring
+
+VW	7EFA		T80_PRG_8000_Hi
+VW	7EFB		T80_PRG_8000_Lo
+VW	7EFC		T80_PRG_A000_Hi
+VW	7EFD		T80_PRG_A000_Lo
+VW	7EFE		T80_PRG_C000_Hi
+VW	7EFF		T80_PRG_C000_Lo
+
+			Variables

@@ -1,0 +1,73 @@
+Special notes on SMB3 object drawing routines
+---------------------------------------------
+ Data collected by DahrkDaiz, some additional notes by hukka
+
+
+Block platforms that extend to ground:
+ The code looks for the two tile id's defined at $1D0D7 and $1D0DB.
+ The drawing stops upon encountering either of these tiles below
+ the block platform. If neither of these tiles is encountered, the
+ game will crash(?).
+
+Green platforms:
+ This object looks for any tile id that differs from the value
+ defined at offset $22638 and stops drawing. If the drawing routine
+ reaches the bottom, it overlaps to the next page at the top row.
+ At least on Sky type levels, this will effectively stop the drawing
+ because the top row on these levels is filled with tile id $86.
+
+Wooden poles:
+ These work like the Green platforms explained above, but the tile
+ id is defined at offset $22789.
+
+
+Block platform shadows
+----------------------
+ Shadow tiles cannot be forced by level data; the game will dynamically
+ draw shadows on certain objects, depending on the tile being drawn
+ over, but the data can still be edited.
+
+ There are 2 tables, one at $1D06B and the other at $1D084. The game will
+ start at the first table, and take the current tile it's about to overwrite
+ and match it to a value in the table. Then it will take the position it
+ found the matching tile in table #1 and overwrite the tile with the value
+ using the position of table #1 in table #2. Example below:
+
+  $1D06B: Table #1
+  07 09 0A 0D 47 49 4A 4D 87 89 8A 8D C7 C9 CA CD 90 94 91 95 92 96 93 97 98
+                                                        **
+  $1D074: Table #2
+  0C 0C 0F 0F 4C 4C 4F 4F 8C 8C 8F 8F CC CC CF CF 99 9E 9A 9F 9B 9E 9C 9E 9E
+                                                        **
+ 
+  -------------------------
+   80 80 80 80 80 01 80 80 
+  -------------------------
+   80 80 4F 80 80 80 80 91 <- Lets say the game is about to overwrite this tile.
+  -------------------------   It loads the value 91 and matches it in table #1.
+   80 80 80 9B 80 80 80 80    You can see that in table #2, below #1, is 9A, thus
+  -------------------------   the game will overwrite this value with 9A.
+   80 80 80 80 80 80 80 80 
+  -------------------------
+ 
+ The only objects that will force shadow tiles are the white, orange, green
+ and blue block platforms.
+ Shadows against the sky do have data that can be edited normally, listed below.
+
+  $1D17C = Right side shadow against sky
+
+ Corner shadows against other objects has an odd "table", but the data isn't
+ consecutively lined up.
+ 
+   Overwrite tile                   Replace tile
+   ---------------------------------------------
+   $1D146                           $1D13A
+ * Range: $1D14F to $1D153          $1D157
+
+ * The two values at $1D14F and $1D153 denote a range of tiles to look for.
+   The value at $1D14F is $90 and the value at $1D153 is $9F, thus if the
+   tile you're overwriting is between $90 and $9F, it will be replaced.
+   So effectively, $1D153 should be greater than $1D14F.
+
+ Shadows over platform blocks are sort of "hard coded" and cannot be edited
+ without using assembly hacking. Read DD's Object_Def.txt for more info.

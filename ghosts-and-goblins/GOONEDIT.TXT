@@ -1,0 +1,15 @@
+
+        Goonies II level editor
+        by SnowBro <kentmhan@online.no>
+
+        Keys:
+        Arrow keys      - select room position
+        (LShift +) TAB  - select texture
+        SpaceBar        - draw texture
+        LShift + left   - previous room
+        LShift + right  - next room
+        F1              - select area
+        F5              - save changes
+
+        The selected texture is shown below the room data
+        (near the bottom of the screen).

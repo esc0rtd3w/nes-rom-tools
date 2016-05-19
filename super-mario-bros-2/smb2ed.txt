@@ -1,0 +1,279 @@
+SUPER MARIO BROS 2 LEVEL EDITOR
+The SMB2 level discombobulator!
+ Version 0.96b   June 17, 2000
+-------------------------------
+ © 2000  Acmlm
+===============================
+ http://acmlm.overclocked.org
+-------------------------------
+
+Contents
+1. What is this?
+2. What's new?
+3. Keys
+4. Frequently Asked Questions (FAQ)
+5. Special thanks
+6. Disclaimer
+
+-------------------------------
+===============================
+
+1. What is this?
+
+Well, as its name says, it's ... a level editor for Super Mario Bros 2. Or as some of you know, the american version of Doki Doki Panic.
+
+-------------------------------
+
+2. What's new?
+
+ -- v0.96b--
+- Fixed a bug (since v0.95) that caused the character quicksand properties to screw up.
+
+ -- v0.96 --
+- Levels should take less time to load when scrolling through them (depending on how similar their palettes are)
+- (Hopefully) fixed a few small bugs with enemy data
+- Area number can now be viewed in the format used by pointers (level - area - page)
+
+ -- v0.95 --
+- 5-3 tree part now looks much better (although still not perfect)
+- Updated a few enemy descriptions
+- Enemy data size is now determined correctly. That should fix problems when moving enemy data, and (hopefully) fix a few other bugs.
+- You can now view total free space available (NES version only)
+- You can dump level data in a 16k file (.s2l extension), and reinsert it to replace the current level data. This can be used for several purposes, like level backup, or transferring level data from one SMB2 ROM (or hack) to another. Note that this only copies levels and pointers, not color palettes and various character and enemy properties. (once again, NES SMB2 only)
+- A few more character properties can be changed (running speed and jump height, when in quicksand)
+- You can now edit the herb properties ... which item (or enemy) you find in each type of herb.
+
+ -- v0.92 --
+- Added a splash screen that appears while the editor loads
+- Added support for even more enemy properties! Now you can change things like how high Birdo jumps, how fast he moves, how high Mouser throws his bombs, how long it takes before they explode, etc. Not everything is there, but there's all the properties I found, and that's still a lot.
+
+ -- v0.90 --
+- Fixed a few display bugs with special objects and pointers
+- You can change a few more enemy properties, mostly the number of hits needed to defeat bosses.
+
+ -- v0.89 --
+- Fixed a small bug with Refresh that caused a FF to be written at the end of level data (that was sometimes removing the last objects).
+- Now you can change enemy properties : what do Birdo, Snifit, Panser, Autobomb, etc. shoot, which enemies come out of jars (instead of Shyguys and Bob-ombs), which weapon is used by bosses (Mouser, Triclyde, etc.), which infinite enemies can appear (instead of Beezos and Albatosses), and a few more things like that!
+- You can also change a few things with the power-ups : which item appears instead of the star, the heart and the stopwatch, and which object you must get (and how many) to get the stopwatch!
+- It's also possible now to change the starting number of lives.
+
+ -- v0.86 --
+- Special objects (except Type 5, pointers) are moved to the bottom of the page when saving. This can prevent them to be moved to previous pages and screw up things.
+- Fixed a bug that could cause the first byte of the enemy pointer table to be overwritten.
+- Level loading time improved, it's cut down by about 30%! However, the editor takes longer to load when opened.
+- Type 6 special objects (ground change) are now implemented correctly (there was a minor bug with the affected part of the level).
+- Fixed a small bug with Type 0 and 1 special objects (ground type) in vertical levels, now you'll always see them affect the right page in the level.
+- In vertical levels, press S and you'll see blue separator lines at 9-square intervals. In the game, vertical scrolling (on screen) goes by 9 squares, there in the editor you can see where the scrolling goes (which part will show up on screen).
+- Now you can change how many levels each world have!
+
+ -- v0.83 --
+- Now you can change character properties (in both SMB2 (NES), Mario All-Stars (SNES), and Doki Doki Panic (FDS)!)
+- Level palettes can be edited (NES only), without needing a hex editor ...
+- Title screen display time can be changed (just in case you'd like to mess around with this, eh) (NES only)
+- You can delete all objects and enemies (in one area) at once
+- Fixed a bug that caused objects and things to appear after the end of the level, if the last object was a Type 5 special object.
+
+ -- v0.79 --
+- World 7 levels appear a lot better now
+- Fixed a small bug with pointer changing that caused $100 to be added if the last pointer byte was lower than $10
+
+ -- v0.75 --
+- Fixed a bug that caused a "Type mismatch" error when the INI file isn't there
+- Now you can add and remove objects and enemies! Now it's also possible to move level and enemy data, or change level and enemy pointers, or copy level data to different addresses. Which means that now you can use the free space without needing a hex editor! The pointer-changing, level moving, etc. feature is only available with the NES SMB2, though, but the add/remove objects/enemies can be used in Mario-Allstars and Doki Doki Panic.
+- Nothing much else but that's still something great!
+
+ -- v0.67 --
+- Options are now saved to a INI file (in the Windows directory)
+- Fixed several bugs and problems with the ground objects, several levels that had small problems now look better
+- Partially fixed the "objects pass through ground" problem, 3-2 is now much better
+- Partial support for Doki Doki Panic! However, since the level data format is a little different, and I couldn't find the data pointers, many levels won't display correctly (or at all).
+
+ -- v0.61 --
+- Special object 6 (ground type change) is now implemented!
+- Worlds 3, 4 and 6 now have the right graphics, at least for grounds and most objects (only worlds 5 and 7 still have some wrong graphics for grounds and walls)
+- Level and enemy data locations are now read from the ROM (with the level end enemy data pointers), which means that you can move (or add) data into the unused space in the ROM and the editor will still read it!
+- Fixed a small bug that was causing some enemies to appear at the wrong place
+- Updated a few object and enemy descriptions
+
+ -- v0.53c--
+- Fixed another bug, this one was causing a "Path not found" error if you don't have a F: drive (it was caused by some code that I had put temporarily and that was writing data to F:\a.txt).
+
+ -- v0.53b--
+- Fixed the bug that caused an "Unexpected error" to happen when loading the editor! (the error was caused by the icon, which has been fixed)
+
+ -- v0.53 --
+- Fixed the color problem with Mario All-Stars, now it uses the original SMB2 colors (stored in the editor) when editing Mario All-Stars.
+- All ground and wall settings now appear with the right graphics, in the first 2 worlds.
+- Levels in World 2 now appear with graphics from World 2 (Worlds 3 to 7 will come later).
+- Added "Level info" dialog box, in which you can see the number of objects and where the level data is stored in the ROM.
+
+ -- v0.47 --
+- Partially fixed the display bugs with the ground objects
+- "Header edit" window added, which can make header editing a bit easier
+- Now, with "Page separator viewing" enabled, you can see where the level stops scrolling
+- Enemy and object descriptions are a little more complete
+- Fixed the bug with "Refresh" (appeared in 0.38) which caused the unsaved changes to be lost
+- Pointers for doors, entrances, etc. are no longer shown as regular objects (you can disable this feature, though)
+- Added an option to make marks appear on top-left of each object and enemy. It can be useful when objects are hidden behind something.
+
+ -- v0.38 --
+- Fixed some of the bugs ... but there are still many of them. Some of the levels that couldn't be changed (without crashing the game) in version 0.26 can be changed now.
+- Most support for special objects! Levels appear a lot better now. But still, beware, they're easy to screw up if you move some things too much.
+- Now you can see where the "pages" begin and end. Hopefully, this will help preventing some of the bugs caused by empty pages or other things like that.
+- Level colors are now read from the ROM itself, which means 2 things : the editor will always display the right colors for any level, and if you change them in a hex editor, you'll see the new colors in the level editor! Some of the objects may display with the wrong colors but this will be fixed soon. Levels take longer to load, though. This isn't done for enemies yet.
+- Special objects no longer show up as yellow squares, but as ... umm ... what they are!
+
+ -- v0.26 --
+- Now you can see the walls in vertical levels!
+- All known enemy objects appear in the editor, but not all of them can be used in any level without graphic glitches in the game.
+- Fixed a small bug, when moving enemies with the mouse, which caused them sometimes to be up-left of the cursor.
+- Eliminated most garbage objects at the end of levels. This will hopefully prevent some bugs that could screw up the levels.
+- Added a menu from which you can access some features (like Save, Reload, etc.), and a "Select area" window to make the area selecting easier.
+
+ -- v0.17 --
+- Support for all levels!
+- Now you can use the mouse to select and move objects and enemies.
+- "Refresh" button added. This button reloads the level entirely but with the changes you made, it does the same as "save", but without saving. Now you can make sure the level doesn't screw up, without having to save it.
+
+ -- v0.12 --
+- Support for more levels, now it completes World 2 and includes World 3.
+- Partial support for ground objects (horizontal levels only), now you can see most of the ground and walls.
+- Now you can see the level and enemy colors as set in the header (instead of just the normal colors for any setting).
+- Ground appears as set in the header, as well.
+
+ -- v0.08 --
+- Support for other levels added (only World 1 and most of World 2 yet)
+- Object viewing/editing improved, levels look better, but it's still not perfect.
+- Support for vertical levels (they can also be switched to horizontal, and vice-versa).
+- Header description is a little more complete, and a small bug (preventing some bits to be used) has been fixed.
+- Added support for Mario All-Stars. Now you can edit the SMB2 levels in it. Although they're stored exactly the same way (just at a different address), graphic glitches may happen, and header changes may not do exactly the same thing.
+
+ -- v0.01 --
+- First release!
+- Most of enemy support is done.
+- Only the main part of 1-1 can be changed ... yet.
+- The object viewing/editing may be a bit buggy at times, but it will work well if you don't move things too much.
+- Full header support (all of it can be changed), but parts of it are unknown.
+
+-------------------------------
+
+3. Keys
+
+- F1: view about/help/etc. window
+- Space: switch between enemy editing and object editing
+- Page Up : previous area
+- Page Down : next area
+- Left, right (horizontal levels): scroll left/right in the level
+- Up, Down (horizontal levels): select previous/next object/enemy
+- Left, right (vertical levels): select previous/next object/enemy
+- Shift+scrolling : scroll by pages instead of squares (to go faster)
+- Up, Down (vertical levels): scroll up/down in the level
+- For normal objects:
+ - 2, 4, 6, 8 (numpad): move enemies and objects
+ - - (numpad): change enemy/object (-1)
+ - + (numpad): change enemy/object (+1)
+ - / (numpad): change enemy/object (-16)
+ - * (numpad): change enemy/object (+16)
+- For ground special objects:
+ - -,+ (numpad): change parameter (which determine ground setting and position)
+ - /,* (numpad): change parameter by 16
+ - Ctrl+ (-,+,/,*): change second parameter
+ - 2, 8 (numpad): change another setting (which determine in which half of the page the ground setting change)
+ - 4, 6 (numpad): move object a whole page left/right (±16)
+- 0 (numpad): switch between 3 ground viewing settings; no ground, ground above objects, ground behind objects. The way it works in the game is, like, between the 2nd and 3rd setting (some objects go through the ground, while others are not).
+- M : switch object marks (on top-left) viewing.
+- O : switch "pointers show up as regular objects" setting.
+- P : switch page border viewing. This can be useful at times.
+
+-------------------------------
+
+4. Frequently Asked Questions (FAQ)
+
+ Q. When I load the ROM in the editor, I can't see any level, I only see garbage!
+ A. Either you didn't load a Super Mario Bros 2 ROM, or the ROM may be corrupt, or something else is wrong.
+
+ Q. Why are there so many "unused" areas? They are just duplicates of (most often) boss rooms or level beginnings!
+ A. Well, there are as many unused areas as there are duplicate pointers. You can change the pointers and use those unused areas by writing level data into unused space and point to it. Those areas are just completly useless if you don't change the level pointers.
+
+ Q. Why are there yellow squares in the level?
+ A. Hey, that was in versions before 0.38. There shouldn't be any, now.
+
+ Q. What are the orange-yellow squares?
+ A. Normal objects that are either unknown or have no graphics in the editor.
+
+ Q. What are the orange squares?
+ A. Enemies that are either unknown or have no graphics in the editor.
+
+ Q. Why are some ground and walls not appearing correctly (or not at all)?
+ A. The ground object implementation isn't really perfect. This doesn't screw up anything with the level, though.
+
+ Q. Level appears all weird! Objects are at the wrong place, or I see garbage at the end!
+ A. Really? It shouldn't, not in the current version anyway. Or something screwed up with the level data.
+
+ Q. When I save the level, a lot of enemies and weird things appear in one page! Why?
+ A. Something screwed up with some of the enemy data. This is a bug with the editor.
+
+ Q. When I save the level, it's all screwing up badly! What did I do wrong?
+ A. Maybe you just moved some objects around too much. The editor is not perfect. This is also what happens if you mess up with the special objects, or move objects farther than the end. It's most likely to happen with enemies, though.
+
+ Q. I want to edit levels in Doki Doki Panic but all I see is garbage!
+ A. This is what happens with almost half of the levels (since I don't have all the level addresses yet). Even those that show up have a few wrong objects and enemies.
+
+ Q. Some of the enemies won't appear when I run the game!
+ A. Maybe you just put too much of them in that place. Or it may be one of the SMB2 limitations ... (like, you can't have more than 5 enemies at once on screen, and you can't have more than one key in a level)
+
+ Q. What is the "Reload" button for?
+ A. With it, you can load another ROM, or undo changes you made (by reloading the same ROM).
+
+ Q. Some enemies seem to appear at the wrong place in a few areas!
+ A. In a few areas, the enemies may be several pages away from where they're supposed to be. This only happen in jars, and not all of them (only the "common" ones).
+
+ Q. Why can't I have more than 4 levels in a world?
+ A. Well, I limited the number of levels in a world to 4 because it causes a graphic glitch (in the level title card) when there are more than 4 levels in a world. And also, when you enter an hawkmouth in a x-3 level (where x is any world), it goes directly to the destination, without going to the bonus chance, and all other things like that when you finish a level.
+
+ Q. How can I use that free space? It says there's about 4200 bytes free, yet I can't add any object to levels!
+ A. To use the free space, you have to edit pointers to move levels to where there's free space. There has to be unused space between the level you're editing and the next level stored in the ROM.
+
+ Q. Any suggestion for me?
+ A. Yes, do backups very often! You won't regret it if something screws up very bad. Hex editors can also be helpful.
+
+ Q. Hey, I made a cool level hack with your editor, can I send it to you?
+ A. Sure! Just make a IPS patch of it and send it at acmlm_jf32@hotmail.com
+
+ Q. When will you do Strange Mario Bros 2?
+ A. Well, it's started aleady!
+
+ Q. Are you the same Acmlm that did over 4000 posts in the WWWthreads message boards at Emulation World?
+ A. Why, yes, do you think there are other people with the same name as me?
+
+ Q. I want all your RomZ! Give tH3M 4Ll to m3!
+ A. Shut up now!
+
+-------------------------------
+
+5. Special thanks
+
+- BMF54123, for figuring out (long before me) several things about SMB2 level data that I didn't find (like enemy data), and for making the icon for the program! He had also discovered several interesting things in the SMB2 ROM. He also gave some suggestions and bug reports.
+- DarKnight13, for suggesting me a few great names for the editor, sending me the Doki Doki Panic ROM, and finding a few things in the SMB2 ROM (such as the title card display time and the herb properties).
+- WhooHooD'oh, for sending me a fun edited level (the Mouser Pack), and giving me a few good level ideas I may use in my SMB2 hack. He also found some of the enemy properties data.
+- Chickencha, for discovering some of the character property data (or at least where it is located).
+- HelpVillan, for his various complaints, requests, obvious suggestions, etc. and wanting to be in the "Special thanks". Not really something worth to care about, but sometimes it made me laugh ...
+- Everybody that use (or will use) my editor to do a good SMB2 level hack! Some of them helped me find some of the bugs as well, or gave me a few suggestions.
+- Nintendo, for making the NES, and Super Mario Bros 2 ...
+- Everybody who successfully dumped the SMB2 ROM.
+- Whoever else that did a good level editor for any game.
+- Whoever bought my computer and gave me Internet access.
+- Microsoft (why, yes), for Visual Basic 5.0 which I used for the editor.
+- Myself ... for being good enough to find out things by myself and make the level editor!
+(ok, that's enough ... did I miss anybody?)
+
+-------------------------------
+
+6. Disclaimer
+
+- Super Mario Bros 2 level editor © 2000 by Acmlm. All rights reserved.
+- Nintendo Entertainment System (NES) is a registered trademark of Nintendo of America.
+- Super Mario Bros. 2 is a trademark of Nintendo of America.
+- This program was compiled with Visual Basic 5.0
+- I am not affiliated with Nintendo and am not in favor of ROM piracy.
+- This program is freeware. This program may be distributed freely as long as it remains unchanged and ROMs are not included with it. The source code is given freely, use it to see how I did the editor, or try to improve it.

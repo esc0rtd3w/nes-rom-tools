@@ -1,0 +1,7 @@
+	license:
+	--------
+
+	freeware, copyright messages have to stay intact.
+	
+	
+  (c) 2006, Dennis Elser (dennis@backtrace.de)	

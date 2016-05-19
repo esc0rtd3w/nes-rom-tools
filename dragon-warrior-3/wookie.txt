@@ -1,0 +1,55 @@
+==============================================
+  Wookie: Dragon Warrior 3 Fight Ring Editor
+==============================================
+By Dan Weiss (Dwedit)
+   wookie@dwedit.cjb.net
+
+Version 1.0
+
+This program lets you edit which monsters are in the fighting
+rings in castles.  You can edit the monsters, and the odds.
+
+TO USE:
+  
+  Run the program, then type in the filename of the ROM or click
+  the open button for the Open dialog box.  You should back up
+  your old rom if you want to use this program.
+  
+  When a valid file is in the text box, the program activates.
+  Use the << and >> buttons to select a battle.
+  
+  To change an enemy, click on the button with the enemy's name on
+  it.  You can also add enemies where blank ones are.  To set the
+  odds, type in the new odds in the text box next to the monster's
+  name.  You can specify values from 0 to 255, but the recommended
+  range is 1 to 430, as 0 and the biggest numbers are unpredictable.
+  
+  After making any changes click the Save button to write the
+  changes to the ROM, or click Undo to restore the settings to
+  normal.  If you move on to a new battle without saving first,
+  your changes are lost, so SAVE FIRST.
+  
+NOTES:
+  
+  The game will sometimes lose enemies if they can't fit on the
+  screen, or there is not enough VRAM available for the enemies'
+  graphics to load.  You can't have a battle consisting of 4 different
+  large enemies, the game will just not load some enemies.
+  
+  Baramos, Baramos Bomus, and Zoma fill the whole screen, so don't use
+  them.
+  
+  When a monster casts Healus, it heals a random enemy!  When a monster
+  casts Increase, is increases every monsters defense!
+  
+  Metal slimes and metal babbles have extremely low defense.
+  
+OTHER STUFF:
+  
+  If you click on Show Offset, it will show the ROM offset where the
+  data is loaded from.
+  
+  If you click on the ... next to the Open button, it will show a table
+  containing all the enemies and their hex values.
+  
+  The toppings contain potassium benzoate.

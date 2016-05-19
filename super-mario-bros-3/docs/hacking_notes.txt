@@ -1,0 +1,562 @@
+Super Mario Bros. 3 Hacking Notes
+---------------------------------
+
+ (Based on DahrkDaiz's posting on Acmlm's Rom Hacking Forum.
+  Sorry for bad formatting.)
+
+
+ Terminology: $ denotes a ram address in hex, 0x denotes a ROM address in the .nes file                  
+
+ Button Press Status Format, a 1 indicates it's pressed, 0 means it's not.
+
+  1 2 3 4 5 6 7 8
+  | | | | | | | |
+  | | | | | | |  - Right
+  | | | | | |  --- Left
+  | | | | |  ----- Down
+  | | | |  ------- Up
+  | | |  --------- Start
+  | |  ----------- Select
+  |  ------------- B
+   --------------- A
+
+
+ Sound and music explanation:
+
+ 4F1 through 4F6 are bytes used to initiate sound effects.             
+ Each bite in these RAM bytes plays a different sound                  
+ (except for 4F2). A byte is stored in these locations, then the game  
+ will reset them after the sound routines are initiated. So if you're ASM hacking       
+ and would like to play a new sound, do 1 store to the appropriate location and the     
+ game takes care of the rest.        
+                    
+ RAM MAP:           
+                    
+ $0E = Current level page.           
+                    
+ $14 = Setting this byte to 1 ends a level            
+ $15 = This byte is increased once every game cycle and used as a timer.                
+                    
+ $17 = Controller status for held buttons.            
+ $18 = Controller status for just pressed buttons.    
+                    
+ $5E = PPU Buffer loading offset. This will determine where to read a pointer           
+ in a table to load the PPU buffer from.              
+                    
+ $69 & $6A = PPU Buffer pointer.     
+                    
+ $75 = Vertical position on the map screen.           
+                    
+ $79 = Horizontal position on the map screen.         
+                    
+ $BD = Direction and speed of Mario. 00-7F is moving right, 80-FF (FF is slowest) is moving              
+ left.              
+                    
+ $CF = Direction and speed of Mario verticlaly. 00-7F is moving down, 80-FF (FF is slowest)              
+ is moving up.      
+                    
+ $E4 = The vertical tile offset in the current level page              
+ $E5 = Current Tile Number Mario is on.               
+                    
+ $ED = Current Power Up              
+                    
+ $160 = Debug mode enable/disable. If it's $80, then debug controls are enabled (select 
+ switches power-ups, B+select toggles Kuribo's shoe on/off, etc).      
+                    
+ $300~$350 = PPU Buffer. The buffer works as follows. $300 is the current size of the   
+ buffer. $301 and beyond is data for the PPU in the following format: AA AA SS XX XX XX 00               
+ AA = address of PPU to write to, this is written in big endian format.                 
+ SS = Size of the data to write.     
+ XX = The actual data itself         
+ 00 = End of the PPU Buffer.         
+                    
+ When writing to the buffer, always end it with 00 and update the buffer size.          
+                    
+ $3DD = This byte is the Turbo running speed. At FF, Mario can start flying.            
+ This byte is also used to draw the P-Meter. Each bit depicts the tile type. There      
+ are 8 tiles [|>|>|>|>|>|>(p)] the (p) is two tiles. Lets say $3DD were 0000 0101 then the               
+ first and 3rd arrow tiles will light up.             
+                    
+ $3EC = Coin addition byte. Any coin grabbing you do causes this to go up by 1.         
+                    
+ $462 = This byte keeps track of the current level music for when invincibility or p-switch              
+ music switches back to the level music               
+                    
+ $4F1 = Another sound play switch byte.               
+    01 = Deep jump sound             
+    02 = Block bounce                
+    04 = Swim sound                  
+    08 = Shell kicked                
+    10 = Down a pipe                 
+    20 = Fireball throwing           
+    40 = nothing                     
+    80 = high pitched jump sound.    
+                    
+ $4F2 = This is the sound play switch byte. If it's 00, no sound effect plays, but      
+ if it's not 00, then a sound effect will play.       
+    01 = Coin sound.                 
+    02 = Power-up coming out/vine grow                
+    04 = longer sound of 02          
+    08 = Boom sound (cannon fireing)                  
+    10 = 'Tick' sound                
+    20 = Powerup!                    
+    40 = 1-up       
+    80 = Poof sound                  
+    90 = Odd "poof" sound            
+    A0 = Lost Kuribo Shoe            
+    B0 = Tail Wag                    
+    C0 = dragged out 1-up sound      
+                    
+ $4F3 = Another sound byte           
+    01 = broken bricks               
+    02 = fire sound                  
+    04 = Going through Brush?        
+    08 = Woosh! Sound Airship makes when it moves on map.              
+    10 = Hammer Bros. moving on map.                  
+    20 = no sound                    
+    40 = no sound                    
+    80 = Skidding sound.             
+                    
+ $4F4 = Fanfare music player.        
+    01 = Death      
+    02 = Game Over/Continue          
+    04 = Classic Ending              
+    08 = King Rescued                
+    10 = Bowser Defeated             
+    20 = Level Complete              
+    40 = Time's running out!         
+    80 = Play current level song.    
+                    
+ $4F5 = This is the music change switch byte. If it's 00, the music doesn't change (current              
+ music continues to play). But if it's not 00, then the music will change.              
+                    
+    01 = World 1 Map Screen          
+    02 = World 2 Map Screen          
+    03 = World 3 Map Screen          
+    04 = World 4 Map Screen          
+    05 = World 5 Map Screen          
+    06 = World 6 Map Screen          
+    07 = World 7 Map Screen          
+    08 = World 8 Map Screen          
+    09 = World 9 Map screen/Coin heaven               
+    0A = Star Power                  
+    0B = Warp Whistle                
+    0C = Music Box                   
+    0D = Returning to Earth with the wand             
+    0E = Game Theme                  
+    0F = Princess Saved              
+    10 = Plains     
+    20 = Underground                 
+    30 = Water      
+    40 = Dungeon                     
+    50 = Boss Battle                 
+    60 = Doomship                    
+    70 = Hammer Bros. Stage          
+    80 = Mushroom House              
+    90 = Hilly Theme                 
+    A0 = P-Switch                    
+    B0 = Bowser Fight                
+    C0 = Glitched Boss fight         
+    D0 = Theme Song rotation (ends with music box infinite loop)       
+    E0 = Underground to Song rotation                 
+    F0 = Water to Song rotation      
+                    
+ $4F6 = Another Sound byte           
+    01 = Sound made when Mario is generated on the start tile of a world map.           
+    02 = Moved on the map            
+    04 = Enter a level               
+    08 = Status bar flip             
+    10 = Secret revealed on the map                   
+    20 = nothing                     
+    40 = nothing                     
+    80 = Error sound                 
+                    
+ $4F7 = Another sound byte           
+    01 = Pause (stops music)         
+    02 = Resume music                
+    All other values = pause.        
+                    
+ $516 = This is the timer for multi-coin blocks. If $581 reaches 0 first, getting more coins             
+ stops.             
+                    
+ $552 = Invisibility timer for after you get hit.     
+ $553 = Invincibility Timer          
+                    
+ $566 = Enemy generator byte. This will generator a pre-set enemy based on the value.   
+ $567 = P-switch effect timer        
+                    
+ $56E = Flight timer for Racoon/Tanooki Mario         
+ $56F = Pressing down indicator      
+ $570 = Timer when holding down on a magical white block to let you go behind the bg.   
+                    
+ $575 = Indicates you're in water and what you're doing in water (coming out of, going into,             
+ swimming, just walking, etc). Not sure what values tell what though.  
+                    
+ $577 = Kuribo Shoe indicator (0 = no shoe, 1 = shoe)                  
+ $578 = This is the transformation byte. When Mario gets a power-up or is injured, this 
+ byte contains the power-up he will go to + 1. Thus, if he's going to be small, this    
+ byte is 0x01. A value of 00 means there's no change. A value of 0x80 will give you the shoe.\           
+                    
+ $57A = Tanooki's Statue Timer.      
+                    
+ $581 = This is the max number of coins you can get in a multi-coin blocks. If $516 reaches 0            
+ first, getting more coins stops.    
+                    
+ $588 = Behind the background timer                   
+ $589 = Traction byte: 0 = no slip, 1 = slip, 2 = extra slip           
+                    
+ $5EE = Hundreds place of timer      
+ $5EF = Tens place of timer          
+ $5F0 = Ones place of timer          
+                    
+ $602 = Current tile to the left and above Mario      
+ $603 = Current tile to the left and under Mario      
+ $604 = Current tile to the right and under Mario     
+ $605 = Current somewhere under Mario                 
+ $606 = Current tile to the right and above Mario     
+                    
+ $676 = Power up sprite number. This byte is seperate from the other sprite buffer. When                 
+ another power-up appears, this byte is over written, thus the first power up disappears.                
+                    
+ $69C & $69D = Score addition bytes. When these bytes are set, then that amount of the score             
+ will be added to your main score. $69C = high byte, $69D = low byte   
+                    
+ $70A = Current Object Set/Level Type                 
+                    
+ $711 = Timer used during World/Lives status screen before Mario generates onto         
+ the map.           
+                    
+ $713 = This is level beaten byte. 1 means that the level is being beaten. It's changed 
+ to 0 when you die, so when you return to the map screen, the level you were on doesn't flip over.       
+                    
+ $715-$717 = Score (24-bit value)    
+                    
+ $719 = First 2K Bank of GFX (upper left of pattern table, $0000-$07FF)                 
+ $71A = Second 2K Bank of GFX (lower left of pattern table, $0800-$0FFF)                
+ $71B = First 1K bank of GFX (upper right of pattern table, $1000-$13FF)                
+ $71C = Second 1K bank of GFX (second from upper right of pattern table, $1400-$17FF)   
+ $71D = Third 1K bank of GFX (second from lower right of pattern table, $1800-$1BFF)    
+ $71E = Fourth 1K bank of GFX (lower right of pattern table, $1C00-$1FFF)               
+ $71F = Current bank @ 0xA000        
+ $720 = Current bank @ 0xC000        
+                    
+ $726 = Current player (0 = player 1, 1 = player 2)   
+ $727 = Current World                
+                    
+ $736 = Player 1's Lives Counter     
+ $737 = Player 2's Lives Counter     
+                    
+ $73A = This is where the palette for the current level is stored. The palette is loaded                 
+ before the level is drawn, so changing this byte doesn't have any effect after the level                
+ loads.             
+                    
+ $7C1-$7E0 = This is where the palette current stored. Changing this won't have much effect on the       
+ palette. To force a change, set $5E to 0x06          
+                    
+ $6000-$794f = This is where the 16x16 block numbers are kept that corresponds directly to               
+ the level. An example is that 0x40 is the value for a coin. This also applies to the map screen.        
+                    
+ $7965 = White Mushroom House indicator, if it's 1, your coins are checked to see if they meet           
+ the requirements                    
+ $7966 = Number of coins needed to make a white mushroom house appear  
+ $7967 = Number of coins obtained in the current level                 
+                    
+ $7A0A and $7A0C = used in combination to determine the current scrolling point in an   
+ autoscroll level.                   
+                    
+ $7CF4 = Frozen Mario byte. 01 = Mario can't move. 00 = Mario can move.                 
+                    
+ $7CFB = Flash timer, this will make the bg flash through rainbow colors. If it's above 80, then         
+ the 9th palette instead.            
+                    
+ $7B41 - $7C40 (?) = Sprite data buffer. All sprites found in a level are stored here for                
+ easy reference.                     
+                    
+ $7D80-$7D9B = Player 1's item inventory              
+ $7D9C-$7D9E = Goal cards for player 1. 00 = no card, 01 = mushroom, 02 = flower, 03 = star              
+                    
+ $7DA2 = Player 1's Coin counter     
+ $7DA3-7DBE = 2nd Player's Inventory box              
+ $7DBF-$7DC1 = Goal cards for player 2. 00 = no card, 01 = mushroom, 02 = flower, 03 = star              
+                    
+ $7DE0 - $7DFF = Current Palette.    
+                    
+ $7EB6 = Stop scrolling byte (stops scrolling altogether).             
+                    
+ $7F3E-$7F43 = Arrow tile numbers.                    
+ $7F44 and $7F45 = ( P ) Bar tile numbers.            
+ $7F46 and $7F47 = Coin tiles (not the coins counter, but the tiles used to display it) 
+ $7F48 and $7F49 = Lives counter tiles (not the lives counter, but the tiles used to display it)         
+ $7F4A-$7F4F = Score tiles (note, not the score itself, just the tiles displayed for it)                 
+ $7F50-$F52 = Timer tiles (same for score tiles)      
+                    
+ $7F9A = Seems to be the start of some buffer. Setting this to anything but 2 will prevent bricks        
+ from animating when broken.         
+                    
+ Lock Data:         
+                    
+ I kept this seperate since everyone is so eager to get their hands on the data, thus   
+ I kept this a seperate section for quicker reference.                 
+                    
+ 0x14877 = Start of a table of tiles used to replace lock blocks.      
+ 0x1498E = Start of a table of locations used to determine where the lock block will    
+ be (or any tile to replace).        
+    Format: XXXX SSSS                
+    X = X co-ordinate of the tile (relative to the current screen)     
+    S = Screen to change it on.      
+                    
+ 0x14955 = Start of table of locations used to determine where the lock block will      
+ be (or any tile to replace).        
+    Format: YYYY 0000                
+    Y = Y co-ordinate                
+    0 = Nothing.                     
+                    
+ In ROM Data:       
+                    
+ Some routines/data tables used the global item table, which is a table that indicates  
+ an item number directly into your inventory.         
+                    
+ 00 = Nothing       
+ 01 = Mushroom      
+ 02 = Fire Flower                    
+ 03 = Leaf          
+ 04 = Frog Suit     
+ 05 = Tanooki Suit                   
+ 06 = Hammer Bros. Suit              
+ 07 = Jugem's Cloud                  
+ 08 = P-Wing        
+ 09 = Starman       
+ 0A = Anchor        
+ 0B = Hammer        
+ 0C = Whistle       
+ 0D = Music Box     
+                    
+ This is used for things like Mushroom House item values or Princess gift item values.  
+                    
+ 0x3F0-0x3F6 = This is a properties table for power-ups. The bits do the following:     
+    xxxx xxSF       
+                    
+    S = Sliding disabled. If this is 1, you can't slide on hills.      
+    F = Flying ability. If this is 1, you can fly.    
+                    
+    Each index into the table corresponds to a power-up status. Thus, if you change 0x3F2                
+    to 03 (0000 0011), then Fire Mario (index here is 2, 2 is fire power) will be able to fly            
+    and not be able to slide on hills.                
+                    
+    The x's have no effect.          
+                    
+ 0x133C = Amount of stay-in-shell time for most enemies who have shells.                
+                    
+ 0x1A3E = What Mario turns into after getting hit while having a power above Super Mario.                
+                    
+ 0x24EE = Table of sprites to output from certain ? blocks.            
+    0x24EF = Sprite to put out of blocks that normally output a Flower                  
+    0x24F0 = Sprite to put out of blocks that normally output a Leaf   
+    0x24F1 = Sprite to put out of blocks that normally output a Star   
+    0x24F2 = Sprite to put out of blocks that normally output a Mushroom                
+    0x24F3 = Sprite to put out of blocks that normally output a Vine   
+    0x24F4 = Sprite to put out of blocks that normally output a 1-Up   
+                    
+ 0x2A56 = The bounce force to the right when hitting a 4 way bouncing  
+ note block from the left.           
+                    
+ 0x2A50 = The bounce force to the left when hitting a 4 way bouncing   
+ noteblock from the right.           
+                    
+ 0x6EA9 = Sprite that Boom-boom will leave behind when he explodes.    
+                    
+ 0x80A4 = This is the sprite that a Green Koopa Para-Troopa will turn into when they    
+ lose their wings.                   
+                    
+ 0x80AE = This is the sprite that a Para-Goomba will turn into when it's wings are      
+ destroyed.         
+                    
+ 0x9368 = Left speed of many enemies                  
+ 0x9369 = Right speed of many enemies                 
+                    
+ 0xA837 = Amount of time a Venus Fire Trap will take from going into a pipe             
+ and going back into it divided by 2. (default is 30, but it's multiplied by 2          
+ for a total time of 60).            
+                    
+ 0xBDC3 = ParaBeetle right flying speed (x2 for "fast" beetles)        
+                    
+ 0xBDCD = ParaBeetle left flying speed (x2 for "fast" beetles)         
+                    
+ 0xFD75 = Sprite number that's generated from a Goomba generator.      
+                    
+ 0x103F1 = Amount of time Tanooki Mario can be a statue.               
+                    
+ 0x104F8 = Maximum running speed (must be atleast 7F to be able to fly).                
+                    
+ 0x10CAA = Amount of time Raccoon/Tannoki Mario can fly                
+                    
+ 0x11618 = Which tile acts like a coin.               
+                    
+ 0x11634 = Which tile acts like a P-switch.           
+                    
+ 0x11653 = Amount of time the P-switch will last. (default: 0x80)      
+                    
+ 0x11657 = The song value to be played during the P-Switch effect. (default: 0xA0)      
+                    
+ 0x1167E = Amount of time needed for an ice block to melt.             
+                    
+ 0x118A5 = Max number of coins you can get from the multi block coin.  
+                    
+ 0x118BA = Amount of time you have to get coins from a multi block coin.                
+                    
+ 0x11E6A = Amount of time required to hold down on magic white blocks to take effect.   
+                    
+ 0x11E6F = Amount of time the Magic white blocks take effect for.      
+                    
+ 0x1451F = Amount of time delay between the start of a world and when  
+ Mario generates onto the screen.    
+                    
+ 0x14DF8 = Sound used when Mario moves over the map screen. (4F1 sound byte useD)       
+                    
+ 0x14DFA = Sound byte used when Mario  goes over a map screen.         
+                    
+ 0x16190 = Hammer Bros. Item table. Here there is a big chunk of 00s and a few bytes that                
+ are not 00. The groups of bytes that are _not_ 00 represent the items you receive from a                
+ Hammer Bros. Examples are the first byte, 09, is world 1's Hammer Bros. item (a star). 
+ Next is 0D0B0C which is world 2's (music box, hammer, whistle) and so on. The item values               
+ are the exact same for the item values listed above. Note, world 8 has NO Hammer Bros. item             
+ groups. Instead, the items in the treasure chests found there are defined by enemy level                
+ data. When using the Help Sprite as a Hammer Bros. the item control is 2 bytes before the               
+ normal Hammer Bros. group for that world. The Airship sprite uses the one after that   
+                    
+ 0x1625B = Horizontal starting position on every map screen (applies to all maps).      
+                    
+ 0x17C35 = Table of graphics banks used to animate map screen tiles.   
+                    
+ 0x1D233-0x1D235 = 16x16 tile id's that are used to draw the mushroom, star and flower  
+ background in some plains levels.                    
+                    
+ 0x2D1AD-0x2D1b0 = Number of 1-Ups you will receive from the roulette game. There are two                
+ bytes that are 02, this is because there are two mushroom pictures in the roulette you can              
+ match up.          
+                    
+ 0x2D721-0x2D732 = N-Spade card matching game initial deck. The deck is always shuffled 
+ from code, so there's only 1 deck you can modify without ASM hacking. The values for each               
+ card is as follows:                 
+    00 = Mushroom                    
+    01 = Flower     
+    02 = Star       
+    03 = 1-Up       
+    04 = 10 Coins                    
+    05 = 20 Coins                    
+                    
+ 0x309B0 = This is the left side of the curtains tile. This must be an even number, then                 
+ the tile to the right of this one will be the right side of the curtain. You cannot change              
+ the number of tiles used to draw the curtains without ASM hacking.    
+                    
+ 0x309D5 = Debug mode activation/deactivation         
+    Activated = 0xCC                 
+    Deactivated = 0x35               
+                    
+ 0x30C68 = Button to press to change game type.       
+                    
+ 0x30C6C = Sound to play when you press select at title screen. (4F6 sound byte)        
+                    
+ 0x30C6E = Sound byte to write to when you press select.               
+                    
+ 0x30C99 = Button to Press to start the game.         
+                    
+ 0x30C9D = The Sound to play when you start the game. (4F2 Sound byte)                  
+                    
+ 0x30C9F = The sound byte to write to when you start the game (can change to music bytes too).           
+                    
+ 0x34123 = Status Bar's palette on the map screen after returning from the inventory box.                
+                    
+ 0x3509B = Number of coins needed for a 1-Up.         
+                    
+ 0x350AB = Sound played when you receive 100 coins (1up sound) (4F2 sound byte used)    
+                    
+ 0x350AD = Sound byte used when 100 coins are obtained.                
+                    
+ 0x360DE = Table of items the Princess will give you after completing a world. There are                 
+ 7 bytes in all, but the 7th byte is 00, you can change this so that you gain an item for                
+ beating world 7. For values, see Global item table.                   
+                    
+ 0x3B14B = Table of items used to create Mushroom House treasure chests.                
+    Some bytes affect the "all same items" mushroom houses. Meaning, if all the chest have               
+    the same items, then only 1 byte is needed to define the chests, rather than 3. The first            
+    5 bytes affect these type of mushroom houses. The 3rd is for all Frogs, 4th is all  
+    Tanooki, 5th is all Hammer. 1st is All Whistles (never seen in the game), 2nd is all                 
+    P-Wings (also never seen in the game).I believe these two are used for White Mushroom                
+    houses. The rest are 3 item houses. One type is 0A 0A 0A, all three anchors. This is the             
+    ONLY exception to the same-type house rule. And remember, the definitions come in groups             
+    of three. Example: The second set (bytes 9, 10, and 11) is 01, 02, 03, a set of three                
+    defining the Mushroom, Flower, and Leaf type houses. For item values, see global item table.         
+                    
+ 0x3C474 = Graphics bank used for the title screen (upper half, bg side)                
+                    
+ 0x3C479 = Graphics bank used for the title screen (lower half, bg side)                
+                    
+ 0x3C47E = Graphics bank used for the title screen (first 1/4th, sprite side)           
+                    
+ 0x3C483 = Graphics bank used for the title screen (second 1/4th, sprite side)          
+                    
+ 0x3C488 = Graphics bank used for the title screen (third 1/4th, sprite side)           
+                    
+ 0x3C47D = Graphics bank used for the title screen (fourthg 1/4th, sprite side)         
+                    
+ Routine Explanations:               
+                    
+ BG tile animation routine: Used for action stages (not maps) for animating common objects, such as      
+ bricks, coins, munchers, water, lava, etc.           
+ $8E35 (0x3C345)                     
+                    
+ $8E35:AC 1A 07  LDY $071A ; This loads the current bank from lower left corner of the pattern table     
+ $8E38:C0 6A     CPY #$6A  ; 6A is the bank for the Airship, which doesn't have animated bg tiles        
+ $8E3A:F0 21     BEQ $8E5D ; thus skip the animating routine           
+ $8E3C:A5 15     LDA $15   ; This loads the constant timer             
+ $8E3E:29 03     AND #$03  ; used for battleship animated tiles        
+ $8E40:D0 1B     BNE $8E5D ; but skips it on xxxx xx00 since there's only 3 frames of animation         
+ $8E42:C8        INY                 
+ $8E43:C8        INY                 
+ $8E44:C0 76     CPY #$76  ; 74 is the last bank for the battle ship animated tile sequence (70, 72, 74) 
+ $8E46:D0 02     BNE $8E4A ; a table isn't used here, thus, Y (from 71A) is increased twice             
+ $8E48:A0 70     LDY #$70  ; if it reaches 76, loop back to the first animation sequence (70)            
+ $8E4A:8C 1A 07  STY $071A ; and store it into the gfx bank            
+ $8E4D:D0 0E     BNE $8E5D          
+ $8E4F:A5 15     LDA $15   ; this loads the constant timer and indexes it for the global                 
+ $8E51:29 18     AND #$18  ; animated tiles (coins, ? blocks, munchers, etc)            
+ $8E53:4A        LSR                 
+ $8E54:4A        LSR                 
+ $8E55:4A        LSR                 
+ $8E56:AA        TAX                 
+ $8E57:BD FC 83  LDA $83FC,X ; Loads a bank from the animation sequence (60, 62, 64, 66)                 
+ $8E5A:8D 1A 07  STA $071A  ; and finally stores it into the ram for the lower left gfx bank             
+                    
+ Bank swapping routine               
+ $FC6F (0x3FC7F)                     
+ $FC6F:A9 46     LDA #$46            
+ $FC71:8D 00 80  STA $8000 = #$00 ; Set up the $8000 register for $A000 swapping        
+ $FC74:AD 1F 07  LDA $071F = #$00    
+ $FC77:8D 01 80  STA $8001 = #$60 ; swap $A000 bank with value in 71F  
+ $FC7A:A9 47     LDA #$47            
+ $FC7C:8D 00 80  STA $8000 = #$00 ; Set up the $8000 register for $C000 swapping        
+ $FC7F:AD 20 07  LDA $0720 = #$1A    
+ $FC82:8D 01 80  STA $8001 = #$60 ; swap $A000 bank with value in 720  
+ $FC85:60        RTS                 
+                    
+ Curtain drawing routine:            
+                    
+ $A990 (0x309A)     
+ $A990:AD 02 20  LDA $2002 = #$09 ; Set up the PPU for drawing         
+ $A993:A9 20     LDA #$20            
+ $A995:8D 06 20  STA $2006 = #$40    
+ $A998:A9 00     LDA #$00            
+ $A99A:8D 06 20  STA $2006 = #$40    
+ $A99D:A2 02     LDX #$02         ; The routine goes through 512 times *                
+ $A99F:A9 08     LDA #$08         ; This is the first tile (left side) used to draw the curtain          
+ $A9A1:A0 FF     LDY #$FF         ; * which is 256 from Y and twice from X              
+ $A9A3:8D 07 20  STA $2007 = #$00
+ $A9A6:49 01     EOR #$01         ; This toggles from 08 and 09 (0000 1000 and 0000 1001)                
+ $A9A8:88        DEY              ; Thus using this routine, you can only use 2 tiles, side by side           
+ $A9A9:D0 F8     BNE $A9A3          
+ $A9AB:8D 07 20  STA $2007 = #$00    
+ $A9AE:49 01     EOR #$01            
+ $A9B0:CA        DEX                 
+ $A9B1:10 EE     BPL $A9A1           
+ $A9B3:60        RTS                 

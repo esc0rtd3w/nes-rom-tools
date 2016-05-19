@@ -1,0 +1,712 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Advanced SMB2J hacking</TITLE>
+</HEAD>
+<BODY TEXT="#000000">
+
+<B><FONT SIZE=7><P>Advanced SMB2J hacking</P>
+</B></FONT><I><P>By Insectduel</P>
+</I>
+<P>This is the place where you find the hex offsets in Super Mario Bros. 2J for the FDS. Because I knew almost all the data in that game, I decided to share some of the data I’ve collected. This is more advanced than the Hex Offset List section.</P>
+
+<P>The Hex Editor like Transhexlation is required to do this. DO NOT FORGET the Disksys.rom in the same folder as the emulator is because this is how to play FDS games.</P>
+
+<P>Background Palette Offsets</P>
+<P>Starting Offset 9949=0x26DD Underwater Palette 22</P>
+<P>Starting Offset 9950=0x26DE Ground Palette 22</P>
+<P>Starting Offset 9951=0x26DF Underground 0F</P>
+<P>Starting Offset 9952=0x26E0 Castle 0F</P>
+<P>Starting Offset 9953=0x26E1 Night 0F</P>
+<P>Starting Offset 9954=0x26E2 Snow 22</P>
+<P>Starting Offset 9955=0x26E3 Night and Snow 0F</P>
+<P>Starting Offset 9956=0x26E4 Mario on Screen 0F</P>
+
+<P>I recommend the NES Palette Editor for this. <B><FONT COLOR="#ff0000">Click on all files and choose a SMB2J ROM for it.</P>
+</B></FONT>
+<P>Hex Changed Offsets</P>
+<P>27 Yellow</P>
+<P>25 Fuchsia</P>
+<P>22 Light Blue</P>
+<P>16 Red</P>
+<P>00 Gray</P>
+<P>FF Dark Blue</P>
+
+<P>Shining Animation</P>
+<P>10831=0x2A4F</P>
+<P>Original Offset 27 27</P>
+
+<P>Shining Animation</P>
+<P>10834=0x2A52</P>
+<P>Original Offset 07 17</P>
+
+<B><P>Surface and Celing TSA TileEditor</P>
+</B>
+<P>Hex Starting Offset 13207=0x3397</P>
+<P>6A – Sea Tile</P>
+
+<P>Hex Starting Offset 13208=0x3398</P>
+<P>6B – Dirt Tile</P>
+
+<P>Hex Starting Offset 13209=0x3399</P>
+<P>50 – Vertical Bricks</P>
+
+<P>Hex Starting Offset 13210=0x339A</P>
+<P>63 – Castle Tile</P>
+
+<P>Brickery Offsets</P>
+<P>Hex Starting Offset 13211=0x339B</P>
+<P>00 00 – None</P>
+
+<P>Hex Starting Offset 13213=0x339D</P>
+<P>00 18 – Surface</P>
+
+<P>Hex Starting Offset 13215=0x339F</P>
+<P>01 18 – Surface and Ceiling</P>
+
+<P>Hex Starting Offset 13217=0x33A1</P>
+<P>07 18 – Surface and Ceiling 3</P>
+
+<P>Hex Starting Offset 13219=0x33A3</P>
+<P>0F 18 – Surface and Ceiling 4</P>
+
+<P>Hex Starting Offset 13221=0x33A5</P>
+<P>FF 18– Surface and Ceiling 8</P>
+
+<P>Hex Starting Offset 13223=0x33A7</P>
+<P>01 1F- Surface 4 and Ceiling</P>
+
+<P>Hex Starting Offset 13225=0x33A9</P>
+<P>07 1F - Surface 4 and Ceiling 3</P>
+
+<P>Hex Starting Offset 13227=0x33AB</P>
+<P>0F 1F - Surface 4 and Ceiling 4</P>
+
+<P>Hex Starting Offset 13229=0x33AD</P>
+<P>81 1F - Surface 5 and Ceiling</P>
+
+<P>Hex Starting Offset 13231=0x33AF</P>
+<P>01 00 - Ceiling</P>
+
+<P>Hex Starting Offset 13233=0x33B1</P>
+<P>8F 1F - Surface 5 and Ceiling 4</P>
+
+<P>Hex Starting Offset 13235=0x33B3</P>
+<P>F1 1F – Surface 8 and Ceiling</P>
+
+<P>Hex Starting Offset 13237=0x33B5</P>
+<P>F9 18 – Surface and Ceiling and Middle 5</P>
+
+<P>Hex Starting Offset 13239=0x33B7</P>
+<P>F1 18 – Surface and Ceiling and Middle 4</P>
+
+<P>Hex Starting Offset 13241=0x33B9</P>
+<P>FF 1F – All</P>
+
+<P>Advanced Hex digits</P>
+<P>00 10 Shorter Surface (Must place sprite on floor)</P>
+<P>00 1C Surface 3</P>
+<P>0F 00 Ceiling 3</P>
+<P>FF 00 Ceiling 8</P>
+<P>8F 18 Surface and Ceiling 4 and Middle 1</P>
+<P>00 1F Surface 5</P>
+
+<P>Height for ? coin block Vertical 3.</P>
+<P>14686=0x395E</P>
+<P>Original Offset 03</P>
+
+<P>Height for ? coin block Vertical 7.</P>
+<P>14689=0x3961</P>
+<P>Original Offset 07</P>
+
+<P>Height for Bridge V=7.</P>
+<P>14703=0x396F</P>
+<P>Original Offset 06</P>
+
+<P>Height for Bridge V=8.</P>
+<P>14706=0x3972</P>
+<P>Original Offset 07</P>
+
+<P>Height for Bridge V=10.</P>
+<P>14709=0x3975</P>
+<P>Original Offset 09</P>
+
+<B><P>Make any tiles behave like their other tiles</P>
+
+<P>NOTE: Not all of them are here</P>
+</B>
+<P>Clouds (Surface)</P>
+<P>13382=0x3446</P>
+<P>Original Offset 88</P>
+
+<P>Island Block (Left)</P>
+<P>14184=0x3768</P>
+<P>Original Offset 16</P>
+
+<P>Island Block (Center)</P>
+<P>14191=0x376F</P>
+<P>Original Offset 17</P>
+
+<P>Island Tree Tile</P>
+<P>14196=0x3774</P>
+<P>Original Offset 4C</P>
+
+<P>Island Block (Right)</P>
+<P>14201=0x3779</P>
+<P>Original Offset 18</P>
+
+<P>Cloud Block (Left)</P>
+<P>14220=0x378C</P>
+<P>Original Offset 8A</P>
+
+<P>Cloud Block (Right)</P>
+<P>14225=0x3791</P>
+<P>Original Offset 8C</P>
+
+<P>Cloud Block (Center)</P>
+<P>14239=0x379F</P>
+<P>Original Offset 8B</P>
+
+<P>? Coin (For Length)</P>
+<P>14697=0x3969</P>
+<P>Original Offset C0</P>
+
+<P>Bridge Block Behaviour</P>
+<P>14717=0x397D</P>
+<P>Original Offset 0B</P>
+
+<P>Bridge Block Behaviour (Bottom)</P>
+<P>14725=0x3985</P>
+<P>Original Offset 64</P>
+
+<P>Vertical Balls Behaviour</P>
+<P>14735=0x398F</P>
+<P>Original Offset 6F</P>
+
+<P>Flagpole Sphere</P>
+<P>14740=0x3994</P>
+<P>Original Offset 21</P>
+<FONT SIZE=2>
+</FONT><P>Flag String Behaviour</P>
+<P>14749=0x399D</P>
+<P>Original Offset 22</P>
+
+<P>Block (For Flagpole)</P>
+<P>14754=0x39A2</P>
+<P>Original Offset 62</P>
+
+<P>Sea Vertical Seaplant Block</P>
+<P>14878=0x3A1E</P>
+<P>Original Offset 1F</P>
+
+<P>Ground Brick Block</P>
+<P>14879=0x3A1F</P>
+<P>Original Offset 4F</P>
+
+<P>Underground Brick Block</P>
+<P>14880=0x3A20</P>
+<P>Original Offset 50</P>
+
+<P>Castle Brick Block</P>
+<P>14881=0x3A21</P>
+<P>Original Offset 50</P>
+
+<P>Cloud Horizontal block</P>
+<P>14882=0x3A22</P>
+<P>Original Offset 88</P>
+
+<P>Horizontal/Vertical Block (All attributes)</P>
+<P>14874=0x3A1A </P>
+<P>Original Offsets 6A 62 62 63</P>
+
+<P>Bullet Bill Cannon</P>
+<P>14948=0x3A64</P>
+<P>Original Offset 65</P>
+
+<P>Bullet Bill Cannon (Middle)</P>
+<P>14957=0x3A6D</P>
+<P>Original Offset 66</P>
+
+<P>Bullet Bill Cannon (Bottom)</P>
+<P>14966=0x3A76</P>
+<P>Original Offset 67</P>
+
+<P>Blocks (For Steps)</P>
+<P>15044=0x3AC4</P>
+<P>Original Offset 62</P>
+
+<P>Which Object 0-B tile behave like other tiles</P>
+<P>Offsets from 19305=0x4B69 to 19317=0x4B75 </P>
+<P>Original Offsets 52 53 54 55 56 57 58 59 5A 5B 5C 5D</P>
+
+<B><FONT SIZE=7><P>Misc. Data</P>
+</B></FONT>
+<P>Attribute Level Palette</P>
+<P>9929=0x26C9</P>
+<P>Original Offsets 01 02 03 04</P>
+<B>
+</B><P>Pixel Shining Object Count</P>
+<P>10939=0x2ABB</P>
+<P>Original Offset 06</P>
+
+<P>Putting FF creates an anonyous shine.</P>
+
+<P>Level Room Enabler</P>
+<P>20428=0x4FCC</P>
+<P>Original Offset CD 5F 07 D0 0E</P>
+<P>Changed Offset EA EA EA EA EA</P>
+
+<P>Ignores level Pointers when you set it like this.</P>
+
+<P>Surfing Platform Speed</P>
+<P>25648=0x6430</P>
+<P>Original Offset 10</P>
+
+<P>Hex Offsets</P>
+<P>00 does not move</P>
+<P>3F Fast</P>
+<P>4F Super Fast (May screw up background screen)</P>
+<P>7F really fast (May screw up background screen)</P>
+<P>80 really fast (Backwards)</P>
+<P>F0 Move backwards (Normal Speed)</P>
+
+<P>Halfway pages</P>
+<P>12715=0x31AB</P>
+<P>Original Offsets 66 60 88 60 66 70 77 60 D6 00 77 80 70 B0 00 00 00 00</P>
+
+<P>6660 World 1</P>
+<P>8860 World 2</P>
+<OL START=6670>
+
+<LI>World 3</LI></OL>
+
+<P>7760 World 4</P>
+<P>D600 World 5</P>
+<P>7780 World 6</P>
+<P>70B0 World 7</P>
+<P>0000 World 8</P>
+<P>0000 World 9</P>
+
+<P>Halfway pages (For Worlds A-D)</P>
+<P>48633=0xBDF9</P>
+<P>Original Offsets 76 50 65 50 75 B0 00 00</P>
+
+<P>7650 World A</P>
+<P>6550 World B</P>
+<P>75B0 World C</P>
+<P>0000 World D</P>
+
+<P>Much easier to understand. Each level is a byte </P>
+<P>11223344</P>
+
+<P>11 22</P>
+<P>Byte 1</P>
+
+<P>33 44</P>
+<P>Byte 2</P>
+
+<P>Edit Castle looping (Level)</P>
+<P>19957=0x4DF5</P>
+<P>Original Offsets 02 02 02 02 05 05 05 05 06 07 07 04</P>
+
+<P>Changes the level of a loop command</P>
+
+<P>Edit Castle looping (Page Frame)</P>
+<P>19969=0x4E01</P>
+<P>Original Offsets 03 05 08 09 03 06 07 0A 05 05 0B 05</P>
+
+<P>Changes the Page level of a loop command</P>
+
+<P>Edit Castle looping (Vertical Position)</P>
+<P>19981=0x4E0D</P>
+<P>Original Offsets B0 B0 40 30 B0 30 B0 B0 F0 F0 B0 F0</P>
+
+<P>Changes the Vertical position of a loop command. Must stay in that position. World 8-4 is an example of the loop where the long fire-bar is.</P>
+
+<P>Offset of page map skip data</P>
+<P>34102=0x8536</P>
+<P>Original Offsets 0C 0C 42 42 10 10 30 30 06 0C 54 06</P>
+
+<P>Changes the offset for the looping.</P>
+<P>NOTE: This is untested</P>
+
+<P>Continuous loop 1</P>
+<P>30593=0x7781</P>
+<P>Original Offset 02</P>
+
+<P>Changes the loop of a World </P>
+<P>NOTE: This is untested</P>
+
+<P>Continuous loop 2</P>
+<P>30622=0x779E</P>
+<P>Original Offset 05</P>
+
+<P>Changes the loop of a World </P>
+<P>NOTE: This is untested. However this may NOT be the right offset.</P>
+
+<P>Editing loop commands is much harder than it looks. Only some specific information like AP’s SMB hacks explain more about editing loops.</P>
+
+<P>World Pointers</P>
+<P>34053=0x8505</P>
+<P>Original Offset 00 05 09 0E 12 17 1C 20 24</P>
+
+<P>This is kinda fun but it allows the number of levels to load for each world. Works for Warpzones as well.</P>
+
+<P>00 World 1-1</P>
+<P>05 World 2-1</P>
+<P>09 World 3-1</P>
+<P>0E World 4-1</P>
+<P>12 World 5-1</P>
+<P>17 World 6-1</P>
+<P>1C World 7-1</P>
+<P>20 World 8-1</P>
+<P>24 World 9-1</P>
+
+<P>Note: This will only work if the World is being loaded correctly in certain Worlds. Putting this hex 12 in World 1-1 WILL NOT WORK. This kind of procedure can only work in Super Mario all-stars.</P>
+
+<P>For Worlds A-D</P>
+<P>48514=0xBD82</P>
+<P>Original Offsets: 00 05 0A 0E </P>
+
+<P>Shooting Program 1</P>
+<P>28702= 0x701E</P>
+<P>Original Offset 1C</P>
+<P>Changed Offset 0D</P>
+
+<P>Shoots Upward</P>
+
+<P>Shooting Program 2</P>
+<P>28717= 0x702D</P>
+<P>Original Offset FD</P>
+
+<P>Changes the direction of the fireball clockwise. Inserting the Hex 00 will shoot straight fireballs. Low accuracy. Requires Shooting Program 1 Hex 0D for this. Enter this hex alone will not let the fireballs bounce.</P>
+
+<P>Shooting Program 3</P>
+<P>28726=0x7036</P>
+<P>Original Offset 29 F8</P>
+<P>Changed Offset 09 0F</P>
+
+<P>Changes the direction of the fireball vertically, I think. Using in combination of 0D, FF, and 09 0F on all 3 shooting programs will allow Mario to shoot straight fireballs with perfect aiming.</P>
+
+<P>Need a Table file click here?</P>
+
+<B><FONT SIZE=7><P>Text Hex offsets</P>
+</B></FONT>
+<P>35042=0x88E2 </P>
+<P>Text name: @1986 NINTENDO</P>
+<P>14 Characters</P>
+
+<P>35059=0x88F3 </P>
+<P>Text name: MARIO GAME</P>
+<P>10 Characters</P>
+
+<P>35072=0x8900</P>
+<P>Text name: LUIGI GAME</P>
+<P>10 Characters</P>
+
+<P>45693=0xB27D</P>
+<P>Text name: MARIO (Ditto)</P>
+<P>5 Characters</P>
+
+<P>45698=0xB282</P>
+<P>Text name: LUIGI (Ditto)</P>
+<P>5 Characters</P>
+
+<P>45765=0xB2C5</P>
+<P>Text name: Thank you Mario! (or LUIGI)</P>
+<P>16 Characters</P>
+
+<P>45789=0xB2DD</P>
+<P>Text name: Peace is Paved</P>
+<P>14 Characters</P>
+
+<P>45811=0xB2F3</P>
+<P>Text name: With kingdom saved</P>
+<P>18 Characters</P>
+
+<P>45833=0xB309</P>
+<P>Text name: Hurrah to Mario</P>
+<P>16 Characters</P>
+
+<P>45853=0xB31D</P>
+<P>Text name: Our only hero</P>
+<P>13 Characters</P>
+
+<P>45870=0xB32E</P>
+<P>Text name: This ends your trip</P>
+<P>19 Characters</P>
+
+<P>45893=0xB345</P>
+<P>Text name: Of a long friendship</P>
+<P>20 Characters</P>
+
+<P>45917=0xB35D</P>
+<P>Text name: 100000 PTS. ADDED</P>
+<P>17 Characters</P>
+
+<P>45931=0xB375</P>
+<P>Text name: FOR EACH PLAYER LEFT.</P>
+<P>21 Characters</P>
+
+<P>45999=0xB3AF</P>
+<P>Text name: WE PRESENT YOU FANTASY WORLD</P>
+<P>24 Characters</P>
+
+<P>46026=0xB3CA</P>
+<P>Text name: LET’S TRY &quot;9 WORLD&quot;</P>
+<P>19 Characters</P>
+
+<P>46048=0xB3E0</P>
+<P>Text name: WITH ONE GAME.</P>
+<P>14 Characters</P>
+
+<P>46074=0xB3FA</P>
+<P>Text name: YOU’RE A SUPER PLAYER</P>
+<P>22 Characters</P>
+
+<P>46099=0xB413</P>
+<P>Text name: WE HOPE WE</P>
+<P>10 Characters</P>
+
+<P>46115=0xB423</P>
+<P>Text name: SEE YOU AGAIN.</P>
+<P>14 Characters</P>
+
+<P>46132=0xB434</P>
+<P>Text name: MARIO AND STAFF</P>
+<P>16 Characters</P>
+
+<P>10283=0x282B</P>
+<P>Text name: WORLD  TIME (Status Bar)</P>
+<P>11 Characters</P>
+
+<P>10324=0x2854</P>
+<P>Text name: WORLD (On the World 1-1 ect screen)</P>
+<P>5 Characters</P>
+
+<P>10345=0x2869</P>
+<P>Text name: TIME UP</P>
+<P>7 Characters</P>
+
+<P>10356=2874</P>
+<P>Text name: GAME OVER</P>
+<P>9 Characters</P>
+
+<P>10368=0x2880</P>
+<P>Text name: CONTINUE</P>
+<P>8 Characters</P>
+
+<P>10383=0x288F</P>
+<P>Text name: RETRY</P>
+<P>5 Characters</P>
+<P>10392=0x2898</P>
+<P>Text name: WELCOME TO WARP ZONE</P>
+<P>21 Characters</P>
+
+<P>11758=0x2DEE</P>
+<P>Text name: Thank you Mario! (or LUIGI if edited)</P>
+<P>16 Characters</P>
+
+<P>11778=0x2E02</P>
+<P>Text name: BUT OUR PRINCESS IS IN</P>
+<P>22 Characters</P>
+
+<P>11803=0x2E1B</P>
+<P>Text name: ANOTHER CASTLE</P>
+<P>15 Characters</P>
+
+<B><FONT SIZE=7><P>Enemy Pointer Data</P>
+</B></FONT><P>This is the data where the pointers came from which is programmed to send enemies from one room to another room.</P>
+
+<P>In this game, there are 2 bytes to edit the data. </P>
+
+<FONT FACE="Courier New" SIZE=2><P>Sprite listing Attribute Pointers</P>
+<P>34114=0x8542 Room 00 Hex 2C</P>
+<P>34115=0x8543 Room 20 Hex 0A</P>
+<P>34116=0x8544 Room 40 Hex 27</P>
+<P>34117=0x8545 Room 60 Hex 00</P>
+
+<P>Sprite listing ROOM Pointers</P>
+<P>34118=0x8546 Room 60 Hex 90 C7 (World 1-4)</P>
+<P>34120=0x8548 Room 61 Hex AF C7</P>
+<P>34122=0x854A Room 62 Hex D6 C7</P>
+<P>34124=0x854C Room 63 Hex E9 C7</P>
+<P>34126=0x854E Room 64 Hex D0 C5 (World 5-4)</P>
+<P>34128=0x8550 Room 65 Hex 09 C6</P>
+<P>34130=0x8552 Room 66 Hex 30 C6</P>
+<P>34132=0x8554 Room 67 Hex 6F C6</P>
+<P>34134=0x8556 Room 68 Hex 80 CA (World 9-3)</P>
+<P>34136=0x8558 Room 69 Hex 8A CA</P>
+<P>34138=0x855A Room 20 Hex 1E C8 (World 1-1)</P>
+<P>34140=0x855C Room 21 Hex 44 C8</P>
+<P>34142=0x855E Room 22 Hex 67 C8</P>
+<P>34144=0x8560 Room 23 Hex 90 C8</P>
+<P>34146=0x8562 Room 24 Hex C6 C8</P>
+<P>34148=0x8564 Room 25 Hex DD C8</P>
+<P>34150=0x8566 Room 26 Hex 07 C9</P>
+<P>34152=0x8568 Room 27 Hex 2C C9</P>
+<P>34154=0x856A Room 28 Hex 43 C9</P>
+<P>34156=0x856C Room 29 Hex 60 C2 (Pipe Intro)</P>
+<P>34158=0x856E Room 2A Hex 65 C9</P>
+<P>34160=0x8570 Room 2B Hex AF C6 (World 5-1)</P>
+<P>34162=0x8572 Room 2C Hex E0 C6</P>
+<P>34164=0x8574 Room 2D Hex 08 C7</P>
+<P>34166=0x8576 Room 2E Hex 2C C7</P>
+<P>34168=0x8578 Room 2F Hex 49 C7</P>
+<P>34170=0x857A Room 30 Hex 7A C7</P>
+<P>34172=0x857C Room 31 Hex A6 C7</P>
+<P>34174=0x857E Room 32 Hex BF C7</P>
+<P>34176=0x8580 Room 33 Hex 88 C9 (Cloud Bonus Area Worlds 1 through 4)</P>
+<P>34178=0x8582 Room 34 Hex 60 C2 (Overworld Warp Zone)</P>
+<P>34180=0x8584 Room 35 Hex E7 C7</P>
+<P>34182=0x8586 Room 36 Hex 0A C8</P>
+<P>34184=0x8588 Room 37 Hex 31 C8</P>
+<P>34186=0x858A Room 38 Hex 90 CA (World 9-1)</P>
+<P>34188=0x858C Room 39 Hex 94 CA </P>
+<P>34190=0x858E Room 3A Hex 94 CA</P>
+<P>34192=0x8590 Room 3B Hex 60 C2 (Overworld Ending)</P>
+<P>34194=0x8592 Room 3C Hex 32 C8 (Cloud Bonus Area Worlds 5 through 8)</P>
+<P>34196=0x8594 Room 40 Hex 94 C9 (World 1-2)</P>
+<P>34198=0x8596 Room 41 Hex BA C9</P>
+<P>34200=0x8598 Room 42 Hex C4 C9</P>
+<P>34202=0x859A Room 43 Hex 3B C8 (World 5-2)</P>
+<P>34204=0x859C Room 44 Hex 5C C8</P>
+<P>34206=0x859E Room 00 Hex DE C9 (World 3-2)</P>
+<P>34208=0x85A0 Room 01 Hex 76 C8 (World 6-2)</P>
+<P>34210=0x85A2 Room 02 Hex 04 CA (World 4-1 Bonus)</P>
+<P>34212=0x85A4 Room 03 Hex A6 C8 (World 8-4, Water Part)</P>
+<P>34214=0x85A6 Room 04 Hex B4 C8</P>
+<P>34216=0x85A8 Room 05 Hex 94 CA (World 9-1, Water Part)</P>
+<P>34218=0x85AA Room 06 Hex B5 CA</P>
+<P>34220=0x85AC Room 07 Hex BA CA</P>
+
+<P>Sprite listing Attribute Pointers For Worlds A-D</P>
+<P>48541=0xBD9D Room 00 Hex 14</P>
+<P>48542=0xBD9E Room 20 Hex 04</P>
+<P>48543=0xBD9F Room 40 Hex 12</P>
+<P>48544=0xBDA0 Room 60 Hex 00</P>
+
+<P>Sprite listing ROOM Pointers</P>
+<P>46545=0xBDA1 Room 60 Hex D0 C5 (World A-4)</P>
+<P>46547=0xBDA3 Room 61 Hex F5 C5</P>
+<P>46549=0xBDA5 Room 62 Hex 1C C6</P>
+<P>46551=0xBDA7 Room 63 Hex 5D C6</P>
+<P>46553=0xBDA9 Room 20 Hex 8C C6 (World A-1)</P>
+<P>46555=0xBDAB Room 21 Hex C7 C6</P>
+<P>46557=0xBDAD Room 22 Hex D6 C6</P>
+<P>46559=0xBDAF Room 23 Hex 04 C7</P>
+<P>46561=0xBDB1 Room 24 Hex 29 C7</P>
+<P>46563=0xBDB3 Room 25 Hex 4C C7</P>
+<P>46565=0xBDB5 Room 26 Hex 6B C7</P>
+<P>46567=0xBDB7 Room 27 Hex 8A C7</P>
+<P>46559=0xBDB9 Room 28 Hex AA C7</P>
+<P>46561=0xBDBB Room 29 Hex CB C7</P>
+<P>46563=0xBDBD Room 2A Hex E2 C7 (World D-4 Overworld Part)</P>
+<P>46565=0xBDBF Room 2B Hex F2 C7 (Cloud Bonus Area)</P>
+<P>46567=0xBDC1 Room 2C Hex 60 C2 (Pipe Intro)</P>
+<P>46569=0xBDC3 Room 2D Hex 60 C2 (Overworld Ending)</P>
+<P>46571=0xBDC5 Room 40 Hex 01 C8 (World A-2)</P>
+<P>46573=0xBDC7 Room 41 Hex 1B C8</P>
+<P>46575=0xBDC9 Room 00 Hex 2F C8 (World B-2)</P>
+</FONT>
+<B><FONT SIZE=7><P>Object level Pointer Data</P>
+</B></FONT><P>This is the data where the pointers came from which is programmed to send objects from one room to another room.</P>
+
+<FONT FACE="Courier New" SIZE=2><P>Object listing Attribute Pointers</P>
+<P>34222=0x85AE Room 00 Hex 2C</P>
+<P>34223=0x85AF Room 20 Hex 0A </P>
+<P>34224=0x85B0 Room 40 Hex 27</P>
+<P>34225=0x85B1 Room 60 Hex 00</P>
+
+<P>Object listing ROOM pointers</P>
+<P>34226=0x85B2 Room 60 Hex 14 CA (World 1-4)</P>
+<P>34228=0x85B4 Room 61 Hex 73 CA</P>
+<P>34230=0x85B6 Room 62 Hex FE CA</P>
+<P>34232=0x85B8 Room 63 Hex 95 CB</P>
+<P>34234=0x85BA Room 64 Hex C9 C8 (World 5-4)</P>
+<P>34236=0x85BC Room 65 Hex 96 C9</P>
+<P>34238=0x85BE Room 66 Hex 25 CA</P>
+<P>34240=0x85C0 Room 67 Hex B8 CA</P>
+<P>34242=0x85C2 Room 68 Hex CB CA (World 9-3)</P>
+<P>34244=0x85C4 Room 69 Hex 2E CB</P>
+<P>34246=0x85C6 Room 20 Hex 0A CC (World 1-1)</P>
+<P>34248=0x85C8 Room 21 Hex 65 CC</P>
+<P>34250=0x85CA Room 22 Hex B4 CC</P>
+<P>34252=0x85CC Room 23 Hex 2D CD</P>
+<P>34254=0x85CE Room 24 Hex AA CD</P>
+<P>34256=0x85D0 Room 25 Hex 09 CE</P>
+<P>34258=0x85D2 Room 26 Hex 88 CE</P>
+<P>34260=0x85D4 Room 27 Hex E7 CE</P>
+<P>34262=0x85D6 Room 28 Hex 5E CF</P>
+<P>34264=0x85D8 Room 29 Hex 74 C2 (Pipe Intro)</P>
+<P>34266=0x85DA Room 2A Hex BF CF</P>
+<P>34268=0x85DC Room 2B Hex 8F CB (World 5-1)</P>
+<P>34270=0x85DE Room 2C Hex 30 CC</P>
+<P>34272=0x85E0 Room 2D Hex 8F CC</P>
+<P>34274=0x85E2 Room 2E Hex 0E CD</P>
+<P>34276=0x85E4 Room 2F Hex 7B CD</P>
+<P>34278=0x85E6 Room 30 Hex FE CD</P>
+<P>34280=0x85E8 Room 31 Hex 5B CE</P>
+<P>34282=0x85EA Room 32 Hex D6 CE</P>
+<P>34284=0x85EC Room 33 Hex 08 D0 (Cloud Bonus Area Worlds 1 through 4)</P>
+<P>34286=0x85EE Room 34 Hex 7D C2 (Overworld Warp Zone)</P>
+<P>34288=0x85F0 Room 35 Hex 4B CF</P>
+<P>34290=0x85F2 Room 36 Hex B6 CF</P>
+<P>34292=0x85F4 Room 37 Hex 1A D0</P>
+<P>34294=0x85F6 Room 38 Hex 3F CB (World 9-1)</P>
+<P>34296=0x85F8 Room 39 Hex 4E CB </P>
+<P>34298=0x85FA Room 3A Hex 4F CB</P>
+<P>34300=0x85FC Room 3B Hex 61 C2 (Overworld Ending)</P>
+<P>34302=0x85FE Room 3C Hex 1B D0 (Cloud Bonus Area Worlds 5 through 8)</P>
+<P>34304=0x8600 Room 40 Hex 21 D0 (World 1-2)</P>
+<P>34306=0x8602 Room 41 Hex E2 D0</P>
+<P>34308=0x8604 Room 42 Hex 1D D1</P>
+<P>34310=0x8606 Room 43 Hex 52 D0 (World 5-2)</P>
+<P>34312=0x8608 Room 44 Hex 1F D1</P>
+<P>34314=0x860A Room 00 Hex 68 D1 (World 3-2)</P>
+<P>34316=0x860C Room 01 Hex 60 D1 (World 6-2)</P>
+<P>34318=0x860E Room 02 Hex 1B D2 (World 4-1 Bonus)</P>
+<P>34320=0x8610 Room 03 Hex 29 D2 (World 8-4, Water Part)</P>
+<P>34322=0x8612 Room 04 Hex 42 D2</P>
+<P>34324=0x8614 Room 05 Hex 50 CB (World 9-1, Water Part)</P>
+<P>34326=0x8616 Room 06 Hex 97 CB</P>
+<P>34328=0x8618 Room 07 Hex DA CB</P>
+</FONT><B><FONT SIZE=7>
+<P>Frequently Asked Questions (FAQ)</P>
+</FONT>
+<P>Q. </B>Where's the rest of the levels like World A?</P>
+
+<B><P>A. </B>The extra levels are not accessible from within the standard 0x80 level pointers.  However, the actual address locations in the ROM of these extra levels are known.  Check the list given in the Level Offset List.  Modifying these levels will require saving them to an unused level number in the standard 0x80 levels, and then manually repairing the necessary pointer with a hex editor.</P>
+
+<P>In these cases, you need to collect 8 stars in order to play World A to see if those unused levels are been modified. But in Super Mario all-stars, those extra overworld levels can’t be modified either by standard.</P>
+
+<B><P>Q</B>. Why do certain levels only load in certain Worlds while others don’t?</P>
+
+<B><P>A</B>. Because the data is completely different than the original SMB1. Objects like Upside down pipes or having a Red Piranha Plant in World 1 requires World 5, 9 or A function to edit them. This includes the pointers themselves. Obiviously it’s impossible to find that kind of data where you find World 1 and switch them to World 5. Otherwise the level offsets can never be the same.</P>
+
+<P>Super Mario Bros. The Lost Levels can now have the power to place Upside down pipes in World 1 and such except for Overworld Level Pointers. While editing the Non-Overworld Pointers, you have to switch the hex pointers in your level properly.</P>
+<B>
+<P>Q</B>. OK, where’s the Minus World</P>
+
+<B><P>A</B>. The procedure has been removed since SMB1. Now the warp pipes acts like normal pipes in SMB2J.</P>
+
+<B><P>Q</B>. How do I change the level attributes</P>
+
+<B><P>A</B>. You can’t. Not by a Non-Level editor if you try to edit your level. This kind of data is too complex to do it. You have to change part of the level, music, the effects, pointers, etc. to get the attributes of the level. In other words, you have to trade object level pointers in your rooms.</P>
+
+<B><P>Q. </B>How do I delete Objects/Sprites?</P>
+
+<B><P>A.</B> If you’re not using a level or sprite pointer put FF at the end of the sprite’s hex number and FD for object’s hex number.</P>
+<B>
+<P>Q. </B>Can you find more data for me?</P>
+
+<B><P>A</B>. I could and if I’m only gonna feel like it. However I’m still waiting for Kernel Software to translate the SMB Remodeler to English so I could find the enemy attributes and others. What’s bothering me is that I still can’t find the data with the Green Springboards and the Red Piranha Plants and such other existing data for SMB2J. </P>
+<B>
+<P>Q. </B>Where can I get the SMB2J ROM?</P>
+
+<B><P>A. </B>Check your ego at the door. Insectduel’s Domain does not come with ROMs, and never will. </P>
+
+<P>Copyright 2006 Insectduel. Reproduction of this document is forbidden. Contact me if I’m wrong.  Some offsets came from the original Hex Offset list Crazy Hex Strings.</P>
+</BODY>
+</HTML>

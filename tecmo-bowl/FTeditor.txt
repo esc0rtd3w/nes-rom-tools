@@ -1,0 +1,87 @@
+/------------------------x--------------------------------------------------\
+| The Flash Tecmo Editor | http://www.geocites.com/timessquare/castle/8370  |
+x-----x------------------x						    | 
+| 1.22| Matthew Leverton | send helpful comments to:			    |
+x-----x------------------x-x		flash-99@rocketmail.com 	    |
+| Friday, October 31, 1997 |						    |
+\--------------------------x------------------------------------------------/
+
+To Use the FTE:
+	1) Load the file.
+	2) Read the intro.
+	3) Load a File ([left ALT]-[F])
+	4) Edit Data
+
+What you need (besides this program):
+	1) A usuable ROM (.nes format)
+	2) An emulator
+	
+* Some Notes *
+	+ Originally, FTeditor was going to be just for my use.  However, I
+	  have decided to give it to certain Web Pages.  So this means that I
+	  really am not trying to make a program that really looks nice, but
+	  something that will allow me to get what I want done.
+	
+	+ Anyone that has ever programmed in QuickBASIC (or QBASIC) will 
+	  notice that the interface is very similiar to QuickBASIC.  That is
+	  probably because it is supposed to!  I programmed FTeditor entirely
+	  with QuickBASIC, and have started with scratch.  That is why there
+	  is so many little bugs or glitches with it, especially with the 
+	  File/Open Window Box.  Currently QuickBASIC is the best I have to 
+  	  make FTeditor with.  This is another reason why I am not spending
+	  much time on beautifying this program.
+	
+	+ The File/Open Window Box is limited to the first 100 .NES files 
+	  in a single directory.  If this isn't working out for you, let me
+	  know.
+
+* Important *
+	+ YOU MUST USE FTEDITOR ON YOUR HARD DRIVE, WHICH MUST BE C:
+	
+        + If the ROM you have does not work with FTeditor, use FTfixer.  Just
+	  type the name of the file after FTfixer.exe.  If you are using 
+	  windows, just drag the ROM file over FTfixer via 'File Manager' or 
+	  'Windows Explorer.'  It will now work with FTeditor; note that this
+	  will allow ANY file to work...so do not do it with anything other 
+	  than Tecmo Bowl I.  I am not responsible if this ruins your ROM, so
+	  you may want to make a back up copy.
+	  Example:  FTfixer.exe TECMO.NES	
+	
+
+* The History *
+- Friday, October 31, 1997 -
+	(version 1.22)
+	+ Added FTfixer.exe (Changes the ROM header to work with 
+          FTeditor.exe)
+
+- Friday, October 17, 1997 -
+	(version 1.21)
+	+ Bug fixed:  'Error 11' (In the Open ROM Window Box)
+
+- Tuesday, August 26, 1997 -
+	(version 1.2)
+	+ Open ROM Window Box Added
+	+ Can Edit Roster Year
+	+ Can Edit Release Year
+	+ Can Give Yourself Credit
+	+ Bug fixed:  Not all TDs are credited to the WR
+
+- Thursday, August 21, 1997 -
+	(version 1.1)
+	+ Can Edit Team Names
+	+ Can Edit Team Abbreviations
+	+ Can Edit Select Screen
+
+- Monday, August 11, 1997 -
+	(version 1.0, Original Release)
+	+ Text Menu Interface
+	+ Can Edit Player Names
+	+ Can Edit Player Stats
+	+ Can Save Data
+	
+
+* The Future *
+
+	(Next Release)
+	+ Print Rosters/Stats
+	+ Search the ROM for text

@@ -1,0 +1,9 @@
+07-03-02:
+	-fixed bug that prevented files with 2 digit extentions from openning
+	-added "Invert Every __" pattern to allow users to 'randomly' corrupt bytes every specified number of bytes
+
+
+06-24-02:
+	-Slightly altered debugger
+	-fixed bug that backed up file under the wrong name after an error
+	-fixed bug that crashed program if scrolling when nothing's in list

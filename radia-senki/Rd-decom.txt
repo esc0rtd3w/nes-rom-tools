@@ -1,0 +1,42 @@
+Radia decompressor
+by Griffin Knodle, a.k.a. Jair, 8/26/98
+E-mail:gknodle@trinity.edu
+http://www.resnet.trinity.edu/users/gknodle/
+
+
+WHAT IT IS
+-------------------
+This is a pretty limited program. All it does is extract the compressed word 
+table from Radia into a Thingy-format TBL file. It outputs in romaji instead 
+of real kana, because my computer doesn't have Japanese capability (yet). 
+Worse, some of the words aren't extracted correctly, because they contain 
+other compressed words. Hey, feel free to improve it, though.
+
+
+WHAT YOU'LL NEED
+-------------------
+A Radia ROM (named radia.nes, in the same directory)
+
+
+WHAT TO DO
+-------------------
+Run the program. It outputs to radiacom.tbl.
+
+
+TERMS OF USE
+-------------------
+This program is distributed with its source code. You may use,
+distribute, and modify it freely. Only two restrictions: These terms of use 
+must stay the same, and you must always include the source code with the
+program. Oh, and I'd appreciate it if you credit me as the original
+author.
+
+
+DISCLAIMER
+-------------------
+All games and systems mentioned are copyright their respective companies. 
+I am not responsible for any damage you may cause to your computer or 
+software by using this program. Owning a ROM is illegal unless you already 
+own the cartridge. If there are runners on first and second and fewer than 
+two outs, a fly ball hit to an infielder shall be ruled "caught" even if 
+the infielder drops it. I think that about covers everything.

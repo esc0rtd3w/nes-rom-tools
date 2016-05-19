@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="LinuxDoc-Tools 0.9.8.1">
+ <TITLE>Zelda 1 Hack Information: The Underworld</TITLE>
+ <LINK HREF="z1spec-4.html" REL=next>
+ <LINK HREF="z1spec-2.html" REL=previous>
+ <LINK HREF="z1spec.html#toc3" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="z1spec-4.html">Next</A>
+<A HREF="z1spec-2.html">Previous</A>
+<A HREF="z1spec.html#toc3">Contents</A>
+<HR>
+<H2><A NAME="s3">3.</A> <A HREF="z1spec.html#toc3">The Underworld</A></H2>
+
+<H2><A NAME="ss3.1">3.1 The Underworld Map Format</A>
+</H2>
+
+<P>
+<PRE>
+Description                     Offset          Num. Entries    Entry Size
+--------------------------------------------------------------------------
+1st Quest Levels 1-6 Data       100096          768             1
+1st Quest Levels 7-9 Data       100864          768             1
+2nd Quest Levels 1-6 Data       101632          768             1
+2nd Quest Levels 7-9 Data       102400          768             1
+Underworld Screen Table          90334          64              12
+Underworld Column Directory      91908          10              2
+Underworld Column Table 0        90838          7               varies
+Underworld Column Table 1        90854          7               varies
+Underworld Column Table 2        90884          7               varies
+Underworld Column Table 3        90901          7               varies
+Underworld Column Table 4        90918          7               varies
+Underworld Column Table 5        90941          7               varies
+Underworld Column Table 6        90964          7               varies
+Underworld Column Table 7        90981          7               varies
+Underworld Column Table 8        90999          7               varies
+Underworld Column Table 9        91025          7               varies
+Underworld Square Table          91928          8               1
+</PRE>
+</P>
+
+<H2><A NAME="ss3.2">3.2 Underworld Data</A>
+</H2>
+
+<P>Underworld data consists of 768 bytes for a group of levels.  There are 4
+data blocks, one for levels 1-6 and 7-9 on each quest.  Each data block
+contains maps and other information (not all deciphered yet).  There is
+one Underworld Map in each data block:  All levels in that block share a
+map.  The map is 384 bytes from the start of the data, and is 128 bytes
+long.  This is the Underworld Map referred to in the next section.</P>
+
+<H2><A NAME="ss3.3">3.3 Underworld Levels</A>
+</H2>
+
+<P>An underworld level is 8 by 8 screens, for up to 64 map screens per level.  
+The screen number is used as an index into the Underworld Map for a
+particular level.  Bits 0-5 of each byte in an underworld map are an index
+into the underworld screen table.</P>
+
+<H2><A NAME="ss3.4">3.4 The Underworld Screen Table</A>
+</H2>
+
+<P>There are 64 unique underworld screens for ALL of the underworld.  Each
+byte in a map for an underworld level refers to one of these 64 possible
+screens in the underworld screen table.  The Underworld Screen Table is a
+table with 64 entries.  Each entry takes up 12 bytes, one for each column.</P>
+
+<H2><A NAME="ss3.5">3.5 Underworld Screens</A>
+</H2>
+
+<P>Every underworld screen has 12 columns.  Each column byte has two parts:
+the high nibble is used to select a column table from the column
+directory, and the low nibble is used to select a column from that column
+table.  </P>
+
+<H2><A NAME="ss3.6">3.6 Underworld Columns</A>
+</H2>
+
+<P>There are 10 underworld column tables (there could be up to 16, but the
+last 6 are unused).  Each column table can have up to 16 columns.  The
+columns in a column table are all run together like in the overworld
+column tables, with the beginning of individual columns marked by bit 7
+being set.</P>
+<P>Each column has 7 squares in it.  Unlike the overworld, where columns can
+be from 6 to 11 bytes, underworld columns can be from 1 to 7 bytes.  Bits
+0-2 are a square number (index into the Underworld Square Table).  Bit 3
+seems to be unused.  Bits 4-6 are a number from 0 to 6 indicating how many
+additional times to repeat this square.  0 means draw the square once, 1
+means draw it twice, and so on.  If the number was 7 it would not mean to
+draw the square 8 times, since a column has only 7 squares, the column
+would stop after the 7th square.</P>
+
+<H2><A NAME="ss3.7">3.7 Underworld Squares</A>
+</H2>
+
+<P>Since the square number is 3 bits, there are 8 possible squares in the
+underworld.  There is no secondary square table.  The square code is
+looked up in the single square table which is 8 bytes long.  If the code
+is less than 112 or greater than 242, it is a tile pattern to draw for all
+4 tiles in the square.  Otherwise the code is the first in a sequence of 4
+tile numbers (from Pattern Table 1) that form the upper left, lower left,
+upper right, and lower right tiles in the square.</P>
+<P>All squares in a 12x7 underworld screen are always in the same place every
+time you enter the screen.  There are no secrets like in the overworld
+that cause screens to look different (trees become stairs, rocks become
+doors, etc) when you enter them.</P>
+
+<H2><A NAME="ss3.8">3.8 Underworld Doors</A>
+</H2>
+
+<H3>Finding Door Information</H3>
+
+<P>In each data block (see section "Underworld Data"), there are two tables
+relevant to doors.  One table contains information about West and East
+doors, the other has information about North and South doors.  Each door
+table is 128 bytes long.  The N/S door table is at the very beginning of
+the data block.  The W/E door table is immediately after it (128 bytes
+from the start of the data block).  The screen number from 0 to 127 is an
+index to a particular entry in a door table.</P>
+<P>Each door in each screen has a 3-bit door code.  The door code for the
+north door is in bits 5-7 of the N/S door table, with bits 2-4 for the
+south door.  Bits 5-7 of the W/E door table are for the West door, and
+bits 2-4 are for the East door.  I don't know what bits 0 or 1 are for in
+any of these tables.</P>
+
+<H3>Door Codes</H3>
+
+<P>
+<PRE>
+Code    Meaning
+--------------------
+0       Open door
+1       ?
+2       ?
+3       ?
+4       Bombable
+5       Key Door
+6       Key Door
+7       Shutter Door
+</PRE>
+</P>
+<P>Codes 1, 2, and 3 cause a regular wall to be drawn every time the screen
+is entered.  I suspect one of these is the regular wall and one is the
+walk-through wall, and the other is unknown (possibly a duplicate of one
+of the others), but I don't know which of the 3 codes are which.  Please
+e-mail me when you find out by modifying door codes.  </P>
+<P>There are two different kinds of key doors that look exactly alike but
+have a different code for some reason (codes 5 and 6).</P>
+
+<HR>
+<A HREF="z1spec-4.html">Next</A>
+<A HREF="z1spec-2.html">Previous</A>
+<A HREF="z1spec.html#toc3">Contents</A>
+</BODY>
+</HTML>

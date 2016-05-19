@@ -1,0 +1,23 @@
+----------------------------
+  SMB-Fix  ver 0.50  by Yy
+----------------------------
+
+<what this is>
+It can fix SuperMarioBros. ROM image.
+ + trainer
+ + without title
+ + bad timing
+
+<useage>
+ (a) drop the ROM on "smb_fix.exe".
+ (b) run and select in dialog.
+
+ this program makes backup(.bak) and overwrite(.nes).
+
+<note>
+This program can not fix your hacks.
+Before hacking, you can make clean ROM.
+
+
+	Yy ( geo-yy@geocities.co.jp )
+

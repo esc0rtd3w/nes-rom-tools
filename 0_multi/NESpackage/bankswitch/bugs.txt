@@ -1,0 +1,13 @@
+	known bugs:
+	-----------
+
+      - the file offset of banks loaded into the database isn't
+        updated by IDA Pro. I don't know if this is a bug related
+        to this plugin
+     
+      - 8k PRG ROM pages are not yet supported
+
+    Please send me an e-mail if you find any bugs or have
+    suggestions for improvements!
+
+	(c) 2006, Dennis Elser (dennis@backtrace.de)

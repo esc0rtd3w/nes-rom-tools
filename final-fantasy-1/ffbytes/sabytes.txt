@@ -1,0 +1,84 @@
+Æ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£Ð Final Fantasy Æ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ1.0
+ ¸§§§§§§¸      ¸§§§§§§  /§§§§§§§§§ /§§§§§§§§§  ¸§§§§§§   ¸¿§§§§¿  /§§§  ,§§  ¸§§§§§§¸ -Ð£±£ÐÆ1.0
+/§§§´//`§     /§§§´`§§§ ////§§§/// ////§§§/// /§§§´`§§§ /§§§' ´¤§ /§§§ ,§§¤ /§§§´//`§ -Ð£±£ÐÆ1.0
+/¤§§¿¸        /§§§ /§§§    /§§§       /§§§    /§§§ /§§§ /§§§      /§§§§§¤   /¤§§¿¸    -Ð£±£ÐÆ1.0
+  ` `¤§¿¸     /§§§¤¤§§§    /§§§       /§§§    /§§§¤¤§§§ /§§§      /§§§`§§¿    ` `¤§¿¸ -Ð£±£ÐÆ1.0
+/¿¸   ¿§¿     /§§§ /§§§    /§§§       /§§§    /§§§ /§§§ /§§§¸ ¸¿§ /§§§ ¤§§¿ /¿¸   ¿§¿ -Ð£±£ÐÆ1.0
+ /¤§§§§¤' ¿¿  /§§§ /§§§    /§§§       /§§§    /§§§ /§§§ /`¤§§§§§' /§§§ /§§§  /¤§§§§¤' -Ð£±£ÐÆ1.0
+  //////  ¤¤  //// ////    ////       ////    //// ////  ///////  //// ////   //////  -Ð£±£ÐÆ1.0
+Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£Ð Document Æ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ1.0
+ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ-Ð£±£ÐÆ1.0
+
+Address of Data ; 30400-304CC
+
+Enemy special attack data consists of a simple and familiar 5 bytes
+
+What I mean by familiar is they work almost exactly like Magic Data.
+
+I- This byte acts very much like that of User magic, 
+ Damage has 20, Special Effects has 18, 05, and 00.
+   
+II- Effectivity Byte ;
+ again, this is a Scale of 00-255 for various Effects, where as some effects,
+ changing this byte will change what happens. 
+
+III- Element byte ;
+ this byte denotes the Element of the magic (of course)
+  01 = GAZE, FLASH, SNORTING, INK, DAZZLE, seems to be special effect element again
+  02 = GLANCE, POISON(dmg), POISON(pos), STINGER, got me...
+  04 = GLARE, Dunno
+  08 = Instant Death
+  10 = Fire
+  20 = Ice
+  40 = Lightning
+  80 = Earth
+
+IV- Targetting
+ Simple notation of Targetting
+  01 = One Party member
+  02 = Whole Party
+
+V- Effect
+ Very much like the Magic Effects.
+  01 = Damage
+  03 = Negative Effect
+   03 + 01 Effectivity = Death
+   03 + 02 Effectivity = Turn To Stone
+   03 + 04 Effectivity = Poison
+   03 + 08 Effectivity = Darkness
+   03 + 10 effectivity = Stun
+
+
+???
+|  Effectivity
+|  |  Element
+|  |  |  Targetting
+|  |  |  |  Effect
+|  |  |  |  |   Name			Explanation
+|__|__|__|__|____|__________________________|______________________________________
+20-18-20-01-01  FROST	 24 Effectivity, Ice, One Party Member, Damage
+20-0C-10-01-01  HEAT	 12 Effectivity, Fire, One Party Member, Damage
+05-02-02-02-03  GLANCE	 03 Effect + 02 Effectivity = Turn To Stone, GLANCE Element, One Member
+00-10-01-02-03  GAZE	 03 Effect + 10 Effectivity = Stun, Special effect?, One Member
+18-08-01-01-03  FLASH	 03 Effect + 08 Effectivity = Darkness, Special Effect?, Whole party
+20-07-10-01-01  SCORCH   07 Effectivity, Fire, Whole Party, Damage
+10-01-80-01-03  CRACK	 03 Effect + 01 Effectivity = Instant Death, Earth, Whole Party
+00-01-08-02-03  SQUINT	 03 Effect + 01 Effectivity = Instant Death, Instant Death?, One Member
+18-11-00-02-01  STARE	 11 Effectivity, no element, One Member, Damage
+10-01-04-02-03  GLARE	 03 Effect + 01 Effectivity = Instant Death, GLARE Element, One Member
+20-32-20-01-01  BLIZZARD 50 Effectivity, Ice, Whole Party, Damage
+20-40-10-01-01  BLAZE	 58 Effectivity, Fire, Whole Party, Damage
+20-60-10-01-01  INFERNO	 96 Effectivity, Fire, Whole Party, Damage
+20-18-10-01-01  CREMATE	 24 Effectivity, Fire, Whole Party, Damage
+05-02-02-01-03  POISON	 03 Effect + 02 Effectivity = Turn to Stone(!? more likly Insant Death), GLANCE Element, Whole Party
+00-10-00-01-03  TRANCE	 03 Effect + 10 Effectivity = Stun, no element, Whole Party
+20-44-02-01-01  POISON	 68 Effectivity, GLANCE Element, Whole Party, Damage
+20-4C-40-01-01  THUNDER	 76 Effectivity, Lightning, Whole Party, Damage
+00-01-08-01-03  TOXIC	 03 Effect + 01 Effectivity = Instant Death, Instant Death, Whole Party
+18-08-01-02-03  SNORTING 03 Effect + 08 Effectivity = Darkness, Special Effect Element?, One Member
+30-50-00-01-01  NUCLEAR  80 Effectivity, no element, Whole Party, Damage
+18-08-01-01-03  INK	 03 Effect + 08 Effectivity = Darkness, Special Effect Element?, Whole Party
+00-04-02-01-03  STINGER  03 Effect + 04 Effectivity = Poison, GLANCE element, Whole Party
+20-10-01-02-03  DAZZLE	 03 Effect + 10 Effectivity = Stun, Special Effect Element?, One Member
+20-40-00-01-01  SWIRL	 64 Effctivity, no element, Whole Party, Damage
+20-40-00-01-01  TORNADO  64 Effctivity, no element, Whole Party, Damage

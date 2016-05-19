@@ -1,0 +1,49 @@
+
+        Goonies II (NES) Level editor v1.5
+        by SnowBro <kentmhan@online.no>
+
+        "Goonies2.nes" available separately.
+
+
+        New in this version
+        -------------------
+
+        - Mouse support
+        - Fixed palette for one area
+
+
+        How it works
+        ------------
+
+        Should be pretty straight-forward (especially if you've
+        already used one of my other level editors):
+
+        - Draw a texture at the desired screen position by moving the
+          mouse to this position, then press LEFT mouse button. A
+          flashing box always shows which part of the screen will be
+          affected.
+
+        - Select the texture to use from the set of textures at the
+          bottom of the screen with the LEFT mouse button. Press TAB
+          to browse through the different sets for the current level.
+          (LShift+TAB to select the previous set). The selected
+          texture can be seen in the bottom right corner of the
+          screen.
+
+        - You can also select a texture to use directly from the level
+          data, by holding the mouse over the desired texture, and then
+          pressing RIGHT mouse button.
+
+        - LEFT arrow key scrolls one room left in the area.
+
+        - RIGHT arrow key scrolls one room right in the area.
+
+        - F1 selects the next area in the game.
+
+        - F5 saves your changes.
+
+
+        Notes
+        -----
+
+        Doors and items are not editable in this version.

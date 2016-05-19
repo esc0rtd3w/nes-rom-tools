@@ -1,0 +1,30 @@
+Setzer's wonderfull little document on how to find TSA data.
+
+well, TSA = Tile Squaroid Assembly, and I think it was alpha beta who thought up that wonderfull little name.
+
+What you will need:
+1) a rom
+2) an emulator that displays Pattern Tables
+3) a hex editor
+4) an education
+5) a computer
+6) something to open .tx-shot-
+
+Anyways, to break it all down, first, pick a game, like, Dragon Warrior. Then, take an editor that displays Pattern tables, like, Nesticle. Then, open up nesticle, and load dragon warrior, yay! Now, proceed to the king's chamber, you know, that place where you can save, that place where you start, the place with the king. well, take a look around, lots of 16x16 blocks, horray! those things are assembled by 8x8 blocks, yep. Now, you obviously took a look at this document so you can figure out how too change those 8x8 blocks, quite simple really, most TSA data is arranged from top-left to bottom-right, like so:
+___ _____
+| A | B |
+|___|___|
+| C | D |
+|___|___|
+spiffy little thing, isn't it ^^ anyways, it goes A B C D in a hex editor, now back to the kings chanber. take a look at.. well, the stone block, its gray, and its a big rock, yep, those things that block you, they serve as walls. check the pattern tables in nesticle, and woo, look for the 8x8 tiles that assemble those blocks. hey, there they are, click them, you'll see that little number in the bar, for the top left it says 6F for the top right, it says 70, and for the bottom left, 71, and bottom right is 72, there, that wasn't so hard, nope, you take a look at those things, and assemble them in your mind to look like this:
+_____ _____
+|    |    |
+| 6F | 70 |
+|____|____|
+|    |    |
+| 71 | 72 |
+|____|____|
+booya its a that wall! omfg! OMFG ITS RELLY TEH -shot-
+*ahem* now. you are going to open up a hex editor, like for example, Hexposure, and do a search for that hex string [6f707172] and once you find it [it will be at $f615], you found the TSA data, YAY! now, if you have a picture of that pattern table handy, or just remember what it looks like, you can change it around, and well, you can turn the wall into a chest by changing $f615 into f8 fa f9 fb [minus the spaces], which if you remember from the pattern tables is how the chest would be assembled.
+
+Another thing, if you dont have an Emulator that can view pattern tables, or you are too lazy to download one, you can view pattern tables in a tile editor/viewer, for example, Tile Layer Pro =)

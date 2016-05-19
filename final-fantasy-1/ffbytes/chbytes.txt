@@ -1,0 +1,111 @@
+«±ªº°¹ºqÞ«±ªº°¹ºqÞ Final Fantasy «±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹1.2
+ ¸¿§§§§¿  /§§§ /§§§  ¸§§§§§§  /§§§§§§¿   ¸§§§§§§   ¸¿§§§§¿  /§§§§§§§§ /§§§§§§§ /§§§§§§¿  ªº°¹1.2
+/§§§' ´¤§ /§§§ /§§§ /§§§´`§§§ /§§§´ `§¿ /§§§´`§§§ /§§§' ´¤§ ////§§/// /§§§//// /§§§´ `§¿ ªº°¹1.2
+/§§§      /§§§§§§§§ /§§§ /§§§ /§§§¸ ¸§¤ /§§§ /§§§ /§§§         /§§    /§§§¿¿¿  /§§§¸ ¸§¤ ªº°¹1.2
+/§§§      /§§§//§§§ /§§§¤¤§§§ /§§§§§§¤  /§§§¤¤§§§ /§§§	       /§§    /§§§¤¤¤  /§§§§§§¤  ªº°¹1.2
+/§§§¸ ¸¿§ /§§§ /§§§ /§§§ /§§§ /§§§//§¿  /§§§ /§§§ /§§§¸ ¸¿§    /§§    /§§§///  /§§§//§¿  ªº°¹1.2
+/`¤§§§§§' /§§§ /§§§ /§§§ /§§§ /§§§ /§§¿ /§§§ /§§§ /`¤§§§§§'    /§§    /§§§§§§§ /§§§ /§§¿ ªº°¹1.2
+ ///////  //// //// //// //// //// //// //// ////  ///////     ///    //////// //// //// ªº°¹1.2
+°¹ºqÞ«±ªº°¹ºqÞ Document «±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹1.2
+º°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹ºqÞ«±ªº°¹1.2
+
+
+Address of Data : 3050-30AB
+
+Character Data consits of 11 bytes.
+
+I- Player listing byte ;
+ Asumably just a mark to tell the game these are the first 6 classes.
+
+II- HP Byte;
+ these are the starting hits points of the character, 01-FF (1 to 255).
+
+III- Strength byte;
+ the Raw power of attack the Character starts with. scale of 00-FF
+
+IV- Agility byte;
+ the Raw skill of ones evasion and the stat that determines who's actions take place first.
+ scale of 00-FF
+
+V- Intelligence byte;
+ the Rate at which one can learn Magic and the stat that determines the quality of the magic.
+ scale of 00-FF
+
+VI- Vitality byte;
+ the Raw defensive abilities of a character. scale of 00-FF
+
+VII- Luck byte;
+ the Amount of luck a Character has determines his ability to Run away, and his ability
+ to dodge some what, it also determines his aim slightly. scale of 00-FF
+
+VIII- Damage byte;
+ the amount of damage a Character can do Initialy
+
+IX- Hit Percentage byte;
+ the Initial Skill a character has at aiming. scale of 00-FF
+
+X- Evasion Percentage byte;
+ the rate at which a Character can avoid attack at first. scale of 00-FF
+
+XI- havent the foggiest, 
+ but interrestingly, they appear to be sorted by magical skill,
+ the Fighter and Thief (0F) learn to cast magic later,
+ the Black belt(0A) can never cast magic, and the Mages (14) always can.
+ Who knows?
+
+
+Player Listing
+|  Hit Points
+|  |  Strength
+|  |  |  Agility
+|  |  |  |  Intellect
+|  |  |  |  |  Vitality
+|  |  |  |  |  |  Luck
+|  |  |  |  |  |  |  Damage
+|  |  |  |  |  |  |  |  Hit%
+|  |  |  |  |  |  |  |  |  Evade%
+|  |  |  |  |  |  |  |  |  | ???
+|  |  |  |  |  |  |  |  |  |  |   Character			   Data
+|__|__|__|__|__|__|__|__|__|__|______|_______________________________|_________________________
+00-23-14-05-01-0A-05-0A-0A-35-0F  Fighter   35HP, 20str, 5agi, 1int, 10vit, 5luc, 10dmg, 10h%, 53e%
+01-1E-05-0A-05-05-0F-02-05-3A-0F  Thief	    30HP, 5str, 10agi, 5int, 5vit, 15luc, 2dmg, 5h%, 58e%
+02-21-05-05-05-14-05-02-05-35-0A  Black B.  32HP, 5str, 5agi, 5int, 20vit, 5luc, 2dmg, 5h%, 53e%
+03-1E-0A-0A-0A-05-05-05-07-3A-14  R. Mage*  30HP, 10str, 10agi, 10int, 5vit, 5luc, 5dmg, 7h%, 58e%
+04-1C-05-05-0F-0A-05-02-05-35-14  W. Mage§  28HP, 5str, 5agi, 15int, 10vit, 5luc, 2dmg, 5h%, 53e%
+05-19-01-0A-14-01-0A-01-05-3A-14  B. Mage¤  25HP, 1str, 10agi, 20int, 1vit, 10luc, 1dmg, 5h%, 58e%
+00-00-00-00-00-00-00-00-00-00-00  Knight §
+00-00-00-00-00-00-00-00-00-00-00  Ninja  ¤
+00-00-00-00-00-00-00-00-00-00-00  Master
+00-00-00-00-00-00-00-00-00-00-00  Red Wiz*
+00-00-00-00-00-00-00-00-00-00-00  Wh. Wiz§
+00-00-00-00-00-00-00-00-00-00-00  Bl. Wiz¤
+
+* Casts both magics 	§ White Magic 	 ¤ Black Magic
+
+
+°¹ºqÞ«±ªº°¹ºqÞ  Changing Starting MP  °¹ºqÞ«±ªº°¹ºqÞ
+
+at the address 3C7E6 there should be 02. This is Starting MP for all magic users.
+simple change it to what ever doohicky you wish, do mind, 2 Digit numbers dont
+fit well, and it is in Hex, so 0F would display F in the Status window.
+
+
+°¹ºqÞ«±ªº°¹ºqÞ  Adding The 6 other classes.  °¹ºqÞ«±ªº°¹ºqÞ
+
+To add the other 6 Classes to the Selection Screen, Simply follow these Steps.
+
+1. Add starting stats for each of the 6 classes in the lines (see above) After the Black mage,
+ They should be all 00's in the hex. the first set of stats after the black mage will be Knight, 
+ the Second Will be Ninja, and so on.
+
+2. Search for hex C90690, the second occurence of it after the character data will be the correct
+ one, change the 06 to the new number of characters (0C for instance if you add the 6 others
+ classes to the original 6) entering 00 will make it so you can only choose the first character.
+
+3. Run through the characters, their sprites will be mutated, but they will effectivly create
+ all the classes that were added, if you creatre more than 12 classes, it makes for some
+ very interresting, but fully playable, glitches.
+
+Big thanks to Roto for this information
+
+

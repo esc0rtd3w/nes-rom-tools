@@ -1,0 +1,712 @@
+*** WARNING *** This document is extremely messy. Trying to make sense of it may cause your brain to explode. I may try to clean it up at some point, but so far I don't really have the urge. This document looks best when word wrapped, but even then it's somewhat fugly. *** WARNING ***
+
+Some terminology I'll be using, before we begin:
+
+Level: A 32x32 grid of Blocks, which makes up an entire area. The Tank and Overhead sections are considered seperate levels for the purposes of this document. A Level contains 1024 Blocks in a 32x32 grid, 64 Screens in an 8x8 grid, a semi-arbitrary number of Rooms, 4096 Sub Blocks (64x64), and 16384 Ultra Sub Blocks (128x128). Levels also loop in both directions. A good example of this is Level 6, where you always head up and to the right to make progress, yet you can end up back at the Level 5 Passage again simply by heading left from the Boss Tunnel. 
+Scroll Border: Any place at which the screen ceases scrolling, unless you step/drive through a door.
+Screen: A 4x4 section of the Level, the largest section viewable on screen at once. Mostly a cosmetic designation, except that Scroll Borders always end on a screen border. They don't comprise EXACTLY 4x4 blocks either. They actually use 5x5 blocks, but the borders and corners only use a portion of the block, with the other parts being shared with other Screen(s). For example, the upper left block on Screen(0,0) shares its data with Screen(0,7), Screen(7,0), and Screen(7,7). A little diagram to show you what I mean:
+
+M: Map Index (in hex)
+S: Screen
+
++---+---+-------+-------+-------+---+---+
+|M 0|M 0| M 1   | M 2   | M 3   |M 4|M 4|
+|S  |S  | S 0,7 | S 0,7 | S 0,7 |S  |S  |
+|7,7|0,7|       |       |       |0,7|1,7|
++---+---+-------+-------+-------+---+---+
+|M 0|M 0| M 1   | M 2   | M 3   |M 4|M 4|
+|S  |S  | S 0,0 | S 0,0 | S 0,0 |S  |S  |
+|7,0|0,0|       |       |       |0,0|1,0|
++---+---+-------+-------+-------+---+---+
+|M20|M20| M21   | M22   | M23   |M24|M24|
+|S  |S  | S 0,0 | S 0,0 | S 0,0 |S  |S  |
+|7,0|0,0|       |       |       |0,0|1,0|
+|   |   |       |       |       |   |   |
+|   |   |       |       |       |   |   |
+|   |   |       |       |       |   |   |
+|   |   |       |       |       |   |   |
++---+---+-------+-------+-------+---+---+
+|M40|M40| M41   | M42   | M43   |M44|M44|
+|S  |S  | S 0,0 | S 0,0 | S 0,0 |S  |S  |
+|7,0|0,0|       |       |       |0,0|1,0|
+|   |   |       |       |       |   |   |
+|   |   |       |       |       |   |   |
+|   |   |       |       |       |   |   |
+|   |   |       |       |       |   |   |
++---+---+-------+-------+-------+---+---+
+|M60|M60| M61   | M62   | M63   |M64|M64|
+|S  |S  | S 0,0 | S 0,0 | S 0,0 |S  |S  |
+|7,0|0,0|       |       |       |0,0|1,0|
+|   |   |       |       |       |   |   |
+|   |   |       |       |       |   |   |
+|   |   |       |       |       |   |   |
+|   |   |       |       |       |   |   |
++---+---+-------+-------+-------+---+---+
+|M80|M80| M81   | M82   | M83   |M84|M84|
+|S  |S  | S 0,0 | S 0,0 | S 0,0 |S  |S  |
+|7,0|0,0|       |       |       |0,0|1,0|
++---+---+-------+-------+-------+---+---+
+|M80|M80| M81   | M82   | M83   |M84|M84|
+|S  |S  | S 0,1 | S 0,1 | S 0,1 |S  |S  |
+|7,1|0,1|       |       |       |0,1|1,1|
++---+---+-------+-------+-------+---+---+
+ 
+Room: A section of the Level contained by Scroll Borders. (See below, Box/Shaft/Track/Cavern.) Mostly a cosmetic designation, as the map covers the entire level, not the individual Rooms. 
+Blocks: Meat of the Level... contains 2x2(4) Sub Blocks, 4x4(16) Ultra Sub Blocks, and 8x8(64) characters.
+Sub Blocks: Makes up the blocks... contains 2x2(4) Ultra Sub Blocks, and 4x4(16) characters.
+Ultra Sub Blocks: Makes up the Sub Blocks... contains 2x2(4) characters. Tank is 2x1 USBs for comparison. The smallest piece of a Level that you can interact with.
+Characters: Makes up the USBs, contains 8x8 pixels in the standard NES character format. Purely graphical.
+Tank (section): Any side scrolling section where you can drive the tank.
+Overhead (section): Any overhead (duh) section. Bosses are always in an Overhead section. (Unless you want to count the Level 2 Gate guardian. I don't.)
+Box: A Room which does not scroll at all, eg Level 2's entrance to Level 3.
+Shaft: Entirely vertical Room, eg first vertical section of Level 1. 
+Track: Entirely horizontal Room, eg the various "tree" sections of Level 7.
+Cavern: Any Room that scrolls in both directions. Always rectangular, because the engine doesn't deal with jagged Scroll Borders gracefully. 
+Tunnel: A door that switches between a Tank section and an Overhead section.
+Boss Tunnel: A Tunnel that leads to an Overhead section that contains a Level Boss.
+Gateway: A gate that the tank can enter that changes to another Level, or in Level 7, moves within the Level.
+
+Levels have several pieces of info stored with them. First is 12 bytes consisiting of data pointers telling the ROM where to find various bits of level data. This is followed by a 16 byte palette, used for the background. (The sprites have their own seperate palette stored elsewhere.) Then comes the table for the USBs, then sBs, then Blocks, then the actual map. The length of the three Block tables could be arbitrary, with a pointer stored elsewhere to designate the beginning. They do not have a "null block" or anything of the sort to designate the end of the table. For example, in Level 1, Block # 203 is stored just before the beginning of the map data. Trying to refer to Block # 204 just uses map data for the block.
+
+Level Maps are made up of 1024 Blocks in a simple 32x32 grid. Scrolling is controlled by a bitfield, but scrolling is a pseudo-cosmetic effect. If you cut away a wall and drive through where it would normally not be scrolling (eg where you would normally enter a door), you will end up where you "should" be, but it will play merry hell with the graphics. I verified this by cutting away the floor from the first shaft of Level 1. I fell through into the shaft to Level 2, and after a little searching I was able to find the gateway and enter Level 2 without a complaint. The graphics returned to normal afterwards. I was, however, of course, stuck on the wrong side of the gate, due to the Gate Guard still being alive.
+
+Below are some values I've managed to figure out so far.
+
+Rom Header = 0x0000-0x000F
+
+Data Pointers = 0x0010-0x0023 = 0x14 bytes = 20 bytes
+	Data Pointers to where the first five levels are stored, and their scroll tables. (Why here instead of with the rest of the
+	pointers I'm not sure.) To gain the location in the ROM, reverse the bytes, subtract 0x8000, and add 0x0010.
+0x0010=	"14 80 2e 8e"
+Raw	 8014  8e2e
+Convert	 0024  0e3e
+	 Lvl1  Scrl
+0x0014= "3e 8e 72 99"
+Raw	 8e3e  9972
+Convert	 0e4e  1982
+	 Lvl2  Scrl
+0x0018= "1a 9a 5f a5"
+Raw	 9a1a  a55f
+Convert  1a2a  256f
+	 Lvl3  Scrl
+0x001C=	"6f a5 6a b1"
+Raw	 a56f  b16a
+Convert	 257f  317a
+	 Lvl4  Scrl
+0x0020= "7a b1 7c bd"
+Raw	 b17a  bd7c
+Convert	 318a  3d8c
+	 Lvl5  Scrl
+	
+Level 1 Tank Area
+
+Character Bank = 0x28010-0x2900F = 4096 bytes
+	Actual character graphics used for the Background for the Tank Area of Level 1, stored in standard NES character format.
+	256 characters, 4 colors, 8x8 pixels. Sub palettes stored elsewhere are used to say WHICH four colors a character/block uses.
+
+Total = 0x0024-0x0e4d = 0xe3e bytes = 3626 bytes
+
+Data Pointers = 0x0024-0x2F = 12 bytes
+	Data pointers to Palette, USB Attribute Table, USB Table, SB Table, Block Table, and Map. Two bytes each. To figure out
+	the location in the ROM file, reverse the byte order, subtract 0x8000 and then add 0x0010.
+	"20 80 94 8d 30 80 98 82 68 86 94 89"
+	 Plt   USBA  USB   SB    Blk   Map
+	Example: USBA = 0x8D94
+		0x8D94 - 0x8000 + 0x0010 = 0x0DA4
+		As you can see below, 0x0DA4 perfectly matches where the USB Attribute table begins in the ROM.
+Background Palette = 0x0030-0x003F = 16 bytes
+	Which 16 colors to use for the background. Simple.
+
+Character Bank = 0x28010-0x2900F = 4096 bytes
+	Actual character graphics used for the Background for the Tank Area of Level 1, stored in standard NES character format. 
+	256 characters, 4 colors, 8x8 pixels. Sub palettes stored elsewhere are used to say WHICH four colors a character/block uses. 
+
+USB Data = 0x0040-0x02A7 = 0x268 bytes = 616 bytes = 0x9A blocks = 154 Ultra Sub Blocks
+	Describes each USB, 4 bytes each, corresponding to which Characters make up this USB
+SB Data = 0x2A8-0x677 = 0x3d0 bytes = 976 bytes = 0xF4 blocks = 244 Sub Blocks 
+	Describes each SB, 4 bytes each, corresponding to which USBs make up this SB
+Block Data = 0x0678-0x09a3 = 0x32C bytes = 812 bytes = 0xCB blocks = 203 Blocks
+	Describes each block, 4 bytes each, corresponding to which SBs make up this block 
+Map Data = 0x09a4-0x0da3 = 1k = 0x400 bytes = 1024 bytes = 32x32(1024) Blocks
+USB Attribute Table = 0x0da4-0x0e3d = 0x9a bytes = 154 bytes
+	An array of bytes which describes the attributes of the USBs. The first two bits control which palette to use, and the other
+	six control the USB's physical properties.
+
+	Note that making a Gateway/Tunnel block isn't enough, it has to match up with an existing gateway (explanation below).
+
+	Tank 
+	Bit 0&1 (0x00-0x03) = Which Sub-palette to use
+	Bit 2 (0x04) = Unknown
+	Bit 3 (0x08) = Gateway 
+	Bit 2&3 (0x0C) = Tunnel (From Tank to Overhead) 
+	Bit 4 (0x10) = Damaging
+	Bit 5 (0x20) = Ladder (One you will fall through)
+	Bit 6 (0x40) = Water
+	Bit 7 (0x80) = Solid
+	Bit 4&6 (0x50) = Lava (Damaging and slows you like water)
+	Bit 5&7 (0xA0) = Solid Ladder (One you can stand on)
+	Bit 6&7 (0xC0) = Destroyable (w/Crusher)
+	Bit 3&7 (0x88) = Doorway (the kind that seperates Rooms)
+	Bit 5&6 (0X60) = Water Ladder (One you can climb or swim)
+
+	In Level 6 Tank, any solid block NOT using Sub-palette 1 is considered "ice".
+
+	Overhead
+	Bit 0&1 (0x00-0x03) = As above
+	Bit 2 (0x04) = "Walk Behind"/Overhang
+	Bit 3 (0x08) = Tunnel
+	Bit 4 (0x10) = Damaging
+	Bit 2&4 (0x14) = Instant Death or Ice (Level 6 Only)
+	Bit 5 = Unknown
+	Bit 6 = Unknown
+	Bit 7 (0x80) = Solid
+	Bit 3&7 (0x88) = Doorway (True for all directions, but any direction but Up has Bit 2 set for cosmetic reasons)
+	Bit 6&7 (0xC0) = Destroyable
+
+	
+Scroll Table = 0x0e3e-0xe4d = 16 bytes
+	The first eight bytes control up-down scrolling, the next eight control left-right scrolling. Both are simple bitmasks,
+	moving left to right, most significant bits first, ie Bit #7 (0x80) controls the border on the left for the leftmost Screen, 
+	and Bit #0 (0x01) controls the border on the left of the rightmost Screen. It both wraps and shares, so Bit #7 also controls
+	the right border on the rightmost Screen.  If a bit is off, then the border in question will allow scrolling. If it is on, 
+	scrolling ceases. Forming a non-rectangular border works, but will mess up the graphics something fierce if you hit a border 
+	at the wrong angle. Switching to the pause menu fixes the graphics.
+	
+	Below is a chart of which byte and bit to check for each respective border. Checking Up and Down uses the same bit, but
+	different bytes, where checking Left and Right uses the same byte, but different bits.
+
+ Screen #0      Screen#7
+         v             v
+Byte 0	+7+6+5+4+3+2+1+0+
+Byte 8	7 6 5 4 3 2 1 0 7
+Byte 1	+7+6+5+4+3+2+1+0+
+Byte 9	7 6 5 4 3 2 1 0 7
+Byte 2	+7+6+5+4+3+2+1+0+
+Byte 10	7 6 5 4 3 2 1 0 7
+Byte 3	+7+6+5+4+3+2+1+0+
+Byte 11	7 6 5 4 3 2 1 0 7
+Byte 4	+7+6+5+4+3+2+1+0+
+Byte 12	7 6 5 4 3 2 1 0 7
+Byte 5	+7+6+5+4+3+2+1+0+
+Byte 13	7 6 5 4 3 2 1 0 7
+Byte 6	+7+6+5+4+3+2+1+0+
+Byte 14	7 6 5 4 3 2 1 0 7
+Byte 7	+7+6+5+4+3+2+1+0+
+Byte 15	7 6 5 4 3 2 1 0 7
+Byte 0	+7+6+5+4+3+2+1+0+
+         ^	       ^	
+Screen #56     Screen#63
+
+As another example, here's the scroll table for Level 1, Tank Area:
+
+	+1+1+1+1+1+1+1+1+
+	1 1 0 0 0 0 0 0 |(1) 
+	+0+0+0+0+0+0++0+0
+	1 1 0 0 0 0 0 0 |(1)
+	+0+0+0+0+0+0+0+0+
+	141 0 0 0 0 0 0 |(1)
+	+1+0+0+0+0+0+0+0+
+	1 1S0 0 0 0 0 0 |(1)
+	+0+1+1+1+1+1+1+1+
+	1 1 0 0 0 0 0 0 |(1)
+	+1+0+0+0+0+0+0+0+
+	1 1 0 0 0 0 0 0 |(1)
+	+0+0+0+0+0+0+0+0+
+	1 1 0 0 0 0 0 0 |(1)
+	+0+0+0+0+0+0+0+0+
+	121 0 0 0 0 0 0 |(1)
+	+-+-+-+-+-+-+-+-+
+	(1 1 1 1 1 1 1 1)
+
+"4" and "2" mark the inter level gates, and "S" marks the start position.
+
+The data for the Level 2 Tank section follows all of this, stored in a similar format.
+
+Overhead sections are stored in the same way, except that the USB attribute bits mean different things.
+
+Bank #0 (0x0010-0x4010) contains data for Levels 1-5.
+
+Bank #1 (0x4010-0x8010) contains data for Level 6, 7, 8, and the overhead sections of 1 and 3.
+
+Bank #2 (0x8010-0xC010) contains data for the remaining overhead sections.
+
+Bank #3 (0xC010-0x10010) contains Thing (enemy/item/sprite) data and some other unknown data
+
+C010 = Screen/Boss Pointers (8004 = C014)
+C012 = Thing Data Pointers Pointer (A174 = E184)
+C014 = Pause Menu Pointer (801C = C02C)
+C016 = Intro Screen Pointer (822E = C23E)
+C018 = Title Screen Pointer (84C9 = C4D9)
+C01A = Level 2/6 Boss Pointer (8A5F = CA6F)
+C01C = Level 4/7 Boss Pointer (8C9F = CCAF)
+C01E = Level 1 Boss Pointer (8D9F = CDAF)
+C020 = Level 3 Boss Pointer (8EDF = CEEF)
+C022 = Level 5 Boss Pointer (90CC = D0DC)
+C024 = Ending Screens Pointer (8640 = C650)
+C026 = Level 8 Boss Pointer (942C = D43C)
+C028 = Final Boss Background Pointer (96FC = D70C)
+C02A = Unknown Pointer (99AC = D9BC)
+
+C02C-C23D = 0x212 bytes
+RLE-like data that describes the pause screen's appearance. I'll fiddle with it and see what I can come up with.
+
+C23E-C4D8 = 0x29B bytes
+Similar to the above, but for the intro screen.
+
+C4D9-C64F = 0x177 bytes
+Same deal, for the title screen.
+
+C650-CA6E = 0x41F bytes
+Ending screens.
+
+CA6F-CCAE = 0x240 bytes
+Level 2/6 Boss (head only, arms are sprites)
+
+CCAF-CDAE = 0x100 bytes
+Level 4/7 Boss (entire body, but not tongue or fireballs)
+
+CDAF-CEEE = 0x140 bytes
+Level 1 Boss (brain/tentacles only, rotating brains are sprites)
+
+CEEF-D0DB = 0x1ED bytes
+Level 3 Boss (borders and "inactive boxes", active boxes are, again, sprites)
+
+D0DC-D43B = 0x360 bytes
+Level 5 Boss (everything but the glowing eye and the bubbles)
+
+D43C-D70B = 0x2D0 bytes
+Level 8 Boss (everything but the mouth)
+
+D70C-D9BB = 0x2B0 bytes
+Final Boss Background (Boss itself is a sprite)
+
+D9BC-E183(?) = 0x7C8(?) bytes
+Unknown (Intro Screens?)
+
+C02C-E183 = Background/Boss Data
+Graphical information describing what various static screens and the bosses look like. Stored in an RLE-like format. Note that only some parts of the bosses are considered "background". Only the main parts are background, such as the Level 1 Boss "big brain", the Level 2/6 Boss' head, etc. This does NOT affect the Gate Guard in Level 1, as that is a sprite.
+
+E184 = Thing Data Pointers
+E184 = Level 1 Overhead (A19B = E1AB)
+E186 = Level 2 Overhead (A331 = E341)
+E188 = Level 3 Overhead (A4BB = E4CB)
+E18A = Level 4 Overhead (A729 = E739)
+E18C = Level 5 Overhead (A907 = E917)
+E18E = Level 6 Overhead (ABA8 = EBB8)
+E190 = Level 7 Overhead (AD3E = ED4E)
+E192 = Level 8 Overhead (AF19 = EF29)
+E194 = Level 1 Tank (B118 = F128)
+E196 = Level 2 Tank (B2A2 = F2B2)
+E198 = Level 3 Tank (B40E = F41E)
+E19A = Level 4 Tank (B56E = F57E)
+E19C = Level 5 Tank (B692 = F6A2)
+E19E = Level 6 Tank (B858 = F868)
+E120 = Level 7 Tank (B982 = F992)
+E122 = Level 8 Tank (BAFD = FB0D) 
+
+Level 1 Overhead
+E1AB = Type List Pointer (A1A1 = E1B1)
+E1AD = X List Pointer (A227 = E237)
+E1AF = Y List Pointer (A2AC = E2BC)
+E1B1 = Type List
+E236 = 0xFF (end of list)
+E237 = X List
+E2BC = Y List
+0x85 Things = 133 Things
+Level 2 Overhead
+E341 = Type List Pointer (A337 = E347)
+E343 = X List Pointer (A3B9 = E3C9)
+E345 = Y List Pointer (A43A = E44A)
+E347 = Type List
+E3C8 = 0xFF (eol)
+E3C9 = X List
+E44A = Y List
+0x81 Things = 129 Things
+Level 3 Overhead
+E4CB = Type List Pointer (A4C1 = E4D1)
+E4CD = X List Pointer (A58F = E59F)
+E4CF = Y List Pointer (A65C = E66C)
+E4D1 = Type List
+E59E = 0xFF (eol)
+E59F = X List
+E66C = Y List
+0xCD Things = 205 Things
+Level 4 Overhead
+E739 = Type List Pointer (A72F = E73F)
+E73B = X List Pointer (A7CD = E7DD)
+E73D = Y List Pointer (A86A = E87A)
+E73F = Type List
+E7DC = 0xFF (eol)
+E7DD = X List
+E87A = Y List
+0x9D Things = 157 Things
+Level 5 Overhead
+E917 = Type List Pointer (A90D = E91D)
+E919 = X List Pointer (A9EC = E9FC)
+E91B = Y List Pointer (AACA = EADA)
+E91D = Type List
+E9FB = 0xFF (eol)
+E9FC = X List
+EADA = Y List
+0xDE Things = 238 Things
+Level 6 Overhead
+EBB8 = Type List Pointer (ABAE = EBBE)
+EBBA = X List Pointer (AC34 = EC44)
+EBBC = Y List Pointer (ACB9 = ECC9)
+EBBE = Type List
+EC43 = 0xFF (eol)
+EC44 = X List
+ECC9 = Y List
+0x85 Things = 133 Things
+Level 7 Overhead
+ED4E = Type List Pointer (AD44 = ED44)
+ED50 = X List Pointer (ADE1 = EDF1)
+ED52 = Y List Pointer (AE7D = EE8D)
+ED54 = Type List
+EDF0 = 0xFF (eol)
+EDF1 = X List
+EE8D = Y List
+0x9C Things = 156 Things
+Level 8 Overhead
+EF29 = Type List Pointer (AF1F = EF2F)
+EF2B = X List Pointer (AFC8 = EFD8)
+EF2D = Y List Pointer (B070 = F080)
+EF2F = Type List
+EFD7 = 0xFF (eol)
+EFD8 = X List
+F080 = Y List
+0xA8 Things = 168 Things
+Level 1 Tank
+F128 = Type List Pointer (B11E = F12E)
+F12A = X List Pointer (B1A0 = F1B0)
+F12C = Y List Pointer (B221 = F231)
+F12E = Type List
+F1AF = 0xFF (eol)
+F1B0 = X List
+F231 = Y List
+0x81 Things = 129 Things
+Level 2 Tank
+F2B2 = Type List Pointer (B2A8 = F2B8)
+F2B4 = X List Pointer (B320 = F330)
+F2B6 = Y List Pointer (B397 = F3A7)
+F2B8 = Type List
+F32F = 0xFF (eol)
+F330 = X List
+F3A7 = Y List
+0x77 Things = 119 Things 
+Level 3 Tank
+F41E = Type List Pointer (B414 = F424)
+F420 = X List Pointer (B488 = F498)
+F422 = Y List Pointer (B4FB = F50B)
+F424 = Type List
+F497 = 0xFF (eol)
+F498 = X List
+F50B = Y List
+0x73 Things = 115 Things
+Level 4 Tank
+F57E = Type List Pointer (B574 = F584)
+F580 = X List Pointer (B5D4 = F5E4)
+F582 = Y List Pointer (B633 = F643)
+F584 = Type List
+F5E3 = OxFF (eol)
+F5E4 = X List
+F643 = Y List
+0x5F Things = 95 Things
+Level 5 Tank
+F6A2 = Type List Pointer (B698 = F6A8)
+F6A4 = X List Pointer (B72E = F73E)
+F6A6 = Y List Pointer (B7C3 = F7D3)
+F6A8 = Type List
+F73D = 0xFF (eol)
+F73E = X List
+F7D3 = Y List
+0x95 Things = 145 Things
+Level 6 Tank
+F868 = Type List Pointer (B85E = F86E)
+F86A = X List Pointer (B8C0 = F8D0)
+F86C = Y List Pointer (B921 = F931)
+F86E = Type List
+F8CF = 0xFF (eol)
+F8D0 = X List
+F931 = Y List
+0x61 Things = 97 Things
+Level 7 Tank
+F992 = Type List Pointer (B988 = F998)
+F994 = X List Pointer (BA05 = FA15)
+F996 = Y List Pointer (BA81 = FA91)
+F998 = Type List
+FA14 = 0xFF (eol)
+FA15 = X List
+FA91 = Y List
+0x7C Things = 124 Things
+Level 8 Tank
+FB0D = Type List Pointer (BB03 = FB13)
+FB0F = X List Pointer (BB8F = FB9F)
+FB11 = Y List Pointer (BC1A = FC2A)
+FB13 = Type List
+FB9E = 0xFF (eol)
+FB9F = X List
+FC2A = Y List
+0x8B Things = 139 Things
+
+Tank Thing Types
+
+Numbers in parentheses are levels in which they show up *correctly*, not neccessarily where the original game has them. Some enemy types are the same but look different in different levels, eg the "Bullets" are the same as the "Zoomers", just using different graphics because a different character set is loaded in. The level list is not exhaustive, in fact many of them are just me guessing. Experiment and see.
+
+00 = Gray Caterpillar (2, 3, 6, 8)
+01 = Gray Bullet (1, 2, 4, 6, 7, 8) horizontal	(Choose one depending on
+02 = Gray Bullet (1, 2, 4, 6, 7, 8) vertical	the surface type is starts on) 
+03 = Red Dropper (3)
+04 = Gray Hulk (1, 4, 7)
+05 = Gray Hopper (1, 2, 4, 6, 7, 8) (6 hp)
+06 = Red Caterpillar (2, 3, 6, 8)
+07 = Mine (1, 2, 4, 6, 7, 8) 
+08 = Ceiling Turret (1, 3, 4, 7)
+09 = Bomber Rock (5) 
+0A = Gray Alien (2, 6, 8)
+0B = Gray Bomber (1, 2, 4, 6, 7, 8) 
+0C = Orb Dive Bomber (3, 5)
+0D = Bee (2, 6, 8)
+0E = Gray Orb (goes back and forth and occasionally up or down) (2, 4, 6, 7)
+0F = Red Skull Bomber (2, 6, 8) (also works in 1, 4, and 7, however the caterpillars that spawn from the bombs do NOT show up correctly)
+10 = Gray Shooter (flies in a line, bounces, and shoots at you) (1, 2, 4, 6, 7, 8)
+11 = Kamikaze Gray Orb (flies AT you) (2, 4, 6, 7)
+12 = Gray Hopper (1, 2, 4, 6, 7, 8) (Identical to 05 except has 12 hp)
+13 = (Spawns) Red Fliers (1, 3, 4, 7)
+14 = (Spawns) Gray Fliers (1, 3, 4, 7)
+15 = Bomber Hand (2, 6, 8)
+16 = Metroid Swimmer (1, 4, 7)
+17 = Fish Swimmer (5) 
+18 = Charging Shell (5)
+19 = (Spawns) Gray Swimmers (5)
+1A = Crescent Roller (3)
+1B = Bomb Boiler (3)
+1C = Red Bullet (1, 2, 4, 6, 7, 8)
+1D = Red Bullet (1, 2, 4, 6, 7, 8)
+1E = Unknown/Nothing (UN)
+1F = UN
+20 = Gate Guard (to Level 2) 
+21 = Power + 1
+22 = Power + 4
+23 = Gun + 1
+24 = Gun + 4
+25 = Hover + 1
+26 = Hover + 4
+27 = Homing Missiles
+28 = Thunder Break
+29 = Multi-Warhead
+2A = Gate (Opens if Gate Guardian is Dead)
+2B = Left-Side Lock + Gate (requires Key)
+2C = Right-Side Lock + Gate (requires Key)
+2D = Unknown/Freezes Game (UFG)
+2E = Bullet/Explosion (BE) (dies as soon as it shows up on screen, possibly after flying in some direction)
+2F = UFG
+30 = Lightning Fragment (bug)
+31 = UFG
+32 = UN
+33 = UN
+34 = UFG
+35 = Unknown/Bugs Game (UBG) 
+36 = UFG
+37 = Unknown/Other (UO) (Looked like a gray hopper, but hung in place... died like a regular enemy, took 5 hits with Hyper, dropped Power + 1, didn't do anything but hang there)
+38 = UFG
+39 = UBG
+3A = Charging Shell (again, acted exactly like 18)
+3B = UN
+3C = UFG
+3D = UBG
+3E = Charging Shell (yet again...)
+3F = UN
+40 = UFG
+41 = BE 
+42 = Charging Shell (CS from now on since it shows up so much)
+43 = Dying Jason (makes you die after the animation is done)
+44 = UFG
+45 = BE
+46 = Falling Bomb (drops, rolls, then blows up and stays gone)
+47 = UBG
+48 = UBG
+49 = CS
+4A = UBG
+4B = UFG
+4C = BE
+4D = CS
+4E = UBG
+4F = UFG
+50 = UN
+51 = CS
+52 = UBG
+53 = Same as 46
+54 = UFG 
+55 = UBG
+56 = UBG
+57-FE = Untested
+FF = Signals End of List
+
+I'll fill out the rest of this later when I feel like wasting time. ;)
+
+Overhead Thing Types
+00 = Robot (4, 7)
+01 = Eye (2, 6)
+02 = Robed Skeleton (2, 6)
+03 = Spawns Eyes (2, 6)
+04 = Rotating Camera(s) (1, 3, 5, 8) (used only once, at the entrance to the Level 8 boss tunnel) 
+05 = Gray Gumdrop (1, 3, 5, 8)
+06 = Gray Flier Spawn (1, 8)
+07 = Charging Robot (2, 6) (used only once, in an overhead section of Level 6)
+08 = Gray Spinner (1, 8)
+09 = Cross Shooter (2, 6)
+0A = Vertical Camera (1, 3, 5, 8)
+0B = Horizontal Camera (1, 3, 5, 8)
+0C = Slider (3, 5)
+0D = Gray Spitter (1, 8)
+0E = Gray Zombie Head (1, 8)
+0F = Red Gumdrop (1, 3, 5, 8)
+10-18 = UN
+19-1F = Untested
+20 = Boss (Use this one for ALL level bosses, to make sure they only spawn once and the graphics are set up properly.)
+21 = Power +1
+22 = Power +4
+23 = Gun +1
+24 = Gun +4
+25 = Hover +1
+26 = Hover +4
+27 = Homing Missile
+28 = Thunder Break
+29 = Multi-Warhead
+2A = Final Boss (Note: Use 0x20, NOT this one. This doesn't set up the graphics properly.)
+2B = BE
+2C = BE
+2D = BE
+2E = (Spawns) Level Boss (Use 0x20, this and others ALWAYS make the boss spawn, and/or doesn't set the graphics up correctly, and/or does bad things in general. Just don't use them. For internal consumption only. ;) )
+2F = Level 7 Boss 
+30 = Level 6 Boss
+31 = Level 1 Boss
+32 = Level 5 Boss
+33 = Level 8 Boss
+34 = Final Boss
+35 = Hyper/Boss Powerup(?) (Lets you skip the Level 1 Boss (all bosses?), if you're so inclined. Only shows up once. (per level?))
+36 = Unknown/Other (Sits there, bounces, hurts, and can't be killed. No idea what it is.)
+37 = UO (Sits there, wiggles, hurts (a LOT), and can't be killed.)
+38 = UO (Sits still, hurts, and can't be killed.)
+39 = UO (Similar to 37.)
+3A = UO (Sits there, wiggles, hurts, but disappears if shot or touched.)
+3B = UO (Drops off screen, hurts.) 
+3C = UO (Shoots 'rainbow' bullets in semi-random directions.)
+3D = UO (Sits there, changes color, hurts, can't be killed.)
+3E = BE
+3F = BE
+40 = UO (Sits there, changes if shot, hurts, disappeares when touched.)
+41 = BE (Level 8 Boss "disc" shot)
+42 = BE (Final Boss' Whip)
+43 = Duplicate Jason (weird bugs)
+44 = BE
+45 = UFG
+46 = UFG
+47-FE = Untested
+FF = Signals End of List
+
+0x11716 = HP for the Level 4/7 Boss (Default: 0x60 (96))
+Speed bytes are pointless, and indeed, not present, due to the way these bosses move. Check the "command table" to see the movement pattern.
+0x11955 = Attack Pattern Pointer (0x4799 = 0x11957)
+0x11957 = Attack Pattern for the Level 4 Boss (0xFF terminated)
+0x11967 = Attack Pattern Pointer (0x5999 = 0x11969)
+0x11969 = Attack Pattern for the Level 7 Boss (0xFF terminated)
+Both of the above patterns read in a "command byte", then execute it. Simple enough. Known values:
+0x00 = Pause
+0x01 = Jump
+0x02 = Fireball
+0x03 = Tri-Ball
+0x04 = Regular Tongue
+0x05 = Fire Tongue
+0xFF = End of Loop
+
+0x11B66 = HP for the Level 2 and 6 Boss (Default: 0x40 (64))
+0x11B6A = Horizonal Direction and Speed (Default: 0x08)
+0x11B6E = Vertical Direction and Speed (Default: 0x03)
+These bosses bounce back and forth, when they hit borders (coded elsewhere) they reverse direction (by changing the byte sign, ie 0x08 becomes 0xF8), so these bytes are all you need to modify to change the speed.
+
+0x1214B = HP for the individual Level 3 Boxes (Default: 0x08 (8))
+0x12186-0x12195 = X Spawn Location for the Boxes (16 values)
+0x12196-0x121A5 = Y Spawn Location for the Boxes (16 values)
+X and Y spawn locations are relative to the upper left corner of the screen
+3,3 would be right up against the upper left wall corner, D,D would be lower right corner
+0x12352-0x12365 = Attack Pattern for the Boxes (0x14 (20) bytes, 2 bytes per step, 10 steps, 0xFF terminated)
+First byte in a step indicates what to do:
+0x05 = Shoot
+0x01-04 = Move Right/Left/Down/Up
+Any other value (rom uses 0xFF) = end of list (start over)
+Second byte indicates how far to go, or for shooting, how long to flash before shooting (Defaults to 0x40)
+01 means to stand still (open and shuts immediately), 02 means to move one box length, 03 two box lengths, etc...
+If a box can't move in the direction specified by the first byte, it checks the next clockwise direction to move in until it can find one... if it can't move at all, it gives up and shuts off immediately. If it can move at least one box length in the chosen direction, but hits something early, it will stop. If a box already exists in the spawn spot, it will take control of that box. If not, it will attempt to spawn a box there unless there are 16 - (Number of Boxes Killed) boxes already. As a box spawns it is assigned a number from 0x0 to 0xF. If the max number of boxes has been reached, it will grab whichever box the spawn cycle is on. The boxes run two loops, one for spawn spots, and one for attack pattern. The spawn spot loops at 16 (0x10), skipping dead boxes, and the attack pattern loops at 10 (0x0A) because of the 0xFF byte, but with creative rom hacking this could theoretically be extended. When 16 boxes have been killed, the boss dies. Every time a Box dies, the sliding boxes speed up and are more likely to shoot. The "first" box (the one that shows up in the center of the room) will always slide to the edge of the room, regardless of the second byte of the first step. It will, however, slide in whichever direction you specify, or will shoot if need be. Each box's HP is stored seperately, and is initialized as the boss is "warping in", according to the value in 0x1214B.
+
+0x12585 = HP for the Level 1 Boss (Default: 0x80 (128))
+0x1258F = Initial Horizonal Direction and Speed (Default: 0x00)
+0x12593 = Initial Vertical Direction and Speed (Default: 0x08)
+0x125B7 = Level 1 Boss speed when chasing right (higher = faster) (Default: 0x06)
+0x125BB = Level 1 Boss speed when chasing left (lower = faster) (Default: 0xFA)
+0x125CA = Level 1 Boss speed when chasing down (higher = faster) (Default: 0x06)
+0x125CE = Level 1 Boss speed when chasing up (lower = faster) (Default: 0xFA)
+
+0x126C7 = HP for the Level 5 Boss (Default: 0x50 (80))
+
+0x12A1A = HP for the Level 8 Boss (Default: 0x3c (60))
+
+0x12C6F = HP for the Final Boss (Default: 0xC0 (120))
+
+0x13C79 = HP value? (Default: 0x10 (16))
+
+0x13D59 = HP value? (Default: 0x10 (16))
+
+0x14010-0x18010 = Sound? (Wiping this with 0s makes the game run just fine, except for the intro and a complete lack of sound)
+
+0x196B5 = Tank Ice Section
+Controls which tank section has "ice" blocks for blocks that aren't using sub-palette 1. Defaults to 0x0D, or the Level 6 Tank section. Valid values are 0x08-0x0F.
+
+0x19EA3 = Level 1 Gate Structure
+Controls which 4 characters to paint back on the screen when closing the Level 1 gate, in case you decide to move it to another Level. Stored in UL/LL/UR/LR rather than UL/UR/LL/LR like a USB. 
+(Default: C6 C7 D6 D7
+	or
+	C6 D6
+	C7 D7)
+
+0x19EAA = Level 4 Gate Structure
+Same as the above, for the Key gates. 
+(Default: 6A 6B 7A 7B
+	or
+	6A 7A
+	6B 7B)
+
+0x1A37A-0x1A3F1 = 0x74 Bytes = 116 Bytes
+Tank Enemy Stats
+Each Enemy is 4 bytes. First byte is how much HP the enemy has. (Jason's gun does 1, standard gun is 4, hyper 6, crusher 8.) Second is how much damage it does. One energy block is 0x20 points, or 32 points. The value is doubled for damage against Jason. If the value is more than 7F, touching the enemy does nothing. (Appears to be a signed value.) The third value is what sprite to spawn when the enemy is killed, ie what powerup it drops. It doesn't quite match up with the table of Thing types. 2C/2D is power, 2E/2F is gun, 30/31 is hover, 32/33/34 is special weapons. Other values can do weird things, so try to avoid it unless you know what you're doing. The fourth value is unknown, but is always a multiple of 0x10 (16).
+
+0x1C5B2-0x1C5C1 = 0x10 Bytes = 16 Bytes
+Boss Points
+
+No, these are not where the bosses are (that's controlled by thing type 0x20), this is where you end up after you defeat the boss and the game needs to know where to dump you so you end up next to the exit. Each point is two bytes, X, and Y. Simple. Note that there IS a value for Level 8, it IS valid (I verified the coords by comparing them to a map position), it's just never used by the game.
+	  Lvl1  Lvl2  Lvl3  Lvl4  Lvl5  Lvl6  Lvl7  Lvl8
+(Default: 3D 5A 09 75 0E 06 37 5D 18 1B 59 09 4A 40 59 2A)
+
+0x1CA4B-0x1CA5A = 0x10 Bytes = 16 Bytes
+Restart Points
+
+Similar to the above, but so the game knows where to dump you after a continue, or for the first level, your ultimate starting point. 
+	  Lvl1  Lvl2  Lvl3  Lvl4  Lvl5  Lvl6  Lvl7  Lvl8
+(Default: 18 39 45 4B 55 07 06 0B 36 0B 05 7B 05 39 39 07)
+
+0x1D275 = Overhead Ice Section
+Byte that controls which overhead level has "ice" instead of "instant death" blocks. Defaults to 0x05, or Level 6. Valid values are 0x00-0x07.
+
+0x1DD8E-0x1DED1 = 0x144 Bytes = 324 bytes 
+Gateway/Tunnel Data
+
+Gateways are paired up, meaning #0 leads to #1 and vice versa, #2 to 3 and vice versa, etc etc.
+
+They are stored as 3 0x6C (108) byte strings, meaning a total of 54 gateway "pairs" are available.
+
+The first string is which level the gateway is in. 00-07 is overhead sections, 08-0F is tank sections.
+
+The second string is the X position of the gateway.
+
+The third string is the Y position of the gateway.

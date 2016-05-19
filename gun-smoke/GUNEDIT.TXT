@@ -1,0 +1,50 @@
+
+        GunSmoke level editor v1.0
+        =-=-=-=-=-=-=-=-=-=-=-=-=-
+
+        by SnowBro <kentmhan@online.no>
+
+        This program requires a mouse. Hopefully, you have one.
+
+        "Gunsmoke.nes" available separately.
+
+
+        How to use it
+        -------------
+
+        Selecting textures:
+
+        Select the texture you want to use from the set of texture
+        at the right of the screen by pointing at it and then
+        clicking LEFT mouse button. To select a texture from the
+        room data itself, point on the texture you want to use and
+        press RIGHT mouse button to select it. The currently
+        selected texture is always displayed in the lower right
+        corner of the screen.
+
+        Press TAB to bring up the next set of textures. All levels
+        have lots of sets, so press TAB multiple times to browse
+        through all of them. Press LShift+TAB to select the
+        previous set.
+
+        Drawing textures:
+        
+        Press LEFT mouse button at the appropriate screen position
+        to paste it in.
+
+        Moving around in the level:
+
+        Hold your mouse in the upper region of the screen to move
+        further UP in the level.
+        Hold your mouse in the lower region of the screen to move
+        DOWN in the level.
+        Press PageUp/PageDown on your keyboard to move an entire
+        page at a time.
+
+        Changing levels:
+
+        Press F1 to change to the next level.
+
+        Saving:
+
+        Press F5 to save the changes you've made.

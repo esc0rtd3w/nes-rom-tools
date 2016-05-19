@@ -1,0 +1,89 @@
+¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´ Final Fantasy ¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=1.0
+ ¸§§§§§§¸ /§§§ /§§§  ¸¿§§§§¿  /§§§§§§¿  ¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-1.0
+/§§§´//`§ /§§§ /§§§ /§§§´/`§§ /§§§//`§§ ¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-1.0
+/¤§§¿¸    /§§§§§§§§ /§§§  /§§ /§§§  ¸§¤ ¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-1.0
+  ` `¤§¿¸ /§§§//§§§ /§§§  /§§ /§§§§§¤´ ¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=1.0
+/¿¸   ¿§¿ /§§§ /§§§ /§§§¸ ¸§§ /§§§//  ¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷1.0
+ /¤§§§§¤' /§§§ /§§§ /`¤§§§§§' /§§§   ¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×1.0
+  //////  //// ////  ///////  ////  ¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷1.0
+¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´ Document ¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-1.0
+=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´¯`·-=÷×÷=-·´1.0
+
+Address of Data ; 3839E-38477
+
+The data is Very simple.
+Please note at a shop where only 3 Items are Sold, you can not change it to have 4 or 5 items,
+you may make less I believe, but No more, unless you feel diligent and have strong knowledge
+of Pointers and/or Asm Hacking.
+
+After Segment of Data is 00 as a seperated 
+(e.g the first 16 byte line of data would be 1E-1D-1C-1F-20-00-44-45-46-00-B0-B1-B2-B3-00-28)
+
+All bytes read from a Large Reference Contain Everything from Items to Magics.
+1E is Wooden Staff, for it is 1E (30th) Item on the List.
+A reference table is Contained in this Package (List.txt).
+It isnt Possible to Sell Weapons at an Item Shop and so on, trying to enter a Weapons number at an Item 
+shop or Magic shop yeilds strange results. You can not  Sell something at an Inn or Clinic,
+the bytes of Inns and Clinics are Read as Gold, Two Bytes long. the first byte being the second 2 digits
+and the second byte being the first two (e.g. 28-00 would be 0x0028 = 0x28 = 40 decimal)
+
+
+Second Price Digits or First Item for Sale
+| First Price Digits or Second Item for Sale
+|  | Third Item for Sale
+|  |  | Fourth Item for Sale
+|  |  |  | Fifth Item for Sale
+|  |  |  |  |   Town			Explanation
+|__|__|__|__|____|__________________________|______________________________________________________________
+1E-1D-1C-1F-20 	(Corneria) 	Wooden Staff, Small Knife, Wooden Nunchuku, Rapier, Iron Hammer
+44-45-46       	(Corneria) 	Cloth, Wooden Armour, Chain Armour
+B0-B1-B2-B3    	(Corneria) 	CURE, HARM, FOG, RUSE
+B4-B5-B6-B7    	(Corneria) 	FIRE, SLEP, LOCK, LIT
+28-00          	(Corneria) 	40g Clinic
+1E-00          	(Corneria) 	30g Inn
+19-1A-16       	(Corneria) 	Heal, Pure, Tent
+20-21-22-23    	(Provoka)  	Iron Hammer, Short Sword, Hand Axe, Scimtar
+45-46-47-54-64 	(Provoka)  	Wooden Armour, Chain Armour, Iron Armour, Wooden Shield, Gloves
+B8-B9-BA-BB    	(Provoka)  	LAMP, MUTE, ALIT, INVS
+BC-BD-BE-BF    	(Provoka)  	ICE, DARK, TMPR, SLOW
+50-00          	(Provoka)  	80g Clinic
+32-00          	(Provoka)  	50g Inn
+19-1A-16-17    	(Provoka)  	Heal, Pure, Tent, Cabin
+24-25-26-27-2C 	(Elfland)  	Iron Nunchuku, Large Knife, Iron Staff, Sabre, Silver Sword	
+47-4E-55-5D-5E 	(Elfland)  	Iron Armour, Copper Bracelet, Iron Shield, Cap, Wooden Helmet
+C0-C1-C2-C3    	(Elfland)  	CUR2, HRM2, AFIR, HEAL
+C4-C5-C6-C7    	(Elfland)  	FIR2, HOLD, LIT2, LOK2
+C8-C9-CA-CB    	(Elfland)  	PURE, FEAR, AICE, AMUT
+CC-CD-CE-CF    	(Elfland)  	SLP2, FAST, CONF, ICE2
+C8-00          	(Elfland)  	200g Clinic
+64-00          	(Elfland)  	100g Inn
+19-1A-17-18-1B 	(Elfland)  	Heal, Pure, Tent, Cabin, Soft
+26-27-28-2A    	(Melmond)  	Iron Staff, Sabre, Long Sword, Falchion
+48-4F-5F-65-66 	(Melmond)  	Steel Armour, Silver Bracelet, Iron Helmet, Copper Gauntlet, Iron Gauntlet
+D0-D1-D2-D3    	(Melmond)  	CUR3, LIFE, HRM3, HEL2
+D4-D5-D6-D7    	(Melmond)  	FIR3, BANE, WARP, SLO2
+64-00          	(Melmond)  	100g Inn
+2B-2C-2D-2E    	(Cresent Lake)	Silver Knife, Silver Sword, Silver Hammer, Silver Axe
+49-56-5B-60-67 	(Cresent Lake)	Silver Armour, Silver Shield, Buckler, Silver Helmet, Silver Gauntlet
+D8-D9-DA-DB    	(Cresent Lake)	SOFT, EXIT, FOG2, INV2
+DC-DD-DE-DF    	(Cresent Lake)	LIT3, RUB, QAKE, STUN
+90-01          	(Cresent Lake)	400g Clinic
+C8-00          	(Cresent Lake)	200g Inn
+19-1A-17-18    	(Cresent Lake)	Heal, Pure, Tent, Cabin
+3E		(Gaia)		CatClaw
+50-6B		(Gaia)		Gold Bracelet, ProRing
+E0-E1		(Gaia)		CUR4, HRM4
+E4-E5		(Gaia)		ICE3, BRAK
+E9-EA-EB	(Gaia)		FADE, WALL, XFER
+ED-EE-EF	(Gaia)		STOP, ZAP!, XXXX
+EE-02		(Gaia)		750g Clinic
+F4-01		(Gaia)		500g Inn
+17-18-19-1A	(Gaia)		Cabin, House, Heal, Pure
+E2-E3		(Onrac)		ARUB, HEL3
+E6-E7		(Onrac)		SABR, BLND
+EE-02		(Onrac)		750g Clinic
+2C-01		(Onrac)		300g Inn
+17-18-19-1A-1B	(Onrac)		Tent, Cabin, House, Pure, Soft
+0F		(Caravan)	Bottle
+E8		(Leifen)	LIF2
+EC		(Leifen)	NUKE

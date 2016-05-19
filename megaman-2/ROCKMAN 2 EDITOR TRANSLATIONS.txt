@@ -1,0 +1,14 @@
+
+ROCKMAN 2 EDITOR TRANSLATIONS
+
+
+
+
+ブロック         SOLID PEACE
+背景                 NORMAL AIR (TRASNPARENT BLOCKS)
+トゲ                DEATH (SPIKES, LAVA)
+水中                WATER
+すべる床              ICE
+はしご                   LADDER
+コンベア(右)   CONVIER BELT GOING RIGHT
+コンベア(左)    CONVIER BELT GOING LEFT

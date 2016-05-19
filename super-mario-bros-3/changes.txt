@@ -1,0 +1,213 @@
+2007-11-14
+ - Fixed moronic bug that caused Zoom 2x to not be pixel perfect
+ - Small UI fixes/improvements
+ - Touched up some docs a tiny bit
+ - The "email bug report" button on the crash dialog would try to
+   send the report to my old defunct email address; fixed
+ - Added Donation link to Help menu (hint). Donations would help
+   motivate me to keep working on this thing.
+
+2006-06-20
+ - Fixed bug with Header editor reading the wrong graphic set value
+
+2006-03-27
+ - Built with new version of Graphics32
+ - Very minor code cleanup
+
+2006-03-25
+ - Fixed SMAS datafile (no more crash on loading .SMC)
+ - Small Object Definition improvements
+ - New icons and other slight visual improvements
+
+2005-09-23
+ - Pointer positions no longer incorrectly constrained to level area
+
+2005-07-07
+ - Modifying palette would reset unapplied graphics editor changes
+ - Graphics editor mouse drawing improved
+
+2005-07-06
+ - Graphics editor (use the Picker to pick 8x8 tiles from the editor)
+ - Support for live patching of current ROM using IPS patches
+
+2005-06-19
+ - New rom.ini settings for serious ROM hackers:
+   offsets.tsa, offsets.graphics, offsets.common. Last 9 are
+   map screen offsets (1-8 and warp zone)
+
+2005-06-03
+ - Better pointer editing dialog
+
+2005-04-27
+ - Fixed "Goto Next Area"
+ - Rearranged and cleaned up menu
+ - Minor UI and code clean ups
+
+2005-04-25
+ - Implemented "Goto Next Area" (finally)
+ - Fixed and rearranged Lost Levels
+ - Level names and amounts are no longer hardcoded
+
+2005-04-24
+ - Fixed crashes and a graphic glitch in Objdef Editor
+ - Support for mouse tilt wheel and backward/forward buttons
+ - Middle mouse button displays level switch dialog
+ - Modified display area to use normal Windows scrollbars
+ - Troubleshooting and enemy compatibility help files (thanks Spinzig)
+ - Reworded some message dialogs (and other small visual fixes)
+
+2004-11-12
+ - Added "Clone enemy/object" feature
+ - Fixed stupid bug where nothing in vertical levels could be moved
+ - Editing of amount of lives gotten from level cards (thanks 46)
+
+2004-10-06
+ - Object definition editor edits ROM object defs (for internal use)
+ - Level ending object should be authentically rendered now
+
+2004-10-05
+ - Object definition editor supports getting tiledata from ROM offsets;
+   all Plains level objects are now read from ROM. Thanks to DD for
+   digging up the necessary data.
+ - Fixed "Blue X-Blocks" object
+
+2004-10-04
+ - Better display in Underground levels (backgrounds, some objects)
+ - Nicer Level ending object
+ - Customizable toolbar
+ - Fixed maximum height for 4-byte ground (thanks DD)
+
+2004-10-03
+ - Fixed "Level->Save to offset" for World Maps
+ - Initial implementation of general-purpose config/data
+   editor: "Edit->Miscellaneous" edits some game variables
+ - Initial load support for SMAS levels; glitchy
+
+2004-09-30
+ - Fixed bugs with M3L saving and loading
+ - Made level loading more robust
+
+2004-09-29
+ - Fixed bug with extending objects to ground level and
+   another small object drawing bug
+
+2004-09-28
+ - Block platforms extend to ground better
+ - Map tile editing (right mouse button to select tile,
+   numpad +, - to change value)
+
+2004-09-27
+ - Support for custom palettes, included Chris Covell's and 
+   Matthew Conte's palettes
+ - "Limit size" option for Freeform mode
+ - Level header editor
+ - Fixed freeform mode (once again)? Needs more testing.
+ - More stuff added to Object definition editor (now ripped
+   graphics can be used with ROM Graphics)
+ - Fixed double-clicking bug in Map editing mode
+
+2004-09-25
+ - Proper floor, background and ceiling in Dungeon levels
+ - Uses madExcept for more informative error descriptions
+ - Fixed initialization from World Map editing to level editing
+
+2004-09-24
+ - M3L level file load/save support
+
+2004-09-23
+ - Map screen pointers can be moved
+ - Fixed a few objects (blue poles, bridges, ...)
+ - More Object definition editor improvements
+ - Object bytedata label shows level size; infotext panel shows
+   offsets when hovered with mouse
+ - Attempt at writing a little bit of help (!readme.txt)
+
+2004-09-22
+ - Palette editor can import colorsets from other SMB3 ROMs :oP
+ - World map viewing (works with ROM Graphics too). Pointers
+   are editable (double-click). Press Enter to edit the level
+   the pointer points to.
+
+2004-09-21
+ - Updated and bugfixed Object definition editor
+
+2004-09-20
+ - Fixed moving of object types 2 and 3 that was broken due to
+   carelessness when fixing the moving of Blue pole objects
+ - Updated Object definition datas so that most stuff displays OK
+   with ROM Graphics enabled
+ - ROM Presets can have custom Object definitions
+ - ROM Graphics rendering and Object definitions editor improved
+ - Palette loading improved
+ - Level drawing code optimizations
+ - Palette editor improvements (Right click = pick color; non-modal
+   window; apply button)
+ - Added Palette editor (doesn't edit enemy palettes yet, though.
+   To see the changes to palette be sure to use ROM Graphics.)
+
+2004-09-19
+ - Fixed background color (was affected by enemy palette index)
+ - Improved display on Desert levels
+ - Improved graphics rendering a bit
+
+2004-09-18
+ - Pointer editor
+ - Fixed saving in Freeform mode
+ - Menuitems for deleting all objects/enemies
+ - Hotkeys for adding/deleting objects in Freeform mode
+ - Added Debug mode which logs file writes
+
+2004-09-17
+ - Fixed some objects
+ - Fixed crash on reloading levels and loading ROM Presets
+ - Fixed display of diagonal objects (Up/Right Hills)
+ - Fixed display of Underground levels (not complete yet)
+
+2004-09-16
+ - Fixed drawing of some diagonal objects (Up/Left Hills)
+ - Fixed Save As behavior (only saved current level)
+ - Fixed Integer overflow error when loading another ROM
+ - Fixed Integer overflow error when deleting objects
+ - Started work on Header and Pointer editors
+
+2004-09-15
+ - Freeform mode (experimental!)
+ - Save to ROM Location feature
+ - Level selector allows manual specifying of offsets and object set
+ - Remembers most view settings, window position and dimensions
+
+2004-09-12
+ - Finally fixed bug with wrong object sizes if displaying of handles
+   was enabled while loading a level
+ - Fixed moving objects whose vertical handles not at top
+ - Fixed moving blue poles that extend to sky
+ - Various similar fixes
+ - Improved drawing of some objects and enemies and misc.
+ - Fixed level vertical limit
+
+2004-09-07
+ - Uses latest version of Graphics32; should improve graphics rendering
+   speed a bit
+ - Bug with object size clipping in certain situations fixed
+ - Toggling ROM Graphics works better
+ - Confirmation dialogs, new About dialog
+ - Cosmetic improvements
+
+2004-09-05
+ - Oops, displaying hex values in the object edit controls was broken.
+ - I'm working on making the object related code less cluttered and
+   hack-y, so bear with me if something gets broken for a while.
+   I already did the enemy code which seems to work OK.
+ - Some corrections to the data files.
+ - I think there was some other stuff but I forgot it already.
+
+2004-09-03
+ - Oops, I had messed up enemy object sorting.
+
+ - Enemies should now be saved in the proper order in vertical levels
+   (thanks Frank15)
+
+ - Added optional gridlines
+ - "World map editing not supported" message
+ - Fix to enemy moving when horiz. handle not at zero pos.
+

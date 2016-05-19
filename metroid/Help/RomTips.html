@@ -1,0 +1,106 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Getting Started</title>
+</head>
+
+<body>
+
+<p><b><font face="Trebuchet MS"><font color="#008000" size="5">T</font><font color="#008000" face="Trebuchet MS" size="4">ips:
+</font><font color="#008000" face="Trebuchet MS" size="5">T</font><font color="#008000" face="Trebuchet MS" size="4">he&nbsp;
+</font><font color="#008000" face="Trebuchet MS" size="5">R</font><font color="#008000" face="Trebuchet MS" size="4">om</font></font></b></p>
+
+<p><b><font color="#008000" face="Trebuchet MS">Distribution</font></b><font face="Trebuchet MS"><br>
+I do not assert that the following is perfectly accurate and it is not
+intended to be used as legal advice, nor does it condone any specific actions or
+behavior. Ensuring that your actions are legal is
+solely your own responsibility. That being said, these guidelines should give you
+an idea as to a good way to distribute your modified ROM.</font></p>
+
+<p><font face="Trebuchet MS">The NES game, Metroid, is a copyrighted work by
+Nintendo and is illegal to distribute, in part or in whole, to anybody who does
+not own an original and legally obtained copy of the game. (Due to recent
+litigation the simple act of making the copyrighted work <i>available</i> to
+those that do not legitimately own it may be considered illegal, even if the
+file is ultimately not copied illegally.) This does not mean that you can not
+distribute your own edited worlds. The <b>changes </b>made to the game are
+intellectual property created by you and you legally own the copyright to the <b>new
+data</b> that was added to the ROM. The recommended way to distribute a modified
+ROM is to use an IPS utility to create an IPS patch. The IPS utility examines an
+original copy of the ROM and your modified ROM and identifies differences in
+data, creating a patch that contains only the changes you've made, and excluding
+any original (copyrighted) material. The recipients of the patch then use an IPS
+utility, in conjunction with an original (presumably legally obtained) ROM, to
+reproduce your customized version of the game. (An analogy could be made between
+distributing an IPS patch and distributing a mod for a more current game: you
+don't distribute the game, only the mod.)</font></p>
+<p><font face="Trebuchet MS">Before creating an IPS patch, it is also
+recommended that the ROM be saved <i>without</i> map data (unless you intend for
+other users to open the ROM in Editroid). Look under <img src="Check.gif" align="bottom" width="16" height="16">Options</font><font face="Wingdings">à</font><font face="Trebuchet MS">Maps.
+If the &quot;Save To ROM&quot; option is selected, change it to &quot;Save To
+External File.&quot; Open the ROM if it is not already open. Now, save them ROM.
+The map data will be excluded from the ROM and placed in an external file.
+Once you have obtained a copy of the ROM without map data you may set the option
+back to &quot;Save To ROM&quot; if you prefer.</font></p>
+<p><b><font color="#008000" face="Trebuchet MS">Red Doors</font></b><font face="Trebuchet MS"><br>
+One of the things you will probably notice early on
+is that when you add new red doors (the doors that have to be opened with
+missiles) the doors will not remain open like the pre-existing red doors. You
+need to update the game's password data (see <i>Password Data Editor</i> under <i>Editors</i>)
+so that the status of these doors will be stored in the password.</font></p>
+<p><font face="Trebuchet MS">There are also other considerations with red doors.
+It is important to make both sides of a door the same color. If one side is red
+and the other is blue then the door will not work properly. You are also limited in the number of red doors you can place since there is only a limited
+amount of password data to work with (although you may find the behavior of a
+red door without associated password data to be acceptable). </font></p>
+<p><b><font color="#008000" face="Trebuchet MS">Enemy Slots</font></b><font face="Trebuchet MS"><br>
+Enemy slot assignment is important; poorly
+orchestrated enemy slot assignments will probably result in enemies not
+appearing where you want them when you want them. Certain enemies might not ever
+appear at all. The reason is while the game is being played, there are six
+&quot;slots&quot; (numbered from zero to five) allocated for enemy data. When enemies placed
+on the map are scrolled into view in the game, they aren't simply assigned to a
+free slot. Instead, the slot is defined statically and when the enemy is
+scrolled into view, if its slot is taken, the enemy simply won't appear.</font></p>
+<p><font face="Trebuchet MS">There is no single rule that can be followed to
+ensure that all the enemies appear when you want them, but there are some
+general guidelines to help things work out more like you planned. One technique
+used in the original game is to repeat a single screen (or multiple screens with
+similar enemy setups) with a large number of enemies filling most slots. As the
+player goes through the screens the enemies may appear to be random since a
+number of factors are involved when it comes to which slots will already be
+taken. You may also want to designate a &quot;reserved&quot; enemy slot that
+will be used sparingly. When you want to guarantee that a specific enemy will
+appear, it can use this reserved slot that will usually be free.</font></p>
+<p><b><font color="#008000" face="Trebuchet MS">Palettes</font></b><font face="Trebuchet MS"><br>
+When editing background palettes you have a lot of
+freedom; do whatever looks nice. There are some things to keep in mind, though.
+You may notice that by default the first color in every palette is black. This
+color can be changed, but the first color should be the same for <i>all palettes</i>.
+This is necessary due to the technical implementation details of palettes on the
+NES. (For those who are curious, the NES &quot;mirrors&quot; the first color for
+each palette, meaning that the first palette entry is shared between all
+palettes. This means that when a palette is loaded into the NES video memory,
+the first color of that palette overwrites the first color of all other
+palettes, so all palettes will have the same first color as the most recently
+loaded palette, which can result in undesirable or unpredictable results.)</font></p>
+<p><font face="Trebuchet MS">You also need to make considerations for palette
+swaps. For levels with two sets of palettes, each set should probably have at
+least one corresponding identical palette. The room where the palette swap
+occurs&nbsp; should contain only objects that use the palette (or palettes) that
+is common to both sets. Otherwise the transition won't be seamless: colors in
+the room will suddenly change when the player walks through the door. A similar
+consideration is the palette used for elevators. The elevator screens should use
+the same palette number in all levels.</font></p>
+<p><font face="Trebuchet MS">When editing sprite palettes, keep in mind that
+palettes are shared between doors, enemies, Samus, and the life/missile display,
+and that certain palettes will be updated and overwritten when the player
+switches to missiles, gets the varia suit, or becomes suitless Samus. </font></p>
+
+</body>
+
+</html>

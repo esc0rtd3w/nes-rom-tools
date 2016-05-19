@@ -1,0 +1,72 @@
+
+        Kid Icarus level editor v1.0
+        by SnowBro <kentmhan@online.no>
+
+        With this program you are able to alter the appearance
+        of the timeless NES classic, "Kid Icarus". I've spent
+        a lot of time hacking/decoding the different formats
+        used by the game, and this editor is the result of
+        my research.
+
+
+        Keys
+        -=-=
+
+        F1              - change level
+        F5              - save changes
+        Arrow keys      - move object
+        A               - select previous object
+        S               - select next object
+        (LShift +) TAB  - change graphical structure
+        2               - change upper 2 bits of object's color
+        LShift + left   - go to previous room in level
+        LShift + right  - go to next room in level
+        INS             - insert a new object
+        DEL             - delete current object
+
+        Play around with it a bit and the various features
+        will become clear.
+
+
+        Shortcomings
+        =-=-=-=-=-=-
+
+        Note that you cannot insert an unlimited amount of objects.
+        The number of objects in a room cannot exceed the original
+        amount of objects in that particular room; there simply
+        isn't any space for it in the ROM.
+        
+        Also note that some of the map positions share the same
+        room data... "Kid Icarus" uses a lot of the rooms multiple
+        times (especially in Level 4-1), so be careful. What this
+        means is that if you edit a room that is used more than
+        once, ALL occurances of this room will be changed, since
+        they all use the same room data.
+
+        Level 1-4, 2-4 and 3-4 aren't editable yet. And I don't
+        know if they ever will, still haven't figured out exactly
+        how the format of the map data is. But there's little
+        point in editing them anyway, because the SAME room data
+        is used in all three levels.
+
+
+        Things to do
+        =-=-=-=-=-=-
+
+        Figure out where the enemy information is stored. The goal
+        is to be able to see the enemies in the editor, and change
+        their position/type/health/damagelevel.
+
+
+        Contact
+        =-=-=-=
+
+        For comments, questions and bug reports, send an email to
+        the following address:
+
+        kentmhan@online.no
+
+        For my other emulation related products, visit the following
+        webpage:
+
+        http://home.sol.no/~kenhanse/nes

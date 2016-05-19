@@ -1,0 +1,37 @@
+-------------------------------------------------
+  Dragon Quest III ENEMY viewer  ver0.77  by Yy
+-------------------------------------------------
+
+* What this is
+  This is the enemies viewer of DragonQuest3/DragonWarrior3.
+  You need the DQ3 or DW3 ROM. But, don't ask me about ROM. 
+
+* Keys
+
+  - Arrow        change enemy
+  - Enter        view the last compressed block ON/OFF
+  - Space        view glid ON/OFF, and SPR/BG
+  - 1            block view -
+  - 2            block view +
+
+    * Because I do not know the text data of DW3, 
+      this does not display the text (enemies name/item). 
+
+    * "Small Fonts" included in Windows is necessary
+      for the display of block information and status.
+
+* History
+  v0.77  add "view treasure box"(only DQ3)
+  v0.75  add "status view"(only DQ3)
+  v0.72  add "DragonWarrior3 support"
+  v0.60  support all compress flag
+         add "BG/SPR palette"
+  v0.10  make
+         add "commandline/default file(dq3e.nes)"
+
+* Thanks
+  woto ..... document about compressed data
+  Xox ...... document about compressed data
+
+        Yy ( geo-yy@geocities.co.jp )
+        http://www.geocities.co.jp/SiliconValley/1145/yy/

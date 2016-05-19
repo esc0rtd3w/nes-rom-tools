@@ -1,0 +1,119 @@
+      __/         __/            __/       
+     __/         __/            __/        
+       __/   __/               __/         
+         __/         __/__/   __/__/      __/__/__/   __/__/__/
+     __/   __/   __/         __/   __/   __/   __/   __/
+ __/      __/   __/         __/   __/   __/   __/   __/
+__/      __/      __/__/   __/   __/   __/__/__/__/__/
+-=-=-=-=-=-=-=-=-=-=-=-=-=-{ XCHAR }-=-=-=-=-=-=-=-=-=-=-=-=-=-
+                     Version 2.0 BETA 2
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+    X-Char is a tile data editor for Nintendo systems.  Tile 
+data is both the tile and sprite data of the cartridge.  This
+tool allows the user to modify the data to their liking, it
+sports an easy to use interface, simple enough for even the
+most uninitiated in the ways of ROM editting.  If you can use
+a paint program, you can use this.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+                       Keyboard Controls
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+VIEW MODE                                   
+---------
+[~] Toggle SNES mode (NES mode by default)
+[space] Change bitdepth (SNES mode only)
+
+[-] Shrink tile array x dimension by 1
+[+] Enlarge tile array x dimension by 1
+[[] Shrink tile array y dimension by 1
+[]] Enlarge tile array y dimension by 1
+[pgup]  Move up one page
+[pgdn]  Move down one page
+[up]    Move up one line
+[down]  Move down one line
+[left]  Move up one character
+[right] Move down one character
+[enter] Open tile array editor
+[s] Save editted rom
+[l] Reload rom
+[x] cut tile array
+[c] copy tile array
+[v] paste tile array
+[esc]   Exit program
+
+EDITTING MODE
+-------------
+[esc]   Return to view mode
+[mouse left]    Draw color
+[mouse right]   Pick color
+[+] Zoom in
+[-] Zoom out
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+                         New features
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+* Fixed 4 BPP (16 color) editting mode
+* Fixed little known bug that added 2 bytes to the end of every
+  file
+* Fixed the editting palette to show 2,4, and 16 colors in the
+  appropriate mode
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+                      To be implemented
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+* Customizable palette
+* Export/import GIF format images
+* Optimization
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+                             BUGS
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+* Largest zoom mode can be very slow, even on a pentium 166
+* Sorta slow.
+* Might not save last two bytes of a file due to recent bugfix
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+                         Rules of use
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+     To use this program, you must follow these fair rules
+
+1.  Please don't use X-Char for stupid projects, such as making
+    a character in a game naked.  Its okay if you do it, just
+    don't distribute it all over the net.  I don't want 40,000
+    worthless patches floating around.
+2.  If your project ISN'T stupid, please let other people know
+    about it.
+3.  If your project ISN'T stupid, I'd like to hear what you're
+    using my program for.
+
+    I AM NOT RESPONSIBLE FOR YOUR USE OF X-CHAR.  PLEASE DO
+                USE X-CHAR FOR ILLEGAL PURPOSES!
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+                         SPECIAL THANKS
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+DEMILix                         - Inspiration
+Y0SHi                           - Tons of help
+Marat Fayzullin                 - His useful (albeit confusing
+                                  and incomplete, NES.DOC)
+DeceiverX, Niki, and VegaC      - Programming support
+SoM2Freak                       - AUGH!  I'll give you it when
+                                  I'm DONE!!!!
+The people who make Dr Pepper   - Soothing to the mind :)
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+XChar is (C)1997 Planet X Software
+
+Nintendo Entertainment System, Super Nintendo, Gameboy, and
+Nintendo 64 are trademarks of Nintendo.
+
+Planet X Software is not run by, licensed or endorsed by
+Nintendo.

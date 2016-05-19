@@ -1,0 +1,87 @@
+NES Palette Editor
+Programmed by: The_Fake_God (The_Fake_God@hotmail.com)
+Additional Updates by: MegaManJuno
+
+* THIS PROGRAM IS OPEN SOURCE*
+
+The NES Palette Editor will help you finding your palettes a little
+faster than raw hex search. It´s like using a normal hexeditor but you
+see colors instead of numbers.
+
+[File / Open]
+Loads an NES ROM into the editor.
+
+[File / Save]
+Saves the active file.
+
+[File / Quit]
+Close the application.
+
+[Edit / Find (F3)]
+Type the fours colors of the palette your looking for (use another
+resource to figure out the values)
+
+[Edit / Goto (F5)]
+Type an address and the editor will take you there, addresses must be
+in hex, strings with prefix are accepted too (&H or 0x)
+
+[Options / Disable editing of "X" bytes (F7)]
+Enabling this option prevents double-clicks for editing bytes marked as
+an "X".  Disabling it restores editing capabilities on these bytes.
+(Default value: Enabled)
+
+[Options / Hide unlikely values (F8)]
+Enabling this option hides values that fall within the NES color range
+but do not occur in a sequence of at least 4 consecutive colors.
+Disabling it shows all values that fall within the NES color range.
+(Default value: Enabled)
+
+Double-click an item and the "Palette Editor" will pop up, click on
+a colored box to change it.
+
+
+========================
+ VERSION UPDATE HISTORY
+========================
+
+-------
+ 1.0.3
+-------
+
+* Corrected instances of the word pallette (a piece of armor) to
+  palette (as in reference to a color palette).
+  - [MegaManJuno]
+
+* Capitalized occurrences of "NES" since it's an acronym and is the
+  preferred presentation.
+  - [MegaManJuno]
+
+* Added an Options menu with 2 entries to toggle the following:
+
+    > When "Hide unlikely values" is enabled, the main window now only
+      displays colored bytes where a sequence of at least 4 are found in
+      succession. Otherwise, they display as black with the "X" label.
+      (Default value: Enabled)
+
+    > When "Disable editing of "X" bytes" is enabled, the double-click
+      on bytes marked "X" is prevented so that the Palette Editor window
+      will not load on these bytes.
+      (Default value: Enabled)
+  - [MegaManJuno]
+
+* Fixed the scrollbar not resetting to the initial position when loading
+  new files after the first (the offset display would revert to the 
+  0x00000000 position, but the scrollbar would remain at the old location).
+  - [MegaManJuno]
+
+* Source formatting for easier readability.
+  - [MegaManJuno]
+
+-------
+ 1.0.1
+-------
+
+* Fixed the Palette Editor window to show the missing row of colors
+  (10-1F).  You can now select from all 64 colors in the palette and not
+  just 48 of them.
+  - [MegaManJuno]

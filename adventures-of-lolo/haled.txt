@@ -1,0 +1,46 @@
+
+ HALed - Adventures of Lolo level editor
+ (c)2002 Fx3 - Version 1.0 - October 13th
+ ----------------------------------------
+
+ W A R N I N G
+
+ I cannot be responsible for any kind of damage this software might
+ cause for your mind, computer, family, dog... In other words, use it
+ at your own risk, no warranties. It is FREEWARE (read - no money) so
+ do not flame me for your misuse.
+ --------------------------------------------------------------------
+
+ I N T R O
+
+ This is a level editor for the game "Adventures of Lolo". Currently,
+ all the levels are editable. As first release, I need your feedback
+ to invite me to continue its development and proper support.
+
+ You need a copy of ROM image "ADVLOLO.NES" placed at same directory.
+ Do not request it, happy hunting around the net.
+
+ For every session, I suggest you do a backup of your ROM image for
+ security reasons.
+ --------------------------------------------------------------------
+
+ H E L P
+
+ KEY_ESC - to quit the editor.
+ KEY_T - to toggle the TSA blocks in the selector.
+ KEY_F1 - previous level.
+ KEY_F2 - next level.
+ KEY_F5 - to save changes.
+
+ * If you are familiar with visine or sixtans, so this is piece of cake.
+ Else, you can wait for an official tutorial incoming...
+
+ * My website is located at http://rocknes.kinox.org
+ * Use the RockNES forum to give me some feedback!
+ --------------------------------------------------------------------
+
+ C R E D I T S
+
+ Thanks to Vagla (from DragonEye Studios) for the level decompression.
+ ====================================================================
+ //end_of_file

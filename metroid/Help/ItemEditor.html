@@ -1,0 +1,42 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>New Page 1</title>
+</head>
+
+<body>
+<font face="Trebuchet MS"><img src="ItemWindow.png" width="412" height="660" align="right"><font color="#008000"><b>Item
+Editor<br>
+</b></font>The item editor is an advanced editing feature.
+Understanding how the ROM stores items internally may make using this editor
+easier. In the ROM item data is stored per-level. For each level there are a
+list of &quot;map row entries.&quot; Each of these entries defines all of the items on
+a row of the map (there can not be more than one such entry per row). Each item data entry
+contains one or more &quot;map room entries,&quot; which define all of the items in
+a room (typically, there is only one item in a room).</font>
+<p><font face="Trebuchet MS">To move items around on the map, click on a map
+room entry
+and drag it around with the mouse. Note that when you move an item up and down,
+all other items in the same map row entry move vertically with it. All items in
+a map row entry are tied together so that they must all appear on the same row. Also note
+that you can not drag map room entries past each other in the same map row entry. In the
+current version of Editroid, this limitation is imposed for technical reasons.</font></p>
+<p><font face="Trebuchet MS">To edit the items in a screen, click a map room
+entry. The screen you clicked will be displayed on the bottom. Two boxes
+appear on the right. The top box lists all of the items in the screen (although there is
+only one item in most screens) and the bottom box lists options for the selected
+item.
+There are different kinds of items: elevators, palette swaps, power-ups, and
+even doors and enemies. In the current version of Editroid, you can not change
+item data from one type to another.</font></p>
+<p><font face="Trebuchet MS">There is also a checkbox labeled &quot;Update
+password data.&quot; When this is checked, the ROM's password data is updated to reflect
+changes made to item data. This allows you to move and change power-ups and
+still have the password system work properly. If you prefer to manage password
+data yourself through the Password Data Editor, uncheck this box.</font></p>
+</body>
+
+</html>

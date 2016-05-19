@@ -1,0 +1,149 @@
+Dragon Warrior Town Editor Version 3.1
+
+May the light shine upon thou who doth not ask for ROM IMAGES.
+
+Files Included:
+
+Townedit.txt      This File
+Townedit.bat      Run this... delete the old exe file.
+Townedit.bas      QB45/QBASIC Source
+Dw1tiles.dw       Map tile graphics
+Offset.dw         Needed for overworld editing
+Mapinfo.txt       Map format information
+Qbasic.EXE        Hey everybody!  It's FreeWare!
+
+What's new:
+
+V3.1	Music Editor added.
+	Probably the last version...
+
+V3.0	Now edits stairs and treasure chests!
+	Warp feature improved!
+	More code spiffed up.
+
+
+V2.2	Overworld editing now easier! New SuperEditor!
+	Fixed the Dragon Test rom identifier, it used to
+	detect invalid roms if the header contained "DiskDude!"
+	Now features Full DragonQuest support, even overworld!
+
+V2.001á	Beta Version!
+	Overworld editing!
+	Roof Editing now easier!
+	Draw Mode! (press TAB to toggle)
+	Removed Import/Export features, who used them anyway?
+	Shows princess in dungeons correctly
+
+V1.9:	Now can edit roofs!
+	Preserves last bit of tiles in
+	shrines and dungeons.
+	Made page numbering more convient.
+
+V1.8b:	Now features ALL MAPS execpt the overworld.
+	Now supports maps that aren't square.
+	Changed MAP file format a bit. (maps should
+	still work with older versions)
+
+V1.5b:  Now automaticly shows specials everywhere!
+	Shows destinations of stairs.
+	Added a warp feature to "go down stairs."
+	Added support for DragonQuest
+	Now can create new files from existing ones! (uses COPY)
+
+V1.2:   Now can Import/Export MAP files!
+	Keep Feature removed, who used it anyway?
+	Map Finder removed.
+
+V0.99b: Correct tiles in dungeon maps
+	More features in Map Finder
+
+V0.99a: Fixed Bugs in save routine
+	Added all Dragonlord castle maps
+	Added Map Finder
+
+V0.99: (inital release)
+	Added dungeon maps
+	Changed user interface
+
+V0.5: (unreleased)
+        Inital Development
+
+V0.0:  ASCII GRAPHICS TOWN VIEWER
+
+
+<ingnore>
+Command line parameters:
+ TOWNEDIT [filename]
+
+If you do not specify a filename, the program will ask for one.
+The default filename is "DragonW1.NES"
+</ignore>
+
+The files, "DW1TILES.DW" and "OFFSETS.DW", need to be in the same directory
+as the program and the rom.
+
+Remember to make backup copies of your original file, you may need them.
+
+
+THE OVERWORLD SUPER EDITOR:
+
+To access the super editor, press E from the overworld editor.
+You can not save if the masses counter is too high on any row.  Reduce the masses first.  
+How?  Every time the terrain changes a byte is added.
+
+
+FAQ:
+Q: What does the warp thing do?  It just seems to beep.
+A: It is used to go down stairs, making editing of DragonLord's dungeon
+   easier to edit.
+
+Q: Will this be updated?
+A: Whenever I change the code sufficiently, I'll release a new version.
+
+Q: When will you add DW2/3/4 support?
+A: As soon as I manage to successfully glitch the maps of DWx, and find
+   out how the levels are stored.  Overworld support will likely come first.
+   (note: DW2 uses the oddest form of overworld compression, probably 2003 will be the
+    date I crack that game!)
+
+Q: Why doesn't the file download?
+A: Because GeoS***ties is a terrible web hoster.  Also make sure you
+   are using the latest PkUnzip/WinZip/WinRAR/whatever.
+   (note, if you can read this, then you probably downloaded this fine...)
+
+Q: Why is this program slow?
+A: It's written in QBASIC. QBASIC is slow.
+
+
+
+Notes:
+
+Treasure chests only work if a treasure chest 'Special' is placed under it.
+Black squares in dungeons are walls, not pitfalls.
+Princess Gwaelin can be placed in any dungeon.  Multiple copies of her may also exist.
+Do NOT set the file property of the rom to read only or else the editor will quit when saving files.
+The Axe Ghost and Bamboo Pole are glitched items that show up as Herb but do nothing.
+You still can't move people.
+
+Special thanks to that dude at Rage Games that found the throne room map data, and SnowBro software, for making other cool level editors.
+
+
+
+Feel free to send me any IPS patches.  They will be posted with your consent, and you will be given credit.
+
+
+If this program doesn't work for you, try running the source with Qbasic 1.1+ (included)
+
+The official Homepage is currently at:
+http://sgc.emu2k.com/dwedit
+or,
+http://www.google.com/search?q=Dragon+Warrior+Town+Editor&num=10&sa=I'm+feeling+lucky
+
+Any questions, comments, maps, info, or bug reports should be sent to:
+dwedit@hotmail.com
+(SEND SPAM AND DIE)
+
+You will be given credit if I use any information you provide.
+
+This was programed in QuickBasic 4.5/QBASIC
+Source code is included.  You may use this as a base, but don't even try to pass this qbasic crap off as your own .-)

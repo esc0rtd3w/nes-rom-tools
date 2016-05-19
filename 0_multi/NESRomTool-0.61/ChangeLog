@@ -1,0 +1,83 @@
+Changes:
+
+v0.61
+6.17.03
+
+Fixed a typo in the usage output.
+Added previewing compound sprites in the terminal.
+Added previewing strips of sprites in the terminal.
+Added verbose mode (-V). NOTE: that's a capital V. (not 100% implemented)
+Added preliminary code for extracting sprites from PRG banks.
+Added sprite strip injection. (untested)
+
+v0.6
+6.13.03
+
+Support for extracting sprite strips (use the -xs +r +s option)
+Support for extracting compound sprites. See usage for info. (-xs +r +c)
+Removed some debugging output.
+Fixed a bug with "Invalid CHR index" error for ranges of sprites.
+Fixed a bug with injecting sprites (the data was getting mangled due to a typo in the code). Works fine and dandy now.
+
+
+v0.5
+6.11.03
+
+Fixed the OSX installer so it asks for an admin password.
+Fixed a bug with displaying a range of sprites (was quite buggy).
+Fixed a bug in the utility method for getting PRG and CHR banks that would attempt to retrieve invalid banks.
+Fixed a bug in the utility method for injecting PRG and CHR banks that would attempt to inject into invalid banks.
+Fixed a bug which would allow injecting sprites into invalid CHR banks and invalid sprite indices.
+Renamed some variables and arguments in the utility methods for added consistency.
+Fixed a bug that wouldn't properly report errors (would say that verification failed even if a source file was not set).
+Added error checking to make sure the source file is set before it lets you modify it.
+
+
+v0.4
+6.09.03
+
+Added some error checking to injection of sprites, PRG and CHR banks.
+Fixed bug with setting the source file, again. (returned "(null)" rather than the right filename.
+Added Title functions (-st, -rt, -pt)
+Added title functions to usage output.
+Usage output now displays correct version number (0.35 thought it was 0.4)
+
+
+v0.35:
+6.06.03
+
+Added usage output to application (next I just have to work on the man pages!)
+Added injection of PRG, CHR, and sprites (I seemed to have left that out in 0.3).
+some renaming of some variables here and there (for consistency).
+Fixed bug with setting the source file; if you only passed the file's name (ie- you were in the file's directory), the app would get a bus error
+Binary for OSX is now available.
+
+v0.3:
+6.02.03
+
+Rewrote the entire argument engine. It's much better now.
+Changed the way arguments are set up
+Added extraction of ALL PRG banks
+Added extraction of ranges of PRG banks
+Fixed a bug with auto filename creation (for extracting all or ranges, if the ROM is in another dirctory than the current path, it would append the destination's path to the ROM's path)
+Added extraction of ALL CHR banks
+Added extraction of ranges of CHR banks
+Added display of ALL sprites in specific CHR banks
+Added display of ranges of sprites
+Added display of ALL sprites in ALL CHR banks
+new function: lastPathComponent: for getting the last item's title from a path
+Added monochrome option for command-line display of sprites: displays the sprites' indexed color value in the color box. (use +m)
+
+v0.2:
+5.28.03
+
+Added extraction of ranges of sprites
+Added display of sprites from files
+Minor optimisations
+new function: appendPathComponent(char *source, char *append), used for working with paths, similar to NSString's function in Cocoa.
+About to do a rewrite of the parameter engine.
+
+v0.1:
+5.26.03
+
+First release ever!!! w00t.

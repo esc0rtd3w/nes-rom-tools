@@ -1,0 +1,176 @@
+<HTML>
+<HEAD>
+<TITLE>NoChaos - Help</TITLE>
+<script>
+function ShowHelp(HelpName,HelpTrigger)
+{
+Help1.style.visibility='hidden';
+Help2.style.visibility='hidden';
+Help3.style.visibility='hidden';
+Help4.style.visibility='hidden';
+Help5.style.visibility='hidden';
+Help6.style.visibility='hidden';
+HelpName.style.visibility='visible';
+
+FirstSpan.style.background='#DDDDEE';
+SecondSpan.style.background='#DDDDEE';
+ThirdSpan.style.background='#DDDDEE';
+FourthSpan.style.background='#DDDDEE';
+FifthSpan.style.background='#DDDDEE';
+SixthSpan.style.background='#DDDDEE';
+HelpTrigger.style.background='#FFFFEE';
+
+}
+</script>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF">
+<TABLE id="MenuTable" border=0 width=130 bgcolor="DDDDEE" style="position:absolute;left:0;top:0"><TR><TD valign="top"><font size="+2" color="#CC0000">Contents</font>
+<font size="+1">
+<BR><BR>
+<span id="FirstSpan" style="background-color:#FFFFEE"><a href="#" id="First" onClick="ShowHelp(Help1,FirstSpan)">Introduction</a></span>
+<BR>
+<span id="SecondSpan"><a href="#" id="Second" onClick="ShowHelp(Help2,SecondSpan)">Getting Started</a></span>
+<BR>
+<span id="ThirdSpan"><a href="#" id="Third" onClick="ShowHelp(Help3,ThirdSpan)">Corrupting</a></span>
+<BR>
+<span id="FourthSpan"><a href="#" id="Fourth" onClick="ShowHelp(Help4,FourthSpan)">Hex Editor</a></span>
+<BR>
+<span id="FifthSpan"><a href="#" id="Fifth" onClick="ShowHelp(Help5,FifthSpan)">Patterns</a></span>
+<BR>
+<span id="SixthSpan"><a href="#" id="Sixth" onClick="ShowHelp(Help6,SixthSpan)">Tips</a></span>
+<BR>
+
+</font><BR><BR><img src="" width=0 height = 800</TD></TR></TABLE>
+
+<SPAN id="Help1" style="position:absolute;left:150;top:0;width:620;visibility:visible">
+<center><font face="Comic Sans MS" size="+3" color="#990000">Introduction</font></center>
+<BR><BR>
+<font size="+1" color="#990000"><U><B>No Chaos:</B></U></font><BR>
+A hybrid between a <I>Corrupter</I> and a <I>Hex Editor</I>.  It was created by and is being furthered developed by me, <a href="mailto:jathys@hotmail.com">Jathys</a>.  I originally started the program when looking for specific data in a game, that crashed too easily when corrupted by other programs.  The idea was to corrupt <I>only</I> the bytes that matched what I was looking for, so I could avoid corrupting the "crashable" spots.
+<BR><BR>
+The second release of <I>NoChaos</I> extends that concept even more, providing better methods to take control of the corruption process.
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Corrupter:</B></U></font><BR>
+A utility that intentionally damages data in a file.  By looking for differences in the way a file works after being corrupted, you can get a good idea of what certain sections of the file do.  Corrupting is usually done randomly, within a starting and ending point that the user specifies.
+<BR><BR>
+<I>NoChaos</I> enhances the art of corruption by giving you more control over <I>how</I> your file is changed.  Corrupt only specific values -OR- corrupt by using a pattern.  If you corrupt specific values, a list is generated, showing you all the matches that your search found.
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Hex Editor:</B></U></font><BR>
+A utility that allows you to change data in a file by typing Hex values.
+<BR><BR>
+<I>NoChaos</I> has a "mini-Editor" built into it.  The mini-Editor is <I>not</I> intended to be very powerful.  It simply gives you a way to see the Hex values surrounding an address you've found and type in small changes.
+<BR><BR>
+</SPAN>
+<SPAN id="Help2" style="position:absolute;left:150;top:0;width:620;visibility:hidden">
+<center><font face="Comic Sans MS" size="+3" color="#990000">Getting Started</font></center>
+<BR><BR>
+When you first open <I>NoChaos</I>, you'll be asked what file you wish to open.  To select your file, simply <B>double click</B> on it.  The next screen you see is <I>NoChaos</I>'s work area.
+<BR><BR>
+<font size="+1" color="#990000"><U><B>Start At</B> and <B>End At</B></U>:</font><BR>
+This is where you specify the start and end of the section you want corrupted.  As in most other corruptors, you type in the <I>Hex Address</I>.
+<BR><BR>
+You can move to the next set of addresses by clicking the "<B>+</B>" or "<B>-</B>" signs.
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Change</B> and <B>To</B></U>:</font><BR>
+Here is where you type the DEC (non-Hex) values of what you are looking for, and what you want those values to become.  You can type in the Hex values, if that's what you've got, by <B>right-clicking</B> on the textbox.
+<BR><BR>
+If you type in a Hex value of <I>F000</I> (61440 in "real" numbers), you'll notice that <I>00 F0</I> (240) appears to the right of the textbox.  This is because the values will usually be stored in reverse order in the file.  NoChaos flips them around automatically.
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>&lt;&lt;Extra&gt;&gt;</B></U>:</font><BR>
+If you type any value greater than <B>0</B> into this text box, NoChaos will look for an "Extra" value when it does its search.  It will only show results that:<BR>
+<UL>
+<li>Match the value you are looking for</li>
+<li>Have the <I>Extra</I> value either preceeding ("<B>&lt;&lt;</B>") or following ("<B>&gt;&gt;</B>") your value.</li>
+</UL><BR>
+If the value you type into the <I>Extra</I> box is less than 255, NoChaos will search for <I>1-byte</I> values, ignoring the "00" that should follow it in the file.  If you want to force the <I>Extra</I> value to be <I>2-bytes</I> long, fill the area in front of the value with <B>0</B>'s.  For instance, if you are looking for <I>240</I>, type in <I>00240</I>.
+<BR><BR>
+To switch the position of this value, relative to your search value, click on the "Extra".
+<BR><BR><BR>
+<font size="+1" color="#990000"><U>The List</U>:</font><BR>
+When <I>NoChaos</I> corrupts <I>without using a pattern</I>, a list can be generated.  The list shows the addresses, old values, and new values of the matches that were found in the most recent search.
+<BR><BR>
+<I>Check</I> any matches that you want <I>ignored</I> in your next corrupt.
+<BR><BR>
+<I>Right-Click</I> to reverse your selection.
+<BR><BR>
+</SPAN>
+<SPAN id="Help3" style="position:absolute;left:150;top:0;width:620;visibility:hidden">
+<center><font face="Comic Sans MS" size="+3" color="#990000">Corrupting</font></center>
+<BR><BR>
+<U>Here's a <I>brief</I> explanation of the options available when you click the "<B>Corrupt</B>" button</U>:
+<BR><BR>
+<font size="+1" color="#990000"><U><B>Corrupt</B></U>:</font><BR>
+As you could guess, this corrupts the ROM with whatever options you have set.
+<BR><BR>
+If you choose to corrupt <I>without</I> generating a list, your searches will be faster, though you won't be able to see any of your results. With a list, the first 100,000 matches will be viewable . . . Rest assured, <I>all</I> matching values are changed, regardless of whether or not they appear in the list.
+<BR><BR>
+This a different/faster/bigger list box than in earlier versions of NoChaos, so you may not notice any slow down while using lists.  It's only <I>really</I> limited because around 200,000 matches the program is hogging more memory than VB wanted it to be use, so it slows exponentially (which is why I limit the list to 100,000).
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Save</B></U>:</font><BR>
+This saves the last corruption <I>permanently</I> to the ROM.
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Refresh</B></U>:</font><BR>
+This refreshes the ROM back to its original state. You will <I>rarely</I> need to do this, as <I>NoChaos</I> automatically refreshes your ROM after each corruption and when the program is shut down.  The <I>only</I> time you'd need to hit the "<B>Refresh</B>" button would be if you wanted to test your non-corrupted ROM in an emulator without having to shut down <I>NoChaos</I> first.
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Options</B></U>:</font><BR>
+<UL>
+<li><B>1-Byte Search</B> - If checked, <I>NoChaos</I> searches for 1-byte values.</li>
+<li><B>Patterns</B> - See "<a href="#" onClick="ShowHelp(Help5,FifthSpan)">Patterns</a>"</li>
+<li><B>Increase End Results</B> - If checked, <I>NoChaos</I> increases the value matches turn into (ie- "<B>To</B>").</li>
+</UL><BR>
+<font size="+1" color="#990000"><U><B>Open a ROM</B></U>:</font><BR>
+This allows you to open a different file for corruption, automatically closing the current file.
+<BR><BR><BR>
+</SPAN>
+<SPAN id="Help4" style="position:absolute;left:150;top:0;width:620;visibility:hidden">
+<center><font face="Comic Sans MS" size="+3" color="#990000">Hex Editing</font></center>
+<BR><BR>
+The <B>Mini-Hex Editor</B> allows you to see and edit the Hex surrounding any match you click on in the list generated by <I>NoChaos</I>. The <span style="background-color">yellow</span> values will show you the Hex of the match you clicked on.  You can choose how many lines of Hex to show, between 0 and 9.
+<BR><BR>
+To change Hex, simply use the Hex Editor as you would any other text box.  It <I>might</I> beep at you annoyingly, but nothing is wrong.  This is just a quirk that needs to be worked around later.
+<BR><BR>
+By clicking the "<B>Save Hex Changes</B>" button, you get the following choices . . .
+<BR><BR>
+<font size="+1" color="#990000"><U><B>Save Changes</B></U>:</font><BR>
+This saves the current Hex Changes directly to the ROM.
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Go To</B></U>:</font><BR>
+Give a specific address in the ROM to go to.
+<BR><BR><BR>
+</SPAN>
+<SPAN id="Help5" style="position:absolute;left:150;top:0;width:620;visibility:hidden">
+<center><font face="Comic Sans MS" size="+3" color="#990000">Patterns</font></center>
+<BR><BR>
+<I>NoChaos</I> allows you to corrupt using Patterns now.  No list is generated when patterns are used.
+<BR><BR>
+<font size="+1" color="#990000"><U><B>&lt;None&gt;</B></U>:</font><BR>
+Use <I>no pattern</I>.  If this is checked, <I>NoChaos</I> will do its typical corrupting method (ie- searching for the values you type in).
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Random</B></U>:</font><BR>
+Place random bytes in your ROM.  If <I>1-Byte Search</I> is checked, every byte is corrupted, else every other byte is corrupted.
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Scramble</B></U>:</font><BR>
+Switches bytes around with other bytes in your search area.  Your <B>checksum</B> <I>should</I> remain the same.  If <I>1-Byte Search</I> is checked, every byte is used, else every other byte is used.
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Swap</B></U>:</font><BR>
+"Flips" bytes with the bytes <I>next to them</I>.  Again, your <B>checksum</B> <I>should</I> stay the same.<BR><BR><I>1-Byte Search</I>
+<BR>-checked . . . "00 01 02 03 04 05 06" becomes "01 00 03 02 05 04 06"
+<BR>-unchecked . . . "00 01 02 03 04 05 06" becomes "02 01 00 03 06 05 04"
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Sloped</B></U>:</font><BR>
+Raises/lowers values by one, forming hills, going from 0 to 255 to 0, etc... If <I>1-Byte Search</I> is not selected, every other byte is left alone.
+<BR><BR><BR>
+<font size="+1" color="#990000"><U><B>Invert Every __</B></U>:</font><BR>
+User specifies a number of bytes to skip between corruptted bytes.  The corrupted bytes are simply inverted.
+<BR><BR>
+</SPAN>
+<SPAN id="Help6" style="position:absolute;left:150;top:0;width:620;visibility:hidden">
+<center><font face="Comic Sans MS" size="+3" color="#990000">Tips</font></center>
+<BR><BR>
+<U>A few suggestions to get you on your way</U>:
+<BR><BR>
+None yet...
+</SPAN>
+</BODY>
+</HTML>

@@ -1,0 +1,67 @@
+=======================================================================
+Schnapsidee - beta 0.1
+======================
+by Matrixz (Dragon Eye Studios)
+
+What is Schnapsidee?
+--------------------
+A editor for 1942 for NES. It originally started as a
+editor for a ASM-hack of 1942, but that project didnt become
+anything, so i wanted to do something with what i had so far.
+
+Current Feature List
+--------------------
+ * Level Palette Editing
+ * Screen Order Editing
+ * Screen Editing
+ * Block Attribute Editing
+ * Block TSA Editing
+
+Future Plans for Features
+-------------------------
+ * Enemy Editing
+ * Titlescreen Editor
+ * CHR Editing
+ * Enemy Score Editing
+ * Sprite Assembly Editing
+   (how sprites are built up, not program code)
+And misc. other data in 1942.
+
+Im planning to release a pair of updates, or more.
+
+Keys
+----
+F5 - Save
+F6 - Previous Level
+F7 - Next Level
+F8 - Reload Level
+F9 - Quick-test (see qtest.txt)
+F10 - Configuration Menu
+
+In the next release i will probably write clearer instructions on how the editor
+and the configuration menu works. You currently have to find out most things by yourself,
+but it shouldnt be too hard.
+
+Credits etc.
+------------
+Michel Martens (HyperMegamanZ) - Finding data, got the project started
+Anders Andresson - Mouse code
+Ryan Williams - Notes on how to include assembly in QB 4.5.
+
+Contact Information
+-------------------
+Whatever's on your mind you can mail to me at:
+	ingegjoestoel@hotmail.com
+Or you can contact me on MSN.
+
+Dragon Eye Studios:
+	http://www.dragoneyestudios.net/
+Where you also can also register at the forums
+and ask questions, post, etc.
+
+Matrixz' Page:
+	http://matrixz.8m.net/
+My personal website, where you might find
+other interesting stuff related to romhacking.
+=======================================================================
+EOF!

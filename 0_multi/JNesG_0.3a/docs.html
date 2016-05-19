@@ -1,0 +1,195 @@
+<html>
+<head>
+	<title>JnesG</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<table width="500" border="1" align="center" cellpadding="6">
+<tr>
+<td>
+
+	<h1>JNesG documentation</h1>
+	
+	version 0.3a<br/>
+	JNesG is by me, Matt Greer ( matthew-greer@uiowa.edu)<br/>
+	<a href="http://www.cs.uiowa.edu/~mgreer/nes">website</a>
+	
+	<h2>Introduction</h2>
+	<p>
+		JNesG is a Nintendo Entertainment System Graphics editor program.
+		It was designed specifically for the NES, and can not support
+		any other system. It is ideal for both NES developers and
+		ROM hackers. It is a new program and so it still has some
+		refining to do, and likely has many bugs lurking beneath, check the
+		readme for info on those kinds of things.
+	</p>
+	
+	<h2>Prerequisites</h2>
+	<p>
+		You need to be familiar with how the NES handles graphics:
+		CHR Blocks, Name Tables, palettes, etc. If you're familiar
+		with that, you'll probably be fine just playing with it
+		for a while. Otherwise, read on.
+	</p>
+
+	<h3>Creating your palette</h3>
+	<p>
+		Just drag the desired color from the master palette over to your
+		user palette. If you drag to a mirrored entry, it will mirror
+		itself across all mirror entries. To create a new palette click "new".
+	</p>
+		
+	<h3>Drawing Tiles</h3>
+	<p>
+		Just pick a color and start drawing, pretty standard stuff. If you're
+		confused on why sometimes you get an unexpected color, see below.
+	</p>	
+	<p>
+		To the right of the drawing area is the preview, which shows the tile
+		at 2x zoom. Once you are satisfied with your tile click and drag
+		the preview into a spot in the chr block, wherever you want.
+		
+	<h3>CHR Blocks</h3>
+	<p>
+		Not much here, to make a new block click "new", to clear out
+		a block click "clear". The white bar just divides between sprite
+		and background tiles, which half is which is up to you.
+	</p>
+	<h3>Name Tables</h3>
+	<p>
+		Name Tables are handled just like tiles except their "palette"
+		is the current active CHR block. Name Tables are either "low"
+		or "high", which indicates which half of the CHR Block they get
+		their tiles from. Switching between the two doesn't hurt anything,
+		your Name Table will just get redrawn with the other half's tiles
+		(try it to see what I mean).
+	</p>
+
+	<h2>Importing</h2>
+	<h3>From iNES ROMs</h3>
+	<p>
+		Just select "File > Import > from iNES ROM" from the menu or click the little
+		import button that has a tiny NES cart on it, then pick the NES rom you want.
+		All of the CHR roms from that ROM will be placed into the CHR Manager.
+	</p>
+	<p>
+		JNesG is not capable of importing palettes or name tables. So when you import
+		from an iNES ROM, JNesG creates a "reasonable" palette that has four high
+		contrasting colors to make it easy to see the tiles, otherwise a palette
+		of all black would make it look like the import failed.
+	</p>
+	<h3>From Binary Files</h3>
+	<p>
+		Palettes, Name Tables and CHR Blocks can be imported from raw binary
+		files that contain only the relevant data. JNesG will try to import
+		as many valid components from these files as possible, but will reject
+		anything that's not legal. For example if you give JNesG a file to be
+		imported as palettes, each 16 byte chunk will be made into a palette,
+		as long as each byte is between 0 and 63, any excess bytes will be
+		ignored. Any invalid entry (negative or greater than 63) will result
+		in zero for that color. Similiar things happen for CHR blocks and name tables.
+	</p>
+	<p>
+		To do this, just select "File > Import > from Binary" from the menu
+		or click the little import button, choose your files, and click "import".
+	</p>
+	
+	<h2>Exporting</h2>
+	<h3>to an iNES ROM</h3>
+	<p>
+		Just select "File > Export > to iNES ROM" from the menu or click the
+		export button with the little NES cart on it. Then select the ROM
+		you want to export into. JNesG will attempt to export <b>all</b> 
+		CHR blocks into <b>a copy</b> of the ROM.
+	</p>
+	<p>
+		As many CHR blocks as can fit into the ROM will get exported. If
+		not all can fit, then some won't make it and JNesG will let you know.
+		If there's too much space then all CHR blocks will get exported and
+		the remaining blocks left alone. It's generally best to export
+		your blocks into a ROM that has exactly that many blocks, and even
+		better still to export blocks into the same ROM you imported from.
+	</p>
+	<p>
+		This exporting takes place in a copy of the ROM, which will be
+		named &lt;original name&gt;_exported.nes, and in the same directory
+		as the original.
+	</p>
+	
+	<h3>to raw binaries</h3>
+	<p>
+		This is generally the way to go when creating your graphics for your
+		own NES project. Select "File > Export > to Binary" from the main menu,
+		or click the export button. A dialog will appear to set how to do the
+		export.
+	</p>
+		<b>Root for file names: </b>First enter the "root" that all created filenames will have. Say you enter
+		"mygame", then your palette files will be "mygame_pal.bin", your chr blocks
+		will be "mygame_chr.bin", etc.
+	</p>
+		<b>Export Mode(s): </b>Ignore this option, it doesn't matter what you
+		put, only binary is implemented right now. In future versions ascii
+		mode will allow you to export your data to text files in common 6502
+		assembly syntaxes, in case people want it that way. I'm sure most 
+		will use binary.
+	</p>
+	<p>
+		<b>What should be exported: </b>Just check what you want to export
+	</p>
+	<p>
+		<b>Save each type to multiple files: </b>This may not be what you think it is.
+		Palettes, CHR blocks and name tables are always exported into their own files.
+		This option determines whether to put all palettes into one file or
+		split each one off into their own files, which will be of the form
+		mygame_pal0.bin, mygame_pal1.bin, mygame_pal2.bin, etc. It's not possible 
+		to export everything into one file, however you can just use JNesG's internal
+		save format if you want (see below).
+	</p>
+	
+	<h2>Other things</h2>
+	
+	<p>
+		<b>Unexpected colors when drawing tiles...</b>
+		<br>
+		A little investigating should make it obvious why, and remember this is a graphics
+		program specifically made for the NES. A tile can only have the values
+		0 through 3, but there's 16 colors in the palette. So the palette is split
+		into 4 subpalettes, and which ever subpalette is selected (the two bit binary
+		buttons above the palette, which is not implemented just yet) determines which subpalette is used to draw
+		the tile at any given moment. Despite one subpalette always being the selected
+		one, you can select any color in the palette to draw with. I haven't bothered
+		to change that. The tiles will get saved to disk as just being arrays of
+		numbers between 0 and 3, the colors are only there for your reference and don't
+		really matter, as a sprite's "subpalette" must get determined elsewhere in
+		an NES game. Read Yoshi's NES doc or Marat's NES doc for more information.
+	</p>
+	<p>
+		<b>Attribute tables...</b>
+		<br>
+		There's a lot of things I'd like to put into JNesG, and will eventually.
+		Attribute tables are coming. See the readme in the distribution for
+		a list of "todo's".
+	</p>
+	<p>
+		<b>Loading another master palette...</b>
+		<br>
+		In future versions, this will probably be doable. If you really want to change it now,
+		it's actually not that hard, just requires a recompile. In the source
+		(which, if you don't have, can be had from my website), head to
+		jnesg/palette/MasterPalette.java. Scroll down a bit and you'll see
+		a huge array literal full of PaletteEntry objects, the hex triplets
+		in each constructor is the rgb value for that palette entry. Change
+		as you like, and recompile (use ant, the source has a build file).
+	</p>
+	
+</body>
+
+</td>
+</tr>
+</table>
+</html>
+
+
+			
+		
+	

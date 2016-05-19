@@ -1,0 +1,4 @@
+The editor only edits the very first area of the game. It's just a one day hacked up program with 90% of the code leftover from the Zelda 2 overworld editor. Somebody emailed me requesting this editor so I made it then forgot about it
+
+-Dwedit
+http://sgc.emu2k.com/dwedit/

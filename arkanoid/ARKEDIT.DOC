@@ -1,0 +1,100 @@
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ ÚÄÄÄÄÄÄÄÄÄÄÄÄ   ÚÄÄÄÄ    ÚÄÄÄÄ
+ÚÄÄÄÄ     ÚÄÄÄÄ ÚÄÄÄÄ    ÚÄÄÄÄ  ÚÄÄÄÄ   ÚÄÄÄÄ
+ÚÄÄÄÄ     ÚÄÄÄÄ ÚÄÄÄÄ   ÚÄÄÄÄ   ÚÄÄÄÄ  ÚÄÄÄÄ
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ ÚÄÄÄÄ ÚÄÄÄÄ     ÚÄÄÄÄ ÚÄÄÄÄ
+ÚÄÄÄÄ     ÚÄÄÄÄ ÚÄÄÄÄ   ÚÄÄÄÄ   ÚÄÄÄÄ  ÚÄÄÄÄ
+ÚÄÄÄÄ     ÚÄÄÄÄ ÚÄÄÄÄ    ÚÄÄÄÄ  ÚÄÄÄÄ   ÚÄÄÄÄ
+ÚÄÄÄÄ     ÚÄÄÄÄ ÚÄÄÄÄ     ÚÄÄÄÄ ÚÄÄÄÄ    ÚÄÄÄÄ
+                        Version 0.80á Documentation.
+                ÚÄÄÄÄÄÄÄÄÄÄÄÄ ÚÄÄÄÄÄÄÄÄÄÄÄ    ÚÄÄÄÄÄÄÄÄÄÄÄÄ ÚÄÄÄÄÄÄÄÄÄÄÄÄ
+                ÚÄÄÄÄ         ÚÄÄÄÄ    ÚÄÄÄÄ  ÚÄÄÄÄÄÄÄÄÄÄÄÄ ÚÄÄÄÄÄÄÄÄÄÄÄÄ
+                ÚÄÄÄÄ         ÚÄÄÄÄ     ÚÄÄÄÄ     ÚÄÄÄÄ        ÚÄÄÄÄ
+                ÚÄÄÄÄÄÄÄÄ     ÚÄÄÄÄ     ÚÄÄÄÄ     ÚÄÄÄÄ        ÚÄÄÄÄ     
+                ÚÄÄÄÄ         ÚÄÄÄÄ     ÚÄÄÄÄ     ÚÄÄÄÄ        ÚÄÄÄÄ     
+                ÚÄÄÄÄ         ÚÄÄÄÄ    ÚÄÄÄÄ  ÚÄÄÄÄÄÄÄÄÄÄÄÄ    ÚÄÄÄÄ 
+                ÚÄÄÄÄÄÄÄÄÄÄÄÄ ÚÄÄÄÄÄÄÄÄÄÄÄ    ÚÄÄÄÄÄÄÄÄÄÄÄÄ    ÚÄÄÄÄ 
+
+I.     Requirements
+  
+  -Mouse
+  -MS DOS ?.??-6.22
+
+II.    Command Line Paramaters
+  
+  To Have ARKEDIT Open The NES File you need to have the NES File name
+  for an argument.
+
+  example:
+
+  ARKEDIT ARKANOID
+  ARKEDIT ARKANOID.NES
+
+  The .NES Pramater is optional.
+
+III.   Basic Editing
+
+  Editing is quite simple.  After your ROM has loaded Click on an desginated
+  Block or Block position on the editor to the left.  After you click there
+  either 2 options will apear at the Bottom:
+
+  ADD or DEL
+
+  Clicking ADD will add a block at the current position.
+  Clicking DEL will Delete the block at the current position.
+
+  If there was a block there you can do any of the other following:
+
+  Change Hits
+  Change Capsul Status
+  Change Pallete
+  Change Style (1 normal block & 2 3D blocks like the unbreakable ones
+                in Arkanoid)
+  Change Which Palette To Use (A is top Palette B is Bottom)
+
+  ***Please Note Palette "F" can only be used for Unbreakable Blocks!!!
+  ***Also not the Higher the Palette the more points the Block is worth!!!
+
+  At Any Time You Can Click On The Palettes to Change Them.
+  *****MUST NOTE ABOUT PALETTES!!!*****
+  This Current Editor Doesn't let you lay out the back Palette yet.
+  hopefully the next version will.
+
+  Please also not when Changing Levels it DOES NOT auto ave the last level.
+  You Must Click On Save To Be able to Save it!!!
+
+IV.    Hot Keys
+
+  Right now these are the current Hot Keys:
+
+    Key   ³   What It Does
+    ÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+    R     ³   Removes All Blocks For Level
+    S     ³   Saves
+    A     ³   Add Block
+    D     ³   Delete Block
+    C     ³   Toggles Blocks Capsuls Status
+    H     ³   Toggles Blocks Hits Status Foward
+    P     ³   Toggles Blocks Palette Status Forward
+    L     ³   Go Foward 1 Level
+
+V.     Differences Between Japan And USA Version
+
+  ARKEDIT Will Auto Scan for the Difference.  The Main Diference is that
+  the Japan Version has 32 Levels and the USA Version has 36.  The Only
+  other difference is that the main offsets are in different locations. 
+  no matter what ARKEDIT will support both versions.
+
+VI.    Contact Info
+
+  Email: megadog1@msn.com
+  Web: http://www.geocities.com/megadog1
+
+  ***DO NOT EMAIL ME FOR OFFSETS!!!  I WILL NOT RESPOND TO THOSE LETTERS!***
+
+VII.   Copyright Info/Legal Info
+
+  ARKEDIT is Copyright (c) 2000 DogSoft.
+
+  This Editor Is Free To Distribute, Just Make Shure You Include This
+  Document.
+

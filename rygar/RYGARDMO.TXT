@@ -1,0 +1,49 @@
+----------------------------
+Rygar Improvement Demo Level
+Version 0.9
+24jul98
+By Jay McGavren
+thespook@novia.net
+----------------------------
+
+This level is nothing fancy, just a quick demo of Rygar 
+Improvement's capabilities. It took me about half an 
+hour to do, a testament to the editor's ease of use. 
+(Nice job, Chris!)
+
+Please note that only the first level is playable; 
+I have purposely sealed the exit.
+
+
+Requirements:
+-Rygar ROM USA V1.0 NOTE: ALL ROM REQUESTS WILL BE IGNORED.
+-UCON or any other IPS patching utility.
+
+How to Use:
+-Make a backup of your Rygar ROM. This is very important in 
+ case something goes wrong during the patching!
+-Place the rygardmo.ips file in the same directory as your ROM.
+-Use your IPS utility to patch the ROM with the edit patch.
+ (Ex: Type "ucon i rygar.nes rygardmo.ips" at the DOS prompt.)
+
+That's it! Now just run the patched ROM with any emulator (or 
+even on your console if you're lucky enough to have a backup
+unit, I assume it'll work). 
+
+Web Links:
+-Rage Games - http://www.classicgaming.com/ragegames/
+ The author's site, devoted to game reviews and hacking. Has
+ other level edits and a designers' hints page.
+-Archaic Ruins - http://www.bpwl.com/ar/
+ Emulation site founded by Chris Hickman, the author of Rygar 
+ Improvement. Visit RI's homepage in the hacking utilities area!
+
+
+Acknowledgements:
+Rygar Improvement - Chris Hickman
+Testing - John McGavren
+
+The latest version of this file is available on Rage Games.
+http://www.classicgaming.com/ragegames/
+
+This text Copyright 1998 Jay McGavren. All Rights Reserved.

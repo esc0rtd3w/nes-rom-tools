@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>SMB3 level troubleshooting</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rev="made" href="mailto:hukka@despammed.com">
+<style type="text/css">
+ <!--
+    BODY    { font-family: sans-serif; background-color: white;
+              color: black; text-align: center; }
+    TABLE   { background-color: #FFFFF0; }
+    TD      { vertical-align: top; }
+    .header { background-color: #FFEECC; font-weight: bold; }
+    .m3i    { color: red; }
+ -->
+</style>
+</head>
+<body>
+<h1>SMB3 level troubleshooting</h1>
+
+<p>Here is a list of some of the errors that can occur with SMB3 levels and
+guides to fixing them.</p>
+
+<p>I've highlighted the errors that may only exist in Mario 3 Improvement in
+<span class="m3i">red</span>.</p>
+
+<p>This list was originally compiled by <B>Spinzig</B>
+and was last modified by <B>hukka</B> in
+2005-04-23.
+
+<p>
+<table border="1" cellspacing="0" cellpadding="4" width="80%" align="center">
+<tr class="header">
+<td>Symptoms</td>
+<td>Cause</td>
+<td>Solution</td>
+</tr>
+
+<tr>
+<td rowspan="9">Game crashes</td>
+<td>There's a 'crash' object in your level.</td>
+<td>Remove or change the 3-byte 'Crash' object.</td>
+</tr>
+
+<tr>
+<td>You have objects extending below 1B.</td>
+<td>Make sure objects end at 1A.</td>
+</tr>
+
+<tr>
+<td>You made the 'END' object with the black background too near the
+actual end of your level.</td>
+<td>'END' markers should be about 13 long, so if your level ends at EF,
+put the 'END' at around D2, at the very top of the screen, as
+it erases any ground below it.</td>
+</tr>
+
+<tr>
+<td>Certain objects in your level will not work (3-byte ones).</td>
+<td>Plains levels: Remove the coloured block platforms that extend into
+the ground. Sea levels: Remove the grey platforms that extend into the
+ground. Underground levels: certain pre-made hills will not work
+properly.</td>
+</tr>
+
+<tr>
+<td>Mario is starting on a wrong object (eg. a coloured platform with the
+screws at the corners).</td>
+<td>Put clouds or ground under the start place instead.</td>
+</tr>
+
+<tr>
+<td>Too many enemies.</td>
+<td>The maximum amount of enemies on a level is 82. Remove some!</td>
+</tr>
+
+<tr>
+<td>Level has been messed up by too many other levels being saved to the
+ROM.</td>
+<td>Re-save the file to the ROM.</td>
+</tr>
+
+<tr>
+<td>A pipe has a door exit or vice versa.</td>
+<td>Pipes need an exit action of a pipe, and doors need the 'door'
+attribute.</td>
+</tr>
+
+<tr>
+<td>Other, unknown reason.</td>
+<td>There are many other things that may crash the game,
+some of them unknown.
+</td>
+</tr>
+
+<tr>
+<td>Weird looking blocks and background</td>
+<td>The graphics set for the level are wrong, eg. Ice with plains.</td>
+<td>Change the graphics to a compatible set.</td>
+</tr>
+
+<tr>
+<td>Level plays fine, but black background is covered in white lines and
+looks messy</td>
+<td>Too many M3L files have been saved to your ROM.</td>
+<td>Unfortunately, the only way to stop it is to get a new ROM, so make
+sure you back it up, along with the original SMB3.</td>
+</tr>
+
+<tr class="m3i">
+<td>In the editor, objects are everywhere and there are things that aren't
+supposed to be there</td>
+<td>You put the 3-byte and 4-byte objects in the wrong order.</td>
+<td>At the very beginning of your level, create a huge stack of about 70 3
+or 4 byte objects that you will take from and save the level. Reload it
+and check to see if the computer has randomly strewn rubbish through it.
+If not, put in the other half of objects (3 or 4 byte depending) and save
+under a different name. Again reload and check the level for mess. Once
+that's done, you can use the pile to drag objects and build a level
+without the error ever occurring.</td>
+</tr>
+
+<tr>
+<td>Level starts with weird music or misplaced enemies</td>
+<td>Level has been messed up by other levels being saved to the ROM.</td>
+<td>Re-save the file to the ROM.</td>
+</tr>
+
+<tr>
+<td>Mario goes into a pipe, but emerges in an underground level with no
+floor, and dies</td>
+<td>You used the wrong pipe object (A0-AF).</td>
+<td>Use pipe object 90-9F.</td>
+</tr>
+
+<tr>
+<td>Ship or tank levels have weird blocks</td>
+<td>The graphics for a tank level must be set to 'tank', or ships to
+'ship'. Some blocks like walls are incompatible with these.</td>
+<td>Change the blocks to something else, or change the graphics.</td>
+</tr>
+
+<tr>
+<td>Doors lead to the next part okay but instead of leading where the
+pointer points, they come out in the same location as the one you went in
+(eg. door at BB leads to next part at BB)</td>
+<td>Certain checkboxes in SMB3 Discombobulator indicate how doors work, like
+the '?' box or 'off: entering pipe ends level'.</td>
+<td>The Lost Levels have this problem, so either design levels accordingly
+or turn off all '?' boxes. Make sure 'off: entering pipe ends level' box
+is ticked.</td>
+</tr>
+
+<tr>
+<td>Some enemies and goal card missing near end of level</td>
+<td>Level has been messed up by other levels being saved to the ROM.</td>
+<td>Re-save the file to the ROM.</td>
+</tr>
+
+<tr>
+<td>Enemies look weird/glitchy</td>
+<td>You placed incompatible enemies with each other.</td>
+<td>Space enemies out accordingly.</td>
+</tr>
+
+<tr>
+<td>Enemies' colours look weird</td>
+<td>You ticked the 'weird coloured enemies' or 'bluish enemies' checkbox.
+(Not applicable to SMB3WS.)</td>
+<td>Un-check the boxes, or change the colours to your liking with the SMB3
+Discombobulator.</td>
+</tr>
+
+<tr>
+<td>Music is slow and weird</td>
+<td>Level extends into F0 and beyond.</td>
+<td>EF should be the limit of your level.</td>
+</tr>
+
+<tr>
+<td>Glitched garbage at the end of a long level</td>
+<td>That garbage is all at F0-FF. You cannot put anything here.</td>
+<td>Change the length of your level to EF.</td>
+</tr>
+
+<tr>
+<td>When you enter a door or pipe, glitched rubbish is everywhere, which
+disappears if scrolled off screen</td>
+<td>The pointer that door was connected to had, let's say 'C (vertical
+level)' in the vertical exit area. Only use this for vertically oriented
+levels.</td>
+<td>Change pointer to point to the regular number instead of the vertical
+one.</td>
+</tr>
+
+<tr>
+<td>After an area with Bowser or Boom Boom and a door or pipe, Mario
+exits, but the level is misplaced and the screen won't scroll</td>
+<td>Boss enemies stop the screen scrolling when you meet them, this stays
+for the rest of the level even when you leave via a door or pipe.</td>
+<td>Remove or change the boss enemy to a normal enemy.</td>
+</tr>
+
+<tr>
+<td>With the annoying auto-scroll removed, Mario enters the ship, but you
+can't see him, the screen scrolls by itself and the level is
+misplaced</td>
+<td>The 'Anchors Away' stage starts the scrolling, but the game gets
+confused as the ship no longer scrolls.</td>
+<td>Make the End Castle point to the ship instead of 'Anchors Away'.</td>
+</tr>
+
+<tr>
+<td>After beating Boom-Boom in a sky level, the time rewinds and Mario
+dies</td>
+<td>Boom-Boom's crystal will not work properly in sky levels.</td>
+<td>Create a pipe leading to a plains or something and have the Boom-Boom
+fight in there, or give Mario infinite time.</td>
+</tr>
+
+<tr>
+<td>Other enemies glitch at Boom-Boom</td>
+<td>They are either incompatible, or in front of him.</td>
+<td>Meeting Boom-Boom will change the palette tables when you meet him,
+however, have enemies in front of and behind him, and you will be able to
+fight all of them without problems, although the crystal ball will be
+glitched.</td>
+</tr>
+
+<tr>
+<td>When Mario beats a Koopa Kid and gets the wand, the game crashes</td>
+<td>There is no End Castle in that world.</td>
+<td>To be able to get the wand and win, you must have an 'End Castle'
+level saved for that world.</td>
+</tr>
+
+<tr>
+<td>Chain Chomps won't work properly and get stuck</td>
+<td>Chain Chomps have a habit of getting stuck to background and other
+things.</td>
+<td>Make sure that the level doesn't have a 'black background' object and
+that there are no bushes etc. around.</td>
+</tr>
+
+<tr>
+<td>The enemies are compatible, but sometimes they glitch</td>
+<td>Many lifts and blocks with special actions (white throwing blocks) are
+not compatible with all enemies.</td>
+<td>Change the blocks or move the enemies.</td>
+</tr>
+
+<tr>
+<td>Background etc. looks like garbage</td>
+<td>An object in your level sticks through the ground.</td>
+<td>Move it up out of the ground.</td>
+</tr>
+
+<tr>
+<td>There are objects in the sky at the top of the screen that aren't
+visible in the editor</td>
+<td>Your ground or blocks extend down into 1B. They then stick through the
+top of the screen.</td>
+<td>Move the things to 1A.</td>
+</tr>
+
+<tr>
+<td>Doors and pipes lead to the wrong places</td>
+<td>It's possible there is either another pointer around, or the original
+one was altered.</td>
+<td><span class="m3i">Sometimes when you press 'Enter' on a pointer it will
+change it by itself, which is pretty annoying if you've just worked out where
+everything leads!</span> Also note that due to the pointer implementation in
+SMB3, if you move a pointer at all, it will change its attributes.</td>
+</tr>
+
+<tr>
+<td>Pipe levels have weird objects covering up some areas when they're
+made horizontally</td>
+<td>Uncertain.</td>
+<td>I'm guessing they need to be made vertical or just shorter.</td>
+</tr>
+
+<tr>
+<td>Sideways Piranha Plants are invisible</td>
+<td>There is no 'black background' object, and in some levels the plants
+need it; otherwise they go behind the background.</td>
+<td>See below for putting in background.</td>
+</tr>
+
+<tr>
+<td>Hilly or Underground levels have weird background, or the wrong
+sky colouring</td>
+<td>You need a background object.</td>
+<td>The only way to get background without it overlapping everything is to
+put it in as the very first 3-byte object in your level. This goes for
+every level that needs background objects to look right. Underground and
+Hilly levels need these too. (object 0E, Domain 0)</td>
+</tr>
+
+<tr>
+<td>Objects in water or behind blank background etc. are erased when
+playing on the level<span class="m3i">, but are still there in the editor
+</span></td>
+<td>Objects were inserted <i>before</i> the water/background etc.
+object.</td>
+<td>Always remember that with background objects, you must put them in as
+the first thing in your level, before anything else. With water, either
+make the objects that are going to be in there (eg. Underwater hills,
+blocks etc.) after you insert the water, or put the water in before.</td>
+</tr>
+
+<tr>
+<td>Mario enters vertical levels at the wrong place</td>
+<td>Uncertain.</td>
+<td>No solution as of yet!</td>
+</tr>
+
+<tr>
+<td>All or nearly all enemies in vertical pipe levels are gone.</td>
+<td>Uncertain.</td>
+<td>No solution as of yet!</td>
+</tr>
+</table>
+
+</body>
+</html>
+

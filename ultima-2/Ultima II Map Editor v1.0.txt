@@ -1,0 +1,92 @@
+Ultima II The Quest of the Avatar Map Editor v1.0
+
+[General]
+The main Interface has two frames, one hold the tileset and the other
+one holds the map buffer.
+
+[Tileset Frame]
+
+ [Tile #]
+ It will display the hex value of the selected tile
+ 
+ [Tile]
+ the square under that label will show a 64x64 zoom of the 
+ selected tile
+
+ [Point]
+ This is the actual (X, Y) location of your mouse pointer inside the 
+ map buffer.
+
+ [Sextant]
+ The game has an item named sextant, it shows your (Y, X) position in
+ the map. So for the sake of orientation I added it.
+ 
+ [Tileset Block]
+ To select a Tile just click on it or right click any tile on the map
+
+[Map Frame]
+
+ [Map Buffer]
+ The game divides its overworld map into 8 32x256 blocks. Due to the
+ speed limitations I had when coding this program(VB) I cut out the 
+ buffer into the same 8 blocks, it takes about 70 seconds to load
+ an entire block. Sorry about this one, I might improve this in
+ further editors.
+
+ [Block]
+ Just select the block you want to load, be careful because the program
+ won´t ask you if you are sure blablabla, however your changes are
+ always active(not saved but still there)
+
+ [Current Block]
+ Well.....
+ 
+ [Grid Color]
+ Click on the box to select the grid´s color. If the GRID checkbox
+ isn´t checked, it wonpt draw the lines.
+
+ [Grid checkbox]
+ If you select it AND reload your block, it will display grid lines.
+ The grid is on by default.
+
+[Program Menus]
+
+ [Load ROM]
+ It WON´T check if you´re loading a valid ultima 2 nes rom. Most map
+ editors have it and I hate that :) How ever, if you load an invalid
+ file, you might get errors and maybe your file will be wiped out!
+
+ [Save Changes]
+ It saves the MAP stuff ONLY! It doesn´t save items and other things.
+ They have their own save button.
+ 
+ [Quit]
+ Just that, plain and simple.
+
+ [Game]
+  
+  [Characters]
+  Have you ever used a save state editor???? Well, it´s quite the same.
+  These are the stats and starting things of your characters.
+
+  [Items & Balloon]
+  You can change the location of certain items, including the starting
+  position of the balloon.
+
+  [Prices of Items]
+  It let you edit the price of almost every item in the game no manroot
+  or fungus).
+  
+  [Location of towns]
+  Read the READ THIS button for more info.
+
+ [Help]
+ You´re reasing this right??
+
+ [About]
+ Just the About box.
+
+-"Strive constantly to better thyself in this virtue"- Hawkwind
+
+http://www.retrobase.com/fakegod
+The_Fake_God@hotmail.com

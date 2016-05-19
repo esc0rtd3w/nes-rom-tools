@@ -1,0 +1,49 @@
+NES Super Mario Bros. 3 Level format
+------------------------------------
+ CORRECTNESS NOT GUARANTEED.
+
+ Header (9 bytes):
+
+   11 22 33 44 55 66 77 88 99
+   AB AB AB AB AB AB AB AB AB
+
+   1x = level pointer
+   2x = level pointer
+   3x = enemy pointer
+   4x = enemy pointer
+   5A = level start Y (first 3 bits)
+   5B = level length
+   6A = level start X (first 3 bits)
+   6x = enemy color palette # (bits 4, 5)
+   6B = level color palette #
+   7A = level scrolling type
+   7B = level object set
+   8A = level start action (first 3 bits)
+   8x = level graphic set (last 5 bits)
+   9A = time (first 2 bits)
+   9B = music
+
+
+ Level objects (3/4 bytes each):
+
+   Y position (3 leftmost bits = object bank ["domain"])
+   X position
+   Type
+   Length (only if 4 byte object)
+
+
+ Enemy objects (3 bytes each):
+   Type
+   X
+   Y
+
+
+ Level data:
+   Header followed by all level objects followed by byte $FF
+   Enemy objects (NOT after level objects) followed by byte $FF
+
+ Objects rendered in the order they appear in the level data.
+
+ Palettes (size for one obj.set = $C0):
+   Object set 1 at $36CA2,
+   Object set 2 at $36D62 ...

@@ -1,0 +1,30 @@
+	history:
+	--------
+
+
+		    2006-Oct-05 version 0.14
+		    ------------------------
+		    - user can now export:
+		      1.) names
+		      2.) any names
+		      3.) xrefs
+		      4.) comments (normal and repeatable ones)		      	      
+		    - arrays are supported
+		    - disassembly of the debugger is now pretty much
+		      the same as IDA's disassembly except formatting
+		      and colors
+		    - commented sourcecode
+
+
+		    2006-Oct-04 version 0.11
+		    ------------------------
+		    - added options dialog
+
+
+		    2006-Sep-29 version 0.1
+		    -----------------------
+		    - initial version
+		    
+  
+  
+  (c) 2006, Dennis Elser (dennis@backtrace.de)		    

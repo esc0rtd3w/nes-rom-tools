@@ -1,0 +1,254 @@
+Number Reference Table
+
+
+Items	      Index			Description
+_|______________|____________________________|___________________________________
+LUTE		01		Used to open slab in temple of Feinds Revisited
+CROWN		02		Given to ASTOS to fight for CRYSTAL
+CRYSTAL		03		Given to Matoya the Witch for HERB
+HERB		04		Given to Prince to get KEY
+KEY		05		Used to open locked door to get TNT
+TNT		06		Used to blow a whole in the Land to get to Melmond
+ADAMANT		07		Used to Create Excalbur
+SLAB		08		Given to doctor Unne to Learn Leifenish
+RUBY		09		Given to Titan to Get to Sarda
+ROD		0A		Used to break Slab in Earth Cave
+FLOATER		0B		Used in Ryukahn Desert to get Airship
+CHIME		0C		Used to Enter Mirage Tower
+TAIL		0D		Give to Bahamaut to Get Class Change
+CUBE		0E		Used to get to Sky Castle
+BOTTLE		0F		Used at Spring in Gaia tp get OXYALE
+OXYALE		10		Used to Enter Sea Shrine
+CANOE		11		Allows Rvier Travel
+TENT		16		Some HP recovered, Game Saved
+CABIN		17		All HP recovered, Game Saved
+HOUSE		18		All HP and MP recovered, Game Saved
+HEAL		19		HP up 30
+PURE		1A		Nullifies Poison
+SOFT		1B		Nullifies Stone
+
+Weapons	      Index			
+_|______________|_______________________________________________________________
+Wooden NnCh	1C
+Small Knife	1D
+Wooden Staff	1E
+Rapier		1F
+Iron Hammer	20
+Short Sword	21
+Hand Axe	22
+Scimtar		23
+Iron NnCh	24
+Large Knife	25
+Iron Staff	26
+Sabre		27
+Long Sword	28
+Great Axe	29
+Falchion	2A
+Silver Knife	2B
+Silver Sword	2C
+Silver Hammer	2D
+Silver Axe	2E
+Flame Sword	2F
+Ice Sword	30
+Dragon Sword	31
+Giant Sword	32
+Sun Sword	33
+Coral Sword	34
+Were Sword	35
+Rune Sword 	36
+Power Staff	37
+Light Axe	38
+Heal Staff	39
+Mage Staff	3A
+Defense		3B
+Wizard Staff	3C
+Vorpal		3D
+CatClaw		3E
+Thors Hammer	3F
+Bane Sword	40
+Katana		41
+Excalbur	42
+Masmune		43
+
+Armour	      Index			
+_|______________|_______________________________________________________________
+Cloth		44
+Wooden Armour	45
+Chain Armour	46
+Iron Armour	47
+Steel Armour	48
+Silver Armour	49
+Flame Armour	4A
+Ice Armour	4B
+Opal Armour	4C
+Dragon Armour	4D
+Copper Bracelet	4E
+Silver Bracelet	4F
+Gold Bracelet	50
+Opal Bracelet	51
+White Shirt	52
+Black Shirt	53
+Wooden Sheild	54
+Iron Sheild	55
+Silver Sheild	56
+Flame Sheild	57
+Ice Sheild	58
+Opal Sheild	59
+Aegis Sheild	5A
+Buckler		5B
+ProCape		5C
+Cap		5D
+Wooden Helmet	5E
+Iron Helmet	5F
+Silver Helmet	60
+Opal Helmet	61
+Heal Helmet	62
+Ribbon	 	63
+Gloves		64
+Copper Gauntlet	65
+Iron Gauntlet	66
+Silver Gauntlet	67
+Zeus Gauntlet	68
+Power Gauntlet	69
+Opal Gauntlet	6A
+ProRing		6B
+
+Gold chests   Index			Explanation
+_|______________|____________________________|___________________________________
+10_G		6C		These are the ammounts of gold found in the
+20_G		6D		Treasure Chests Through out the game. Its
+25_G		6E		Only the Text displayed when they are opened
+30_G		6F		and the actual ammount of gold gained is stored
+55_G		70		in the price Data after The ProRing
+70_G		71
+85_G		72
+110_G		73
+135_G		74
+155_G		75
+160_G		76
+180_G		77
+240_G		78
+255_G		79
+260_G		7A
+295_G		7B
+300_G		7C
+315_G		7D
+330_G		7E
+350_G		7F
+385_G		80
+400_G		81
+450_G		82
+500_G		83
+530_G		84
+575_G		85
+620_G		86
+680_G		87
+750_G		88
+795_G		89
+880_G		8A
+1020_G		8B
+1250_G		8C
+1455_G		8D
+1520_G		8E
+1760_G		8F
+1975_G		90
+2000_G		91
+2750_G		92
+3400_G		93
+4150_G		94
+5000_G		95
+5450_G		96
+6400_G		97
+6720_G		98
+7340_G		99
+7690_G		9A
+7900_G		9B
+8135_G		9C
+9000_G		9D
+9300_G		9E
+9500_G		9F
+9900_G		A0
+10000_G		A1
+12350_G		A2
+13000_G		A3
+13450_G		A4
+14050_G		A5
+14720_G		A6
+15000_G		A7
+17490_G		A8
+18010_G		A9
+19990_G		AA
+20000_G		AB
+20010_G		AC
+26000_G		AD
+45000_G		AE
+65000_G		AF  
+
+	      Index
+Magics		| Spell Cast Index        
+_|______________|___|____________________________________________________
+CURE		B0  01
+HARM		B1  02
+FOG 		B2  03
+RUSE		B3  04
+FIRE		B4  05
+SLEP		B5  06
+LOCK		B6  07
+LIT 		B7  08
+LAMP		B8  09
+MUTE		B9  0A
+ALIT		BA  0B
+INVS		BB  0C
+ICE 		BC  0D
+DARK		BD  0E
+TMPR		BE  0F
+SLOW		BF  10
+CUR2		C0  11
+HRM2		C1  12
+AFIR		C2  13
+HEAL		C3  14
+FIR2		C4  15
+HOLD		C5  16
+LIT2		C6  17
+LOK2		C7  18
+PURE		C8  19
+FEAR		C9  1A
+AICE		CA  1B
+AMUT		CB  1C
+SLP2		CC  1D
+FAST		CD  1E
+CONF		CE  1F
+ICE2		CF  20
+CUR3		D0  21
+LIFE		D1  22
+HRM3		D2  23
+HEL2		D3  24
+FIR3		D4  25
+BANE		D5  26
+WARP		D6  27
+SLO2		D7  28
+SOFT		D8  29
+EXIT		D9  2A
+FOG2		DA  2B
+INV2		DB  2C
+LIT3		DC  2D
+RUB		DD  2E
+QAKE		DE  2F
+STUN		DF  30
+CUR4		E0  31
+HRM4		E1  32
+ARUB		E2  33
+HEL3		E3  34
+ICE3		E4  35
+BRAK		E5  36
+SABR		E6  37
+BLND		E7  38
+LIF2		E8  39
+FADE		E9  3A
+WALL		EA  3B
+XFER		EB  3C
+NUKE		EC  3D
+STOP		ED  3E
+ZAP!		EE  3F
+XXXX		EF  40
+

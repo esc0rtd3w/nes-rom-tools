@@ -1,0 +1,115 @@
+Dragon warrior 1 level format:
+
+All the town data is stored in this format:
+
+Each half-byte (nibble) is one tile.
+For example:  FF FF FF
+              F6 FF 6F
+
+That would be the throne in the throne room.
+
+In the game it would look like this:
+þþþþþþ (FFFFFF
+þ°þþ°þ  F6FF6F)
+
+
+Listing:
+
+Number|  Tile
+------+-------------------
+0     | Grass
+1     | Desert
+2     | Water
+3     | Treasure Chest
+4     | Solid Stone
+5     | Stairs up
+6     | Red brick floor
+7     | Stairs down
+8     | Forest
+9     | Poisonous Swamp
+A     | Barrier
+B     | Locked Door
+C     | Weapon shop symbol
+D     | Inn Sign
+E     | Bridge
+F     | Desk
+
+
+All town maps come in the following sizes:
+30x30
+24x24
+20x20
+10x10
+
+
+Shrine data:
+
+Shrine data is stored the same way as town data with one exception,
+tiles only go 0-7, the last bit determines wether there is a roof
+in previous maps.
+
+
+Dungeon data:
+
+Same as above but with different tiles:
+
+Number| Tile
+------+------------------
+0     | Stone wall
+1     | Stairs up
+2     | Red floor
+3     | Stairs down
+4     | Treasure Chest
+5     | Locked door
+6     | Princess Gwaelin
+7     | Black wall
+
+The last bit is also used for roofs.
+
+
+Overworld format: (RLE)
+
+The first half byte determines which terrain is drawn, the second how many.
+Example:
+02 12 02
+01 14 01
+00 16 00
+13 20 13
+00 16 00
+01 14 01
+02 12 02
+
+This produces this:
+
+°°°²²²°°°
+°°²²²²²°°
+°²²²²²²²°
+²²²²^²²²²
+°²²²²²²²°
+°°²²²²²°°
+°°°²²²°°°
+
+Number|  Tile
+------+-------------------
+0     | Grass
+1     | Desert
+2     | Hills
+3     | Mountains
+4     | Auto coastline water
+5     | Stone wall
+6     | Forest
+7     | Poisonous Marsh
+8     | Town tile
+9     | Cave Tile
+A     | Castle
+B     | Bridge
+C     | Stairs Down
+D     | Non connectable water
+E     | North coastline
+F     | West coastline
+
+Tiles D-F are not used in the game, still work, but are not recomended.
+
+
+
+See source code for more details, if you can read BASIC language.

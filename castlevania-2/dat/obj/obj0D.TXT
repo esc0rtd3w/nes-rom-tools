@@ -1,0 +1,8 @@
+Skeleton (Jump + Throw)
+3
+F
+T
+T
+T
+T
+T

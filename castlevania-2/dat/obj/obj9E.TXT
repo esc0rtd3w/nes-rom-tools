@@ -1,0 +1,8 @@
+Salesman (secret)
+2
+T
+T
+T
+T
+T
+T
